@@ -1,0 +1,33 @@
+.logo {
+    width: 100%;
+}
+
+.logoContainer {
+    margin: 10px;
+}
+
+.btn {
+    width: 100%;
+    letter-spacing: 2px;
+    background-color: #ff9810;
+    color: white;
+    height: 40px;
+}
+
+.btn:hover {
+    background-color: #965c10;
+}
+
+.colForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.loginRow {
+    height: 100%;
+}
+
+.loginContainer {
+    height: 100%;
+}

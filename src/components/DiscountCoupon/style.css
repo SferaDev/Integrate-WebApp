@@ -1,0 +1,58 @@
+* {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+}
+
+.couponImg {
+    height: 140px;
+}
+
+.productCol {
+}
+
+.product {
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
+    background-color: white;
+    border: 1px solid darkgrey;
+    border-bottom-right-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+.productFeatures {
+    width: 40%;
+}
+
+.productDetails {
+    text-align: left;
+    font-size: 14px;
+}
+
+.productDetails div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.productDetails b {
+    font-weight: 600;
+}
+
+.productTitle {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    margin-bottom: 2px;
+    text-align: left;
+}
+
+.productButtons {
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

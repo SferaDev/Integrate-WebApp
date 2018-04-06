@@ -1,6 +1,7 @@
 import {combineReducers} from 'redux'
-import couponsList from './couponsList'
+import coupons from './coupons';
+
 
 export default combineReducers({
-    couponsList
+    coupons
 })

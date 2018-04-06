@@ -1,46 +1,36 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-
-import {createStore, combineReducers, applyMiddleware} from 'redux'
-import {Provider} from 'react-redux'
-
-import createHistory from 'history/createBrowserHistory'
-import {Route} from 'react-router'
-
-import {ConnectedRouter, routerReducer, routerMiddleware, push} from 'react-router-redux'
-
-import reducers from './reducers'
-import {Login} from './components/Login'; // Or wherever you keep your reducers
-
+import {render} from 'react-dom'
+import {createStore} from 'redux'
+import todoApp from './reducers'
+import applyMiddleware from 'redux/es/applyMiddleware';
+import Provider from 'react-redux/es/components/Provider';
+import thunk from 'redux-thunk';
+import {getAllCoupons} from './actions';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
+import {BrowserRouter, Route} from 'react-router-dom';
+import {Login} from './components/Login';
+import Switch from 'react-router-dom/es/Switch';
+import CouponsContainer from './containers/CouponsContainer';
 
-// Create a history of your choosing (we're using a browser history in this case)
-const history = createHistory()
+const middleware = [thunk];
 
-// Build the middleware for intercepting and dispatching navigation actions
-const middleware = routerMiddleware(history)
-
-// Add the reducer to your store on the `router` key
-// Also apply our middleware for navigating
 const store = createStore(
-    combineReducers({
-        ...reducers,
-        router: routerReducer
-    }),
-    applyMiddleware(middleware)
+    todoApp,
+    applyMiddleware(...middleware)
 )
 
-// Now you can dispatch navigation actions from anywhere!
-// store.dispatch(push('/foo'))
+store.dispatch(getAllCoupons())
 
-ReactDOM.render(
-    <Provider store={store}>
-        {/* ConnectedRouter will use the store from Provider automatically */}
-        <ConnectedRouter history={history}>
-            <div>
-                <Route path="/login" component={Login}/>
-            </div>
-        </ConnectedRouter>
-    </Provider>,
+render(
+    <BrowserRouter>
+        <Provider store={store}>
+            <Switch>
+                <Route exact path='/' component={Login}/>
+                {/* both /roster and /roster/:number begin with /roster */}
+                <Route path='/coupons' component={CouponsContainer}/>
+            </Switch>
+        </Provider>
+    </BrowserRouter>,
     document.getElementById('root')
 )

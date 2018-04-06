@@ -1,1 +1,1 @@
-export const ADD_COUPON = 'ADD_COUPON';
+export const RECEIVE_COUPONS = 'RECEIVE_COUPONS';

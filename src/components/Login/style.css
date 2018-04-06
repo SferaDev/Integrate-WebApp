@@ -1,5 +1,13 @@
+body, html, #root {
+    height: 100%;
+}
+
 .logo {
     width: 100%;
+}
+
+.loginContainer {
+    height: 100%;
 }
 
 .logoContainer {
@@ -20,6 +28,7 @@
 
 .colForm {
     display: flex;
+    height: 100%;
     flex-direction: column;
     justify-content: space-around;
 }

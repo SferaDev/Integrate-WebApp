@@ -1,3 +1,4 @@
+
 body, html, #root {
     height: 100%;
 }
@@ -22,8 +23,6 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-    background: url('/bg.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    min-height: 100%;
+    background: url('./media/bg.jpg') no-repeat;
+    background-size: 100% 100%;
 }

@@ -1,8 +1,7 @@
+import _coupons from './mock/coupons.json'
+
+const TIMEOUT = 100
+
 export default {
-    getActiveCoupons: () => (
-        new Promise((resolve, reject) => {
-            fetch('http://example.com/coupons.json')
-                .then(response => resolve(response.json()))
-        })
-    )
+    getCoupons: (cb) => setTimeout(() => cb(_coupons), TIMEOUT),
 }

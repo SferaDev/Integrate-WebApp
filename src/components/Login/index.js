@@ -1,9 +1,21 @@
 import React from 'react';
 import logo from '../../media/icon2.png';
-import {Button, Col, Row, Grid, FormControl, Input, Container, Form, FormGroup} from 'reactstrap';
+import {Col, Container, Form, FormGroup, Input, Row} from 'reactstrap';
 import './style.css';
 
 export class Login extends React.Component {
+
+    constructor(props) {
+        super(props)
+        this.onSubmitButtonClicked = this.onSubmitButtonClicked.bind(this)
+    }
+
+    onSubmitButtonClicked(event) {
+        event.preventDefault()
+        const {history} = this.props
+        history.push('/coupons')
+    }
+
     render() {
         return (
             <Container className="loginContainer">
@@ -23,7 +35,9 @@ export class Login extends React.Component {
                                     <Input type="password" name="password" id="Password" placeholder="Contrasenya"/>
                                 </FormGroup>
                                 <FormGroup>
-                                    <button type="submit" name="submit" id="Submit" className="btn">Entrar</button>
+                                    <button type="submit" name="submit" id="Submit" className="btn"
+                                            onClick={this.onSubmitButtonClicked}>Entrar
+                                    </button>
                                 </FormGroup>
                             </Form>
                         </div>

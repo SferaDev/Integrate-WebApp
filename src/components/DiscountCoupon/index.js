@@ -1,38 +1,51 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Col, Row,} from 'reactstrap';
+import {Col, Container, Row,} from 'reactstrap';
 
-class DiscountCoupon extends React.Component {
-    render() {
-        const {
-            url, name, originalPrice, appliedDiscount,
-            currentPrice, numberOfSolds, numberOfFreeUnits
-        } = this.props;
-        return (
-            <Col md="12" lg="6" className="productCol">
+const DiscountCoupon = ({url, name, originalPrice, appliedDiscount, currentPrice, numberOfSolds, numberOfFreeUnits}) => (
+    <Container>
+        <Row>
+            <Col md="12" lg="12" className="productCol">
                 <div className="product">
                     <img className="couponImg"
-                         src={url}/>
+                         src={url} alt={name}/>
                     <div className="productFeatures">
-                        <div className="productTitle">
-                            <b>{name}</b>
-                        </div>
+                        <Row className="productTitle">
+                            <Col md="12" lg="12">
+                                <b className="name">{name}</b>
+                            </Col>
+                        </Row>
                         <div className="productDetails">
-                            <div className="preuOriginal">
-                                <span><b>Preu original</b></span><span>{originalPrice}€</span>
-                            </div>
-                            <div className="descompteAplicat">
-                                <span><b>Descompte aplicat</b></span><span>{appliedDiscount}%</span>
-                            </div>
-                            <div className="preuFinal">
-                                <span><b>Preu final</b></span><span>{currentPrice}€</span>
-                            </div>
-                            <div className="unitatsVenudes">
-                                <span><b>Unitats venudes</b></span><span>{numberOfSolds}</span>
-                            </div>
-                            <div className="unitatsRestants">
-                                <span><b>Unitats restants</b></span><span>{numberOfFreeUnits}</span>
-                            </div>
+                            <Row className="productDetailsRow">
+                                <Col md="12" lg="6" className="productDetailsCol1">
+                                    <div className="innerColDiv">
+                                        <div className="preuOriginal">
+                                            <span><b>Preu original</b></span><span
+                                            className="originalPrice">{originalPrice}€</span>
+                                        </div>
+                                        <div className="descompteAplicat">
+                                            <span><b>Descompte aplicat</b></span><span
+                                            className="appliedDiscount">{appliedDiscount}%</span>
+                                        </div>
+                                        <div className="preuFinal">
+                                            <span><b>Preu final</b></span><span
+                                            className="currentPrice">{currentPrice}€</span>
+                                        </div>
+                                    </div>
+                                </Col>
+                                <Col md="12" lg="6" className="productDetailsCol2">
+                                    <div className="innerColDiv">
+                                        <div className="unitatsVenudes">
+                                            <span><b>Unitats venudes</b></span><span
+                                            className="numberOfSolds">{numberOfSolds}</span>
+                                        </div>
+                                        <div className="unitatsRestants">
+                                            <span><b>Unitats restants</b></span><span
+                                            className="numberOfFreeUnits">{numberOfFreeUnits}</span>
+                                        </div>
+                                    </div>
+                                </Col>
+                            </Row>
                         </div>
                     </div>
                     <div className="productButtons">
@@ -41,17 +54,18 @@ class DiscountCoupon extends React.Component {
                     </div>
                 </div>
             </Col>
-        );
-    }
-}
+        </Row>
+    </Container>
+)
 
 DiscountCoupon.propTypes = {
+    url: PropTypes.string,
     name: PropTypes.string,
-    originalPrice: PropTypes.number,
-    appliedDiscount: PropTypes.number,
-    currentPrice: PropTypes.number,
-    numberOfSolds: PropTypes.number,
-    numberOfFreeUnits: PropTypes.number
-};
+    originalPrice: PropTypes.string,
+    appliedDiscount: PropTypes.string,
+    currentPrice: PropTypes.string,
+    numberOfSolds: PropTypes.string,
+    numberOfFreeUnits: PropTypes.string
+}
 
-export default DiscountCoupon;
+export default DiscountCoupon

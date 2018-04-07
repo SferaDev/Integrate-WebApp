@@ -8,12 +8,20 @@ export class Login extends React.Component {
     constructor(props) {
         super(props)
         this.onSubmitButtonClicked = this.onSubmitButtonClicked.bind(this)
+        this.onRequestButtonClicked = this.onRequestButtonClicked.bind(this)
+
     }
 
     onSubmitButtonClicked(event) {
         event.preventDefault()
         const {history} = this.props
         history.push('/coupons')
+    }
+
+    onRequestButtonClicked(event) {
+        event.preventDefault()
+        const {history} = this.props
+        history.push('/Form')
     }
 
     render() {
@@ -37,6 +45,11 @@ export class Login extends React.Component {
                                 <FormGroup>
                                     <button type="submit" name="submit" id="Submit" className="btn"
                                             onClick={this.onSubmitButtonClicked}>Entrar
+                                    </button>
+                                </FormGroup>
+                                <FormGroup>
+                                    <button type="submit" name="request" id="request" className="req"
+                                            onClick={this.onRequestButtonClicked}>Sol·licitud d'accés
                                     </button>
                                 </FormGroup>
                             </Form>

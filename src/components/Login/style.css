@@ -40,3 +40,14 @@ body, html, #root {
 .loginContainer {
     height: 100%;
 }
+
+.req {
+    background: none;
+    color: white;
+    border: none;
+    padding: 0;
+    font: inherit;
+    /*border is optional*/
+    border-bottom: 1px solid white;
+    cursor: pointer;
+}

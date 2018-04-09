@@ -1,0 +1,121 @@
+.Fons {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../media/bg.jpg") no-repeat center center fixed;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    height:100vh;
+}
+
+.Form {
+    border-radius: 10px 10px 10px 10px;
+    top: 8%;
+    height: 80%;
+    width:55%;
+    margin:0 auto;
+    border:1px solid black;
+    background: white;
+    position: relative;
+
+
+}
+
+.closeButton {
+    margin-left:95%;
+    margin-top:1%;
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+
+
+.HeaderForm {
+    font: 170% arial;
+    margin-left: 3%;
+    margin-top: 4%;
+    position:absolute;
+}
+
+.Error {
+    font: 100% arial;
+    color:red;
+    visibility: hidden;
+    position: relative;
+}
+
+.MainLine {
+    color:white;
+    margin-top: 5%;
+}
+
+.TextForm {
+    font:150% arial;
+    height:5%;
+    width:90%;
+    border: 0px solid;
+    margin-left:3%;
+    margin-top:3%;
+    border-bottom: 1px solid #e0e0e0;
+
+
+}
+
+
+.FirstSurnameText {
+    font:150% arial;
+    height:5%;
+    width:43%;
+    border: 0px;
+    margin-left:3%;
+    margin-top:3%;
+    border-bottom: 1px solid #e0e0e0;
+
+
+}
+
+.SecondSurnameText {
+    font:150% arial;
+    height:5%;
+    width:43%;
+    border: 0px solid;
+    margin-left:2%;
+    margin-top:3%;
+    border-bottom: 1px solid #e0e0e0;
+    position:absolute;
+}
+
+.ButtonForm {
+    height:7%;
+    width: 30%;
+    background:#00c853;
+    font: 140% arial;
+    color:#ffffff;
+    align-self: center;
+    border:none;
+    text-align:center;
+    margin-top:5%;
+    margin-left: 35%;
+    margin-right: 40%;
+    position:static;
+    font-weight:bold;
+    padding: 0 auto;
+}
+
+.addressButton {
+    background: none;
+    color: rgba(61, 61, 72, 0.99);
+    border: none;
+    padding: 0;
+    font: inherit;
+    /*border is optional*/
+    border-bottom: 1px solid;
+    cursor: pointer;
+    position:relative;
+    margin-left: 3%;
+    margin-top:1%;
+}
+
+
+
+

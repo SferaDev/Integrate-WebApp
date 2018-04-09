@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import './style.css';
 
-
 export class Form extends Component {
     constructor(props) {
         super(props);
@@ -20,9 +19,11 @@ export class Form extends Component {
         this.changeNif = this.changeNif.bind(this);
         this.changeEmail = this.changeEmail.bind(this);
         this.changeEntitat = this.changeEntitat.bind(this);
-        this.changeDireccio = this.changeDireccio.bind(this);
         this.comprova = this.comprova.bind(this);
+        this.onCloseClicked = this.onCloseClicked.bind(this);
+        this.onAddressClicked = this.onAddressClicked.bind(this);
     }
+
 
     changeNom(event) {
         this.setState({nom: event.target.value});
@@ -48,10 +49,6 @@ export class Form extends Component {
         this.setState({nomEntitat: event.target.value});
     }
 
-    changeDireccio(event) {
-        this.setState({direccio: event.target.value});
-    }
-
     comprova() {
         if (this.state.nom === '' || this.state.primerCognom === '' || this.state.segonCognom === '' || this.state.email === '' || this.state.NIF === '' || this.state.nomEntitat === '' || this.state.direccio === '') {
             document.getElementById("TextError").style.visibility = "visible";
@@ -72,12 +69,24 @@ export class Form extends Component {
         }
     }
 
+    onCloseClicked(event) {
+        event.preventDefault();
+        const {history} = this.props;
+        history.push('/');
+    }
+
+    onAddressClicked(event) {
+        event.preventDefault();
+        window.open("./Maps");
+    }
+
 
     render() {
 
         return (<div className="Fons">
             <div className="Form">
                 <h1 className="HeaderForm">Formulari de sol·licitud</h1>
+                <button className="closeButton" onClick={this.onCloseClicked}><h3>×</h3></button>
                 <hr className="MainLine"/>
                 <input type="text" className="TextForm" placeholder="Nom *" value={this.state.nom}
                        onChange={this.changeNom}></input>
@@ -92,13 +101,16 @@ export class Form extends Component {
                 <input type="text" className="TextForm" placeholder="Nom de l'entitat *" value={this.state.nomEntitat}
                        onChange={this.changeEntitat}></input>
                 <input type="text" className="TextForm" placeholder="Direcció de l'entitat *"
-                       value={this.state.direccio} onChange={this.changeDireccio}></input>
+                       value="hola" readOnly></input>
+                <button className="addressButton" onClick={this.onAddressClicked}>Busca aquí la teva adreça</button>
                 <button className="ButtonForm" onClick={this.comprova}>
                     Enviar
                 </button>
                 <p className="Error" id="TextError" align="center">S'han d'emplenar tots els camps!</p>
             </div>
-        </div>);
+            </div>
+
+        );
     }
 
     /*addToList(entitat) {

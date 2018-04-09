@@ -16,6 +16,7 @@ import {Form} from './components/Form';
 import {Maps} from './components/Maps';
 
 
+
 const middleware = [thunk];
 
 const store = createStore(

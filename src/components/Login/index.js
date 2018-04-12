@@ -21,7 +21,7 @@ export class Login extends React.Component {
     onRequestButtonClicked(event) {
         event.preventDefault()
         const {history} = this.props
-        history.push('/Form')
+        history.push('/ApplicationForm')
     }
 
     render() {

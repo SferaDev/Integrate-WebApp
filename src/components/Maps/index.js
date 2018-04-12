@@ -1,19 +1,18 @@
 import React from 'react';
 import { compose, withProps,lifecycle } from 'recompose';
-import  {GoogleMap, Marker, withGoogleMap, withScriptjs, OverlayView} from 'react-google-maps';
+import {GoogleMap, Marker, withGoogleMap, withScriptjs} from 'react-google-maps';
 import SearchBox  from 'react-google-maps/lib/components/places/SearchBox';
 import _ from 'lodash';
 
 /*global google*/
 
 
-
 const MyMapComponent = compose(
     withProps({
         googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places",
-        loadingElement: <div style={{ height: `100vh`}} />,
-        containerElement: <div style={{ height: `100vh`}} />,
-        mapElement: <div style={{ height: `100vh`}} />,
+        loadingElement: <div style={{height: `100%`}}/>,
+        containerElement: <div style={{height: `100%`}}/>,
+        mapElement: <div style={{height: `85%`}}/>,
     }),
     lifecycle({
         componentWillMount() {
@@ -25,6 +24,9 @@ const MyMapComponent = compose(
                 center: {
                     lat: 41.3818, lng: 2.1685
                 },
+                over: {
+                    lat: 41.419318, lng: 2.16165419999993
+                },
                 markers: [],
                 onMapMounted: ref => {
                     refs.map = ref;
@@ -35,13 +37,25 @@ const MyMapComponent = compose(
                         center: refs.map.getCenter(),
                     })
                 },
+                _insertButton: (parentThis, map) => {
+                    let controlDiv = document.createElement('div');
+                    map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(controlDiv);
+                },
                 onSearchBoxMounted: ref => {
                     refs.searchBox = ref;
                 },
+                onAcceptClicked() {
+                    window.close()
+                },
                 onPlacesChanged: () => {
-                    const places = refs.searchBox.getPlaces();
+                    const places = refs.searchBox.getPlaces()
+                    {
+                        places.map(({formatted_address, geometry: {location}}) =>
+                            this.props.onUserSearched(formatted_address, location.lat(), location.lng())
+                        )
+                    }
                     const bounds = new google.maps.LatLngBounds();
-
+                    console.log()
                     places.forEach(place => {
                         if (place.geometry.viewport) {
                             bounds.union(place.geometry.viewport)
@@ -71,19 +85,8 @@ const MyMapComponent = compose(
         defaultZoom={13}
         center={props.center}
         onBoundsChanged={props.onBoundsChanged}
+        controls={this._insertButton}
     >
-        <OverlayView
-            position={{lat:props.center.lat , lng: props.center.lng }}
-            mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
-            /*getPixelPositionOffset={getPixelPositionOffset}*/
-        >
-            <div style={{ background: `white`, border: `1px solid #ccc`, padding: 15 }}>
-                <h1>hola</h1>
-                <button style={{ height: 60 }} onClick={props.onAcceptClicked}>
-                    Acceptar
-                </button>
-            </div>
-        </OverlayView>
         <SearchBox
             ref={props.onSearchBoxMounted}
             bounds={props.bounds}
@@ -111,15 +114,6 @@ const MyMapComponent = compose(
         {props.markers.map((marker, index) =>
             <Marker key={index} position={marker.position} />
         )}
-        <ol>
-            {props.places.map(({ place_id, formatted_address, geometry: { location } }) =>
-                <li key={place_id}>
-                    {formatted_address}
-                    {" at "}
-                    ({location.lat()}, {location.lng()})
-                </li>
-            )}
-        </ol>
     </GoogleMap>
 );
 
@@ -143,13 +137,18 @@ export class Maps extends React.PureComponent {
     };
 
 
+
     render() {
         return (
             <MyMapComponent
                 isMarkerShown={this.state.isMarkerShown}
                 onMarkerClick={this.handleMarkerClick}
+                onUserSearched={this.props.onUserSearched}
             >
             </MyMapComponent>
         );
     }
+
+
 };
+

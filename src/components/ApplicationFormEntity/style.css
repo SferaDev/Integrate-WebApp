@@ -1,24 +1,27 @@
 .Fons {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../media/bg.jpg") no-repeat center center fixed;
     background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    height:100vh;
+    height: 100%;
 }
 
 .Form {
     border-radius: 10px 10px 10px 10px;
     top: 8%;
-    height: 80%;
-    width:55%;
-    margin:0 auto;
-    border:1px solid black;
+    height: 75%;
+    width: 55%;
+    margin-left: 2%;
+    border: 1px solid black;
     background: white;
-    position: relative;
-
+    position: absolute;
 
 }
+
+.Map {
+    margin-left: 50%;
+    margin-top: 7%;
+}
+
+
 
 .closeButton {
     margin-left:95%;
@@ -58,31 +61,59 @@
     margin-top:3%;
     border-bottom: 1px solid #e0e0e0;
 
+}
+
+.NumberText {
+    font: 150% arial;
+    height: 5%;
+    width: 20%;
+    border: 0px solid;
+    margin-left: 1%;
+    margin-top: 3%;
+    border-bottom: 1px solid #e0e0e0;
+    position: absolute;
 
 }
 
-
-.FirstSurnameText {
+.EmailNameText {
     font:150% arial;
     height:5%;
-    width:43%;
+    width: 68%;
+    border: 0px solid;
+    margin-left: 3%;
+    margin-top: 3%;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.FirstNameText {
+    font: 150% arial;
+    height: 5%;
+    width: 30%;
     border: 0px;
     margin-left:3%;
     margin-top:3%;
     border-bottom: 1px solid #e0e0e0;
 
-
 }
 
-.SecondSurnameText {
+.SecondNameText {
     font:150% arial;
     height:5%;
-    width:43%;
+    width: 55%;
     border: 0px solid;
     margin-left:2%;
     margin-top:3%;
     border-bottom: 1px solid #e0e0e0;
     position:absolute;
+}
+
+.DescriptionText {
+    font: 100% arial;
+    margin-left: 3%;
+    width: 90%;
+    bottom: 20%;
+    margin-top: 1%;
+    resize: none;
 }
 
 .ButtonForm {
@@ -102,14 +133,11 @@
     padding: 0 auto;
 }
 
-.addressButton {
+.address {
     background: none;
     color: rgba(61, 61, 72, 0.99);
-    border: none;
-    padding: 0;
     font: inherit;
     /*border is optional*/
-    border-bottom: 1px solid;
     cursor: pointer;
     position:relative;
     margin-left: 3%;

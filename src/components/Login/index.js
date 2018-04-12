@@ -47,7 +47,7 @@ export class Login extends React.Component {
                                             onClick={this.onSubmitButtonClicked}>Entrar
                                     </button>
                                 </FormGroup>
-                                <FormGroup>
+                                <FormGroup style={{marginLeft: '30%'}}>
                                     <button type="submit" name="request" id="request" className="req"
                                             onClick={this.onRequestButtonClicked}>Sol·licitud d'accés
                                     </button>

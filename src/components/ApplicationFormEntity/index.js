@@ -26,7 +26,6 @@ export class ApplicationForm extends Component {
         this.changeDescription = this.changeDescription.bind(this);
         this.onSentClicked = this.onSentClicked.bind(this);
         this.onCloseClicked = this.onCloseClicked.bind(this);
-        this.onAddressClicked = this.onAddressClicked.bind(this);
         this.onUserSearched = this.onUserSearched.bind(this);
     }
 
@@ -78,10 +77,6 @@ export class ApplicationForm extends Component {
         history.push('/');
     }
 
-    onAddressClicked(event) {
-        event.preventDefault();
-        window.open("./Maps");
-    }
 
     onUserSearched(address, lat, lng) {
         this.setState({addressName: address});

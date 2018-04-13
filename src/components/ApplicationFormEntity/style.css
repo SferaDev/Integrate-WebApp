@@ -1,0 +1,150 @@
+.Fons {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../media/bg.jpg") no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+}
+
+.Form {
+    border-radius: 10px 10px 10px 10px;
+    top: 8%;
+    height: 75%;
+    width: 55%;
+    margin-left: 2%;
+    border: 1px solid black;
+    background: white;
+    position: absolute;
+
+}
+
+.Map {
+    margin-left: 50%;
+    margin-top: 9%;
+}
+
+
+
+.closeButton {
+    margin-left:95%;
+    margin-top:1%;
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+
+
+.HeaderForm {
+    font: 170% arial;
+    margin-left: 3%;
+    margin-top: 4%;
+    position:absolute;
+}
+
+.Error {
+    font: 100% arial;
+    color:red;
+    margin-top: 1%;
+    visibility: hidden;
+    position: relative;
+}
+
+.MainLine {
+    color:white;
+    margin-top: 5%;
+}
+
+.TextForm {
+    font:150% arial;
+    height:5%;
+    width:90%;
+    border: 0px solid;
+    margin-left:3%;
+    margin-top:3%;
+    border-bottom: 1px solid #e0e0e0;
+
+}
+
+.NumberText {
+    font: 150% arial;
+    height: 5%;
+    width: 20%;
+    border: 0px solid;
+    margin-left: 1%;
+    margin-top: 3%;
+    border-bottom: 1px solid #e0e0e0;
+    position: absolute;
+
+}
+
+.EmailNameText {
+    font:150% arial;
+    height:5%;
+    width: 68%;
+    border: 0px solid;
+    margin-left: 3%;
+    margin-top: 3%;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.FirstNameText {
+    font: 150% arial;
+    height: 5%;
+    width: 30%;
+    border: 0px;
+    margin-left:3%;
+    margin-top:3%;
+    border-bottom: 1px solid #e0e0e0;
+
+}
+
+.SecondNameText {
+    font:150% arial;
+    height:5%;
+    width: 55%;
+    border: 0px solid;
+    margin-left:2%;
+    margin-top:3%;
+    border-bottom: 1px solid #e0e0e0;
+    position:absolute;
+}
+
+.DescriptionText {
+    font: 100% arial;
+    margin-left: 3%;
+    width: 90%;
+    bottom: 20%;
+    margin-top: 1%;
+    resize: none;
+}
+
+.ButtonForm {
+    height:7%;
+    width: 30%;
+    background:#00c853;
+    font: 140% arial;
+    color:#ffffff;
+    align-self: center;
+    border:none;
+    text-align:center;
+    margin-top:5%;
+    margin-left: 35%;
+    margin-right: 40%;
+    position:static;
+    font-weight:bold;
+    padding: 0 auto;
+}
+
+.address {
+    background: none;
+    color: rgba(61, 61, 72, 0.99);
+    font: inherit;
+    /*border is optional*/
+    cursor: pointer;
+    position:relative;
+    margin-left: 3%;
+    margin-top:1%;
+}
+
+
+
+

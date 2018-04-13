@@ -12,6 +12,9 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import {Login} from './components/Login';
 import Switch from 'react-router-dom/es/Switch';
 import CouponsContainer from './containers/CouponsContainer';
+import {ApplicationForm} from './components/ApplicationFormEntity';
+
+
 
 const middleware = [thunk];
 
@@ -29,6 +32,7 @@ render(
                 <Route exact path='/' component={Login}/>
                 {/* both /roster and /roster/:number begin with /roster */}
                 <Route path='/coupons' component={CouponsContainer}/>
+                <Route path='/ApplicationForm' component={ApplicationForm}/>
             </Switch>
         </Provider>
     </BrowserRouter>,

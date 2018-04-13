@@ -1,90 +1,189 @@
-import reducer, * as coupons from './coupons'
+import coupons from './coupons'
+import * as types from '../constants/ActionTypes'
 
-describe('reducers', () => {
-    describe('coupons', () => {
-        let state
+describe('coupons reducer', () => {
+    it('should handle ADD_COUPON', () => {
+        expect(
+            coupons([], {
+                type: types.ADD_COUPON,
+                productName: 'Product name 1',
+                picture: 'Picture 1',
+                initialPrice: 'Initial price 1',
+                discountType: '%',
+                discount: '20',
+                category: 'Category 1',
+                reusePeriod: '3',
+                pendingUnits: '3',
 
-        describe('when products are received', () => {
-
-            beforeEach(() => {
-                state = reducer({}, {
-                    type: 'RECEIVE_COUPONS',
-                    coupons: [
-                        {
-                            id: 1,
-                            url: 'Url 1',
-                            name: 'Name 2',
-                            originalPrice: '0.60',
-                            appliedDiscount: '20',
-                            currentPrice: '0.45',
-                            numberOfSolds: '40',
-                            numberOfFreeUnits: '60'
-                        },
-                        {
-                            id: 2,
-                            url: 'Url 2',
-                            name: 'Name 2',
-                            originalPrice: '0.00',
-                            appliedDiscount: '0',
-                            currentPrice: '0.00',
-                            numberOfSolds: '0',
-                            numberOfFreeUnits: '0'
-                        }
-                    ]
-                })
             })
+        ).toEqual([
+            {
+                id: 0,
+                productName: 'Product name 1',
+                picture: 'Picture 1',
+                initialPrice: 'Initial price 1',
+                discountType: '%',
+                discount: '20',
+                category: 'Category 1',
+                reusePeriod: '3',
+                pendingUnits: '3',
+            }
+        ])
 
-            it('contains the products from the action', () => {
-                expect(coupons.getCoupon(state, 1)).toEqual({
+        expect(
+            coupons([
+                {
+                    id: 0,
+                    productName: 'Product name 1',
+                    picture: 'Picture 1',
+                    initialPrice: 'Initial price 1',
+                    discountType: '%',
+                    discount: '20',
+                    category: 'Category 1',
+                    reusePeriod: '3',
+                    pendingUnits: '3',
+                }
+            ], {
+                type: types.ADD_COUPON,
+                productName: 'Product name 2',
+                picture: 'Picture 2',
+                initialPrice: 'Initial price 2',
+                discountType: '%',
+                discount: '20',
+                category: 'Category 2',
+                reusePeriod: '3',
+                pendingUnits: '3',
+            })
+        ).toEqual([
+            {
+                id: 0,
+                productName: 'Product name 1',
+                picture: 'Picture 1',
+                initialPrice: 'Initial price 1',
+                discountType: '%',
+                discount: '20',
+                category: 'Category 1',
+                reusePeriod: '3',
+                pendingUnits: '3',
+            },
+            {
+                id: 1,
+                productName: 'Product name 2',
+                picture: 'Picture 2',
+                initialPrice: 'Initial price 2',
+                discountType: '%',
+                discount: '20',
+                category: 'Category 2',
+                reusePeriod: '3',
+                pendingUnits: '3',
+            }
+        ])
+    })
+
+    it('should handle DELETE_COUPON', () => {
+        expect(
+            coupons([
+                {
+                    id: 0,
+                    productName: 'Product name 1',
+                    picture: 'Picture 1',
+                    initialPrice: 'Initial price 1',
+                    discountType: '%',
+                    discount: '20',
+                    category: 'Category 1',
+                    reusePeriod: '3',
+                    pendingUnits: '3',
+                },
+                {
                     id: 1,
-                    url: 'Url 1',
-                    name: 'Name 2',
-                    originalPrice: '0.60',
-                    appliedDiscount: '20',
-                    currentPrice: '0.45',
-                    numberOfSolds: '40',
-                    numberOfFreeUnits: '60'
-                })
-                expect(coupons.getCoupon(state, 2)).toEqual({
-                    id: 2,
-                    url: 'Url 2',
-                    name: 'Name 2',
-                    originalPrice: '0.00',
-                    appliedDiscount: '0',
-                    currentPrice: '0.00',
-                    numberOfSolds: '0',
-                    numberOfFreeUnits: '0'
-                })
+                    productName: 'Product name 2',
+                    picture: 'Picture 2',
+                    initialPrice: 'Initial price 2',
+                    discountType: '%',
+                    discount: '20',
+                    category: 'Category 2',
+                    reusePeriod: '3',
+                    pendingUnits: '3',
+                }
+            ], {
+                type: types.DELETE_COUPON,
+                id: 1
             })
+        ).toEqual([
+            {
+                id: 0,
+                productName: 'Product name 1',
+                picture: 'Picture 1',
+                initialPrice: 'Initial price 1',
+                discountType: '%',
+                discount: '20',
+                category: 'Category 1',
+                reusePeriod: '3',
+                pendingUnits: '3',
+            }
+        ])
+    })
 
-            it('contains no other products', () => {
-                expect(coupons.getCoupon(state, 3)).toEqual(undefined)
+    it('should handle EDIT_COUPON', () => {
+        expect(
+            coupons([
+                {
+                    id: 0,
+                    productName: 'Product name 1',
+                    picture: 'Picture 1',
+                    initialPrice: 'Initial price 1',
+                    discountType: '%',
+                    discount: '20',
+                    category: 'Category 1',
+                    reusePeriod: '3',
+                    pendingUnits: '3',
+                },
+                {
+                    id: 1,
+                    productName: 'Product name 2',
+                    picture: 'Picture 2',
+                    initialPrice: 'Initial price 2',
+                    discountType: '%',
+                    discount: '20',
+                    category: 'Category 2',
+                    reusePeriod: '3',
+                    pendingUnits: '3',
+                }
+            ], {
+                type: types.EDIT_COUPON,
+                id: 0,
+                productName: 'Product name 1 edited',
+                picture: 'Picture 1 edited',
+                initialPrice: 'Initial price 1 edited',
+                discountType: '%',
+                discount: '20',
+                category: 'Category 1 edited',
+                reusePeriod: '3',
+                pendingUnits: '3',
             })
-
-            it('lists all of the products as visible', () => {
-                expect(coupons.getActiveCoupons(state)).toEqual([
-                    {
-                        id: 1,
-                        url: 'Url 1',
-                        name: 'Name 2',
-                        originalPrice: '0.60',
-                        appliedDiscount: '20',
-                        currentPrice: '0.45',
-                        numberOfSolds: '40',
-                        numberOfFreeUnits: '60'
-                    },
-                    {
-                        id: 2,
-                        url: 'Url 2',
-                        name: 'Name 2',
-                        originalPrice: '0.00',
-                        appliedDiscount: '0',
-                        currentPrice: '0.00',
-                        numberOfSolds: '0',
-                        numberOfFreeUnits: '0'
-                    }
-                ])
-            })
-        })
+        ).toEqual([
+            {
+                id: 0,
+                productName: 'Product name 1 edited',
+                picture: 'Picture 1 edited',
+                initialPrice: 'Initial price 1 edited',
+                discountType: '%',
+                discount: '20',
+                category: 'Category 1 edited',
+                reusePeriod: '3',
+                pendingUnits: '3',
+            },
+            {
+                id: 1,
+                productName: 'Product name 2',
+                picture: 'Picture 2',
+                initialPrice: 'Initial price 2',
+                discountType: '%',
+                discount: '20',
+                category: 'Category 2',
+                reusePeriod: '3',
+                pendingUnits: '3',
+            }
+        ])
     })
 })

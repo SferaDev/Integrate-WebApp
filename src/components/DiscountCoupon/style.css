@@ -1,6 +1,5 @@
-* {
-    font-family: "Open Sans", sans-serif;
-    font-weight: 300;
+.productRow {
+    padding-top: 5px;
 }
 
 .couponImg {
@@ -11,7 +10,7 @@
 }
 
 .product {
-    padding: 15px;
+    padding: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -27,23 +26,26 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     height: 100%;
 }
 
 .productTitle {
-    font-family: "Montserrat", sans-serif;
-    font-size: 25px;
-    font-weight: 900;
-    margin-bottom: 2px;
+    font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 26.4px;
     text-align: center;
-    justify-content: center;
 }
 
 .productDetails {
     text-align: left;
     font-size: 14px;
     width: 100%;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
 }
 
 .productDetailsRow {
@@ -56,21 +58,24 @@
     justify-content: center;
 }
 
-.innerColDiv {
-    width: 55%;
-}
-
-.innerColDiv div {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
 .productDetailsCol2 {
+    /*
+    font-size:16px;*/
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
+
+.productDetailsCol3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.innerColDiv {
+    width: 70%;
+}
+
 
 .productDetails b {
     font-weight: 600;
@@ -78,7 +83,42 @@
 
 .productButtons {
     height: 120px;
+    width: 15%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.btnEdit {
+    width: 100%;
+    letter-spacing: 2px;
+    background-color: #006699;
+    color: white;
+    height: 40px;
+    border: 0px;
+    border-radius: 5px;
+    transition-duration: .2s;
+}
+
+.btnEdit:hover {
+    background-color: #003366;
+}
+
+.btnDelete {
+    width: 100%;
+    letter-spacing: 2px;
+    background-color: #cc0000;;
+    color: white;
+    height: 40px;
+    border: 0px;
+    border-radius: 5px;
+    transition-duration: .2s;
+}
+
+.btnDelete:hover {
+    background-color: #800000;
+}
+
+.faIcon {
+    display: inline-flex;
 }

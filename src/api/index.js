@@ -1,7 +1,18 @@
-import _coupons from './mock/coupons.json'
+import axios from 'axios';
 
-const TIMEOUT = 100
+const API_HOST = 'http://integrate-backend-staging.herokuapp.com';
 
-export default {
-    getCoupons: (cb) => setTimeout(() => cb(_coupons), TIMEOUT),
-}
+export const apiPostLogin = ({id, password}) => new Promise((resolve, reject) => {
+    axios.get(`${API_HOST}/login`, {
+        params: {
+            nif: id,
+            password,
+        }
+    })
+        .then(function (response) {
+            resolve();
+        })
+        .catch(function (error) {
+            reject();
+        });
+});

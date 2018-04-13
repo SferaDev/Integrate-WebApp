@@ -1,7 +1,4 @@
-import {combineReducers} from 'redux'
-import coupons from './coupons';
+// import {combineReducers} from 'redux';
+import {authReducer} from './auth';
 
-
-export default combineReducers({
-    coupons
-})
+export default authReducer;

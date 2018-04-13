@@ -10,35 +10,35 @@ export default function coupons(state = initialState, action) {
                 ...state,
                 {
                     id: state.reduce((maxId, coupon) => Math.max(coupon.id, maxId), -1) + 1,
-                    productName: action.productName,
-                    picture: action.picture,
-                    initialPrice: action.initialPrice,
-                    discountType: action.discountType,
-                    discount: action.discount,
-                    category: action.category,
-                    reusePeriod: action.reusePeriod,
-                    pendingUnits: action.pendingUnits,
+                    productName: action.coupon.productName,
+                    picture: action.coupon.picture,
+                    initialPrice: action.coupon.initialPrice,
+                    discountType: action.coupon.discountType,
+                    discount: action.coupon.discount,
+                    category: action.coupon.category,
+                    reusePeriod: action.coupon.reusePeriod,
+                    pendingUnits: action.coupon.pendingUnits,
                 }
             ]
 
         case DELETE_COUPON:
             return state.filter(coupon =>
-                coupon.id !== action.id
+                coupon.id !== action.coupon.id
             )
 
         case EDIT_COUPON:
             return state.map(coupon =>
-                coupon.id === action.id ?
+                coupon.id === action.coupon.id ?
                     {
                         ...coupon,
-                        productName: action.productName,
-                        picture: action.picture,
-                        initialPrice: action.initialPrice,
-                        discountType: action.discountType,
-                        discount: action.discount,
-                        category: action.category,
-                        reusePeriod: action.reusePeriod,
-                        pendingUnits: action.pendingUnits,
+                        productName: action.coupon.productName,
+                        picture: action.coupon.picture,
+                        initialPrice: action.coupon.initialPrice,
+                        discountType: action.coupon.discountType,
+                        discount: action.coupon.discount,
+                        category: action.coupon.category,
+                        reusePeriod: action.coupon.reusePeriod,
+                        pendingUnits: action.coupon.pendingUnits,
                     } :
                     coupon
             )

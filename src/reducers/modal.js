@@ -1,30 +1,28 @@
-import {TOGGLE_MODAL_ADDCOUPON, TOGGLE_MODAL_EDITCOUPON} from '../constants/ActionTypes';
+import {CLEAN_MODAL_STATE, TOGGLE_MODAL, TOGGLE_MODAL_EDIT,} from '../constants/ActionTypes';
 
 const initialState = {
-    modalAddCoupon: {
-        isOpen: false
-    },
-    modalEditCoupon: {
-        isOpen: false
-    },
+    isOpen: false,
 }
 
 export default function modal(state = initialState, action) {
     switch (action.type) {
-        case TOGGLE_MODAL_ADDCOUPON:
+        case TOGGLE_MODAL:
             return {
                 ...state,
-                modalAddCoupon: {
-                    isOpen: !state.modalAddCoupon.isOpen
-                }
+                isOpen: !state.isOpen,
             }
 
-        case TOGGLE_MODAL_EDITCOUPON:
+        case TOGGLE_MODAL_EDIT:
             return {
                 ...state,
-                modalEditCoupon: {
-                    isOpen: !state.modalEditCoupon.isOpen
-                }
+                isOpen: !state.isOpen,
+                coupon: action.coupon,
+            }
+
+        case CLEAN_MODAL_STATE:
+            return {
+                ...state,
+                coupon: undefined
             }
 
         default:

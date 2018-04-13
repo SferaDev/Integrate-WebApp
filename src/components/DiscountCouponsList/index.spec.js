@@ -4,8 +4,7 @@ import DiscountCoupon from '../DiscountCoupon';
 import DiscountCouponsList from './index';
 
 const modalStub = {
-    modalAddCoupon: {isOpen: false},
-    modalEditCoupon: {isOpen: false},
+    modal: {isOpen: false,}
 }
 
 const actionsStub = {}
@@ -39,7 +38,6 @@ describe('when given coupon', () => {
     it('should render coupons', () => {
         const {coupons} = setup(coupon)
         const props = {
-            modal: {isOpen: false},
             actions: {},
             coupon: {
                 id: coupon[0].id,

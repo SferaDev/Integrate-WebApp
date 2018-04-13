@@ -7,7 +7,7 @@ class ModalView extends React.Component {
     constructor(props) {
         super(props);
 
-        this.props.coupon !== undefined ? this.state = this.props.coupon : this.state = {
+        this.state = {
             productName: '',
             picture: '',
             discountType: '%',
@@ -30,9 +30,8 @@ class ModalView extends React.Component {
     }
 
     toggle = () => {
-        this.props.coupon === undefined ?
-            this.props.actions.dispatchToggleModalAddCoupon() :
-            this.props.actions.dispatchToggleModalEditCoupon()
+        this.props.actions.dispatchCleanModalState()
+        this.props.actions.dispatchToggleModal()
     }
 
 
@@ -70,15 +69,38 @@ class ModalView extends React.Component {
     }
 
     handleSubmit = () => {
+        let couponToAdd;
         if (this.state.productName === undefined || this.state.productName === '') alert('Has d\'assignar un nom al val!');
-        else if (this.props.coupon === undefined) {
-            this.props.actions.addCoupon(this.state.productName, this.state.picture, this.state.discountType, this.state.discount, this.state.category,
-                this.state.reusePeriod, this.state.initialPrice, this.state.pendingUnits)
+        else if (!this.props.modal.coupon) {
+            alert('Wanna add something dude?')
+            couponToAdd = {
+                productName: this.state.productName,
+                picture: this.state.picture,
+                discountType: this.state.discountType,
+                discount: this.state.discount,
+                category: this.state.category,
+                reusePeriod: this.state.reusePeriod,
+                initialPrice: this.state.initialPrice,
+                pendingUnits: this.state.pendingUnits,
+            }
+            this.props.actions.dispatchAddCoupon(couponToAdd)
             this.toggle()
         }
         else {
-            this.props.actions.editCoupon(this.props.coupon.id, this.state.productName, this.state.picture, this.state.discountType, this.state.discount, this.state.category,
-                this.state.reusePeriod, this.state.initialPrice, this.state.pendingUnits)
+            alert('Wanna edit something dude?')
+            alert(this.props.modal.coupon.productName)
+            couponToAdd = {
+                id: this.props.modal.coupon.id,
+                productName: this.state.productName,
+                picture: this.state.picture,
+                discountType: this.state.discountType,
+                discount: this.state.discount,
+                category: this.state.category,
+                reusePeriod: this.state.reusePeriod,
+                initialPrice: this.state.initialPrice,
+                pendingUnits: this.state.pendingUnits,
+            }
+            this.props.actions.dispatchEditCoupon(couponToAdd)
             this.toggle()
         }
     }
@@ -169,10 +191,10 @@ class ModalView extends React.Component {
 }
 
 ModalView.propTypes = {
-    coupon: PropTypes.object,
     modal: PropTypes.shape(
         {
             isOpen: PropTypes.bool.isRequired,
+            coupon: PropTypes.object,
         }
     ).isRequired,
     actions: PropTypes.object.isRequired,

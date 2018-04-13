@@ -3,11 +3,15 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types';
 import DiscountCouponsList from '../components/DiscountCouponsList';
 import bindActionCreators from 'redux/es/bindActionCreators';
-import * as TodoActions from '../actions'
+import * as AllActions from '../actions'
+import ModalView from '../components/ModalView';
 
 const CouponsContainer = ({coupons, modal, actions}) => (
-    <DiscountCouponsList
-        coupons={coupons} modal={modal} actions={actions}/>
+    <div>
+        <DiscountCouponsList
+            coupons={coupons} actions={actions}/>
+        <ModalView modal={modal} actions={actions}/>
+    </div>
 )
 
 CouponsContainer.propTypes = {
@@ -25,12 +29,8 @@ CouponsContainer.propTypes = {
     })),
     modal: PropTypes.shape(
         {
-            modalAddCoupon: PropTypes.shape({
-                isOpen: PropTypes.bool.isRequired,
-            }).isRequired,
-            modalEditCoupon: PropTypes.shape({
-                isOpen: PropTypes.bool.isRequired,
-            }).isRequired,
+            isOpen: PropTypes.bool.isRequired,
+            coupon: PropTypes.object,
         }
     ).isRequired,
     actions: PropTypes.object.isRequired,
@@ -42,7 +42,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators(TodoActions, dispatch)
+    actions: bindActionCreators(AllActions, dispatch)
 })
 
 export default connect(

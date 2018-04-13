@@ -6,15 +6,16 @@ describe('coupons reducer', () => {
         expect(
             coupons([], {
                 type: types.ADD_COUPON,
-                productName: 'Product name 1',
-                picture: 'Picture 1',
-                initialPrice: 'Initial price 1',
-                discountType: '%',
-                discount: '20',
-                category: 'Category 1',
-                reusePeriod: '3',
-                pendingUnits: '3',
-
+                coupon: {
+                    productName: 'Product name 1',
+                    picture: 'Picture 1',
+                    initialPrice: 'Initial price 1',
+                    discountType: '%',
+                    discount: '20',
+                    category: 'Category 1',
+                    reusePeriod: '3',
+                    pendingUnits: '3',
+                }
             })
         ).toEqual([
             {
@@ -27,6 +28,7 @@ describe('coupons reducer', () => {
                 category: 'Category 1',
                 reusePeriod: '3',
                 pendingUnits: '3',
+
             }
         ])
 

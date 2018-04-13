@@ -2,55 +2,77 @@ import * as types from '../constants/ActionTypes'
 import modal from './modal';
 
 describe('modal reducer', () => {
-    it('should handle TOGGLE_MODAL_ADDCOUPON from FALSE to TRUE', () => {
+    it('should handle TOGGLE_MODAL from FALSE to TRUE', () => {
         expect(
             modal(
                 {
-                    modalAddCoupon:
-                        {
-                            isOpen: false
-                        },
-                    modalEditCoupon:
-                        {
-                            isOpen: false
-                        },
+                    isOpen: false,
                 },
                 {
-                    type: types.TOGGLE_MODAL_ADDCOUPON,
+                    type: types.TOGGLE_MODAL,
                 }
             )
         ).toEqual(
             {
-                modalAddCoupon: {
-                    isOpen: true
-                },
-                modalEditCoupon: {
-                    isOpen: false
-                },
+                isOpen: true,
             }
         )
     })
 
-    it('should handle TOGGLE_MODAL_EDITCOUPON from TRUE to FALSE', () => {
+    it('should handle TOGGLE_MODAL_EDIT to edit a coupon', () => {
         expect(
-            modal({
-                modalAddCoupon: {
-                    isOpen: false
+            modal(
+                {
+                    isOpen: false,
                 },
-                modalEditCoupon: {
-                    isOpen: true
-                },
-            }, {
-                type: types.TOGGLE_MODAL_EDITCOUPON
-            })
+                {
+                    type: types.TOGGLE_MODAL_EDIT,
+                    coupon: {
+                        id: 1,
+                        productName: 'Product name 2',
+                        picture: 'Picture 2',
+                        initialPrice: 'Initial price 2',
+                        discountType: '%',
+                        discount: '20',
+                        category: 'Category 2',
+                        reusePeriod: '3',
+                        pendingUnits: '3',
+                    }
+                }
+            )
         ).toEqual(
             {
-                modalAddCoupon: {
-                    isOpen: false
+                isOpen: true,
+                coupon: {
+                    id: 1,
+                    productName: 'Product name 2',
+                    picture: 'Picture 2',
+                    initialPrice: 'Initial price 2',
+                    discountType: '%',
+                    discount: '20',
+                    category: 'Category 2',
+                    reusePeriod: '3',
+                    pendingUnits: '3',
+                }
+            }
+        )
+    })
+
+    it('should handle CLEAN_MODAL_STATE to reset the modal state', () => {
+        expect(
+            modal(
+                {
+                    isOpen: false,
+                    coupon: {productName: 'I wat to be cleaned'}
                 },
-                modalEditCoupon: {
-                    isOpen: false
-                },
+                {
+                    type: types.CLEAN_MODAL_STATE,
+                }
+            )
+        ).toEqual(
+            {
+                isOpen: false,
+                coupon: {}
             }
         )
     })

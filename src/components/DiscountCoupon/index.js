@@ -3,24 +3,18 @@ import PropTypes from 'prop-types';
 import {Col, Container, Row,} from 'reactstrap';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import './style.css'
-import ModalView from '../ModalView';
 
-const DiscountCoupon = ({coupon, modal, actions}) => {
+const DiscountCoupon = ({coupon, actions}) => {
     const toggle = () => {
-        actions.dispatchToggleModalEditCoupon()
+        actions.dispatchToggleModalEdit(coupon)
     }
 
     const deleteCoupon = () => {
-        actions.deleteCoupon(coupon.id)
+        actions.dispatchDeleteCoupon(coupon)
     }
-
-    const modalViewEditCoupon = (
-        <ModalView modal={modal} actions={actions} coupon={coupon}/>
-    )
 
     return (
         <Container>
-            {modalViewEditCoupon}
             <Row className="productRow">
                 <Col md="12" lg="12" className="productCol">
                     <div className="product">
@@ -108,11 +102,6 @@ DiscountCoupon.propTypes = {
             initialPrice: PropTypes.string.isRequired,
             pendingUnits: PropTypes.string.isRequired,
         }).isRequired,
-    modal: PropTypes.shape(
-        {
-            isOpen: PropTypes.bool.isRequired,
-        }
-    ).isRequired,
     actions: PropTypes.object.isRequired,
 }
 

@@ -1,18 +1,3 @@
-import axios from 'axios';
+export const API_HOST = 'https://integrate-backend-stagin-pr-24.herokuapp.com'; // 'http://integrate-backend-staging.herokuapp.com';
 
-const API_HOST = 'http://integrate-backend-staging.herokuapp.com';
-
-export const apiPostLogin = ({id, password}) => new Promise((resolve, reject) => {
-    axios.get(`${API_HOST}/login`, {
-        params: {
-            nif: id,
-            password,
-        }
-    })
-        .then(function (response) {
-            resolve();
-        })
-        .catch(function (error) {
-            reject();
-        });
-});
+export * from './login';

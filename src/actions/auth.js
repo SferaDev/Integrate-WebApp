@@ -33,11 +33,13 @@ export function loginAction(id, password) {
         dispatch(setLoginError(null));
 
         apiPostLogin({id, password})
-            .then(() => {
+            .then((r) => {
+                console.log('then', r);
                 dispatch(setLoginPending(false));
                 dispatch(setLoginSuccess(true));
             })
             .catch(error => {
+                console.log('catch', error);
                 dispatch(setLoginPending(false));
                 dispatch(setLoginSuccess(false));
                 dispatch(setLoginError(error))

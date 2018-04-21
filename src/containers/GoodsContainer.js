@@ -1,21 +1,21 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types';
-import DiscountCouponsList from '../components/DiscountCouponsList';
 import bindActionCreators from 'redux/es/bindActionCreators';
 import * as AllActions from '../actions'
 import ModalView from '../components/ModalView';
+import GoodsList from '../components/GoodsList';
 
-const CouponsContainer = ({coupons, modal, actions}) => (
+const GoodsContainer = ({goods, modal, actions}) => (
     <div>
-        <DiscountCouponsList
-            coupons={coupons} actions={actions}/>
+        <GoodsList
+            goods={goods} actions={actions}/>
         <ModalView modal={modal} actions={actions}/>
     </div>
 )
 
-CouponsContainer.propTypes = {
-    coupons: PropTypes.arrayOf(PropTypes.shape({
+GoodsContainer.propTypes = {
+    goods: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.number.isRequired,
         productName: PropTypes.string.isRequired,
         picture: PropTypes.string.isRequired,
@@ -30,14 +30,14 @@ CouponsContainer.propTypes = {
     modal: PropTypes.shape(
         {
             isOpen: PropTypes.bool.isRequired,
-            coupon: PropTypes.object,
+            good: PropTypes.object,
         }
     ).isRequired,
     actions: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = state => ({
-    coupons: state.coupons,
+    goods: state.goods,
     modal: state.modal
 })
 
@@ -48,4 +48,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps,
-)(CouponsContainer)
+)(GoodsContainer)

@@ -1,53 +1,52 @@
 import * as types from '../constants/ActionTypes'
 
-export const addCoupon = (coupon) =>
+export const addGood = (good) =>
     ({
-        type: types.ADD_COUPON,
-        coupon,
+        type: types.ADD_GOOD,
+        good,
     })
 
-export const dispatchAddCoupon = (coupon) => dispatch => {
-    dispatch(addCoupon(coupon))
+export const dispatchAddGood = (good) => dispatch => {
+    dispatch(addGood(good))
 }
 
-export const deleteCoupon = coupon => ({type: types.DELETE_COUPON, coupon})
+export const deleteGood = (good) => ({type: types.DELETE_GOOD, good})
 
-export const dispatchDeleteCoupon = (coupon) => dispatch => {
-    dispatch(deleteCoupon(coupon))
+export const dispatchDeleteGood = (good) => dispatch => {
+    dispatch(deleteGood(good))
 }
 
-export const editCoupon = (coupon) =>
+export const editGood = (good) =>
     ({
-        type: types.EDIT_COUPON,
-        coupon
+        type: types.EDIT_GOOD,
+        good
     })
 
-export const dispatchEditCoupon = (coupon) => dispatch => {
-    dispatch(editCoupon(coupon))
+export const dispatchEditGood = (good) => dispatch => {
+    dispatch(editGood(good))
 }
 
 export const toggleModal = () =>
     ({type: types.TOGGLE_MODAL})
 
-export const toggleModalEdit = (coupon) =>
+export const toggleModalEdit = (good) =>
     ({
         type: types.TOGGLE_MODAL_EDIT,
-        coupon
+        good
     })
 
 export const dispatchToggleModal = () => dispatch => {
     dispatch(toggleModal())
 }
 
-export const dispatchToggleModalEdit = (coupon) => dispatch => {
-    dispatch(toggleModalEdit(coupon))
+export const dispatchToggleModalEdit = (good) => dispatch => {
+    dispatch(toggleModalEdit(good))
 }
 
 export const cleanModalState = () =>
     ({type: types.CLEAN_MODAL_STATE})
 
 export const dispatchCleanModalState = () => dispatch => {
-    alert('Cleaning modal state')
     dispatch(cleanModalState())
 }
 

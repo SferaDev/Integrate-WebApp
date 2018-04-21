@@ -2,14 +2,30 @@ import {Col, Form, FormGroup, Input, Label, Modal, ModalBody, ModalFooter, Modal
 import PropTypes from 'prop-types';
 import './style.css';
 import React from 'react';
+import * as type from '../../constants/APITypes';
+import * as axios from 'axios';
 
 class ModalView extends React.Component {
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.modal.good) {
+            if (nextProps.modal.good.productName !== this.state.productName) this.setState({productName: nextProps.modal.good.productName})
+            if (nextProps.modal.good.picture !== this.state.picture) this.setState({picture: nextProps.modal.good.picture})
+            if (nextProps.modal.good.discountType !== this.state.discountType) this.setState({discountType: nextProps.modal.good.discountType})
+            if (nextProps.modal.good.discount !== this.state.discount) this.setState({discount: nextProps.modal.good.discount})
+            if (nextProps.modal.good.category !== this.state.category) this.setState({category: nextProps.modal.good.category})
+            if (nextProps.modal.good.reusePeriod !== this.state.reusePeriod) this.setState({reusePeriod: nextProps.modal.good.reusePeriod})
+            if (nextProps.modal.good.initialPrice !== this.state.initialPrice) this.setState({initialPrice: nextProps.modal.good.initialPrice})
+            if (nextProps.modal.good.pendingUnits !== this.state.pendingUnits) this.setState({pendingUnits: nextProps.modal.good.pendingUnits})
+        }
+    }
+
     constructor(props) {
         super(props);
 
         this.state = {
             productName: '',
-            picture: '',
+            picture: 'http://www.asiaoceania.org/aogs2018/img/no_uploaded.png',
             discountType: '%',
             discount: '0',
             category: 'Aliments',
@@ -19,7 +35,6 @@ class ModalView extends React.Component {
             maxEurosDiscount: '0',
         }
 
-
         this.handleChangeProductName = this.handleChangeProductName.bind(this);
         this.handleChangeInitialPrice = this.handleChangeInitialPrice.bind(this);
         this.handleChangeDiscount = this.handleChangeDiscount.bind(this);
@@ -27,13 +42,26 @@ class ModalView extends React.Component {
         this.handleChangeReusePeriod = this.handleChangeReusePeriod.bind(this);
         this.handleChangeCategory = this.handleChangeCategory.bind(this);
         this.handleChangePicture = this.handleChangePicture.bind(this);
+        this.handleChangePendingUnits = this.handleChangePendingUnits.bind(this);
     }
 
     toggle = () => {
         this.props.actions.dispatchCleanModalState()
+
+        this.setState({
+            productName: '',
+            picture: '',
+            discountType: '%',
+            discount: '0',
+            category: 'Aliments',
+            reusePeriod: '1',
+            initialPrice: '0',
+            pendingUnits: '',
+            maxEurosDiscount: '0',
+        })
+
         this.props.actions.dispatchToggleModal()
     }
-
 
     handleChangeProductName = (event) => {
         this.setState({productName: event.target.value})
@@ -65,15 +93,40 @@ class ModalView extends React.Component {
     }
 
     handleChangePicture = (event) => {
-        this.setState({picture: event.target.value})
+        var file = document.getElementById('pictureFile').files[0]
+        var imgPreview = document.getElementById('imgPreview')
+        var resultUrl = undefined
+
+        var formData = new FormData()
+        formData.append('file', file)
+        formData.append('upload_preset', type.CLOUDINARY_UPLOAD_PRESET)
+
+        axios({
+            url: type.CLOUDINARY_UPLOAD_URL,
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-ww-form-urlencoded'
+            },
+            data: formData
+        }).then((res) => {
+            console.log(res)
+            resultUrl = res.data.secure_url
+            imgPreview.src = resultUrl
+            this.setState({picture: resultUrl})
+        }).catch(function (err) {
+            console.error(err)
+        })
+    }
+
+    handleChangePendingUnits = (event) => {
+        this.setState({pendingUnits: event.target.value})
     }
 
     handleSubmit = () => {
-        let couponToAdd;
+        let goodToAddOrEdit;
         if (this.state.productName === undefined || this.state.productName === '') alert('Has d\'assignar un nom al val!');
-        else if (!this.props.modal.coupon) {
-            alert('Wanna add something dude?')
-            couponToAdd = {
+        else if (!this.props.modal.good) {
+            goodToAddOrEdit = {
                 productName: this.state.productName,
                 picture: this.state.picture,
                 discountType: this.state.discountType,
@@ -83,14 +136,12 @@ class ModalView extends React.Component {
                 initialPrice: this.state.initialPrice,
                 pendingUnits: this.state.pendingUnits,
             }
-            this.props.actions.dispatchAddCoupon(couponToAdd)
+            this.props.actions.dispatchAddGood(goodToAddOrEdit)
             this.toggle()
         }
         else {
-            alert('Wanna edit something dude?')
-            alert(this.props.modal.coupon.productName)
-            couponToAdd = {
-                id: this.props.modal.coupon.id,
+            goodToAddOrEdit = {
+                id: this.props.modal.good.id,
                 productName: this.state.productName,
                 picture: this.state.picture,
                 discountType: this.state.discountType,
@@ -100,21 +151,22 @@ class ModalView extends React.Component {
                 initialPrice: this.state.initialPrice,
                 pendingUnits: this.state.pendingUnits,
             }
-            this.props.actions.dispatchEditCoupon(couponToAdd)
+            this.props.actions.dispatchEditGood(goodToAddOrEdit)
             this.toggle()
         }
     }
 
     render() {
         return (
-            <Modal isOpen={this.props.modal.isOpen} toggle={this.toggle}>
+            <Modal isOpen={this.props.modal.isOpen} toggle={this.toggle} id="formModal">
                 <ModalHeader toggle={this.toggle}>Gestió de vals de descompte</ModalHeader>
                 <ModalBody>
                     <Form>
                         <FormGroup>
                             <Label for="couponName">Nom del val</Label>
-                            <Input type="text" name="couponName" id="couponName" onChange={this.handleChangeProductName}
-                                   value={this.state.productName}/>
+                            <Input type="text" name="goodName" id="goodName" onChange={this.handleChangeProductName}
+                                   value={this.state.productName}
+                            />
                         </FormGroup>
                         <FormGroup>
                             <Label for="initialPrice">Preu original (€)</Label>
@@ -126,10 +178,13 @@ class ModalView extends React.Component {
                                    step=".01" onChange={this.handleChangeInitialPrice} value={this.state.initialPrice}/>
                         </FormGroup>
                         <FormGroup row>
-                            <Col sm="12">
+                            <Col sm="6">
                                 <Label for="discount">Descompte</Label>
                             </Col>
-                            <Col sm="8">
+                            <Col sm="6">
+                                <Label for="discount">Unitats restants</Label>
+                            </Col>
+                            <Col sm="3">
                                 <Input type="number" name="discount" id="discount"
                                        min='0'
                                        max={
@@ -139,12 +194,16 @@ class ModalView extends React.Component {
                                        onChange={this.handleChangeDiscount}
                                        value={this.state.discount}/>
                             </Col>
-                            <Col sm="4">
+                            <Col sm="3">
                                 <Input type="select" name="discountType" id="discountType"
                                        onChange={this.handleChangeDiscountType} value={this.state.discountType}>
                                     <option>%</option>
                                     <option>€</option>
                                 </Input>
+                            </Col>
+                            <Col sm="6">
+                                <Input required type="number" name="pendingUnits" id="pendingUnits" min="0"
+                                       onChange={this.handleChangePendingUnits} value={this.state.pendingUnits}/>
                             </Col>
                             <Col sm="12" className="currentPrice">
                                 Preu final:&nbsp;
@@ -173,10 +232,14 @@ class ModalView extends React.Component {
                                 </Input>
                             </Col>
                         </FormGroup>
-                        <FormGroup>
-                            <Label for="picture">Imatge (URL)</Label>
-                            <Input required type="url" name="picture" id="picture" value={this.state.picture}
-                                   onChange={this.handleChangePicture}/>
+                        <FormGroup row>
+                            <Col sm="8">
+                                <Label for="File">Imatge</Label>
+                                <Input type="file" name="file" id="pictureFile" onChange={this.handleChangePicture}/>
+                            </Col>
+                            <Col sm="4">
+                                <img id="imgPreview" src={this.state.picture}/>
+                            </Col>
                         </FormGroup>
                     </Form>
                 </ModalBody>
@@ -194,7 +257,7 @@ ModalView.propTypes = {
     modal: PropTypes.shape(
         {
             isOpen: PropTypes.bool.isRequired,
-            coupon: PropTypes.object,
+            good: PropTypes.object,
         }
     ).isRequired,
     actions: PropTypes.object.isRequired,

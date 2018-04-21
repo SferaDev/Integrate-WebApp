@@ -27,7 +27,7 @@ describe('modal reducer', () => {
                 },
                 {
                     type: types.TOGGLE_MODAL_EDIT,
-                    coupon: {
+                    good: {
                         id: 1,
                         productName: 'Product name 2',
                         picture: 'Picture 2',
@@ -43,7 +43,7 @@ describe('modal reducer', () => {
         ).toEqual(
             {
                 isOpen: true,
-                coupon: {
+                good: {
                     id: 1,
                     productName: 'Product name 2',
                     picture: 'Picture 2',
@@ -63,7 +63,7 @@ describe('modal reducer', () => {
             modal(
                 {
                     isOpen: false,
-                    coupon: {productName: 'I wat to be cleaned'}
+                    good: {productName: 'I want to be cleaned'}
                 },
                 {
                     type: types.CLEAN_MODAL_STATE,
@@ -72,7 +72,7 @@ describe('modal reducer', () => {
         ).toEqual(
             {
                 isOpen: false,
-                coupon: {}
+                good: undefined
             }
         )
     })

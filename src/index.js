@@ -11,15 +11,15 @@ import './index.css';
 import {BrowserRouter, Route} from 'react-router-dom';
 import {Login} from './components/Login';
 import Switch from 'react-router-dom/es/Switch';
-import CouponsContainer from './containers/CouponsContainer';
 import fontawesome from '@fortawesome/fontawesome'
 import faCoffee from '@fortawesome/fontawesome-free-solid/faCoffee'
 import faPlusCircle from '@fortawesome/fontawesome-free-solid/faPlusCircle'
 import faEdit from '@fortawesome/fontawesome-free-solid/faEdit'
 import faTrashAlt from '@fortawesome/fontawesome-free-solid/faTrashAlt'
+import GoodsContainer from './containers/GoodsContainer'
+
 
 fontawesome.library.add(faCoffee, faPlusCircle, faEdit, faTrashAlt)
-import {ApplicationForm} from './components/ApplicationFormEntity';
 
 const middleware = [thunk];
 
@@ -34,8 +34,7 @@ render(
             <Switch>
                 <Route exact path='/' component={Login}/>
                 {/* both /roster and /roster/:number begin with /roster */}
-                <Route path='/coupons' component={CouponsContainer}/>
-                <Route path='/ApplicationForm' component={ApplicationForm}/>
+                <Route path='/coupons' component={GoodsContainer}/>
             </Switch>
         </Provider>
     </BrowserRouter>,

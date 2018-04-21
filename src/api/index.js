@@ -1,8 +1,8 @@
-import _coupons from './mock/coupons.json'
+import _goods from './mock/goods.json'
 
 const TIMEOUT = 100
 
 export default {
-    getCoupons: (cb) => setTimeout(() => cb(_coupons), TIMEOUT),
-    createCoupon: (_coupons, cb, timeout) => setTimeout(() => cb(), timeout || TIMEOUT),
+    getGoods: (cb) => setTimeout(() => cb(_goods), TIMEOUT),
+    createGood: (_goods, cb, timeout) => setTimeout(() => cb(), timeout || TIMEOUT),
 }

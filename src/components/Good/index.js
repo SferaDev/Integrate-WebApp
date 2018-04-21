@@ -4,13 +4,13 @@ import {Col, Container, Row,} from 'reactstrap';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import './style.css'
 
-const DiscountCoupon = ({coupon, actions}) => {
+const Good = ({good, actions}) => {
     const toggle = () => {
-        actions.dispatchToggleModalEdit(coupon)
+        actions.dispatchToggleModalEdit(good)
     }
 
-    const deleteCoupon = () => {
-        actions.dispatchDeleteCoupon(coupon)
+    const deleteGood = () => {
+        actions.dispatchDeleteGood(good)
     }
 
     return (
@@ -18,12 +18,12 @@ const DiscountCoupon = ({coupon, actions}) => {
             <Row className="productRow">
                 <Col md="12" lg="12" className="productCol">
                     <div className="product">
-                        <img className="couponImg"
-                             src={coupon.picture} alt={coupon.productName}/>
+                        <img className="goodImg"
+                             src={good.picture} alt={good.productName}/>
                         <div className="productFeatures">
                             <Row className="productTitle">
                                 <Col md="12" lg="12">
-                                    <b className="name">{coupon.productName}</b>
+                                    <b className="name">{good.productName}</b>
                                 </Col>
                             </Row>
                             <div className="productDetails">
@@ -32,11 +32,11 @@ const DiscountCoupon = ({coupon, actions}) => {
                                         <div className="innerColDiv">
                                             <div className="preuOriginal">
                                                 <span><b>Preu original:&nbsp;</b></span>
-                                                <span className="originalPrice">{coupon.initialPrice}€</span>
+                                                <span className="originalPrice">{good.initialPrice}€</span>
                                             </div>
                                             <div className="unitatsRestants">
                                                 <span><b>Unitats restants:&nbsp;</b></span><span
-                                                className="pendingUnits">{coupon.pendingUnits}</span>
+                                                className="pendingUnits">{good.pendingUnits}</span>
                                             </div>
                                         </div>
                                     </Col>
@@ -45,11 +45,11 @@ const DiscountCoupon = ({coupon, actions}) => {
                                         <div className="innerColDiv">
                                             <div className="descompteAplicat">
                                                 <span><b>Descompte aplicat:&nbsp;</b></span><span
-                                                className="appliedDiscount">{coupon.discount}{coupon.discountType === '%' ? '%' : '€'}</span>
+                                                className="appliedDiscount">{good.discount}{good.discountType === '%' ? '%' : '€'}</span>
                                             </div>
                                             <div className="tempsReutilitzacio">
                                                 <span><b>Temps reutilització:&nbsp;</b></span><span
-                                                className="reusePeriod">{coupon.reusePeriod} dies</span>
+                                                className="reusePeriod">{good.reusePeriod} dies</span>
                                             </div>
                                         </div>
                                     </Col>
@@ -58,13 +58,13 @@ const DiscountCoupon = ({coupon, actions}) => {
                                         <div className="innerColDiv">
                                             <div className="preuFinal">
                                                 <span><b>Preu final:&nbsp;</b></span><span
-                                                className="currentPrice">{coupon.discountType === '%' ?
-                                                (parseFloat(coupon.initialPrice).toFixed(2) - parseFloat(coupon.initialPrice).toFixed(2) * parseFloat(coupon.discount).toFixed(2) / 100).toFixed(2) :
-                                                (parseFloat(coupon.initialPrice).toFixed(2) - parseFloat(coupon.discount).toFixed(2)).toFixed(2)}</span>
+                                                className="currentPrice">{good.discountType === '%' ?
+                                                (parseFloat(good.initialPrice).toFixed(2) - parseFloat(good.initialPrice).toFixed(2) * parseFloat(good.discount).toFixed(2) / 100).toFixed(2) :
+                                                (parseFloat(good.initialPrice).toFixed(2) - parseFloat(good.discount).toFixed(2)).toFixed(2)}</span>
                                             </div>
                                             <div className="categoria">
                                                 <span><b>Categoria:&nbsp;</b></span><span
-                                                className="category">{coupon.category}</span>
+                                                className="category">{good.category}</span>
                                             </div>
                                         </div>
                                     </Col>
@@ -77,7 +77,7 @@ const DiscountCoupon = ({coupon, actions}) => {
                                 {'Editar  '}
                                 <FontAwesomeIcon icon="edit" className="faIcon"/>
                             </button>
-                            <button name="delete" id="Delete" className="btnDelete" onClick={deleteCoupon}>
+                            <button name="delete" id="Delete" className="btnDelete" onClick={deleteGood}>
                                 {'Esborrar  '}
                                 <FontAwesomeIcon icon="trash-alt" className="faIcon"/>
                             </button>
@@ -89,8 +89,8 @@ const DiscountCoupon = ({coupon, actions}) => {
     )
 }
 
-DiscountCoupon.propTypes = {
-    coupon: PropTypes.shape(
+Good.propTypes = {
+    good: PropTypes.shape(
         {
             id: PropTypes.number.isRequired,
             productName: PropTypes.string.isRequired,
@@ -105,4 +105,4 @@ DiscountCoupon.propTypes = {
     actions: PropTypes.object.isRequired,
 }
 
-export default DiscountCoupon
+export default Good

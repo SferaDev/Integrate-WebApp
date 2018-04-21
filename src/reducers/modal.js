@@ -16,13 +16,13 @@ export default function modal(state = initialState, action) {
             return {
                 ...state,
                 isOpen: !state.isOpen,
-                coupon: action.coupon,
+                good: action.good,
             }
 
         case CLEAN_MODAL_STATE:
             return {
                 ...state,
-                coupon: undefined
+                good: undefined
             }
 
         default:

@@ -4,6 +4,7 @@ import logo from '../../media/icon2.png';
 import './style.css';
 import {Alert, Col, Container, Form, FormGroup, Input, Row} from 'reactstrap';
 import {loginAction} from '../../actions/auth';
+import {Redirect} from 'react-router-dom';
 
 class Login extends Component {
 
@@ -14,7 +15,7 @@ class Login extends Component {
     }
 
     render() {
-        let {isLoginPending, loginError} = this.props;
+        let {isLoginPending, isLoginSuccess, loginError} = this.props;
         return (
             <Container className="loginContainer">
                 <Row className="loginRow">
@@ -48,20 +49,21 @@ class Login extends Component {
                                     </Alert>
                                 }
 
+                                {
+                                    !isLoginPending && isLoginSuccess && <Redirect to='/' />
+                                }
+
                                 <FormGroup>
                                     <button
                                         type="submit"
                                         name="submit"
                                         className="btn"
                                         onClick={this.onSubmitButtonClicked}
-                                        disabled={isLoginPending}>Entrar
-                                    </button>
+                                        disabled={isLoginPending}>Entrar</button>
                                 </FormGroup>
 
                             </Form>
                         </div>
-                    </Col>
-                    <Col xs='0' md='4'>
                     </Col>
                 </Row>
             </Container>

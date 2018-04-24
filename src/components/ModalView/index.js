@@ -93,13 +93,23 @@ class ModalView extends React.Component {
     }
 
     handleChangePicture = (event) => {
-        var file = document.getElementById('pictureFile').files[0]
-        var imgPreview = document.getElementById('imgPreview')
-        var resultUrl = undefined
+        const file = document.getElementById('pictureFile').files[0]
 
-        var formData = new FormData()
+        const imgPreview = document.getElementById('imgPreview')
+        let resultUrl = undefined
+
+        const timestamp = new Date().getTime()
+        console.log(timestamp)
+        const api_key = '195854516117969'
+        var sha1 = require('sha1')
+        const signature = sha1('timestamp=' + timestamp + 'oQNTiCyRvr-arbFnc4ZlEuTzV3Y')
+        console.log(signature)
+
+        const formData = new FormData()
         formData.append('file', file)
-        formData.append('upload_preset', type.CLOUDINARY_UPLOAD_PRESET)
+        formData.append('timestamp', timestamp)
+        formData.append('api_key', api_key)
+        formData.append('signature', signature)
 
         axios({
             url: type.CLOUDINARY_UPLOAD_URL,
@@ -107,7 +117,7 @@ class ModalView extends React.Component {
             headers: {
                 'Content-Type': 'application/x-ww-form-urlencoded'
             },
-            data: formData
+            data: formData,
         }).then((res) => {
             console.log(res)
             resultUrl = res.data.secure_url

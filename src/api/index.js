@@ -1,8 +1,3 @@
-import _goods from './mock/goods.json'
+export const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/integratewebapp/upload'
 
-const TIMEOUT = 100
-
-export default {
-    getGoods: (cb) => setTimeout(() => cb(_goods), TIMEOUT),
-    createGood: (_goods, cb, timeout) => setTimeout(() => cb(), timeout || TIMEOUT),
-}
+export * from './uploadCloudinary';

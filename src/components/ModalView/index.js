@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './style.css';
 import React from 'react';
 import * as type from '../../constants/APITypes';
-import * as axios from 'axios';
+import {cloudinaryUploadImg} from '../../api/cloudinary';
 
 class ModalView extends React.Component {
 
@@ -92,17 +92,15 @@ class ModalView extends React.Component {
         this.setState({category: event.target.value})
     }
 
-    handleChangePicture = (event) => {
+    handleChangePicture = () => {
         const file = document.getElementById('pictureFile').files[0]
-
         const imgPreview = document.getElementById('imgPreview')
-        let resultUrl = undefined
 
         const timestamp = new Date().getTime()
         console.log(timestamp)
-        const api_key = '195854516117969'
+        const api_key = type.CLOUDINARY_API_KEY
         var sha1 = require('sha1')
-        const signature = sha1('timestamp=' + timestamp + 'oQNTiCyRvr-arbFnc4ZlEuTzV3Y')
+        const signature = sha1('timestamp=' + timestamp + type.CLOUDINARY_API_SECRET)
         console.log(signature)
 
         const formData = new FormData()
@@ -111,21 +109,15 @@ class ModalView extends React.Component {
         formData.append('api_key', api_key)
         formData.append('signature', signature)
 
-        axios({
-            url: type.CLOUDINARY_UPLOAD_URL,
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-ww-form-urlencoded'
-            },
-            data: formData,
-        }).then((res) => {
-            console.log(res)
-            resultUrl = res.data.secure_url
-            imgPreview.src = resultUrl
-            this.setState({picture: resultUrl})
-        }).catch(function (err) {
-            console.error(err)
-        })
+        cloudinaryUploadImg({file, formData})
+            .then(resultUrl => {
+                imgPreview.src = resultUrl
+                this.setState({picture: resultUrl})
+            })
+
+            .catch(error => {
+                console.log(error)
+            })
     }
 
     handleChangePendingUnits = (event) => {

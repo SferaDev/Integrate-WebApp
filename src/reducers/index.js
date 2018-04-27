@@ -1,7 +1,10 @@
 import {combineReducers} from 'redux'
-import coupons from './coupons';
+import goods from './goods'
+import modal from './modal';
 
-
-export default combineReducers({
-    coupons
+const rootReducer = combineReducers({
+    goods,
+    modal
 })
+
+export default rootReducer

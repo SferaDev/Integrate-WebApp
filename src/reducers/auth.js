@@ -4,7 +4,7 @@ import {
     SET_LOGIN_SUCCESS
 } from '../constants';
 
-export function authReducer(state = {
+function authReducer(state = {
     isLoginSuccess: false,
     isLoginPending: false,
     loginError: null
@@ -32,3 +32,5 @@ export function authReducer(state = {
             return state;
     }
 }
+
+export default authReducer;

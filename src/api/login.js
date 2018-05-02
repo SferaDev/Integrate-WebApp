@@ -1,9 +1,9 @@
-import axios from 'axios';
-import {API_HOST} from "./index";
+import {get} from 'axios';
+import {API_HOST} from './';
 
 export const apiPostLogin = ({id, password}) =>
     new Promise((resolve, reject) => {
-        axios.get(`${API_HOST}/login`, {
+        get(`${API_HOST}/login`, {
             params: {
                 nif: id,
                 password,
@@ -11,10 +11,13 @@ export const apiPostLogin = ({id, password}) =>
         }).then(response  => {
             if (response.data) {
                 const {token} = response.data;
-                if (token)
-                    resolve(token);
-                else
+                if (token) {
+                    localStorage.setItem('token', token);
+                    resolve();
+                } else
                     reject();
             }
+            else
+                reject();
         }).catch(() => reject());
     });

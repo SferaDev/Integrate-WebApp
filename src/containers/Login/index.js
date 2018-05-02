@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
+
 import logo from '../../media/icon2.png';
 import './style.css';
 import {Alert, Col, Container, Form, FormGroup, Input, Row} from 'reactstrap';
 import {loginAction} from '../../actions/auth';
-import {Redirect} from 'react-router-dom';
 
 class Login extends Component {
 
@@ -77,11 +78,11 @@ class Login extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({auth}) => {
     return {
-        isLoginPending: state.isLoginPending,
-        isLoginSuccess: state.isLoginSuccess,
-        loginError: state.loginError
+        isLoginPending: auth.isLoginPending,
+        isLoginSuccess: auth.isLoginSuccess,
+        loginError: auth.loginError
     };
 };
 

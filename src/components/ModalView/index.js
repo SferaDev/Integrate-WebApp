@@ -2,7 +2,6 @@ import {Col, Form, FormGroup, Input, Label, Modal, ModalBody, ModalFooter, Modal
 import PropTypes from 'prop-types';
 import './style.css';
 import React from 'react';
-import * as type from '../../constants/APITypes';
 import {cloudinaryUploadImg} from '../../api/cloudinary';
 
 class ModalView extends React.Component {
@@ -96,20 +95,7 @@ class ModalView extends React.Component {
         const file = document.getElementById('pictureFile').files[0]
         const imgPreview = document.getElementById('imgPreview')
 
-        const timestamp = new Date().getTime()
-        console.log(timestamp)
-        const api_key = type.CLOUDINARY_API_KEY
-        var sha1 = require('sha1')
-        const signature = sha1('timestamp=' + timestamp + type.CLOUDINARY_API_SECRET)
-        console.log(signature)
-
-        const formData = new FormData()
-        formData.append('file', file)
-        formData.append('timestamp', timestamp)
-        formData.append('api_key', api_key)
-        formData.append('signature', signature)
-
-        cloudinaryUploadImg({file, formData})
+        cloudinaryUploadImg({file})
             .then(resultUrl => {
                 imgPreview.src = resultUrl
                 this.setState({picture: resultUrl})

@@ -41,7 +41,8 @@
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "set-default-browser": "^1.0.1",
-    "sha1": "^1.1.1"
+    "sha1": "^1.1.1",
+    "valid-url": "^1.0.9"
   },
   "scripts": {
     "start": "react-scripts start",

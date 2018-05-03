@@ -15,7 +15,7 @@ export class Login extends React.Component {
     onSubmitButtonClicked(event) {
         event.preventDefault()
         const {history} = this.props
-        history.push('/coupons')
+        history.push('/goods')
     }
 
     onRequestButtonClicked(event) {

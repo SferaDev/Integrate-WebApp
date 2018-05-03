@@ -1,7 +1,9 @@
 import React from 'react'
-import {shallow} from 'enzyme'
 import Good from '../Good';
 import GoodsList from './index';
+import * as enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+enzyme.configure({ adapter: new Adapter() });
 
 const modalStub = {
     modal: {isOpen: false,}
@@ -10,7 +12,7 @@ const modalStub = {
 const actionsStub = {}
 
 const setup = (goods = []) => {
-    const component = shallow(
+    const component = enzyme.shallow(
         <GoodsList goods={goods} modal={modalStub} actions={actionsStub}/>
     )
 

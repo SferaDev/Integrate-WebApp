@@ -12,8 +12,7 @@ export const apiPostLogin = ({id, password}) =>
             if (response.data) {
                 const {token} = response.data;
                 if (token) {
-                    localStorage.setItem('token', token);
-                    resolve();
+                    resolve(token);
                 } else
                     reject();
             }

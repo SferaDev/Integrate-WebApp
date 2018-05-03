@@ -34,7 +34,8 @@ export function loginAction(id, password) {
         dispatch(setLoginError(null));
 
         apiPostLogin({id, password})
-            .then(() => {
+            .then(token => {
+                localStorage.setItem('token', token);
                 dispatch(setLoginPending(false));
                 dispatch(setLoginSuccess(true));
             })

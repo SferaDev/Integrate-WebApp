@@ -1,5 +1,5 @@
 import auth from './auth';
-import {setLoginError, setLoginPending, setLoginSuccess} from "../actions/auth";
+import {setLoginError, setLoginPending, setLoginSuccess} from '../actions/auth';
 
 describe('auth reducer', () => {
     it('should handle initial state', () => {

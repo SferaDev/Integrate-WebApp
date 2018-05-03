@@ -3,10 +3,6 @@ body, html, #root {
     height: 100%;
 }
 
-body {
-    overflow-y: scroll;
-}
-
 @font-face {
     font-family: 'Montserrat';
     font-style: normal;
@@ -28,6 +24,5 @@ body {
   padding: 0;
   font-family: sans-serif;
     background: url('./media/bg.jpg') no-repeat;
-    background-size: 100% 100%;
-    background-attachment: fixed;
+    background-size: cover;
 }

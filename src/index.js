@@ -4,7 +4,7 @@ import {applyMiddleware, createStore} from 'redux'
 import todoApp from './reducers'
 import thunk from 'redux-thunk';
 import {Provider} from 'react-redux';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
@@ -28,14 +28,14 @@ const store = createStore(
 )
 
 render(
-    <Provider store={store}>
-        <Router>
+    <BrowserRouter>
+        <Provider store={store}>
             <Switch>
                 <Route exact path="/" render={() => <h1>Main Page</h1>}/>
                 <Route path="/login" component={Login}/>
                 <Route path='/goods' component={GoodsContainer}/>
             </Switch>
-        </Router>
-    </Provider>,
+        </Provider>
+    </BrowserRouter>,
     document.getElementById('root')
-);
+)

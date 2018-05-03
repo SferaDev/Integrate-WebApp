@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 import axios from 'axios';
 
 let localStorage;
@@ -50,4 +48,3 @@ export const deleteApi = (endpoint, options) => axios.delete(`${API_HOST}${endpo
 }).then(redirectIfUnauthorized);
 
 export * from './login';
->>>>>>> b43e9562fab5834caf23453b1d60db32d441084f

@@ -17,11 +17,12 @@ const GoodsList = ({goods, modal, actions}) => {
     )
 
     const toggle = () => {
-        actions.dispatchToggleModal()
+        actions.modalActions.dispatchToggleModal()
+        actions.goodsActions.dispatchReceiveGoods()
     }
 
     return (
-        <div>
+        <div className="goodsListDiv">
             <Container className="goodsList" fluid={true}>
                 <Row>
                     <Col sm="12">
@@ -43,7 +44,11 @@ const GoodsList = ({goods, modal, actions}) => {
 
 GoodsList.propTypes = {
     goods: PropTypes.array.isRequired,
-    actions: PropTypes.object.isRequired,
+    actions: PropTypes.shape(
+        {
+            goodsActions: PropTypes.object.isRequired,
+            modalActions: PropTypes.object.isRequired,
+        }).isRequired,
 }
 
 export default GoodsList

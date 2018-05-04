@@ -1,10 +1,19 @@
-import {ADD_GOOD, DELETE_GOOD, EDIT_GOOD} from '../constants/ActionTypes';
+import {ADD_GOOD, DELETE_GOOD, EDIT_GOOD, RECEIVE_GOODS} from '../constants/ActionTypes';
 import * as goodsMock from '../api/mock/goods'
 
 const initialState = goodsMock
 
 export default function goods(state = initialState, action) {
     switch (action.type) {
+        case RECEIVE_GOODS:
+            return [
+                ...state,
+                ...action.goods.reduce((goodsList, good) => {
+                    goodsList.push(good)
+                    return goodsList
+                }, [])
+            ]
+
         case ADD_GOOD:
             return [
                 ...state,

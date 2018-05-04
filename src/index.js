@@ -12,10 +12,10 @@ import faTrashAlt from '@fortawesome/fontawesome-free-solid/faTrashAlt'
 import store from './store';
 import Login from './containers/Login';
 import SignUp from './components/Signup';
-import GoodsContainer from './containers/GoodsContainer'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
+import GoodsContainer from './containers/GoodsContainer/GoodsContainer';
 
 fontawesome.library.add(faCoffee, faPlusCircle, faEdit, faTrashAlt)
 

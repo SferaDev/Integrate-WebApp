@@ -9,6 +9,11 @@ import faPlusCircle from '@fortawesome/fontawesome-free-solid/faPlusCircle'
 import faEdit from '@fortawesome/fontawesome-free-solid/faEdit'
 import faTrashAlt from '@fortawesome/fontawesome-free-solid/faTrashAlt'
 
+import {getAllCoupons} from './actions';
+import {Login} from './components/Login';
+import CouponsContainer from './containers/CouponsContainer';
+import {PasswordRecovery} from './components/PasswordRecovery'
+
 import store from './store';
 import Login from './containers/Login';
 import GoodsContainer from './containers/GoodsContainer'
@@ -26,6 +31,8 @@ render(
                 <Route exact path="/" render={() => <h1>Main Page</h1>}/>
                 <Route path="/login" component={Login}/>
                 <Route path='/goods' component={GoodsContainer}/>
+                <Route path='/coupons' component={CouponsContainer}/>
+                <Route path='/passwordRecovery' component={PasswordRecovery}/>
             </Switch>
         </Router>
     </Provider>,

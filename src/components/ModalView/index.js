@@ -226,7 +226,7 @@ class ModalView extends React.Component {
                                 <Input type="file" name="file" id="pictureFile" onChange={this.handleChangePicture}/>
                             </Col>
                             <Col sm="4">
-                                <img id="imgPreview" src={this.state.picture}/>
+                                <img id="imgPreview" alt="preview" src={this.state.picture}/>
                             </Col>
                         </FormGroup>
                     </Form>

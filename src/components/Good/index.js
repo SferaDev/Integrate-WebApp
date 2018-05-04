@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Col, Container, Row,} from 'reactstrap';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import './style.css'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import './style.css';
 
 const Good = ({good, actions}) => {
     const toggle = () => {

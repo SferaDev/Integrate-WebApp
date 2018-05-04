@@ -1,9 +1,9 @@
 import axios from 'axios';
+import { LocalStorage } from 'node-localstorage';
 
 let localStorage;
 
 if (typeof localStorage === 'undefined' || localStorage === null) {
-    const LocalStorage = require('node-localstorage').LocalStorage;
     localStorage = new LocalStorage('./scratch');
 }
 

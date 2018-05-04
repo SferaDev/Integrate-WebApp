@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './style.css';
 import {Maps} from "../Maps";
 
-export class ApplicationForm extends Component {
+export default class SignUp extends Component {
     constructor(props) {
         super(props);
         this.state = {

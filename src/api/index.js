@@ -3,8 +3,11 @@ import axios from 'axios';
 let localStorage;
 
 if (typeof localStorage === 'undefined' || localStorage === null) {
-    const LocalStorage = require('node-localstorage').LocalStorage;
-    localStorage = new LocalStorage('./scratch');
+    localStorage = {
+        getItem: (item) => item,
+        setItem: (key, value) => {},
+        clear: () => {},
+    }
 }
 
 export const API_HOST = 'http://integrate-backend-staging.herokuapp.com';

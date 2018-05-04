@@ -16,10 +16,10 @@ import {PasswordRecovery} from './components/PasswordRecovery'
 
 import store from './store';
 import Login from './containers/Login';
+import SignUp from './components/Signup';
 import GoodsContainer from './containers/GoodsContainer'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'font-awesome/css/font-awesome.min.css';
 import './index.css';
 
 fontawesome.library.add(faCoffee, faPlusCircle, faEdit, faTrashAlt)
@@ -29,6 +29,7 @@ render(
         <Router>
             <Switch>
                 <Route exact path="/" render={() => <h1>Main Page</h1>}/>
+                <Route path="/signup" component={SignUp}/>
                 <Route path="/login" component={Login}/>
                 <Route path='/goods' component={GoodsContainer}/>
                 <Route path='/coupons' component={CouponsContainer}/>

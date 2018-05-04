@@ -11,7 +11,11 @@ import faTrashAlt from '@fortawesome/fontawesome-free-solid/faTrashAlt'
 
 import store from './store';
 import Login from './containers/Login';
+import {getAllCoupons} from './actions';
 import GoodsContainer from './containers/GoodsContainer'
+import CouponsContainer from './containers/CouponsContainer';
+import {ApplicationForm} from "./components/ApplicationFormEntity";
+import {Maps} from './components/Maps';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
@@ -26,6 +30,9 @@ render(
                 <Route exact path="/" render={() => <h1>Main Page</h1>}/>
                 <Route path="/login" component={Login}/>
                 <Route path='/goods' component={GoodsContainer}/>
+                <Route path='/coupons' component={CouponsContainer}/>
+                <Route path='/ApplicationForm' component={ApplicationForm}/>
+                <Route path='/Maps' component={Maps}/>
             </Switch>
         </Router>
     </Provider>,

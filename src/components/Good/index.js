@@ -6,11 +6,11 @@ import './style.css';
 
 const Good = ({good, actions}) => {
     const toggle = () => {
-        actions.dispatchToggleModalEdit(good)
+        actions.modalActions.dispatchToggleModalEdit(good)
     }
 
     const deleteGood = () => {
-        actions.dispatchDeleteGood(good)
+        actions.goodsActions.dispatchDeleteGood(good)
     }
 
     return (
@@ -102,7 +102,11 @@ Good.propTypes = {
             initialPrice: PropTypes.string.isRequired,
             pendingUnits: PropTypes.string.isRequired,
         }).isRequired,
-    actions: PropTypes.object.isRequired,
+    actions: PropTypes.shape(
+    {
+        goodsActions: PropTypes.object.isRequired,
+        modalActions: PropTypes.object.isRequired,
+    }).isRequired,
 }
 
 export default Good

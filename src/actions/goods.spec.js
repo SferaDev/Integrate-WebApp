@@ -1,7 +1,15 @@
 import * as types from '../constants/ActionTypes'
-import * as actions from './index'
+import * as actions from './goods'
 
 describe('Good actions', () => {
+    it('receiveGoods should create RECEIVE_GOODS action', () => {
+        const mockGoods = []
+        expect(actions.receiveGoods(mockGoods)).toEqual({
+            type: types.RECEIVE_GOODS,
+            goods: mockGoods,
+        })
+    })
+
     it('addGood should create ADD_GOOD action', () => {
         expect(actions.addGood({
             productName: 'Good name 1',
@@ -63,24 +71,3 @@ describe('Good actions', () => {
     })
 })
 
-describe('Modal actions', () => {
-    it('toggleModal should create TOGGLE_MODAL action', () => {
-        expect(actions.toggleModal()).toEqual({
-            type: types.TOGGLE_MODAL,
-        })
-    })
-
-    it('toggleModalEdit should create TOGGLE_MODAL_EDIT action', () => {
-        const Good = {}
-        expect(actions.toggleModalEdit(Good)).toEqual({
-            type: types.TOGGLE_MODAL_EDIT,
-            good: {}
-        })
-    })
-
-    it('cleanModalState should create CLEAN_MODAL_STATE action', () => {
-        expect(actions.cleanModalState()).toEqual({
-            type: types.CLEAN_MODAL_STATE,
-        })
-    })
-})

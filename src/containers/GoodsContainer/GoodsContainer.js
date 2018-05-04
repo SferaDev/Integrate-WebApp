@@ -2,12 +2,14 @@ import React from 'react';
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types';
 import bindActionCreators from 'redux/es/bindActionCreators';
-import * as AllActions from '../actions'
-import ModalView from '../components/ModalView';
-import GoodsList from '../components/GoodsList';
+import * as GoodsActions from '../../actions/goods'
+import * as ModalActions from '../../actions/modal'
+import ModalView from '../../components/ModalView';
+import GoodsList from '../../components/GoodsList';
+import './style.css';
 
 const GoodsContainer = ({goods, modal, actions}) => (
-    <div>
+    <div className="goodsContainer">
         <GoodsList
             goods={goods} actions={actions}/>
         <ModalView modal={modal} actions={actions}/>
@@ -33,7 +35,10 @@ GoodsContainer.propTypes = {
             good: PropTypes.object,
         }
     ).isRequired,
-    actions: PropTypes.object.isRequired,
+    actions: PropTypes.shape({
+        modalActions: PropTypes.object.isRequired,
+        goodsActions: PropTypes.object.isRequired,
+    }).isRequired,
 }
 
 const mapStateToProps = state => ({
@@ -42,7 +47,10 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators(AllActions, dispatch)
+    actions: {
+        goodsActions: bindActionCreators(GoodsActions, dispatch),
+        modalActions: bindActionCreators(ModalActions, dispatch)
+    }
 })
 
 export default connect(

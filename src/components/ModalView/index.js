@@ -45,7 +45,7 @@ class ModalView extends React.Component {
     }
 
     toggle = () => {
-        this.props.actions.dispatchCleanModalState()
+        this.props.actions.modalActions.dispatchCleanModalState()
 
         this.setState({
             productName: '',
@@ -59,7 +59,7 @@ class ModalView extends React.Component {
             maxEurosDiscount: '0',
         })
 
-        this.props.actions.dispatchToggleModal()
+        this.props.actions.modalActions.dispatchToggleModal()
     }
 
     handleChangeProductName = (event) => {
@@ -100,10 +100,6 @@ class ModalView extends React.Component {
                 imgPreview.src = resultUrl
                 this.setState({picture: resultUrl})
             })
-
-            .catch(error => {
-                console.log(error)
-            })
     }
 
     handleChangePendingUnits = (event) => {
@@ -124,7 +120,7 @@ class ModalView extends React.Component {
                 initialPrice: this.state.initialPrice,
                 pendingUnits: this.state.pendingUnits,
             }
-            this.props.actions.dispatchAddGood(goodToAddOrEdit)
+            this.props.actions.goodsActions.dispatchAddGood(goodToAddOrEdit)
             this.toggle()
         }
         else {
@@ -139,7 +135,7 @@ class ModalView extends React.Component {
                 initialPrice: this.state.initialPrice,
                 pendingUnits: this.state.pendingUnits,
             }
-            this.props.actions.dispatchEditGood(goodToAddOrEdit)
+            this.props.actions.goodsActions.dispatchEditGood(goodToAddOrEdit)
             this.toggle()
         }
     }
@@ -248,7 +244,11 @@ ModalView.propTypes = {
             good: PropTypes.object,
         }
     ).isRequired,
-    actions: PropTypes.object.isRequired,
+    actions: PropTypes.shape({
+        goodsActions: PropTypes.object.isRequired,
+        modalActions: PropTypes.object.isRequired,
+    }).isRequired,
+
 }
 
 export default ModalView

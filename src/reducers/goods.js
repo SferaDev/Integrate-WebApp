@@ -6,13 +6,10 @@ const initialState = goodsMock
 export default function goods(state = initialState, action) {
     switch (action.type) {
         case RECEIVE_GOODS:
-            return [
-                ...state,
-                ...action.goods.reduce((goodsList, good) => {
-                    goodsList.push(good)
-                    return goodsList
-                }, [])
-            ]
+            return action.goods.reduce((goodsList, good) => {
+                goodsList.push(good)
+                return goodsList
+            }, [])
 
         case ADD_GOOD:
             return [

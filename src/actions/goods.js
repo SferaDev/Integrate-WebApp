@@ -11,9 +11,6 @@ export const dispatchReceiveGoods = () => dispatch => {
         .then(goodsList => {
             dispatch(receiveGoods(goodsList))
         })
-        .catch(error => {
-            console.log(error)
-        })
 }
 
 export const addGood = (good) =>

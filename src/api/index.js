@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-let localStorage;
+let localStorage = window && window.localStorage ? window.localStorage : null;
 
 if (typeof localStorage === 'undefined' || localStorage === null) {
     localStorage = {
-        getItem: (item) => item,
+        getItem: (item) => 'fake localStorage',
         setItem: (key, value) => {},
         clear: () => {},
     }
@@ -20,7 +20,8 @@ const redirectIfUnauthorized = (response) => {
     return response;
 };
 
-const getLocalToken = () => localStorage.getItem('token');
+const getLocalToken = () => {
+    return localStorage.getItem('token')}
 const headers = {
     token: getLocalToken(),
 };

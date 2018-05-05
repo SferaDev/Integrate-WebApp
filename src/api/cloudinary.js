@@ -4,11 +4,9 @@ import * as axios from 'axios';
 export const cloudinaryUploadImg = ({file}) =>
     new Promise((resolve, reject) => {
         const timestamp = new Date().getTime()
-        console.log(timestamp)
         const api_key = type.CLOUDINARY_API_KEY
         let sha1 = require('sha1')
         const signature = sha1('timestamp=' + timestamp + type.CLOUDINARY_API_SECRET)
-        console.log(signature)
 
         const formData = new FormData()
         formData.append('file', file)

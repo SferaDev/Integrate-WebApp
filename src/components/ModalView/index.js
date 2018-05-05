@@ -100,10 +100,6 @@ class ModalView extends React.Component {
                 imgPreview.src = resultUrl
                 this.setState({picture: resultUrl})
             })
-
-            .catch(error => {
-                console.log(error)
-            })
     }
 
     handleChangePendingUnits = (event) => {

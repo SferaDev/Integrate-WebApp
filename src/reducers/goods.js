@@ -1,15 +1,21 @@
-import {ADD_GOOD, DELETE_GOOD, EDIT_GOOD} from '../constants/ActionTypes';
+import {ADD_GOOD, DELETE_GOOD, EDIT_GOOD, RECEIVE_GOODS} from '../constants/ActionTypes';
 import * as goodsMock from '../api/mock/goods'
 
 const initialState = goodsMock
 
-export default function goods(state = initialState, action) {
+export default function goods(state = [], action) {
     switch (action.type) {
+        case RECEIVE_GOODS:
+            return action.goods.reduce((goodsList, good) => {
+                goodsList.push(good)
+                return goodsList
+            }, [])
+
         case ADD_GOOD:
             return [
                 ...state,
                 {
-                    id: state.reduce((maxId, good) => Math.max(good.id, maxId), -1) + 1,
+                    _id: action.good._id,
                     productName: action.good.productName,
                     picture: action.good.picture,
                     initialPrice: action.good.initialPrice,
@@ -23,12 +29,12 @@ export default function goods(state = initialState, action) {
 
         case DELETE_GOOD:
             return state.filter(good =>
-                good.id !== action.good.id
+                good._id !== action.good._id
             )
 
         case EDIT_GOOD:
             return state.map(good =>
-                good.id === action.good.id ?
+                good._id === action.good._id ?
                     {
                         ...good,
                         productName: action.good.productName,

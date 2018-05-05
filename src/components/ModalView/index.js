@@ -26,12 +26,12 @@ class ModalView extends React.Component {
             productName: '',
             picture: 'http://www.asiaoceania.org/aogs2018/img/no_uploaded.png',
             discountType: '%',
-            discount: '0',
-            category: 'Aliments',
-            reusePeriod: '1',
-            initialPrice: '0',
-            pendingUnits: '',
-            maxEurosDiscount: '0',
+            discount: 0,
+            category: 1,
+            reusePeriod: 1,
+            initialPrice: 0,
+            pendingUnits: 0,
+            maxEurosDiscount: 0,
         }
 
         this.handleChangeProductName = this.handleChangeProductName.bind(this);
@@ -45,21 +45,21 @@ class ModalView extends React.Component {
     }
 
     toggle = () => {
-        this.props.actions.dispatchCleanModalState()
+        this.props.actions.modalActions.dispatchCleanModalState()
 
         this.setState({
             productName: '',
-            picture: '',
+            picture: 'http://www.asiaoceania.org/aogs2018/img/no_uploaded.png',
             discountType: '%',
-            discount: '0',
-            category: 'Aliments',
-            reusePeriod: '1',
-            initialPrice: '0',
-            pendingUnits: '',
-            maxEurosDiscount: '0',
+            discount: 0,
+            category: 1,
+            reusePeriod: 1,
+            initialPrice: 0,
+            pendingUnits: 1,
+            maxEurosDiscount: 0,
         })
 
-        this.props.actions.dispatchToggleModal()
+        this.props.actions.modalActions.dispatchToggleModal()
     }
 
     handleChangeProductName = (event) => {
@@ -100,10 +100,6 @@ class ModalView extends React.Component {
                 imgPreview.src = resultUrl
                 this.setState({picture: resultUrl})
             })
-
-            .catch(error => {
-                console.log(error)
-            })
     }
 
     handleChangePendingUnits = (event) => {
@@ -124,12 +120,12 @@ class ModalView extends React.Component {
                 initialPrice: this.state.initialPrice,
                 pendingUnits: this.state.pendingUnits,
             }
-            this.props.actions.dispatchAddGood(goodToAddOrEdit)
+            this.props.actions.goodsActions.dispatchAddGood(goodToAddOrEdit)
             this.toggle()
         }
         else {
             goodToAddOrEdit = {
-                id: this.props.modal.good.id,
+                _id: this.props.modal.good._id,
                 productName: this.state.productName,
                 picture: this.state.picture,
                 discountType: this.state.discountType,
@@ -139,7 +135,7 @@ class ModalView extends React.Component {
                 initialPrice: this.state.initialPrice,
                 pendingUnits: this.state.pendingUnits,
             }
-            this.props.actions.dispatchEditGood(goodToAddOrEdit)
+            this.props.actions.goodsActions.dispatchEditGood(goodToAddOrEdit)
             this.toggle()
         }
     }
@@ -211,12 +207,16 @@ class ModalView extends React.Component {
                             </Col>
                             <Col sm="6">
                                 <Label for="category">Categoria</Label>
-                                <Input required type="select" name="category" id="category"
-                                       onChange={this.handleChangeCategory} value={this.state.category}>
-                                    <option>Aliments</option>
-                                    <option>Higiene</option>
-                                    <option>Cultura</option>
-                                    <option>D'altres</option>
+                                <Input required type="select" name="category" id="category" onChange={this.handleChangeCategory} value={this.state.category}>
+                                    <option value="1">Alimentació</option>
+                                    <option value="2">Cultura</option>
+                                    <option value="3">Formació</option>
+                                    <option value="4">Mobilitat</option>
+                                    <option value="5">Tecnologia</option>
+                                    <option value="6">Salut</option>
+                                    <option value="7">Esports</option>
+                                    <option value="8">Lleure</option>
+                                    <option value="9">Altres</option>
                                 </Input>
                             </Col>
                         </FormGroup>
@@ -248,7 +248,11 @@ ModalView.propTypes = {
             good: PropTypes.object,
         }
     ).isRequired,
-    actions: PropTypes.object.isRequired,
+    actions: PropTypes.shape({
+        goodsActions: PropTypes.object.isRequired,
+        modalActions: PropTypes.object.isRequired,
+    }).isRequired,
+
 }
 
 export default ModalView

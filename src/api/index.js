@@ -25,7 +25,7 @@ const getLocalToken = () => {
 const headers = {
     token: getLocalToken(),
 };
-const validateStatus = () => true;
+export const validateStatus = () => true;
 
 export const getApi = (endpoint, options) => axios.get(`${API_HOST}${endpoint}`, {
     ...options,

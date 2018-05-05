@@ -7,7 +7,7 @@ import './style.css';
 import {Alert, Col, Container, Form, FormGroup, Input, Row} from 'reactstrap';
 import {loginAction} from '../../actions/auth';
 
-class Login extends Component {
+export class Login extends Component {
 
     constructor(props) {
         super(props);
@@ -19,6 +19,7 @@ class Login extends Component {
         let {isLoginPending, isLoginSuccess, loginError} = this.props;
         return (
             <Container className="loginContainer">
+                <h1>{ JSON.stringify(this.props) || 'no props'}</h1>
                 <Row className="loginRow">
                     <Col xs='0' md='4'>
                     </Col>
@@ -46,12 +47,12 @@ class Login extends Component {
                                 {
                                     !isLoginPending && loginError &&
                                     <Alert color="danger">
-                                        L'usuari o la contrassenya no son correctes.
+                                        <p id="invalidPasswordAlert">L'usuari o la contrassenya no son correctes.</p>
                                     </Alert>
                                 }
 
                                 {
-                                    !isLoginPending && isLoginSuccess && <Redirect to='/' />
+                                    // !isLoginPending && isLoginSuccess && <Redirect to='/' />
                                 }
 
                                 <FormGroup>

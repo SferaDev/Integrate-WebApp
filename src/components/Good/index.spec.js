@@ -18,7 +18,7 @@ describe('Good component', () => {
     it('should render all Good details', () => {
         const {component} = setup({
             good: {
-                id: 1,
+                _id: 1,
                 productName: 'Patata',
                 picture: 'Picture1',
                 discountType: '%',

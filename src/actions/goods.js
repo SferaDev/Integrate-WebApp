@@ -1,5 +1,5 @@
 import * as types from '../constants/ActionTypes'
-import {apiGetListAllGoods} from '../api/goods';
+import {apiAddNewGood, apiDeleteExistingGood, apiGetListAllGoods, apiUpdateExistingGood} from '../api/goods';
 
 export const receiveGoods = (goods) => ({
     type: types.RECEIVE_GOODS,
@@ -20,13 +20,19 @@ export const addGood = (good) =>
     })
 
 export const dispatchAddGood = (good) => dispatch => {
-    dispatch(addGood(good))
+    apiAddNewGood(good)
+        .then(good => {
+            dispatch(addGood(good))
+        })
 }
 
 export const deleteGood = (good) => ({type: types.DELETE_GOOD, good})
 
 export const dispatchDeleteGood = (good) => dispatch => {
-    dispatch(deleteGood(good))
+    apiDeleteExistingGood(good)
+        .then(() => {
+            dispatch(deleteGood(good))
+        })
 }
 
 export const editGood = (good) =>
@@ -36,5 +42,8 @@ export const editGood = (good) =>
     })
 
 export const dispatchEditGood = (good) => dispatch => {
-    dispatch(editGood(good))
+    apiUpdateExistingGood(good)
+        .then(good => {
+            dispatch(editGood(good))
+        })
 }

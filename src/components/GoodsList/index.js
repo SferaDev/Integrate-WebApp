@@ -9,7 +9,7 @@ const GoodsList = ({goods, modal, actions}) => {
     const Goods = (
         goods.map(good =>
             <Good
-                key={good.id}
+                key={good._id}
                 good={good}
                 actions={actions}
             />

@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-let localStorage;
+let localStorage = window && window.localStorage ? window.localStorage : null;
 
 if (typeof localStorage === 'undefined' || localStorage === null) {
     localStorage = {
-        getItem: (item) => item,
+        getItem: (item) => 'fake localStorage',
         setItem: (key, value) => {},
         clear: () => {},
     }
@@ -20,11 +20,12 @@ const redirectIfUnauthorized = (response) => {
     return response;
 };
 
-const getLocalToken = () => localStorage.getItem('token');
+const getLocalToken = () => {
+    return localStorage.getItem('token')}
 const headers = {
     token: getLocalToken(),
 };
-const validateStatus = () => true;
+export const validateStatus = () => true;
 
 export const getApi = (endpoint, options) => axios.get(`${API_HOST}${endpoint}`, {
     ...options,
@@ -32,13 +33,13 @@ export const getApi = (endpoint, options) => axios.get(`${API_HOST}${endpoint}`,
     validateStatus
 }).then(redirectIfUnauthorized);
 
-export const postApi = (endpoint, options) => axios.post(`${API_HOST}${endpoint}`, {
+export const postApi = (endpoint, data, options) => axios.post(`${API_HOST}${endpoint}`, data, {
     ...options,
     headers,
     validateStatus,
 }).then(redirectIfUnauthorized);
 
-export const putApi = (endpoint, options) => axios.put(`${API_HOST}${endpoint}`, {
+export const putApi = (endpoint, data, options) => axios.put(`${API_HOST}${endpoint}`, data, {
     ...options,
     headers,
     validateStatus,

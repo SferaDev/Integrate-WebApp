@@ -6,11 +6,11 @@ import './style.css';
 
 const Good = ({good, actions}) => {
     const toggle = () => {
-        actions.dispatchToggleModalEdit(good)
+        actions.modalActions.dispatchToggleModalEdit(good)
     }
 
     const deleteGood = () => {
-        actions.dispatchDeleteGood(good)
+        actions.goodsActions.dispatchDeleteGood(good)
     }
 
     return (
@@ -64,7 +64,19 @@ const Good = ({good, actions}) => {
                                             </div>
                                             <div className="categoria">
                                                 <span><b>Categoria:&nbsp;</b></span><span
-                                                className="category">{good.category}</span>
+                                                className="category">
+                                                {
+                                                    good.category === 1 ? "Alimentació" :
+                                                    good.category === 2 ? "Cultura" :
+                                                    good.category === 3 ? "Formació" :
+                                                    good.category === 4 ? "Mobilitat" :
+                                                    good.category === 5 ? "Tecnologia" :
+                                                    good.category === 6 ? "Salut" :
+                                                    good.category === 7 ? "Esports" :
+                                                    good.category === 8 ? "Lleure" :
+                                                    good.category === 9 ? "Altres" : "Error"
+                                                }
+                                            </span>
                                             </div>
                                         </div>
                                     </Col>
@@ -92,17 +104,21 @@ const Good = ({good, actions}) => {
 Good.propTypes = {
     good: PropTypes.shape(
         {
-            id: PropTypes.number.isRequired,
+            _id: PropTypes.string.isRequired,
             productName: PropTypes.string.isRequired,
             picture: PropTypes.string.isRequired,
             discountType: PropTypes.string.isRequired,
-            discount: PropTypes.string.isRequired,
-            category: PropTypes.string.isRequired,
-            reusePeriod: PropTypes.string.isRequired,
-            initialPrice: PropTypes.string.isRequired,
-            pendingUnits: PropTypes.string.isRequired,
+            discount: PropTypes.number.isRequired,
+            category: PropTypes.number.isRequired,
+            reusePeriod: PropTypes.number.isRequired,
+            initialPrice: PropTypes.number.isRequired,
+            pendingUnits: PropTypes.number.isRequired,
         }).isRequired,
-    actions: PropTypes.object.isRequired,
+    actions: PropTypes.shape(
+    {
+        goodsActions: PropTypes.object.isRequired,
+        modalActions: PropTypes.object.isRequired,
+    }).isRequired,
 }
 
 export default Good

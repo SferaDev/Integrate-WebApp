@@ -18,22 +18,25 @@ describe('Good component', () => {
     it('should render all Good details', () => {
         const {component} = setup({
             good: {
-                id: 1,
+                _id: '1',
                 productName: 'Patata',
                 picture: 'Picture1',
                 discountType: '%',
-                discount: '20',
-                category: 'Aliments',
-                reusePeriod: '1',
-                initialPrice: '50',
-                pendingUnits: '3'
+                discount: 20,
+                category: 1,
+                reusePeriod: 1,
+                initialPrice: 50,
+                pendingUnits: 3
             },
-            actions: {}
+            actions: {
+                goodsActions: {},
+                modalActions: {},
+            }
         })
         expect(component.find('.name').text()).toEqual('Patata')
         expect(component.find('.goodImg').props().src).toEqual('Picture1')
         expect(component.find('.appliedDiscount').text()).toEqual('20%')
-        expect(component.find('.category').text()).toEqual('Aliments')
+        expect(component.find('.category').text()).toEqual('Alimentació')
         expect(component.find('.reusePeriod').text()).toEqual('1 dies')
         expect(component.find('.originalPrice').text()).toEqual('50€')
         expect(component.find('.pendingUnits').text()).toEqual('3')

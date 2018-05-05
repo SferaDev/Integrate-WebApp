@@ -25,7 +25,7 @@ const getLocalToken = () => {
 const headers = {
     token: getLocalToken(),
 };
-const validateStatus = () => true;
+export const validateStatus = () => true;
 
 export const getApi = (endpoint, options) => axios.get(`${API_HOST}${endpoint}`, {
     ...options,
@@ -33,13 +33,13 @@ export const getApi = (endpoint, options) => axios.get(`${API_HOST}${endpoint}`,
     validateStatus
 }).then(redirectIfUnauthorized);
 
-export const postApi = (endpoint, options) => axios.post(`${API_HOST}${endpoint}`, {
+export const postApi = (endpoint, data, options) => axios.post(`${API_HOST}${endpoint}`, data, {
     ...options,
     headers,
     validateStatus,
 }).then(redirectIfUnauthorized);
 
-export const putApi = (endpoint, options) => axios.put(`${API_HOST}${endpoint}`, {
+export const putApi = (endpoint, data, options) => axios.put(`${API_HOST}${endpoint}`, data, {
     ...options,
     headers,
     validateStatus,

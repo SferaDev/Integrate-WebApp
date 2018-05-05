@@ -24,7 +24,7 @@ const getLocalToken = () => localStorage.getItem('token');
 const headers = {
     token: getLocalToken(),
 };
-const validateStatus = () => true;
+export const validateStatus = () => true;
 
 export const getApi = (endpoint, options) => axios.get(`${API_HOST}${endpoint}`, {
     ...options,

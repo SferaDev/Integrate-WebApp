@@ -28,7 +28,6 @@ export default function goods(state = [], action) {
             ]
 
         case DELETE_GOOD:
-            console.log("DELETE_GOOD dispatched", state, action)
             return state.filter(good =>
                 good._id !== action.good._id
             )

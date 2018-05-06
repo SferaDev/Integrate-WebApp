@@ -1,15 +1,13 @@
 import React from 'react';
-import {mount} from 'enzyme';
+import Enzyme, {mount} from 'enzyme';
 import {Provider} from 'react-redux';
-import {createStore, applyMiddleware, combineReducers} from 'redux';
+import {applyMiddleware, combineReducers, createStore} from 'redux';
 import thunk from 'redux-thunk';
 
 import reducer from '../../reducers/auth';
 import ConnectedLogin, {Login} from './';
 import {setLoginError, setLoginPending, setLoginSuccess} from "../../actions/auth";
 import {MemoryRouter} from 'react-router-dom';
-
-import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 Enzyme.configure({adapter: new Adapter()});

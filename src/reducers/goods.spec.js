@@ -54,7 +54,7 @@ describe('goods reducer', () => {
                 pendingUnits: 3,
             }
         ])
-    })
+    });
 
     it('should handle ADD_GOOD', () => {
         expect(
@@ -85,7 +85,7 @@ describe('goods reducer', () => {
                 pendingUnits: 3,
             }
         ])
-    })
+    });
 
     it('should handle DELETE_GOOD', () => {
         expect(
@@ -131,7 +131,7 @@ describe('goods reducer', () => {
                 pendingUnits: 3,
             }
         ])
-    })
+    });
 
     it('should handle EDIT_GOOD', () => {
         expect(
@@ -197,4 +197,4 @@ describe('goods reducer', () => {
             }
         ])
     })
-})
+});

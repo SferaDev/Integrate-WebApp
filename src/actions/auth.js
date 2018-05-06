@@ -1,9 +1,5 @@
 import {apiPostLogin} from '../api';
-import {
-    SET_LOGIN_ERROR,
-    SET_LOGIN_PENDING,
-    SET_LOGIN_SUCCESS
-} from '../constants/index';
+import {SET_LOGIN_ERROR, SET_LOGIN_PENDING, SET_LOGIN_SUCCESS} from '../constants/index';
 
 
 export function setLoginPending(isLoginPending) {

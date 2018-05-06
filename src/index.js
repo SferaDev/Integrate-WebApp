@@ -14,7 +14,7 @@ import Login from './containers/Login';
 import SignUp from './components/Signup';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'font-awesome/css/font-awesome.min.css';
+//import 'font-awesome/css/font-awesome.min.css';
 import './index.css';
 import GoodsContainer from './containers/GoodsContainer/GoodsContainer';
 

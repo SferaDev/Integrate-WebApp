@@ -163,7 +163,7 @@ export default class SignUp extends Component {
                 description: this.state.description,
                 name: this.state.name,
                 addressName: this.state.addressName,
-                picture: null,
+                picture: "picture",
                 coordinates: [this.state.addressLongitude, this.state.addressLatitude]
             }
             const coordinates = [this.state.addressLongitude, this.state.addressLatitude]

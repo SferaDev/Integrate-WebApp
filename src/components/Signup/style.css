@@ -9,15 +9,12 @@
     top: 8%;
     height: 75%;
     width: 55%;
-    margin-left: 2%;
     border: 1px solid black;
     background: white;
-    position: absolute;
 
 }
 
 .Map {
-    margin-left: 50%;
     margin-top: 9%;
 }
 
@@ -40,96 +37,103 @@
     position:absolute;
 }
 
-.Error {
-    font: 100% arial;
-    color:red;
-    margin-top: 1%;
-    visibility: hidden;
-    position: relative;
-}
 
 .MainLine {
     color:white;
     margin-top: 5%;
 }
 
-.TextForm {
-    font:150% arial;
-    height:5%;
-    width:90%;
-    border: 0px solid;
-    margin-left:3%;
-    margin-top:3%;
-    border-bottom: 1px solid #e0e0e0;
-
-}
-
-.NumberText {
-    font: 150% arial;
-    height: 5%;
-    width: 20%;
-    border: 0px solid;
-    margin-left: 1%;
-    margin-top: 3%;
-    border-bottom: 1px solid #e0e0e0;
-    position: absolute;
-
-}
-
-.EmailNameText {
-    font:150% arial;
-    height:5%;
-    width: 68%;
-    border: 0px solid;
-    margin-left: 3%;
-    margin-top: 3%;
-    border-bottom: 1px solid #e0e0e0;
-}
-
 .FirstNameText {
     font: 150% arial;
-    height: 5%;
-    width: 30%;
     border: 0px;
-    margin-left:3%;
-    margin-top:3%;
     border-bottom: 1px solid #e0e0e0;
+    width: 70%;
+
+}
+
+.FirstFormGroup {
+    position: absolute;
+    margin-left: 3%;
 
 }
 
 .SecondNameText {
-    font:150% arial;
-    height:5%;
-    width: 55%;
+    font: 150% arial;
     border: 0px solid;
-    margin-left:2%;
-    margin-top:3%;
     border-bottom: 1px solid #e0e0e0;
-    position:absolute;
+    width: 95%;
+
+}
+
+.SecondFormGroup {
+    margin-left: 40%;
+    position: relative;
+}
+
+.EmailNameText {
+    font:150% arial;
+    width: 140%;
+    border: 0px solid;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.EmailForm {
+    margin-left: 3%;
+    position: absolute;
+}
+
+.NumberText {
+    font: 150% arial;
+    width: 90%;
+    border: 0px solid;
+    border-bottom: 1px solid #e0e0e0;
+
+}
+
+.NumberForm {
+    margin-left: 75%;
+}
+
+.EntityForm {
+    margin-top: 1%;
+    margin-left: 3%;
+    position: absolute;
+}
+
+.NifForm {
+    margin-top: 4%;
+    margin-left: 75%;
 }
 
 .DescriptionText {
     font: 100% arial;
-    margin-left: 3%;
-    width: 90%;
-    bottom: 20%;
-    margin-top: 1%;
+    width: 97%;
     resize: none;
 }
 
-.ButtonForm {
-    height:7%;
+.DescriptionForm {
+    margin-left: 3%;
+
+}
+
+.TextForm {
+    font: 150% arial;
+    width: 90%;
+    border: 0px solid;
+    border-bottom: 1px solid #e0e0e0;
+
+}
+
+.AddressForm {
+    margin-left: 3%;
+}
+
+.Button {
     width: 30%;
     background:#00c853;
     font: 140% arial;
     color:#ffffff;
-    align-self: center;
     border:none;
-    text-align:center;
-    margin-top:5%;
-    margin-left: 35%;
-    margin-right: 40%;
-    position:static;
     font-weight:bold;
     padding: 0 auto;
 }
@@ -140,11 +144,4 @@
     font: inherit;
     /*border is optional*/
     cursor: pointer;
-    position:relative;
-    margin-left: 3%;
-    margin-top:1%;
 }
-
-
-
-

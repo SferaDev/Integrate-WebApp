@@ -11,7 +11,6 @@ export class Login extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
         this.onSubmitButtonClicked = this.onSubmitButtonClicked.bind(this);
     }
 
@@ -19,7 +18,6 @@ export class Login extends Component {
         let {isLoginPending, isLoginSuccess, loginError} = this.props;
         return (
             <Container className="loginContainer">
-                <h1>{ JSON.stringify(this.props) || 'no props'}</h1>
                 <Row className="loginRow">
                     <Col xs='0' md='4'>
                     </Col>
@@ -52,7 +50,7 @@ export class Login extends Component {
                                 }
 
                                 {
-                                    // !isLoginPending && isLoginSuccess && <Redirect to='/' />
+                                    !isLoginPending && isLoginSuccess && <Redirect to='/goods' />
                                 }
 
                                 <FormGroup>

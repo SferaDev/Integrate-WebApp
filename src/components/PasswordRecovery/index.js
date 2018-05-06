@@ -8,26 +8,42 @@ export default class PasswordRecovery extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            email: '',
+            nif: '',
             modal: false,
             modalHeader: '',
             modalContent: ''
         }
 
-        this.changeEmail = this.changeEmail.bind(this)
-        this.checkEmail = this.checkEmail.bind(this)
+        this.changeNif = this.changeNif.bind(this)
+        this.checkNIF = this.checkNIF.bind(this)
         this.onAcceptButton = this.onAcceptButton.bind(this)
         this.onCancelButton = this.onCancelButton.bind(this)
         this.onAcceptModalButton = this.onAcceptModalButton.bind(this)
     }
 
-    changeEmail(event) {
-        this.setState({email: event.target.value});
+    changeNif(event) {
+        this.setState({nif: event.target.value});
     }
 
-    checkEmail() {
-        let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(String(this.state.email).toLowerCase());
+    checkNIF() {
+        let nif = this.state.nif.substring(0, this.state.nif.length - 1);
+        let letra = this.state.nif.charAt(this.state.nif.length - 1);
+        if (!isNaN(letra)) {
+            return false;
+        } else {
+            let cadena = "TRWAGMYFPDXBNJZSQVHLCKET";
+            let posicion = nif % 23;
+            letra = cadena.substring(posicion, posicion + 1);
+            let i;
+            let count = 0;
+            for (i = 0; i < this.state.nif.length; i++) {
+                if (this.state.nif[i] >= 0 && this.state.nif[i] <= 9) ++count;
+            }
+            if (letra !== letra.toUpperCase() || (nif.length !== 8 || count !== 8)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     onAcceptButton(event) {
@@ -35,14 +51,14 @@ export default class PasswordRecovery extends React.Component {
             modal: !this.state.modal
         });
 
-        if (!this.checkEmail()) {
+        if (!this.checkNIF()) {
             this.setState({modalHeader: "Error"});
-            this.setState({modalContent: "L'email introduït no és correcte."});
+            this.setState({modalContent: "El nif introduït no és correcte."});
         }
 
         else {
             this.setState({modalHeader: "Correcte"});
-            this.setState({modalContent: "S'ha enviat una nova contrasenya al e-mail: " + this.state.email});
+            this.setState({modalContent: "S'ha enviat una nova contrasenya correctament"});
         }
 
     }
@@ -60,7 +76,9 @@ export default class PasswordRecovery extends React.Component {
             });
         }
         else {
-            apiPostPasswordRecovery(this.state.email)
+            const nif = this.state.nif;
+            apiPostPasswordRecovery(nif)
+            console.log(nif)
             event.preventDefault()
             const {history} = this.props
             history.push('/')
@@ -74,10 +92,10 @@ export default class PasswordRecovery extends React.Component {
             <div className="MainDiv">
                 <h1 className="HeaderForm">Recuperació de la constrasenya</h1>
                 <hr className="MainLine"/>
-                <p className="Info">Introdueix el teu e-mail on rebràs una nova contrasenya:</p>
+                <p className="Info">Introdueix el nif on rebràs una nova contrasenya al correu que vas utilitzar per registrar-te:</p>
                 <FormGroup className="EmailForm">
-                    <input type="email" className="EmailNameText" placeholder="Email *" value={this.state.email}
-                           onChange={this.changeEmail}/>
+                    <input type="email" className="EmailNameText" placeholder="Nif *" value={this.state.nif}
+                           onChange={this.changeNif}/>
                 </FormGroup>
                 <ModalFooter>
                     <Button color="primary" onClick={this.onAcceptButton}>Acceptar</Button>{' '}

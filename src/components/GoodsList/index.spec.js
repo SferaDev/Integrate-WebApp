@@ -9,7 +9,10 @@ const modalStub = {
     modal: {isOpen: false,}
 }
 
-const actionsStub = {}
+const actionsStub = {
+    goodsActions : {},
+    modalActions: {},
+}
 
 const setup = (goods = []) => {
     const component = enzyme.shallow(
@@ -25,24 +28,27 @@ const setup = (goods = []) => {
 describe('when given good', () => {
     const good = [
         {
-            id: 1,
+            _id: '1',
             picture: 'http://www.fruteriasanpelayo.com/media/catalog/product/cache/1/image/680x560/75d5da3c2391ff3c948ada8220a45b7b/p/a/pan_barra_1.jpg',
             productName: 'Barra de pa',
-            initialPrice: '0.80',
-            discount: '20',
+            initialPrice: 0.80,
+            discount: 20,
             discountType: '%',
-            pendingUnits: '2',
-            category: 'Food',
-            reusePeriod: '1',
+            pendingUnits: 2,
+            category: 1,
+            reusePeriod: 1,
         }
     ]
 
     it('should render coupons', () => {
         const {goods} = setup(good)
         const props = {
-            actions: {},
+            actions: {
+                goodsActions: {},
+                modalActions: {},
+            },
             good: {
-                id: good[0].id,
+                _id: good[0]._id,
                 picture: good[0].picture,
                 productName: good[0].productName,
                 initialPrice: good[0].initialPrice,

@@ -17,10 +17,11 @@ import {PasswordRecovery} from './components/PasswordRecovery'
 import store from './store';
 import Login from './containers/Login';
 import SignUp from './components/Signup';
-import GoodsContainer from './containers/GoodsContainer'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'font-awesome/css/font-awesome.min.css';
 import './index.css';
+import GoodsContainer from './containers/GoodsContainer/GoodsContainer';
 
 fontawesome.library.add(faCoffee, faPlusCircle, faEdit, faTrashAlt)
 

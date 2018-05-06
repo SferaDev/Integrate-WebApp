@@ -1,5 +1,5 @@
 import {get} from 'axios';
-import {API_HOST} from './';
+import {API_HOST, validateStatus} from './';
 
 export const apiPostLogin = ({id, password}) =>
     new Promise((resolve, reject) => {
@@ -7,9 +7,12 @@ export const apiPostLogin = ({id, password}) =>
             params: {
                 nif: id,
                 password,
-            }
+            },
+            validateStatus
         }).then(response  => {
-            if (response.data) {
+            if (response.status === 401)
+                reject('Invalid password');
+            else if (response.data) {
                 const {token} = response.data;
                 if (token) {
                     resolve(token);

@@ -9,13 +9,13 @@ import GoodsList from '../../components/GoodsList';
 import './style.css';
 
 class GoodsContainer extends Component {
-    componentDidMount() {
-        this.props.actions.goodsActions.dispatchReceiveGoods()
-    }
-
     constructor(props) {
         super(props);
         this.state = {};
+    }
+
+    componentDidMount() {
+        this.props.actions.goodsActions.dispatchReceiveGoods()
     }
 
     render() {

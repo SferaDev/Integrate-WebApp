@@ -1,8 +1,4 @@
-import {
-    SET_LOGIN_ERROR,
-    SET_LOGIN_PENDING,
-    SET_LOGIN_SUCCESS
-} from '../constants';
+import {SET_LOGIN_ERROR, SET_LOGIN_PENDING, SET_LOGIN_SUCCESS} from '../constants';
 
 function authReducer(state = {
     isLoginSuccess: false,

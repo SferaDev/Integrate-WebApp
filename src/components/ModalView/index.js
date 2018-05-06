@@ -6,18 +6,91 @@ import {cloudinaryUploadImg} from '../../api/cloudinary';
 
 class ModalView extends React.Component {
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.modal.good) {
-            if (nextProps.modal.good.productName !== this.state.productName) this.setState({productName: nextProps.modal.good.productName})
-            if (nextProps.modal.good.picture !== this.state.picture) this.setState({picture: nextProps.modal.good.picture})
-            if (nextProps.modal.good.discountType !== this.state.discountType) this.setState({discountType: nextProps.modal.good.discountType})
-            if (nextProps.modal.good.discount !== this.state.discount) this.setState({discount: nextProps.modal.good.discount})
-            if (nextProps.modal.good.category !== this.state.category) this.setState({category: nextProps.modal.good.category})
-            if (nextProps.modal.good.reusePeriod !== this.state.reusePeriod) this.setState({reusePeriod: nextProps.modal.good.reusePeriod})
-            if (nextProps.modal.good.initialPrice !== this.state.initialPrice) this.setState({initialPrice: nextProps.modal.good.initialPrice})
-            if (nextProps.modal.good.pendingUnits !== this.state.pendingUnits) this.setState({pendingUnits: nextProps.modal.good.pendingUnits})
+    toggle = () => {
+        this.props.actions.modalActions.dispatchCleanModalState();
+
+        this.setState({
+            productName: '',
+            picture: 'http://www.asiaoceania.org/aogs2018/img/no_uploaded.png',
+            discountType: '%',
+            discount: 0,
+            category: 1,
+            reusePeriod: 1,
+            initialPrice: 0,
+            pendingUnits: 1,
+            maxEurosDiscount: 0,
+        });
+
+        this.props.actions.modalActions.dispatchToggleModal()
+    };
+    handleChangeProductName = (event) => {
+        this.setState({productName: event.target.value})
+    };
+    handleChangeInitialPrice = (event) => {
+        this.setState({initialPrice: event.target.value});
+        this.setState({maxEurosDiscount: event.target.value})
+    };
+    handleChangeDiscount = (event) => {
+        this.setState({discount: event.target.value})
+    };
+    handleChangeDiscountType = (event) => {
+        this.setState({discountType: event.target.value});
+        event.target.value === '%' ?
+            this.setState({discount: Math.min(100, parseFloat(this.state.discount)).toString()}) :
+            this.setState({discount: Math.min(parseFloat(this.state.initialPrice), parseFloat(this.state.discount)).toString()})
+    };
+    handleChangeReusePeriod = (event) => {
+        this.setState({reusePeriod: event.target.value})
+    };
+    handleChangeCategory = (event) => {
+        this.setState({category: event.target.value})
+    };
+    handleChangePicture = () => {
+        const file = document.getElementById('pictureFile').files[0];
+        const imgPreview = document.getElementById('imgPreview');
+
+        cloudinaryUploadImg({file})
+        .then(resultUrl => {
+            imgPreview.src = resultUrl;
+            this.setState({picture: resultUrl})
+        })
+    };
+    handleChangePendingUnits = (event) => {
+        this.setState({pendingUnits: event.target.value})
+    };
+    handleSubmit = () => {
+        let goodToAddOrEdit;
+        if (this.state.productName === undefined || this.state.productName === '') alert('Has d\'assignar un nom al val!');
+        else if (!this.props.modal.good) {
+            goodToAddOrEdit = {
+                productName: this.state.productName,
+                picture: this.state.picture,
+                discountType: this.state.discountType,
+                discount: this.state.discount,
+                category: this.state.category,
+                reusePeriod: this.state.reusePeriod,
+                initialPrice: this.state.initialPrice,
+                pendingUnits: this.state.pendingUnits,
+            };
+            this.props.actions.goodsActions.dispatchAddGood(goodToAddOrEdit);
+            this.toggle()
         }
-    }
+        else {
+            goodToAddOrEdit = {
+                _id: this.props.modal.good._id,
+                productName: this.state.productName,
+                picture: this.state.picture,
+                discountType: this.state.discountType,
+                discount: this.state.discount,
+                category: this.state.category,
+                reusePeriod: this.state.reusePeriod,
+                initialPrice: this.state.initialPrice,
+                pendingUnits: this.state.pendingUnits,
+            };
+            this.props.actions.goodsActions.dispatchEditGood(goodToAddOrEdit);
+            this.toggle()
+        }
+    };
 
     constructor(props) {
         super(props);
@@ -32,7 +105,7 @@ class ModalView extends React.Component {
             initialPrice: 0,
             pendingUnits: 0,
             maxEurosDiscount: 0,
-        }
+        };
 
         this.handleChangeProductName = this.handleChangeProductName.bind(this);
         this.handleChangeInitialPrice = this.handleChangeInitialPrice.bind(this);
@@ -44,99 +117,16 @@ class ModalView extends React.Component {
         this.handleChangePendingUnits = this.handleChangePendingUnits.bind(this);
     }
 
-    toggle = () => {
-        this.props.actions.modalActions.dispatchCleanModalState()
-
-        this.setState({
-            productName: '',
-            picture: 'http://www.asiaoceania.org/aogs2018/img/no_uploaded.png',
-            discountType: '%',
-            discount: 0,
-            category: 1,
-            reusePeriod: 1,
-            initialPrice: 0,
-            pendingUnits: 1,
-            maxEurosDiscount: 0,
-        })
-
-        this.props.actions.modalActions.dispatchToggleModal()
-    }
-
-    handleChangeProductName = (event) => {
-        this.setState({productName: event.target.value})
-    }
-
-
-    handleChangeInitialPrice = (event) => {
-        this.setState({initialPrice: event.target.value})
-        this.setState({maxEurosDiscount: event.target.value})
-    }
-
-    handleChangeDiscount = (event) => {
-        this.setState({discount: event.target.value})
-    }
-
-    handleChangeDiscountType = (event) => {
-        this.setState({discountType: event.target.value})
-        event.target.value === '%' ?
-            this.setState({discount: Math.min(100, parseFloat(this.state.discount)).toString()}) :
-            this.setState({discount: Math.min(parseFloat(this.state.initialPrice), parseFloat(this.state.discount)).toString()})
-    }
-
-    handleChangeReusePeriod = (event) => {
-        this.setState({reusePeriod: event.target.value})
-    }
-
-    handleChangeCategory = (event) => {
-        this.setState({category: event.target.value})
-    }
-
-    handleChangePicture = () => {
-        const file = document.getElementById('pictureFile').files[0]
-        const imgPreview = document.getElementById('imgPreview')
-
-        cloudinaryUploadImg({file})
-        .then(resultUrl => {
-            imgPreview.src = resultUrl
-            this.setState({picture: resultUrl})
-        })
-    }
-
-    handleChangePendingUnits = (event) => {
-        this.setState({pendingUnits: event.target.value})
-    }
-
-    handleSubmit = () => {
-        let goodToAddOrEdit;
-        if (this.state.productName === undefined || this.state.productName === '') alert('Has d\'assignar un nom al val!');
-        else if (!this.props.modal.good) {
-            goodToAddOrEdit = {
-                productName: this.state.productName,
-                picture: this.state.picture,
-                discountType: this.state.discountType,
-                discount: this.state.discount,
-                category: this.state.category,
-                reusePeriod: this.state.reusePeriod,
-                initialPrice: this.state.initialPrice,
-                pendingUnits: this.state.pendingUnits,
-            }
-            this.props.actions.goodsActions.dispatchAddGood(goodToAddOrEdit)
-            this.toggle()
-        }
-        else {
-            goodToAddOrEdit = {
-                _id: this.props.modal.good._id,
-                productName: this.state.productName,
-                picture: this.state.picture,
-                discountType: this.state.discountType,
-                discount: this.state.discount,
-                category: this.state.category,
-                reusePeriod: this.state.reusePeriod,
-                initialPrice: this.state.initialPrice,
-                pendingUnits: this.state.pendingUnits,
-            }
-            this.props.actions.goodsActions.dispatchEditGood(goodToAddOrEdit)
-            this.toggle()
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.modal.good) {
+            if (nextProps.modal.good.productName !== this.state.productName) this.setState({productName: nextProps.modal.good.productName});
+            if (nextProps.modal.good.picture !== this.state.picture) this.setState({picture: nextProps.modal.good.picture});
+            if (nextProps.modal.good.discountType !== this.state.discountType) this.setState({discountType: nextProps.modal.good.discountType});
+            if (nextProps.modal.good.discount !== this.state.discount) this.setState({discount: nextProps.modal.good.discount});
+            if (nextProps.modal.good.category !== this.state.category) this.setState({category: nextProps.modal.good.category});
+            if (nextProps.modal.good.reusePeriod !== this.state.reusePeriod) this.setState({reusePeriod: nextProps.modal.good.reusePeriod});
+            if (nextProps.modal.good.initialPrice !== this.state.initialPrice) this.setState({initialPrice: nextProps.modal.good.initialPrice});
+            if (nextProps.modal.good.pendingUnits !== this.state.pendingUnits) this.setState({pendingUnits: nextProps.modal.good.pendingUnits})
         }
     }
 
@@ -254,6 +244,6 @@ ModalView.propTypes = {
         modalActions: PropTypes.object.isRequired,
     }).isRequired,
 
-}
+};
 
 export default ModalView

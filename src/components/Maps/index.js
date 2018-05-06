@@ -1,5 +1,5 @@
 import React from 'react';
-import {compose, withProps, lifecycle} from 'recompose';
+import {compose, lifecycle, withProps} from 'recompose';
 import {GoogleMap, Marker, withGoogleMap, withScriptjs} from 'react-google-maps';
 import SearchBox from 'react-google-maps/lib/components/places/SearchBox';
 import _ from 'lodash';
@@ -47,14 +47,14 @@ const MyMapComponent = compose(
                     window.close()
                 },
                 onPlacesChanged: () => {
-                    const places = refs.searchBox.getPlaces()
+                    const places = refs.searchBox.getPlaces();
                     {
                         places.map(({formatted_address, geometry: {location}}) =>
                             this.props.onUserSearched(formatted_address, location.lat(), location.lng())
                         )
                     }
                     const bounds = new google.maps.LatLngBounds();
-                    console.log()
+                    console.log();
                     places.forEach(place => {
                         if (place.geometry.viewport) {
                             bounds.union(place.geometry.viewport)
@@ -120,19 +120,17 @@ export class Maps extends React.PureComponent {
     state = {
         isMarkerShown: false,
     };
-
-    componentDidMount() {
-        this.delayedShowMarker()
-    };
-
     delayedShowMarker = () => {
         setTimeout(() => {
             this.setState({isMarkerShown: true})
         }, 3000)
     };
-
     handleMarkerClick = () => {
         this.setState({isMarkerShown: false})
+    };
+
+    componentDidMount() {
+        this.delayedShowMarker()
     };
 
     render() {

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './style.css';
 import {Maps} from "../Maps";
 import {apiPostSignUp} from "../../api/signup";
-import {FormGroup, Modal, FormText, Button, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
+import {Button, FormGroup, FormText, Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
 
 export default class SignUp extends Component {
     constructor(props) {
@@ -165,10 +165,10 @@ export default class SignUp extends Component {
                 addressName: this.state.addressName,
                 picture: "picture",
                 coordinates: [this.state.addressLongitude, this.state.addressLatitude]
-            }
-            const coordinates = [this.state.addressLongitude, this.state.addressLatitude]
-            apiPostSignUp(entity)
-            console.log(entity)
+            };
+            const coordinates = [this.state.addressLongitude, this.state.addressLatitude];
+            apiPostSignUp(entity);
+            console.log(entity);
             event.preventDefault();
             const {history} = this.props;
             history.push('/login');

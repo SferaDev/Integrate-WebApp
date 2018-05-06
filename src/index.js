@@ -18,7 +18,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import GoodsContainer from './containers/GoodsContainer/GoodsContainer';
 
-fontawesome.library.add(faCoffee, faPlusCircle, faEdit, faTrashAlt)
+fontawesome.library.add(faCoffee, faPlusCircle, faEdit, faTrashAlt);
 
 render(
     <Provider store={store}>

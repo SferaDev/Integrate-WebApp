@@ -1,23 +1,13 @@
 import {post} from 'axios';
-import {API_HOST} from './';
 
 
 export const apiPostSignUp = (entity) =>
     new Promise((resolve, reject) => {
-        post(`${API_HOST}/register`, entity).then(response => {
+        post('http://integrate-backend-staging.herokuapp.com/register', entity).then(response => {
             console.log(response)
         })
             .catch(error => {
                 console.log(error.response)
             })
     })
-            /*nif: "",
-            email: "",
-            salesmanFirstName: "",
-            salesmanLastName: "",
-            name: "",
-            description: "",
-            addressName: "",
-            coordinates: "",
-            phone: ""*/
-            //)})
+

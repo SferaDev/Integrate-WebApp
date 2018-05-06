@@ -144,7 +144,7 @@ export default class SignUp extends Component {
     onCloseClicked(event) {
         event.preventDefault();
         const {history} = this.props;
-        history.push('/');
+        history.push('/login');
     }
 
     onAcceptClicked(event) {
@@ -163,12 +163,16 @@ export default class SignUp extends Component {
                 description: this.state.description,
                 name: this.state.name,
                 addressName: this.state.addressName,
-                picture: "hola",
+                picture: null,
                 coordinates: [this.state.addressLongitude, this.state.addressLatitude]
             }
             const coordinates = [this.state.addressLongitude, this.state.addressLatitude]
             apiPostSignUp(entity)
             console.log(entity)
+            event.preventDefault();
+            const {history} = this.props;
+            history.push('/login');
+
 
         }
     }

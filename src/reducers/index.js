@@ -1,7 +1,10 @@
-import {combineReducers} from 'redux'
-import coupons from './coupons';
-
+import {combineReducers} from 'redux';
+import goods from './goods';
+import modal from './modal';
+import auth from './auth';
 
 export default combineReducers({
-    coupons
-})
+    auth,
+    goods,
+    modal
+});

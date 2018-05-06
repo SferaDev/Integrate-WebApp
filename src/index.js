@@ -1,36 +1,35 @@
-import React from 'react'
-import {render} from 'react-dom'
-import {createStore} from 'redux'
-import todoApp from './reducers'
-import applyMiddleware from 'redux/es/applyMiddleware';
-import Provider from 'react-redux/es/components/Provider';
-import thunk from 'redux-thunk';
-import {getAllCoupons} from './actions';
+import React from 'react';
+import {render} from 'react-dom';
+import {Provider} from 'react-redux';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+
+import fontawesome from '@fortawesome/fontawesome'
+import faCoffee from '@fortawesome/fontawesome-free-solid/faCoffee'
+import faPlusCircle from '@fortawesome/fontawesome-free-solid/faPlusCircle'
+import faEdit from '@fortawesome/fontawesome-free-solid/faEdit'
+import faTrashAlt from '@fortawesome/fontawesome-free-solid/faTrashAlt'
+
+import store from './store';
+import Login from './containers/Login';
+import SignUp from './components/Signup';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'font-awesome/css/font-awesome.min.css';
 import './index.css';
-import {BrowserRouter, Route} from 'react-router-dom';
-import {Login} from './components/Login';
-import Switch from 'react-router-dom/es/Switch';
-import CouponsContainer from './containers/CouponsContainer';
+import GoodsContainer from './containers/GoodsContainer/GoodsContainer';
 
-const middleware = [thunk];
-
-const store = createStore(
-    todoApp,
-    applyMiddleware(...middleware)
-)
-
-store.dispatch(getAllCoupons())
+fontawesome.library.add(faCoffee, faPlusCircle, faEdit, faTrashAlt)
 
 render(
-    <BrowserRouter>
-        <Provider store={store}>
+    <Provider store={store}>
+        <Router>
             <Switch>
-                <Route exact path='/' component={Login}/>
-                {/* both /roster and /roster/:number begin with /roster */}
-                <Route path='/coupons' component={CouponsContainer}/>
+                <Route exact path="/" render={() => <h1>Main Page</h1>}/>
+                <Route path="/signup" component={SignUp}/>
+                <Route path="/login" component={Login}/>
+                <Route path='/goods' component={GoodsContainer}/>
             </Switch>
-        </Provider>
-    </BrowserRouter>,
+        </Router>
+    </Provider>,
     document.getElementById('root')
-)
+);

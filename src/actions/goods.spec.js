@@ -3,12 +3,12 @@ import * as actions from './goods'
 
 describe('Good actions', () => {
     it('receiveGoods should create RECEIVE_GOODS action', () => {
-        const mockGoods = []
+        const mockGoods = [];
         expect(actions.receiveGoods(mockGoods)).toEqual({
             type: types.RECEIVE_GOODS,
             goods: mockGoods,
         })
-    })
+    });
 
     it('addGood should create ADD_GOOD action', () => {
         expect(actions.addGood({
@@ -33,15 +33,15 @@ describe('Good actions', () => {
                 pendingUnits: '3',
             }
         })
-    })
+    });
 
     it('deleteGood should create DELETE_GOOD action', () => {
-        const Good = {}
+        const Good = {};
         expect(actions.deleteGood(Good)).toEqual({
             type: types.DELETE_GOOD,
             good: {}
         })
-    })
+    });
 
     it('editTodo should create EDIT_GOOD action', () => {
         expect(actions.editGood({
@@ -69,5 +69,5 @@ describe('Good actions', () => {
             }
         })
     })
-})
+});
 

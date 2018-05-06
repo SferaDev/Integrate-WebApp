@@ -7,11 +7,11 @@ import './style.css';
 const Good = ({good, actions}) => {
     const toggle = () => {
         actions.modalActions.dispatchToggleModalEdit(good)
-    }
+    };
 
     const deleteGood = () => {
         actions.goodsActions.dispatchDeleteGood(good)
-    }
+    };
 
     return (
         <Container>
@@ -67,14 +67,14 @@ const Good = ({good, actions}) => {
                                                 className="category">
                                                 {
                                                     good.category === 1 ? "Alimentació" :
-                                                    good.category === 2 ? "Cultura" :
-                                                    good.category === 3 ? "Formació" :
-                                                    good.category === 4 ? "Mobilitat" :
-                                                    good.category === 5 ? "Tecnologia" :
-                                                    good.category === 6 ? "Salut" :
-                                                    good.category === 7 ? "Esports" :
-                                                    good.category === 8 ? "Lleure" :
-                                                    good.category === 9 ? "Altres" : "Error"
+                                                        good.category === 2 ? "Cultura" :
+                                                            good.category === 3 ? "Formació" :
+                                                                good.category === 4 ? "Mobilitat" :
+                                                                    good.category === 5 ? "Tecnologia" :
+                                                                        good.category === 6 ? "Salut" :
+                                                                            good.category === 7 ? "Esports" :
+                                                                                good.category === 8 ? "Lleure" :
+                                                                                    good.category === 9 ? "Altres" : "Error"
                                                 }
                                             </span>
                                             </div>
@@ -99,26 +99,24 @@ const Good = ({good, actions}) => {
             </Row>
         </Container>
     )
-}
+};
 
 Good.propTypes = {
-    good: PropTypes.shape(
-        {
-            _id: PropTypes.string.isRequired,
-            productName: PropTypes.string.isRequired,
-            picture: PropTypes.string.isRequired,
-            discountType: PropTypes.string.isRequired,
-            discount: PropTypes.number.isRequired,
-            category: PropTypes.number.isRequired,
-            reusePeriod: PropTypes.number.isRequired,
-            initialPrice: PropTypes.number.isRequired,
-            pendingUnits: PropTypes.number.isRequired,
-        }).isRequired,
-    actions: PropTypes.shape(
-    {
+    good: PropTypes.shape({
+        _id: PropTypes.string.isRequired,
+        productName: PropTypes.string.isRequired,
+        picture: PropTypes.string.isRequired,
+        discountType: PropTypes.string.isRequired,
+        discount: PropTypes.number.isRequired,
+        category: PropTypes.number.isRequired,
+        reusePeriod: PropTypes.number.isRequired,
+        initialPrice: PropTypes.number.isRequired,
+        pendingUnits: PropTypes.number.isRequired,
+    }).isRequired,
+    actions: PropTypes.shape({
         goodsActions: PropTypes.object.isRequired,
         modalActions: PropTypes.object.isRequired,
     }).isRequired,
-}
+};
 
 export default Good

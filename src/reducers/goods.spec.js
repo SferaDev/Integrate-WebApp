@@ -2,7 +2,7 @@ import goods from './goods'
 import * as types from '../constants/ActionTypes'
 
 describe('goods reducer', () => {
-    it ('should handle RECEIVE_GOODS', () => {
+    it('should handle RECEIVE_GOODS', () => {
         expect(
             goods([], {
                 type: types.RECEIVE_GOODS,

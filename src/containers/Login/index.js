@@ -50,7 +50,7 @@ export class Login extends Component {
                                 }
 
                                 {
-                                    !isLoginPending && isLoginSuccess && <Redirect to='/goods' />
+                                    !isLoginPending && isLoginSuccess && <Redirect to='/goods'/>
                                 }
 
                                 <FormGroup>
@@ -59,7 +59,8 @@ export class Login extends Component {
                                         name="submit"
                                         className="btn"
                                         onClick={this.onSubmitButtonClicked}
-                                        disabled={isLoginPending}>Entrar</button>
+                                        disabled={isLoginPending}>Entrar
+                                    </button>
                                 </FormGroup>
 
                             </Form>

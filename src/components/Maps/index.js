@@ -1,11 +1,10 @@
 import React from 'react';
-import { compose, withProps,lifecycle } from 'recompose';
+import {compose, withProps, lifecycle} from 'recompose';
 import {GoogleMap, Marker, withGoogleMap, withScriptjs} from 'react-google-maps';
-import SearchBox  from 'react-google-maps/lib/components/places/SearchBox';
+import SearchBox from 'react-google-maps/lib/components/places/SearchBox';
 import _ from 'lodash';
 
 /*global google*/
-
 
 const MyMapComponent = compose(
     withProps({
@@ -112,7 +111,7 @@ const MyMapComponent = compose(
             />
         </SearchBox>
         {props.markers.map((marker, index) =>
-            <Marker key={index} position={marker.position} />
+            <Marker key={index} position={marker.position}/>
         )}
     </GoogleMap>
 );
@@ -128,15 +127,13 @@ export class Maps extends React.PureComponent {
 
     delayedShowMarker = () => {
         setTimeout(() => {
-            this.setState({ isMarkerShown: true })
+            this.setState({isMarkerShown: true})
         }, 3000)
     };
 
     handleMarkerClick = () => {
         this.setState({isMarkerShown: false})
     };
-
-
 
     render() {
         return (
@@ -148,7 +145,4 @@ export class Maps extends React.PureComponent {
             </MyMapComponent>
         );
     }
-
-
-};
-
+}

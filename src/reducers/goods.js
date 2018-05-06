@@ -1,15 +1,15 @@
 import {ADD_GOOD, DELETE_GOOD, EDIT_GOOD, RECEIVE_GOODS} from '../constants/ActionTypes';
 import * as goodsMock from '../api/mock/goods'
 
-const initialState = goodsMock
+const initialState = goodsMock;
 
 export default function goods(state = [], action) {
     switch (action.type) {
         case RECEIVE_GOODS:
             return action.goods.reduce((goodsList, good) => {
-                goodsList.push(good)
+                goodsList.push(good);
                 return goodsList
-            }, [])
+            }, []);
 
         case ADD_GOOD:
             return [
@@ -25,12 +25,12 @@ export default function goods(state = [], action) {
                     reusePeriod: action.good.reusePeriod,
                     pendingUnits: action.good.pendingUnits,
                 }
-            ]
+            ];
 
         case DELETE_GOOD:
             return state.filter(good =>
                 good._id !== action.good._id
-            )
+            );
 
         case EDIT_GOOD:
             return state.map(good =>
@@ -47,7 +47,7 @@ export default function goods(state = [], action) {
                         pendingUnits: action.good.pendingUnits,
                     } :
                     good
-            )
+            );
 
         default:
             return state

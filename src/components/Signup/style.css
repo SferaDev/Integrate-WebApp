@@ -18,28 +18,23 @@
     margin-top: 9%;
 }
 
-
-
 .closeButton {
-    margin-left:95%;
-    margin-top:1%;
+    margin-left: 95%;
+    margin-top: 1%;
     padding: 0;
     border: none;
     background: none;
 }
 
-
-
 .HeaderForm {
     font: 170% arial;
     margin-left: 3%;
     margin-top: 4%;
-    position:absolute;
+    position: absolute;
 }
 
-
 .MainLine {
-    color:white;
+    color: white;
     margin-top: 5%;
 }
 
@@ -71,7 +66,7 @@
 }
 
 .EmailNameText {
-    font:150% arial;
+    font: 150% arial;
     width: 140%;
     border: 0px solid;
     border-bottom: 1px solid #e0e0e0;
@@ -130,11 +125,11 @@
 
 .Button {
     width: 30%;
-    background:#00c853;
+    background: #00c853;
     font: 140% arial;
-    color:#ffffff;
-    border:none;
-    font-weight:bold;
+    color: #ffffff;
+    border: none;
+    font-weight: bold;
     padding: 0 auto;
 }
 

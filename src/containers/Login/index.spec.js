@@ -1,7 +1,7 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, combineReducers } from 'redux';
+import {mount} from 'enzyme';
+import {Provider} from 'react-redux';
+import {createStore, applyMiddleware, combineReducers} from 'redux';
 import thunk from 'redux-thunk';
 
 import reducer from '../../reducers/auth';
@@ -11,13 +11,14 @@ import {MemoryRouter} from 'react-router-dom';
 
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-Enzyme.configure({ adapter: new Adapter() });
+
+Enzyme.configure({adapter: new Adapter()});
 
 describe('login feature', () => {
     let store, wrapper;
     beforeEach(() => {
         store = createStore(
-            combineReducers({ auth: reducer }),
+            combineReducers({auth: reducer}),
             applyMiddleware(thunk)
         );
 

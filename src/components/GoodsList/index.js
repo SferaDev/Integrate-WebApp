@@ -14,12 +14,12 @@ const GoodsList = ({goods, modal, actions}) => {
                 actions={actions}
             />
         )
-    )
+    );
 
     const toggle = () => {
-        actions.modalActions.dispatchToggleModal()
-        actions.goodsActions.dispatchReceiveGoods()
-    }
+        actions.modalActions.dispatchToggleModal();
+        actions.goodsActions.dispatchReceiveGoods();
+    };
 
     return (
         <div className="goodsListDiv">
@@ -40,15 +40,14 @@ const GoodsList = ({goods, modal, actions}) => {
             </Container>
         </div>
     )
-}
+};
 
 GoodsList.propTypes = {
     goods: PropTypes.array.isRequired,
-    actions: PropTypes.shape(
-        {
-            goodsActions: PropTypes.object.isRequired,
-            modalActions: PropTypes.object.isRequired,
-        }).isRequired,
-}
+    actions: PropTypes.shape({
+        goodsActions: PropTypes.object.isRequired,
+        modalActions: PropTypes.object.isRequired,
+    }).isRequired,
+};
 
 export default GoodsList

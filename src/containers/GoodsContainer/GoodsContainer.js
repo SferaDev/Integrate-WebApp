@@ -18,9 +18,9 @@ class GoodsContainer extends Component {
         this.state = {};
     }
 
-    render(){
+    render() {
         let {goods, actions, modal} = this.props;
-        return(
+        return (
             <div className="goodsContainer">
                 <GoodsList
                     goods={goods} actions={actions}/>
@@ -53,19 +53,19 @@ GoodsContainer.propTypes = {
         modalActions: PropTypes.object.isRequired,
         goodsActions: PropTypes.object.isRequired,
     }).isRequired,
-}
+};
 
 const mapStateToProps = state => ({
     goods: state.goods,
     modal: state.modal
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     actions: {
         goodsActions: bindActionCreators(GoodsActions, dispatch),
         modalActions: bindActionCreators(ModalActions, dispatch)
     }
-})
+});
 
 export default connect(
     mapStateToProps,

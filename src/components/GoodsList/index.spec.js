@@ -3,27 +3,28 @@ import Good from '../Good';
 import GoodsList from './index';
 import * as enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-enzyme.configure({ adapter: new Adapter() });
+
+enzyme.configure({adapter: new Adapter()});
 
 const modalStub = {
     modal: {isOpen: false,}
-}
+};
 
 const actionsStub = {
-    goodsActions : {},
+    goodsActions: {},
     modalActions: {},
-}
+};
 
 const setup = (goods = []) => {
     const component = enzyme.shallow(
         <GoodsList goods={goods} modal={modalStub} actions={actionsStub}/>
-    )
+    );
 
     return {
         component: component,
         goods: component.find(Good),
     }
-}
+};
 
 describe('when given good', () => {
     const good = [
@@ -38,10 +39,10 @@ describe('when given good', () => {
             category: 1,
             reusePeriod: 1,
         }
-    ]
+    ];
 
     it('should render coupons', () => {
-        const {goods} = setup(good)
+        const {goods} = setup(good);
         const props = {
             actions: {
                 goodsActions: {},
@@ -58,8 +59,8 @@ describe('when given good', () => {
                 category: good[0].category,
                 reusePeriod: good[0].reusePeriod
             }
-        }
+        };
 
         expect(goods.at(0).props()).toEqual(props)
     })
-})
+});

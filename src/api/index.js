@@ -5,8 +5,10 @@ let localStorage = window && window.localStorage ? window.localStorage : null;
 if (typeof localStorage === 'undefined' || localStorage === null) {
     localStorage = {
         getItem: (item) => 'fake localStorage',
-        setItem: (key, value) => {},
-        clear: () => {},
+        setItem: (key, value) => {
+        },
+        clear: () => {
+        },
     }
 }
 
@@ -21,10 +23,13 @@ const redirectIfUnauthorized = (response) => {
 };
 
 const getLocalToken = () => {
-    return localStorage.getItem('token')}
+    return localStorage.getItem('token')
+};
+
 const headers = {
     token: getLocalToken(),
 };
+
 export const validateStatus = () => true;
 
 export const getApi = (endpoint, options) => axios.get(`${API_HOST}${endpoint}`, {

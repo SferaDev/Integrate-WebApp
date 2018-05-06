@@ -33,16 +33,14 @@ export function loginAction(id, password) {
         dispatch(setLoginSuccess(false));
         dispatch(setLoginError(null));
 
-        apiPostLogin({id, password})
-            .then(token => {
-                localStorage.setItem('token', token);
-                dispatch(setLoginPending(false));
-                dispatch(setLoginSuccess(true));
-            })
-            .catch(error => {
-                dispatch(setLoginPending(false));
-                dispatch(setLoginSuccess(false));
-                dispatch(setLoginError(error))
-            })
+        apiPostLogin({id, password}).then(token => {
+            localStorage.setItem('token', token);
+            dispatch(setLoginPending(false));
+            dispatch(setLoginSuccess(true));
+        }).catch(error => {
+            dispatch(setLoginPending(false));
+            dispatch(setLoginSuccess(false));
+            dispatch(setLoginError(error))
+        })
     }
 }

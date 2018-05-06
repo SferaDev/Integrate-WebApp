@@ -96,10 +96,10 @@ class ModalView extends React.Component {
         const imgPreview = document.getElementById('imgPreview')
 
         cloudinaryUploadImg({file})
-            .then(resultUrl => {
-                imgPreview.src = resultUrl
-                this.setState({picture: resultUrl})
-            })
+        .then(resultUrl => {
+            imgPreview.src = resultUrl
+            this.setState({picture: resultUrl})
+        })
     }
 
     handleChangePendingUnits = (event) => {
@@ -207,7 +207,8 @@ class ModalView extends React.Component {
                             </Col>
                             <Col sm="6">
                                 <Label for="category">Categoria</Label>
-                                <Input required type="select" name="category" id="category" onChange={this.handleChangeCategory} value={this.state.category}>
+                                <Input required type="select" name="category" id="category"
+                                       onChange={this.handleChangeCategory} value={this.state.category}>
                                     <option value="1">Alimentació</option>
                                     <option value="2">Cultura</option>
                                     <option value="3">Formació</option>

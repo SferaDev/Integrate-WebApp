@@ -23,12 +23,14 @@ const GoodsList = ({goods, modal, actions}) => {
 
     return (
         <div className="goodsListDiv">
-            <Container className="goodsList" fluid={true}>
-                <Row>
-                    <Col sm="12">
-                        {Goods}
-                    </Col>
-                </Row>
+            <Container className="goodsListContainer" fluid={true}>
+                <div className="goodsList">
+                    <Row>
+                        <Col sm="12">
+                            {Goods}
+                        </Col>
+                    </Row>
+                </div>
                 <Row>
                     <Col sm="12" className="stickyAddGood">
                         <button className="stickyAddGoodButton" onClick={toggle}>

@@ -1,7 +1,4 @@
 import {ADD_GOOD, DELETE_GOOD, EDIT_GOOD, RECEIVE_GOODS} from '../constants/ActionTypes';
-import * as goodsMock from '../api/mock/goods'
-
-const initialState = goodsMock;
 
 export default function goods(state = [], action) {
     switch (action.type) {

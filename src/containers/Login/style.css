@@ -32,3 +32,21 @@
 .loginContainer {
     height: 100%;
 }
+
+.solicitudLinkDiv{
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+}
+
+.solicitudLink{
+    color: white;
+    text-decoration:underline;
+    letter-spacing:1px;
+    font-size:20px;
+}
+
+.solicitudLink:hover{
+    text-decoration:underline;
+    color:white;
+}

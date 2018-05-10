@@ -69,7 +69,7 @@ export default class SignUp extends Component {
     }
 
     checkEmail() {
-        let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        let re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(String(this.state.email).toLowerCase());
     }
 
@@ -149,7 +149,7 @@ export default class SignUp extends Component {
 
     onAcceptClicked(event) {
         if (this.state.modalHeader === "Error") {
-            !this.setState({
+            this.setState({
                 modal: !this.state.modal
             });
         }
@@ -166,7 +166,7 @@ export default class SignUp extends Component {
                 picture: "picture",
                 coordinates: [this.state.addressLongitude, this.state.addressLatitude]
             };
-            const coordinates = [this.state.addressLongitude, this.state.addressLatitude];
+            //const coordinates = [this.state.addressLongitude, this.state.addressLatitude];
             apiPostSignUp(entity);
             console.log(entity);
             event.preventDefault();

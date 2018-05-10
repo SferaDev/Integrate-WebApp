@@ -8,7 +8,7 @@ import _ from 'lodash';
 
 const MyMapComponent = compose(
     withProps({
-        googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places",
+        googleMapURL: "https://maps.googleapis.com/maps/api/js?key=" + process.env.REACT_APP_GOOGLE_MAPS_API_KEY + "&v=3.exp&libraries=geometry,drawing,places",
         loadingElement: <div style={{height: `100%`}}/>,
         containerElement: <div style={{height: `100%`}}/>,
         mapElement: <div style={{height: `80%`}}/>,
@@ -48,11 +48,11 @@ const MyMapComponent = compose(
                 },
                 onPlacesChanged: () => {
                     const places = refs.searchBox.getPlaces();
-                    {
-                        places.map(({formatted_address, geometry: {location}}) =>
-                            this.props.onUserSearched(formatted_address, location.lat(), location.lng())
-                        )
-                    }
+
+                    places.map(({formatted_address, geometry: {location}}) =>
+                        this.props.onUserSearched(formatted_address, location.lat(), location.lng())
+                    )
+
                     const bounds = new google.maps.LatLngBounds();
                     console.log();
                     places.forEach(place => {

@@ -1,12 +1,12 @@
-import * as type from '../constants/APITypes';
 import * as axios from 'axios';
 
 export const cloudinaryUploadImg = ({file}) =>
     new Promise((resolve, reject) => {
+        console.log(process.env.REACT_APP_CLOUDINARY_API_SECRET)
         const timestamp = new Date().getTime();
-        const api_key = type.CLOUDINARY_API_KEY;
+        const api_key = process.env.REACT_APP_CLOUDINARY_API_KEY;
         let sha1 = require('sha1');
-        const signature = sha1('timestamp=' + timestamp + type.CLOUDINARY_API_SECRET);
+        const signature = sha1('timestamp=' + timestamp + process.env.REACT_APP_CLOUDINARY_API_SECRET);
 
         const formData = new FormData();
         formData.append('file', file);
@@ -15,7 +15,7 @@ export const cloudinaryUploadImg = ({file}) =>
         formData.append('signature', signature);
 
         axios({
-            url: type.CLOUDINARY_UPLOAD_URL,
+            url: process.env.REACT_APP_CLOUDINARY_UPLOAD_URL,
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-ww-form-urlencoded'

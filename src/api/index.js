@@ -4,7 +4,7 @@ let localStorage = window && window.localStorage ? window.localStorage : null;
 
 if (typeof localStorage === 'undefined' || localStorage === null) {
     localStorage = {
-        getItem: (item) => 'fake localStorage',
+        getItem: () => 'fake localStorage',
         setItem: (key, value) => {
         },
         clear: () => {
@@ -12,7 +12,7 @@ if (typeof localStorage === 'undefined' || localStorage === null) {
     }
 }
 
-export const API_HOST = 'http://integrate-backend-staging.herokuapp.com';
+export const API_HOST = process.env.REACT_APP_API_HOST
 
 const redirectIfUnauthorized = (response) => {
     if (response.status === 401) {

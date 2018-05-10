@@ -48,11 +48,11 @@ const MyMapComponent = compose(
                 },
                 onPlacesChanged: () => {
                     const places = refs.searchBox.getPlaces();
-                    {
-                        places.map(({formatted_address, geometry: {location}}) =>
-                            this.props.onUserSearched(formatted_address, location.lat(), location.lng())
-                        )
-                    }
+
+                    places.map(({formatted_address, geometry: {location}}) =>
+                        this.props.onUserSearched(formatted_address, location.lat(), location.lng())
+                    )
+
                     const bounds = new google.maps.LatLngBounds();
                     console.log();
                     places.forEach(place => {

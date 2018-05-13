@@ -13,7 +13,6 @@ describe('<PasswordRecovery />', () => {
         const acceptModalButton = wrapper.find('Button').at(2);
         acceptButton.simulate('click');
 
-        // Empty field
         expect(wrapper.state().modalHeader).to.equal('Error');
         expect(wrapper.state().modalContent).to.equal("El nif introduït no és correcte.");
         expect(wrapper.state().modal).to.equal(true);

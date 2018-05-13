@@ -3,15 +3,19 @@ import {API_HOST} from './';
 
 
 export const apiPostPasswordRecovery = (nif) =>
-    new Promise((resolve, reject) => {
-        post(`${API_HOST}/register/reset`, nif).then(response => {
-            if (response.status === 404) {
-                reject('User not found');
+     new Promise((resolve, reject) => {
+        post(`${API_HOST}/register/reset`, {
+            nif: nif
+        }).then(response => {
+            const nif = response.data;
+            if (nif) {
+                resolve(nif);
             }
+            else reject();
             console.log(response)
-        })
-            .catch(error => {
-                console.log(error.response)
-            })
-    })
+        }).catch(error => {
+            console.log(error.response)
+        });
+    });
+
 

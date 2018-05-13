@@ -58,7 +58,7 @@ export default class PasswordRecovery extends React.Component {
 
         else {
             this.setState({modalHeader: "Correcte"});
-            this.setState({modalContent: "S'ha enviat una nova contrasenya correctament"});
+            this.setState({modalContent: "S'ha enviat una nova contrasenya correctament."});
         }
 
     }
@@ -76,12 +76,10 @@ export default class PasswordRecovery extends React.Component {
             });
         }
         else {
-            const nif = this.state.nif;
-            apiPostPasswordRecovery(nif)
-            console.log(nif)
+            apiPostPasswordRecovery(this.state.nif)
             event.preventDefault()
             const {history} = this.props
-            history.push('/')
+            history.push('/login')
         }
 
     }
@@ -96,8 +94,9 @@ export default class PasswordRecovery extends React.Component {
                 <FormGroup className="EmailForm">
                     <input type="email" className="EmailNameText" placeholder="Nif *" value={this.state.nif}
                            onChange={this.changeNif}/>
+                    <FormText>Ex. format: 60250886G</FormText>
                 </FormGroup>
-                <ModalFooter>
+                <ModalFooter className="ButtonsForm">
                     <Button color="primary" onClick={this.onAcceptButton}>Acceptar</Button>{' '}
                     <Button color="secondary" onClick={this.onCancelButton}>Cancel·lar</Button>
                 </ModalFooter>

@@ -65,6 +65,9 @@ export class Login extends Component {
 
                             </Form>
                         </div>
+                        <div className="solicitudLinkDiv">
+                            <a className="solicitudLink" href="/signup">Sol·licitud d'accés</a>
+                        </div>
                     </Col>
                 </Row>
             </Container>

@@ -14,7 +14,6 @@ import Login from './containers/Login';
 import SignUp from './components/Signup';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-//import 'font-awesome/css/font-awesome.min.css';
 import './index.css';
 import GoodsContainer from './containers/GoodsContainer/GoodsContainer';
 
@@ -22,14 +21,14 @@ fontawesome.library.add(faCoffee, faPlusCircle, faEdit, faTrashAlt);
 
 render(
     <Provider store={store}>
-        <Router>
-            <Switch>
-                <Route exact path="/" render={() => <h1>Main Page</h1>}/>
-                <Route path="/signup" component={SignUp}/>
-                <Route path="/login" component={Login}/>
-                <Route path='/goods' component={GoodsContainer}/>
-            </Switch>
-        </Router>
+            <Router>
+                <Switch>
+                    <Route exact path="/" render={() => <h1>Main Page</h1>}/>
+                    <Route path="/signup" component={SignUp}/>
+                    <Route path="/login" component={Login}/>
+                    <Route path='/goods' component={GoodsContainer}/>
+                </Switch>
+            </Router>
     </Provider>,
     document.getElementById('root')
 );

@@ -4,6 +4,7 @@ import {FormGroup, Modal, FormText, Button, ModalHeader, ModalBody, ModalFooter}
 import {apiPostPasswordRecovery} from '../../api/passwordrecovery'
 
 
+
 export default class PasswordRecovery extends React.Component {
     constructor(props) {
         super(props)

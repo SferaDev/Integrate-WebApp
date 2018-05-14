@@ -13,9 +13,10 @@ export const apiPostPasswordRecovery = (nif) =>
             }
             else reject();
             console.log(response)
-        }).catch(error => {
-            console.log(error.response)
-        });
+        }).catch(() => reject())
+
     });
+
+
 
 

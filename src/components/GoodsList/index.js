@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Good from '../Good';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import {Col, Container, Row} from 'reactstrap';
+import {FormattedMessage} from 'react-intl'
 
 const GoodsList = ({goods, modal, actions}) => {
     const Goods = (
@@ -35,7 +36,10 @@ const GoodsList = ({goods, modal, actions}) => {
                     <Col sm="12" className="stickyAddGood">
                         <button className="stickyAddGoodButton" onClick={toggle}>
                             <FontAwesomeIcon icon="plus-circle" className="plus-circle"/>
-                            <span className="addGoodText">Afegir un val de descompte</span>
+                            <span className="addGoodText">
+                                <FormattedMessage id='goodsList.addGood'
+                                                  defaultMessage='Afegir un val de descompte'/>
+                            </span>
                         </button>
                     </Col>
                 </Row>

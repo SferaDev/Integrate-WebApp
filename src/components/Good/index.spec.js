@@ -37,10 +37,10 @@ describe('Good component', () => {
         expect(component.find('.name').text()).toEqual('Patata');
         expect(component.find('.goodImg').props().src).toEqual('Picture1');
         expect(component.find('.appliedDiscount').text()).toEqual('20%');
-        expect(component.find('.category').text()).toEqual('Alimentació');
-        expect(component.find('.reusePeriod').text()).toEqual('1 dies');
+        expect(component.find('.category').props().catvalue).toEqual(1);
+        expect(component.find('.reusePeriod').text()).toEqual('1');
         expect(component.find('.originalPrice').text()).toEqual('50€');
         expect(component.find('.pendingUnits').text()).toEqual('3');
-        expect(component.find('.currentPrice').text()).toEqual('40.00');
+        expect(component.find('.currentPrice').text()).toEqual('40.00€');
     })
 });

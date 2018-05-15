@@ -12,6 +12,7 @@ import faTrashAlt from '@fortawesome/fontawesome-free-solid/faTrashAlt'
 import store from './store';
 import Login from './containers/Login';
 import SignUp from './components/Signup';
+import ChangePassword from './components/ChangePassword';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
@@ -27,6 +28,8 @@ render(
                     <Route path="/signup" component={SignUp}/>
                     <Route path="/login" component={Login}/>
                     <Route path='/goods' component={GoodsContainer}/>
+                    <Route path='/changepassword' component={ChangePassword}/>
+
                 </Switch>
             </Router>
     </Provider>,

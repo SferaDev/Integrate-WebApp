@@ -1,5 +1,12 @@
 export default {
     en: {
+        'password.header' : 'Change password:',
+        'password.current' : 'Current password:',
+        'password.new' : 'New password:',
+        'password.new2' : 'Rewrite the new password:',
+        'modal.accept' : 'Accept',
+        'modal.cancel' : 'Cancel',
+
         'good.originalPrice': 'Original price',
         'good.pendingUnits': 'Pending units',
         'good.appliedDiscount': 'Applied discount',
@@ -32,6 +39,13 @@ export default {
         'languageSelector.entities': 'entities',
     },
     es: {
+        'password.header' : 'Cambio de constraseña:',
+        'password.current' : 'Contraseña actual:',
+        'password.new' : 'Nueva contraseña:',
+        'password.new2' : 'Reescribe la nueva contraseña:',
+        'modal.accept' : 'Aceptar',
+        'modal.cancel' : 'Cancelar',
+
         'good.originalPrice': 'Precio original',
         'good.pendingUnits': 'Unidades restantes',
         'good.appliedDiscount': 'Descuento aplicado',
@@ -64,6 +78,13 @@ export default {
         'languageSelector.entities': 'entidades',
     },
     ca: {
+        'password.header' : 'Canvi de contrasenya:',
+        'password.current' : 'Contrasenya actual:',
+        'password.new' : 'Nova contrasenya:',
+        'password.new2' : 'Reescriu la nova contrasenya:',
+        'modal.accept' : 'Acceptar',
+        'modal.cancel' : 'Cancel·lar',
+
         'good.originalPrice': 'Preu original',
         'good.pendingUnits': 'Unitats restants',
         'good.appliedDiscount': 'Descompte aplicat',

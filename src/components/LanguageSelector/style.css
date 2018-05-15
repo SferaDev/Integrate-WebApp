@@ -1,0 +1,18 @@
+.languageSelector{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    padding: 10px 30px;
+    align-items: center;
+    font-family: "Montserrat", serif;
+}
+
+.integrateEntities{
+    font-size:30px;
+    display:flex;
+    flex-direction:row;
+}
+
+.integrateLogo{
+    font-weight:900;
+}

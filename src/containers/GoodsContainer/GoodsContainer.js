@@ -4,9 +4,21 @@ import PropTypes from 'prop-types';
 import bindActionCreators from 'redux/es/bindActionCreators';
 import * as GoodsActions from '../../actions/goods'
 import * as ModalActions from '../../actions/modal'
+import * as LocaleActions from '../../actions/locale'
 import ModalView from '../../components/ModalView';
 import GoodsList from '../../components/GoodsList';
 import './style.css';
+
+import {addLocaleData, IntlProvider} from 'react-intl';
+import es from 'react-intl/locale-data/es'
+import en from 'react-intl/locale-data/en'
+import ca from 'react-intl/locale-data/ca'
+import messages from "../../constants/messages"
+import LanguageSelector from '../../components/LanguageSelector';
+
+addLocaleData(en)
+addLocaleData(es)
+addLocaleData(ca)
 
 class GoodsContainer extends Component {
     constructor(props) {
@@ -19,13 +31,16 @@ class GoodsContainer extends Component {
     }
 
     render() {
-        let {goods, actions, modal} = this.props;
+        let {goods, actions, modal, lang} = this.props;
         return (
-            <div className="goodsContainer">
-                <GoodsList
-                    goods={goods} actions={actions}/>
-                <ModalView modal={modal} actions={actions}/>
-            </div>
+            <IntlProvider locale={lang} messages={messages[lang]}>
+                <div className="goodsContainer">
+                    <LanguageSelector actions={actions.localeActions} lang={lang}/>
+                    <GoodsList
+                        goods={goods} actions={actions}/>
+                    <ModalView modal={modal} actions={actions} lang={lang}/>
+                </div>
+            </IntlProvider>
         )
     }
 }
@@ -49,6 +64,7 @@ GoodsContainer.propTypes = {
             good: PropTypes.object,
         }
     ).isRequired,
+    lang: PropTypes.string.isRequired,
     actions: PropTypes.shape({
         modalActions: PropTypes.object.isRequired,
         goodsActions: PropTypes.object.isRequired,
@@ -57,13 +73,15 @@ GoodsContainer.propTypes = {
 
 const mapStateToProps = state => ({
     goods: state.goods,
-    modal: state.modal
+    modal: state.modal,
+    lang: state.locale.lang,
 });
 
 const mapDispatchToProps = dispatch => ({
     actions: {
         goodsActions: bindActionCreators(GoodsActions, dispatch),
-        modalActions: bindActionCreators(ModalActions, dispatch)
+        modalActions: bindActionCreators(ModalActions, dispatch),
+        localeActions: bindActionCreators(LocaleActions, dispatch),
     }
 });
 

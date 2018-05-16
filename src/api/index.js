@@ -12,7 +12,8 @@ if (typeof localStorage === 'undefined' || localStorage === null) {
     }
 }
 
-export const API_HOST = process.env.REACT_APP_API_HOST
+
+export const API_HOST = process.env.REACT_APP_API_HOST || 'https://integrate-backend-staging.herokuapp.com'
 
 const redirectIfUnauthorized = (response) => {
     if (response.status === 401) {

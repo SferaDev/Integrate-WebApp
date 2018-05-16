@@ -15,7 +15,6 @@ import SignUp from './components/Signup';
 import PasswordRecovery from './components/PasswordRecovery'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-//import 'font-awesome/css/font-awesome.min.css';
 import './index.css';
 import GoodsContainer from './containers/GoodsContainer/GoodsContainer';
 
@@ -33,6 +32,5 @@ render(
 
             </Switch>
         </Router>
-    </Provider>,
     document.getElementById('root')
 );

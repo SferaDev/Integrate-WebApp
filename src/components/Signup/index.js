@@ -168,7 +168,6 @@ export default class SignUp extends Component {
             };
 
             apiPostSignUp(entity);
-            conole.log(entity);
             event.preventDefault();
             const {history} = this.props;
             history.push('/login');

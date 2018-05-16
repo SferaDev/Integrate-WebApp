@@ -1,7 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 import {Provider} from 'react-redux';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import fontawesome from '@fortawesome/fontawesome'
 import faCoffee from '@fortawesome/fontawesome-free-solid/faCoffee'
@@ -12,7 +12,7 @@ import faTrashAlt from '@fortawesome/fontawesome-free-solid/faTrashAlt'
 import store from './store';
 import Login from './containers/Login';
 import SignUp from './components/Signup';
-import PasswordRecovery from './components/PasswordRecovery'
+import PasswordRecovery from './components/PasswordRecovery';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
@@ -32,5 +32,6 @@ render(
 
             </Switch>
         </Router>
+    </Provider>,
     document.getElementById('root')
 );

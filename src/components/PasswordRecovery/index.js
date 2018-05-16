@@ -2,6 +2,9 @@ import React from 'react';
 import './style.css';
 import {FormGroup, Modal, FormText, Button, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 import {apiPostPasswordRecovery} from '../../api/passwordrecovery'
+import {FormattedMessage} from 'react-intl';
+import {IntlProvider} from 'react-intl'
+import messages from "../../constants/messages";
 
 
 
@@ -12,7 +15,9 @@ export default class PasswordRecovery extends React.Component {
             nif: '',
             modal: false,
             modalHeader: '',
-            modalContent: ''
+            modalContent: '',
+            idHeader: '',
+            idContent: ''
         }
 
         this.changeNif = this.changeNif.bind(this)
@@ -47,7 +52,7 @@ export default class PasswordRecovery extends React.Component {
         return true;
     }
 
-    onAcceptButton(event) {
+    onAcceptButton() {
         this.setState({
             modal: !this.state.modal
         });
@@ -55,11 +60,15 @@ export default class PasswordRecovery extends React.Component {
         if (!this.checkNIF()) {
             this.setState({modalHeader: "Error"});
             this.setState({modalContent: "El nif introduït no és correcte."});
+            this.setState({idHeader: 'reset.error'});
+            this.setState({idContent: 'reset.econtent'});
         }
 
         else {
             this.setState({modalHeader: "Correcte"});
             this.setState({modalContent: "S'ha enviat una nova contrasenya correctament."});
+            this.setState({idHeader: 'reset.correct'});
+            this.setState({idContent: 'reset.scontent'});
         }
 
     }
@@ -87,30 +96,45 @@ export default class PasswordRecovery extends React.Component {
 
 
     render() {
+        let lang = "es";
         return (
-            <div className="MainDiv">
-                <h1 className="HeaderForm">Recuperació de la constrasenya</h1>
-                <hr className="MainLine"/>
-                <p className="Info">Introdueix el nif on rebràs una nova contrasenya al correu que vas utilitzar per registrar-te:</p>
-                <FormGroup className="EmailForm">
-                    <input type="email" className="EmailNameText" placeholder="Nif *" value={this.state.nif}
-                           onChange={this.changeNif}/>
-                    <FormText>Ex. format: 60250886G</FormText>
-                </FormGroup>
-                <ModalFooter className="ButtonsForm">
-                    <Button color="primary" onClick={this.onAcceptButton}>Acceptar</Button>{' '}
-                    <Button color="secondary" onClick={this.onCancelButton}>Cancel·lar</Button>
-                </ModalFooter>
-                <Modal isOpen={this.state.modal}>
-                    <ModalHeader>{this.state.modalHeader}</ModalHeader>
-                    <ModalBody>
-                        {this.state.modalContent}
-                    </ModalBody>
-                    <ModalFooter>
-                        <Button color="primary" onClick={this.onAcceptModalButton}>Acceptar</Button>
+            <IntlProvider locale={lang} messages={messages[lang]}>
+                <div className="MainDiv">
+                    <h1 className="HeaderForm">
+                        <FormattedMessage id='reset.header' defaultMessage='Recuperació de la contrasenya:'/>
+                    </h1>
+                    <hr className="MainLine"/>
+                    <p className="Info">
+                        <FormattedMessage id='reset.info' defaultMessage='Introdueix el nif on rebràs una nova contrasenya al correu que vas utilitzar per registrar-te:'/>
+                    </p>
+                    <FormGroup className="EmailForm">
+                        <input type="email" className="EmailNameText" placeholder="Nif *" value={this.state.nif}
+                               onChange={this.changeNif}/>
+                        <FormText>Ex.: 60250886G</FormText>
+                    </FormGroup>
+                    <ModalFooter className="ButtonsForm">
+                        <Button color="primary" onClick={this.onAcceptButton}>
+                            <FormattedMessage id='reset.accept' defaultMessage='Acceptar:'/>
+                        </Button>{' '}
+                        <Button color="secondary" onClick={this.onCancelButton}>
+                            <FormattedMessage id='reset.cancel' defaultMessage='Cancel·lar:'/>
+                        </Button>
                     </ModalFooter>
-                </Modal>
-            </div>
+                    <Modal isOpen={this.state.modal}>
+                        <ModalHeader>
+                            <FormattedMessage id={this.state.idHeader} defaultMessage={this.state.modalHeader}/>
+                        </ModalHeader>
+                        <ModalBody>
+                            <FormattedMessage id={this.state.idContent} defaultMessage={this.state.modalContent}/>
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button color="primary" onClick={this.onAcceptModalButton}>
+                                <FormattedMessage id='reset.button' defaultMessage='Acceptar'/>
+                            </Button>
+                        </ModalFooter>
+                    </Modal>
+                </div>
+            </IntlProvider>
         );
     }
 }

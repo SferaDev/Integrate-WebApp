@@ -1,5 +1,18 @@
 export default {
     en: {
+
+        'reset.header' : 'Password recovery',
+        'reset.accept' : 'Accept',
+        'reset.cancel' : 'Cancel',
+        'reset.error' : 'Error',
+        'reset.correct' : 'Correct',
+        'reset.econtent' : 'The nif is incorrect.',
+        'reset.scontent' : "It has been sent a new password correctly.",
+        'reset.info' : 'Enter the nif that you will receive a new password to the email you used to register',
+        'reset.button': 'Accept',
+
+
+
         'good.originalPrice': 'Original price',
         'good.pendingUnits': 'Pending units',
         'good.appliedDiscount': 'Applied discount',
@@ -32,6 +45,18 @@ export default {
         'languageSelector.entities': 'entities',
     },
     es: {
+
+        'reset.header' : 'Recuperación de la contraseña:',
+        'reset.accept' : 'Aceptar',
+        'reset.cancel' : 'Cancelar',
+        'reset.error' : 'Error',
+        'reset.correct' : 'Correcto',
+        'reset.econtent' : 'El nif introducido no es correcto.',
+        'reset.scontent' : "Se ha enviado una nueva contraseña correctamente.",
+        'reset.info' : 'Introduce el nif donde recibirás una nueva contraseña al correo que utilizaste para registrarte',
+        'reset.button': 'Aceptar',
+
+
         'good.originalPrice': 'Precio original',
         'good.pendingUnits': 'Unidades restantes',
         'good.appliedDiscount': 'Descuento aplicado',
@@ -64,6 +89,16 @@ export default {
         'languageSelector.entities': 'entidades',
     },
     ca: {
+        'reset.header' : 'Recuperació de la contrasenya:',
+        'reset.accept' : 'Acceptar',
+        'reset.cancel' : 'Cancel·lar',
+        'reset.error' : 'Error',
+        'reset.correct' : 'Correcte',
+        'reset.econtent' : 'El nif introduït no és correcte.',
+        'reset.scontent' : "S'ha enviat una nova contrasenya correctament.",
+        'reset.info' : 'Introdueix el nif on rebràs una nova contrasenya al correu que vas utilitzar per registrar-te:',
+        'reset.button': 'Acceptar',
+
         'good.originalPrice': 'Preu original',
         'good.pendingUnits': 'Unitats restants',
         'good.appliedDiscount': 'Descompte aplicat',

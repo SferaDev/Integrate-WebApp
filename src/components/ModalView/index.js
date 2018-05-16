@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './style.css';
 import React from 'react';
 import {cloudinaryUploadImg} from '../../api/cloudinary';
+import {FormattedMessage} from 'react-intl';
 
 class ModalView extends React.Component {
 
@@ -133,17 +134,26 @@ class ModalView extends React.Component {
     render() {
         return (
             <Modal isOpen={this.props.modal.isOpen} toggle={this.toggle} id="formModal">
-                <ModalHeader toggle={this.toggle}>Gestió de vals de descompte</ModalHeader>
+                <ModalHeader toggle={this.toggle}>
+                    <FormattedMessage id='modal.goodsManagement'
+                                      defaultMessage='Descompte aplicat'/>
+                </ModalHeader>
                 <ModalBody>
                     <Form>
                         <FormGroup>
-                            <Label for="couponName">Nom del val</Label>
+                            <Label for="couponName">
+                                <FormattedMessage id='modal.goodName'
+                                                  defaultMessage='Nom del producte'/>
+                            </Label>
                             <Input type="text" name="goodName" id="goodName" onChange={this.handleChangeProductName}
                                    value={this.state.productName}
                             />
                         </FormGroup>
                         <FormGroup>
-                            <Label for="initialPrice">Preu original (€)</Label>
+                            <Label for="initialPrice">
+                                <FormattedMessage id='modal.originalPrice'
+                                                  defaultMessage='Preu original (€)'/>
+                             </Label>
                             <Input type="number" name="initialPrice" id="initialPrice"
                                    min={
                                        this.state.discountType === '%' ? '0' :
@@ -153,10 +163,16 @@ class ModalView extends React.Component {
                         </FormGroup>
                         <FormGroup row>
                             <Col sm="6">
-                                <Label for="discount">Descompte</Label>
+                                <Label for="discount">
+                                    <FormattedMessage id='modal.discount'
+                                                      defaultMessage='Descompte'/>
+                                </Label>
                             </Col>
                             <Col sm="6">
-                                <Label for="discount">Unitats restants</Label>
+                                <Label for="discount">
+                                    <FormattedMessage id='good.pendingUnits'
+                                                      defaultMessage='Unitats restants'/>
+                                </Label>
                             </Col>
                             <Col sm="3">
                                 <Input type="number" name="discount" id="discount"
@@ -180,7 +196,9 @@ class ModalView extends React.Component {
                                        onChange={this.handleChangePendingUnits} value={this.state.pendingUnits}/>
                             </Col>
                             <Col sm="12" className="currentPrice">
-                                Preu final:&nbsp;
+                                <FormattedMessage id='good.currentPrice'
+                                                  defaultMessage='Preu final'/>
+                                :&nbsp;
                                 {
                                     this.state.discountType === '%' ?
                                         (parseFloat(this.state.initialPrice) - parseFloat(this.state.initialPrice) * parseFloat(this.state.discount) / 100).toFixed(2).toString() :
@@ -191,29 +209,56 @@ class ModalView extends React.Component {
                         </FormGroup>
                         <FormGroup row>
                             <Col sm="6">
-                                <Label for="reusePeriod">Periodicitat (dies)</Label>
+                                <Label for="reusePeriod">
+                                    <FormattedMessage id='modal.periodicity'
+                                                      defaultMessage='Periodicitat (dies)'/>
+                                 </Label>
                                 <Input required type="number" name="reusePeriod" id="reusePeriod" min="0"
                                        onChange={this.handleChangeReusePeriod} value={this.state.reusePeriod}/>
                             </Col>
                             <Col sm="6">
-                                <Label for="category">Categoria</Label>
+                                <Label for="category">
+                                    <FormattedMessage id='good.category'
+                                                      defaultMessage='Categoria'/>
+                                </Label>
                                 <Input required type="select" name="category" id="category"
                                        onChange={this.handleChangeCategory} value={this.state.category}>
-                                    <option value="1">Alimentació</option>
-                                    <option value="2">Cultura</option>
-                                    <option value="3">Formació</option>
-                                    <option value="4">Mobilitat</option>
-                                    <option value="5">Tecnologia</option>
-                                    <option value="6">Salut</option>
-                                    <option value="7">Esports</option>
-                                    <option value="8">Lleure</option>
-                                    <option value="9">Altres</option>
+                                    <FormattedMessage id='good.category.nutrition' defaultMessage='Nutrició' key={1}>
+                                        {(message) => <option value="1">{message}</option>}
+                                    </FormattedMessage>
+                                    <FormattedMessage id='good.category.culture' defaultMessage='Cultura' key={2}>
+                                        {(message) => <option value="2">{message}</option>}
+                                    </FormattedMessage>
+                                    <FormattedMessage id='good.category.education' defaultMessage='Formació' key={3}>
+                                        {(message) => <option value="3">{message}</option>}
+                                    </FormattedMessage>
+                                    <FormattedMessage id='good.category.mobility' defaultMessage='Mobilitat' key={4}>
+                                        {(message) => <option value="4">{message}</option>}
+                                    </FormattedMessage>
+                                    <FormattedMessage id='good.category.technology' defaultMessage='Tecnologia' key={5}>
+                                        {(message) => <option value="5">{message}</option>}
+                                    </FormattedMessage>
+                                    <FormattedMessage id='good.category.healthcare' defaultMessage='Salut' key={6}>
+                                        {(message) => <option value="6">{message}</option>}
+                                    </FormattedMessage>
+                                    <FormattedMessage id='good.category.sports' defaultMessage='Esports' key={7}>
+                                        {(message) => <option value="7">{message}</option>}
+                                    </FormattedMessage>
+                                    <FormattedMessage id='good.category.leisure' defaultMessage='Lleure' key={8}>
+                                        {(message) => <option value="8">{message}</option>}
+                                    </FormattedMessage>
+                                    <FormattedMessage id='good.category.others' defaultMessage='Altres' key={9}>
+                                        {(message) => <option value="9">{message}</option>}
+                                    </FormattedMessage>
                                 </Input>
                             </Col>
                         </FormGroup>
                         <FormGroup row>
                             <Col sm="8">
-                                <Label for="File">Imatge</Label>
+                                <Label for="File">
+                                    <FormattedMessage id='modal.image'
+                                                      defaultMessage='Imatge'/>
+                                </Label>
                                 <Input type="file" name="file" id="pictureFile" onChange={this.handleChangePicture}/>
                             </Col>
                             <Col sm="4">

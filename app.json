@@ -2,13 +2,19 @@
   "name": "Integrate-WebApp",
   "scripts": {},
   "env": {
-    "CLOUDINARY_API_KEY": {
+    "REACT_APP_API_HOST": {
       "required": true
     },
-    "CLOUDINARY_UPLOAD_PRESET": {
+    "REACT_APP_CLOUDINARY_UPLOAD_URL": {
       "required": true
     },
-    "CLOUDINARY_UPLOAD_URL": {
+    "REACT_APP_CLOUDINARY_API_KEY": {
+      "required": true
+    },
+    "REACT_APP_CLOUDINARY_API_SECRET": {
+      "required": true
+    },
+    "REACT_APP_GOOGLE_MAPS_API_KEY": {
       "required": true
     }
   },

@@ -166,7 +166,9 @@ export default class SignUp extends Component {
                 picture: "picture",
                 coordinates: [this.state.addressLongitude, this.state.addressLatitude]
             };
-            apiPostSignUp(entity)
+
+            apiPostSignUp(entity);
+            conole.log(entity);
             event.preventDefault();
             const {history} = this.props;
             history.push('/login');

@@ -18,7 +18,7 @@ export default class ChangePassword extends React.Component {
             modalHeader: '',
             idHeader: '',
             idContent: '',
-            currentp: true
+            currentp: false
         };
 
         this.changeActualPassword = this.changeActualPassword.bind(this);

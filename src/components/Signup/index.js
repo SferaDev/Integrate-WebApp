@@ -135,9 +135,6 @@ export default class SignUp extends Component {
             this.setState({modalHeader: "Correcte"});
             this.setState({modalContent: "Les dades introduïdes són correctes."});
 
-            //const {history} = this.props;
-            //history.push('/');
-
         }
     }
 
@@ -166,9 +163,8 @@ export default class SignUp extends Component {
                 picture: "picture",
                 coordinates: [this.state.addressLongitude, this.state.addressLatitude]
             };
-            //const coordinates = [this.state.addressLongitude, this.state.addressLatitude];
+
             apiPostSignUp(entity);
-            console.log(entity);
             event.preventDefault();
             const {history} = this.props;
             history.push('/login');

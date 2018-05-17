@@ -7,13 +7,20 @@ export const apiPostPasswordRecovery = (nif) =>
         post(`${API_HOST}/register/reset`, {
             nif: nif
         }).then(response => {
-            const nif = response.data;
-            if (nif) {
-                resolve(nif);
+            if (response.data) {
+                const {nif} = response.data;
+                if (nif) {
+                    resolve(nif);
+                }
+                else reject();
             }
             else reject();
-            console.log(response)
-        }).catch(() => reject())
+        }).catch(error => {
+            if (error.response.status === 404) {
+                reject('User not found');
+            }
+        })
+
 
     });
 

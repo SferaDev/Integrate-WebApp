@@ -31,6 +31,7 @@ export default class PasswordRecovery extends React.Component {
         this.setState({nif: event.target.value});
     }
 
+
     checkNIF() {
         let nif = this.state.nif.substring(0, this.state.nif.length - 1);
         let letra = this.state.nif.charAt(this.state.nif.length - 1);
@@ -52,6 +53,7 @@ export default class PasswordRecovery extends React.Component {
         return true;
     }
 
+
     onAcceptButton() {
         this.setState({
             modal: !this.state.modal
@@ -65,10 +67,25 @@ export default class PasswordRecovery extends React.Component {
         }
 
         else {
-            this.setState({modalHeader: "Correcte"});
-            this.setState({modalContent: "S'ha enviat una nova contrasenya correctament."});
-            this.setState({idHeader: 'reset.correct'});
-            this.setState({idContent: 'reset.scontent'});
+            let notfound = 0;
+            apiPostPasswordRecovery(this.state.nif).catch(error => {
+                if (error === 'User not found') {
+                    notfound = 1;
+                    this.setState({modalHeader: "Error"});
+                    this.setState({modalContent: "L'usuari no existeix."});
+                    this.setState({idHeader: 'reset.error'});
+                    this.setState({idContent: 'reset.notfound'});
+
+
+                }
+            })
+            if (notfound === 0) {
+                this.setState({modalHeader: "Correcte"});
+                this.setState({modalContent: "S'ha enviat una nova contrasenya correctament."});
+                this.setState({idHeader: 'reset.correct'});
+                this.setState({idContent: 'reset.scontent'});
+            }
+
         }
 
     }
@@ -86,7 +103,6 @@ export default class PasswordRecovery extends React.Component {
             });
         }
         else {
-            apiPostPasswordRecovery(this.state.nif)
             event.preventDefault()
             const {history} = this.props
             history.push('/login')
@@ -96,7 +112,7 @@ export default class PasswordRecovery extends React.Component {
 
 
     render() {
-        let lang = "es";
+        let lang = "ca";
         return (
             <IntlProvider locale={lang} messages={messages[lang]}>
                 <div className="MainDiv">

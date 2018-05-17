@@ -135,9 +135,6 @@ export default class SignUp extends Component {
             this.setState({modalHeader: "Correcte"});
             this.setState({modalContent: "Les dades introduïdes són correctes."});
 
-            //const {history} = this.props;
-            //history.push('/');
-
         }
     }
 

@@ -10,6 +10,7 @@ export default {
         'reset.scontent' : "It has been sent a new password correctly.",
         'reset.info' : 'Enter the nif that you will receive a new password to the email you used to register',
         'reset.button': 'Accept',
+        'reset.notfound' : "User doesn't exist.",
 
 
 
@@ -55,6 +56,7 @@ export default {
         'reset.scontent' : "Se ha enviado una nueva contraseña correctamente.",
         'reset.info' : 'Introduce el nif donde recibirás una nueva contraseña al correo que utilizaste para registrarte',
         'reset.button': 'Aceptar',
+        'reset.notfound' : 'El usuario no existe.',
 
 
         'good.originalPrice': 'Precio original',
@@ -98,6 +100,7 @@ export default {
         'reset.scontent' : "S'ha enviat una nova contrasenya correctament.",
         'reset.info' : 'Introdueix el nif on rebràs una nova contrasenya al correu que vas utilitzar per registrar-te:',
         'reset.button': 'Acceptar',
+        'reset.notfound' : "L'usuari no existeix.",
 
         'good.originalPrice': 'Preu original',
         'good.pendingUnits': 'Unitats restants',

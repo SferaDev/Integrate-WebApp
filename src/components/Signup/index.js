@@ -148,13 +148,39 @@ export default class SignUp extends Component {
         }
 
         else {
-            this.setState({modalHeader: "Correcte"});
-            this.setState({modalContent: "Les dades introduïdes són correctes."});
-            this.setState({idHeader: 'modal.header'});
-            this.setState({idContent: 'modal.correct'});
-
+            const entity = {
+                salesmanFirstName: this.state.salesmanFirstName,
+                salesmanLastName: this.state.salesmanLastName,
+                nif: this.state.nif,
+                email: this.state.email,
+                phone: this.state.phone,
+                description: this.state.description,
+                name: this.state.name,
+                addressName: this.state.addressName,
+                picture: "picture",
+                coordinates: [this.state.addressLongitude, this.state.addressLatitude]
+            };
+            let exists = 0;
+            apiPostSignUp(entity).catch(error => {
+                if (error === 'Nif already exist.') {
+                    this.setState({modalHeader: "Error"});
+                    this.setState({modalContent: "El nif ja existeix."});
+                    this.setState({idHeader: 'modal.error'});
+                    this.setState({idContent: 'modal.exist'});
+                    exists = 1;
+                }
+                console.log(error)
+            });
+            if (exists === 0) {
+                this.setState({modalHeader: "Correcte"});
+                this.setState({modalContent: "Les dades introduïdes són correctes."});
+                this.setState({idHeader: 'modal.header'});
+                this.setState({idContent: 'modal.correct'});
+            }
 
         }
+
+
     }
 
     onCloseClicked(event) {
@@ -170,20 +196,7 @@ export default class SignUp extends Component {
             });
         }
         else {
-            const entity = {
-                salesmanFirstName: this.state.salesmanFirstName,
-                salesmanLastName: this.state.salesmanLastName,
-                nif: this.state.nif,
-                email: this.state.email,
-                phone: this.state.phone,
-                description: this.state.description,
-                name: this.state.name,
-                addressName: this.state.addressName,
-                picture: "picture",
-                coordinates: [this.state.addressLongitude, this.state.addressLatitude]
-            };
-            apiPostSignUp(entity);
-            console.log(entity);
+
             event.preventDefault();
             const {history} = this.props;
             history.push('/login');

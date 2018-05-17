@@ -18,6 +18,7 @@ export default {
         'modal.phone' : "The phone number is incorrect.",
         'modal.correct': "The data is correct.",
         'modal.empty' : "You must fill all the blanks.",
+        'modal.exist' : 'Nif already exist.',
         'modal.header' : 'Correct',
         'modal.button' : 'Accept',
 
@@ -66,6 +67,7 @@ export default {
         'entity.addressinfo' : "Escribe la dirección en el buscador del mapa:",
         'entity.send' : 'Enviar',
 
+
         'modal.error' : 'Error',
         'modal.email' : "El email introducido no es correcto.",
         'modal.nif' : "El nif introducido no es correcto.",
@@ -74,6 +76,8 @@ export default {
         'modal.empty' : "Se tienen que rellenar todos los datos del formulario.",
         'modal.header' : 'Correcto',
         'modal.button' : 'Aceptar',
+        'modal.exist' : 'El Nif ya existe.',
+
 
 
         'good.originalPrice': 'Precio original',
@@ -128,6 +132,8 @@ export default {
         'modal.empty' : "S'han d'omplir totes les dades del formulari.",
         'modal.header' : 'Correcte',
         'modal.button' : 'Acceptar',
+        'modal.exist' : 'El Nif ja existeix.',
+
 
 
         'good.originalPrice': 'Preu original',

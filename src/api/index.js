@@ -18,6 +18,7 @@ export const API_HOST = process.env.REACT_APP_API_HOST || 'https://integrate-bac
 const redirectIfUnauthorized = (response) => {
     if (response.status === 401) {
         // TODO: redirect to login
+        console.log('401!');
         localStorage.clear();
     }
     return response;

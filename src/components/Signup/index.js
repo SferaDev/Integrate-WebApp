@@ -2,7 +2,13 @@ import React, {Component} from 'react';
 import './style.css';
 import {Maps} from "../Maps";
 import {apiPostSignUp} from "../../api/signup";
-import {Button, FormGroup, FormText, Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
+import {Button, FormGroup, FormText, Modal, ModalBody, ModalFooter, ModalHeader, Label, Input, Col} from 'reactstrap';
+import {FormattedMessage} from 'react-intl';
+import messages from "../../constants/messages";
+import {IntlProvider} from 'react-intl';
+
+
+
 
 export default class SignUp extends Component {
     constructor(props) {
@@ -20,7 +26,9 @@ export default class SignUp extends Component {
             addressLongitude: '',
             modal: false,
             modalHeader: '',
-            modalContent: ''
+            modalContent: '',
+            idHeader: '',
+            idContent: ''
         };
         this.changeFirstName = this.changeFirstName.bind(this);
         this.changeLastName = this.changeLastName.bind(this);
@@ -114,28 +122,65 @@ export default class SignUp extends Component {
         if (this.checkEmptyInputs()) {
             this.setState({modalHeader: "Error"});
             this.setState({modalContent: "S'han d'omplir totes les dades del formulari."});
+            this.setState({idHeader: 'modal.error'});
+            this.setState({idContent: 'modal.empty'});
         }
 
         else if (!this.checkEmail()) {
             this.setState({modalHeader: "Error"});
             this.setState({modalContent: "L'email introduït no és correcte."});
+            this.setState({idHeader: 'modal.error'});
+            this.setState({idContent: 'modal.email'});
         }
 
         else if (!this.checkPhone()) {
             this.setState({modalHeader: "Error"});
             this.setState({modalContent: "El telèfon introduït no és correcte."});
+            this.setState({idHeader: 'modal.error'});
+            this.setState({idContent: 'modal.phone'});
         }
 
         else if (!this.checkNIF()) {
             this.setState({modalHeader: "Error"});
             this.setState({modalContent: "El nif introduït no és correcte."});
+            this.setState({idHeader: 'modal.error'});
+            this.setState({idContent: 'modal.nif'});
         }
 
         else {
-            this.setState({modalHeader: "Correcte"});
-            this.setState({modalContent: "Les dades introduïdes són correctes."});
+            const entity = {
+                salesmanFirstName: this.state.salesmanFirstName,
+                salesmanLastName: this.state.salesmanLastName,
+                nif: this.state.nif,
+                email: this.state.email,
+                phone: this.state.phone,
+                description: this.state.description,
+                name: this.state.name,
+                addressName: this.state.addressName,
+                picture: "picture",
+                coordinates: [this.state.addressLongitude, this.state.addressLatitude]
+            };
+            let exists = 0;
+            apiPostSignUp(entity).catch(error => {
+                if (error === 'Nif already exist.') {
+                    this.setState({modalHeader: "Error"});
+                    this.setState({modalContent: "El nif ja existeix."});
+                    this.setState({idHeader: 'modal.error'});
+                    this.setState({idContent: 'modal.exist'});
+                    exists = 1;
+                }
+                console.log(error)
+            });
+            if (exists === 0) {
+                this.setState({modalHeader: "Correcte"});
+                this.setState({modalContent: "Les dades introduïdes són correctes."});
+                this.setState({idHeader: 'modal.header'});
+                this.setState({idContent: 'modal.correct'});
+            }
 
         }
+
+
     }
 
     onCloseClicked(event) {
@@ -151,25 +196,9 @@ export default class SignUp extends Component {
             });
         }
         else {
-            const entity = {
-                salesmanFirstName: this.state.salesmanFirstName,
-                salesmanLastName: this.state.salesmanLastName,
-                nif: this.state.nif,
-                email: this.state.email,
-                phone: this.state.phone,
-                description: this.state.description,
-                name: this.state.name,
-                addressName: this.state.addressName,
-                picture: "picture",
-                coordinates: [this.state.addressLongitude, this.state.addressLatitude]
-            };
-
-            apiPostSignUp(entity);
             event.preventDefault();
             const {history} = this.props;
             history.push('/login');
-
-
         }
     }
 
@@ -184,70 +213,103 @@ export default class SignUp extends Component {
 
 
     render() {
-
+        let lang = "en";
         return (
+            <IntlProvider locale={lang} messages={messages[lang]}>
             <div className="Fons row">
                 <div className="Form col-md-6">
-                    <h1 className="HeaderForm">Formulari de sol·licitud</h1>
+                    <h1 className="HeaderForm">
+                        <FormattedMessage id='entity.header' defaultMessage='Formulari de sol·licitud'/>
+                    </h1>
                     <button className="closeButton" onClick={this.onCloseClicked}><h3>×</h3></button>
                     <hr className="MainLine"/>
-                    <FormGroup className="FirstFormGroup">
-                        <input type="text" className="FirstNameText" placeholder="Nom *"
-                               value={this.state.salesmanFirstName} onChange={this.changeFirstName}/>
+                    <FormGroup row>
+                        <Label for="FirstName" sm={2}>
+                            <FormattedMessage id='entity.firstname' defaultMessage='Nom:'/>
+                        </Label>
+                        <Col sm={3}>
+                            <Input id= "FirstName" type="text" name="FirstName" value={this.state.salesmanFirstName} onChange={this.changeFirstName}/>
+                        </Col>
+                        <Label for="Surname" sm={2}>
+                            <FormattedMessage id='entity.surname' defaultMessage='Cognoms:'/>
+                        </Label>
+                        <Col sm={5}>
+                            <Input id= "Surname" type="text" name="Surname" value={this.state.salesmanLastName} onChange={this.changeLastName}/>
+                        </Col>
                     </FormGroup>
-                    <FormGroup className="SecondFormGroup">
-                        <input type="text" className="SecondNameText" placeholder="Cognoms *"
-                               value={this.state.salesmanLastName} onChange={this.changeLastName}/>
+                    <FormGroup row>
+                        <Label for="Phone" sm={2}>
+                            <FormattedMessage id='entity.phone' defaultMessage='Telèfon:'/>
+                        </Label>
+                        <Col sm={3}>
+                            <Input id= "Phone" type="text" name="Phone" value={this.state.phone} onChange={this.changePhone}/>
+                        </Col>
+                        <Label for="Email" sm={1}>
+                            <FormattedMessage id='entity.email' defaultMessage='Email:'/>
+                        </Label>
+                        <Col sm={6}>
+                            <Input id= "Email" type="text" name="Email" value={this.state.email} onChange={this.changeEmail}/>
+                            <FormText>email@example.com</FormText>
+                        </Col>
                     </FormGroup>
-                    <FormGroup className="EmailForm">
-                        <input type="email" className="EmailNameText" placeholder="Email *" value={this.state.email}
-                               onChange={this.changeEmail}/>
-                        <FormText>email@example.com</FormText>
+                    <FormGroup row>
+                        <Label for="EntityName" sm={2}>
+                            <FormattedMessage id='entity.name' defaultMessage="Nom de l'entitat:"/>
+                        </Label>
+                        <Col sm={6}>
+                            <Input id= "EntityName" type="text" name="EntityName" value={this.state.name} onChange={this.changeNameEntity}/>
+                        </Col>
+                        <Label for="Nif" sm={1}>
+                            <FormattedMessage id='entity.nif' defaultMessage='Nif:'/>
+                        </Label>
+                        <Col sm={3}>
+                            <Input id= "Nif" type="text" name="Nif" value={this.state.nif} onChange={this.changeNif}/>
+                            <FormText>Ex.: 60250886G</FormText>
+                        </Col>
                     </FormGroup>
-                    <FormGroup className="NumberForm">
-                        <input type="text" className="NumberText" placeholder="Telèfon *" value={this.state.phone}
-                               onChange={this.changePhone}/>
-
+                    <FormGroup row>
+                        <Label for="EntityDescription" sm={2}>
+                            <FormattedMessage id='entity.description' defaultMessage="Descripció de l'entitat:"/>
+                        </Label>
+                        <Col sm={10}>
+                            <Input type="textarea"  id="EntityDescription"  value={this.state.description} onChange={this.changeDescription}/>
+                        </Col>
                     </FormGroup>
-                    <FormGroup className="EntityForm">
-                        <input type="text" className="EmailNameText" placeholder="Nom de l'entitat *"
-                               value={this.state.name}
-                               onChange={this.changeNameEntity}/>
-                    </FormGroup>
-                    <FormGroup className="NifForm">
-                        <input type="text" className="NumberText" placeholder="NIF *"
-                               value={this.state.nif}
-                               onChange={this.changeNif}/>
-                        <FormText>Ex. format: 60250886G</FormText>
-                    </FormGroup>
-                    <FormGroup className="DescriptionForm">
-                        <textarea type="text" className="DescriptionText" placeholder="Descripció de l'entitat *"
-                                  value={this.state.description} onChange={this.changeDescription}/>
-                    </FormGroup>
-                    <FormGroup className="AddressForm">
-                        <input id="addressId" type="text" className="TextForm" placeholder="Direcció de l'entitat *"
-                               value={this.state.addressName} readOnly/>
-                        <FormText>Escriu l'adreça en el buscador del mapa</FormText>
+                    <FormGroup row>
+                        <Label for="addressId" sm={2}>
+                            <FormattedMessage id='entity.address' defaultMessage="Direcció:"/>
+                        </Label>
+                        <Col sm={10}>
+                            <Input type="text" id="addressId" value={this.state.addressName} readOnly/>
+                            <FormText>
+                                <FormattedMessage id='entity.addressinfo' defaultMessage="Escriu l'adreça en el buscador del mapa:"/>
+                            </FormText>
+                        </Col>
                     </FormGroup>
                     <FormGroup align="center">
                         <button className="Button" onClick={this.onSentClicked}>
-                            Enviar
+                            <FormattedMessage id='entity.send' defaultMessage="Enviar"/>
                         </button>
                     </FormGroup>
                 </div>
                 <Modal isOpen={this.state.modal} toggle={this.onSentClicked} className={this.props.className}>
-                    <ModalHeader toggle={this.onSentClicked}>{this.state.modalHeader}</ModalHeader>
+                    <ModalHeader toggle={this.onSentClicked}>
+                        <FormattedMessage id={this.state.idHeader} defaultMessage={this.state.modalHeader}/>
+                    </ModalHeader>
                     <ModalBody>
-                        {this.state.modalContent}
+                        <FormattedMessage id={this.state.idContent} defaultMessage={this.state.modalContent}/>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="primary" onClick={this.onAcceptClicked}>Acceptar</Button>{' '}
+                        <Button color="primary" onClick={this.onAcceptClicked}>
+                            <FormattedMessage id='modal.button' defaultMessage="Acceptar"/>
+                        </Button>{' '}
                     </ModalFooter>
                 </Modal>
                 <div className="Map col-sm-6">
                     <Maps onUserSearched={this.onUserSearched}/>
                 </div>
             </div>
+            </IntlProvider>
 
         );
     }

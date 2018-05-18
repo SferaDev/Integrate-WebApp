@@ -1,5 +1,26 @@
 export default {
     en: {
+        'entity.header' : 'Sign up:',
+        'entity.firstname' : 'Name:',
+        'entity.surname' : 'Surnames:',
+        'entity.email' : 'E-mail:',
+        'entity.phone' : 'Phone number:',
+        'entity.name' : "Entity name:",
+        'entity.nif' : 'Nif:',
+        'entity.description' : "Description of the entity:",
+        'entity.address' : "Entity address:",
+        'entity.addressinfo' : "Enter the address in the map search box:",
+        'entity.send' : 'Send',
+
+        'modal.error' : 'Error',
+        'modal.email' : "The email is incorrect.",
+        'modal.nif' : "The nif is incorrect.",
+        'modal.phone' : "The phone number is incorrect.",
+        'modal.correct': "The data is correct.",
+        'modal.empty' : "You must fill all the blanks.",
+        'modal.exist' : 'Nif already exist.',
+        'modal.header' : 'Correct',
+        'modal.button' : 'Accept',
 
         'reset.header' : 'Password recovery',
         'reset.accept' : 'Accept',
@@ -11,8 +32,6 @@ export default {
         'reset.info' : 'Enter the nif that you will receive a new password to the email you used to register',
         'reset.button': 'Accept',
         'reset.notfound' : "User doesn't exist.",
-
-
 
         'good.originalPrice': 'Original price',
         'good.pendingUnits': 'Pending units',
@@ -46,6 +65,28 @@ export default {
         'languageSelector.entities': 'entities',
     },
     es: {
+        'entity.header' : 'Formulario de solicitud',
+        'entity.firstname' : 'Nombre:',
+        'entity.surname' : 'Apellidos:',
+        'entity.email' : 'Email:',
+        'entity.phone' : 'Teléfono:',
+        'entity.name' : "Nombre de la entidad:",
+        'entity.nif' : 'Nif:',
+        'entity.description' : "Descripción de la entidad:",
+        'entity.address' : "Dirección de la entidad:",
+        'entity.addressinfo' : "Escribe la dirección en el buscador del mapa:",
+        'entity.send' : 'Enviar',
+
+
+        'modal.error' : 'Error',
+        'modal.email' : "El email introducido no es correcto.",
+        'modal.nif' : "El nif introducido no es correcto.",
+        'modal.phone' : "El teléfono introducido no es correcto.",
+        'modal.correct': "Los datos introducidos son correctos.",
+        'modal.empty' : "Se tienen que rellenar todos los datos del formulario.",
+        'modal.header' : 'Correcto',
+        'modal.button' : 'Aceptar',
+        'modal.exist' : 'El Nif ya existe.',
 
         'reset.header' : 'Recuperación de la contraseña:',
         'reset.accept' : 'Aceptar',
@@ -57,7 +98,6 @@ export default {
         'reset.info' : 'Introduce el nif donde recibirás una nueva contraseña al correo que utilizaste para registrarte',
         'reset.button': 'Aceptar',
         'reset.notfound' : 'El usuario no existe.',
-
 
         'good.originalPrice': 'Precio original',
         'good.pendingUnits': 'Unidades restantes',
@@ -91,6 +131,28 @@ export default {
         'languageSelector.entities': 'entidades',
     },
     ca: {
+        'entity.header' : 'Formulari de sol·licitud',
+        'entity.firstname' : 'Nom:',
+        'entity.surname' : 'Cognoms:',
+        'entity.email' : 'Email:',
+        'entity.phone' : 'Telèfon:',
+        'entity.name' : "Nom de l'entitat:",
+        'entity.nif' : 'Nif:',
+        'entity.description' : "Descripció de l'entitat:",
+        'entity.address' : "Direcció de l'entitat:",
+        'entity.addressinfo' : "Escriu l'adreça en el buscador del mapa:",
+        'entity.send' : 'Enviar',
+
+        'modal.error' : 'Error',
+        'modal.email' : "L'email introduït no és correcte.",
+        'modal.nif' : "El nif introduït no és correcte.",
+        'modal.phone' : "El telèfon introduït no és correcte.",
+        'modal.correct': "Les dades introduïdes són correctes.",
+        'modal.empty' : "S'han d'omplir totes les dades del formulari.",
+        'modal.header' : 'Correcte',
+        'modal.button' : 'Acceptar',
+        'modal.exist' : 'El Nif ja existeix.',
+
         'reset.header' : 'Recuperació de la contrasenya:',
         'reset.accept' : 'Acceptar',
         'reset.cancel' : 'Cancel·lar',

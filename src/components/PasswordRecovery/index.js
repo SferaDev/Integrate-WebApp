@@ -128,7 +128,7 @@ export default class PasswordRecovery extends React.Component {
                                onChange={this.changeNif}/>
                         <FormText>Ex.: 60250886G</FormText>
                     </FormGroup>
-                    <ModalFooter className="ButtonsForm">
+                    <ModalFooter>
                         <Button color="primary" onClick={this.onAcceptButton}>
                             <FormattedMessage id='reset.accept' defaultMessage='Acceptar:'/>
                         </Button>{' '}

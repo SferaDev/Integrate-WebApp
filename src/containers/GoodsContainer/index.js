@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types';
 import bindActionCreators from 'redux/es/bindActionCreators';
 import * as GoodsActions from '../../actions/goods'
+
 import * as ModalActions from '../../actions/modal'
 import * as LocaleActions from '../../actions/locale'
 import ModalView from '../../components/ModalView';
@@ -80,6 +81,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     actions: {
         goodsActions: bindActionCreators(GoodsActions, dispatch),
+
         modalActions: bindActionCreators(ModalActions, dispatch),
         localeActions: bindActionCreators(LocaleActions, dispatch),
     }

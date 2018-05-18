@@ -29,13 +29,13 @@
     margin-left: 3%;
 }
 
+.EmailForm {
+    margin-left: 3%;
+}
+
 .EmailNameText {
     font: 150% arial;
     width: 90%;
     border: 0px solid;
     border-bottom: 1px solid #e0e0e0;
-}
-
-.ButtonsForm {
-    margin-top: 10%;
 }

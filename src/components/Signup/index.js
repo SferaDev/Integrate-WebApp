@@ -196,12 +196,9 @@ export default class SignUp extends Component {
             });
         }
         else {
-
             event.preventDefault();
             const {history} = this.props;
             history.push('/login');
-
-
         }
     }
 

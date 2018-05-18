@@ -22,6 +22,16 @@ export default {
         'modal.header' : 'Correct',
         'modal.button' : 'Accept',
 
+        'reset.header' : 'Password recovery',
+        'reset.accept' : 'Accept',
+        'reset.cancel' : 'Cancel',
+        'reset.error' : 'Error',
+        'reset.correct' : 'Correct',
+        'reset.econtent' : 'The nif is incorrect.',
+        'reset.scontent' : "It has been sent a new password correctly.",
+        'reset.info' : 'Enter the nif that you will receive a new password to the email you used to register',
+        'reset.button': 'Accept',
+        'reset.notfound' : "User doesn't exist.",
 
         'good.originalPrice': 'Original price',
         'good.pendingUnits': 'Pending units',
@@ -78,7 +88,16 @@ export default {
         'modal.button' : 'Aceptar',
         'modal.exist' : 'El Nif ya existe.',
 
-
+        'reset.header' : 'Recuperación de la contraseña:',
+        'reset.accept' : 'Aceptar',
+        'reset.cancel' : 'Cancelar',
+        'reset.error' : 'Error',
+        'reset.correct' : 'Correcto',
+        'reset.econtent' : 'El nif introducido no es correcto.',
+        'reset.scontent' : "Se ha enviado una nueva contraseña correctamente.",
+        'reset.info' : 'Introduce el nif donde recibirás una nueva contraseña al correo que utilizaste para registrarte',
+        'reset.button': 'Aceptar',
+        'reset.notfound' : 'El usuario no existe.',
 
         'good.originalPrice': 'Precio original',
         'good.pendingUnits': 'Unidades restantes',
@@ -134,7 +153,16 @@ export default {
         'modal.button' : 'Acceptar',
         'modal.exist' : 'El Nif ja existeix.',
 
-
+        'reset.header' : 'Recuperació de la contrasenya:',
+        'reset.accept' : 'Acceptar',
+        'reset.cancel' : 'Cancel·lar',
+        'reset.error' : 'Error',
+        'reset.correct' : 'Correcte',
+        'reset.econtent' : 'El nif introduït no és correcte.',
+        'reset.scontent' : "S'ha enviat una nova contrasenya correctament.",
+        'reset.info' : 'Introdueix el nif on rebràs una nova contrasenya al correu que vas utilitzar per registrar-te:',
+        'reset.button': 'Acceptar',
+        'reset.notfound' : "L'usuari no existeix.",
 
         'good.originalPrice': 'Preu original',
         'good.pendingUnits': 'Unitats restants',

@@ -7,4 +7,5 @@ export const TOGGLE_MODAL = 'TOGGLE_MODAL';
 export const TOGGLE_MODAL_EDIT = 'TOGGLE_MODAL_EDIT';
 export const CLEAN_MODAL_STATE = 'CLEAN_MODAL_STATE';
 
+
 export const LOCALE_SET = 'LOCALE_SET';

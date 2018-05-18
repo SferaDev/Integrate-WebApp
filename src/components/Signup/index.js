@@ -4,11 +4,6 @@ import {Maps} from "../Maps";
 import {apiPostSignUp} from "../../api/signup";
 import {Button, FormGroup, FormText, Modal, ModalBody, ModalFooter, ModalHeader, Label, Input, Col} from 'reactstrap';
 import {FormattedMessage} from 'react-intl';
-import messages from "../../constants/messages";
-import {IntlProvider} from 'react-intl';
-
-
-
 
 export default class SignUp extends Component {
     constructor(props) {
@@ -213,9 +208,7 @@ export default class SignUp extends Component {
 
 
     render() {
-        let lang = "en";
         return (
-            <IntlProvider locale={lang} messages={messages[lang]}>
             <div className="Fons row">
                 <div className="Form col-md-6">
                     <h1 className="HeaderForm">
@@ -309,8 +302,6 @@ export default class SignUp extends Component {
                     <Maps onUserSearched={this.onUserSearched}/>
                 </div>
             </div>
-            </IntlProvider>
-
         );
     }
 

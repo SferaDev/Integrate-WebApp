@@ -2,7 +2,6 @@ import './style.css';
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Input} from 'reactstrap';
-import ModalView from '../ModalView';
 import {FormattedMessage} from 'react-intl';
 
 class LanguageSelector extends Component {
@@ -13,7 +12,7 @@ class LanguageSelector extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            lang: 'es'
+            lang: 'ca'
         }
     }
 
@@ -46,7 +45,7 @@ class LanguageSelector extends Component {
     }
 }
 
-ModalView.propTypes = {
+LanguageSelector.propTypes = {
     lang: PropTypes.string.isRequired,
     actions: PropTypes.object.isRequired,
 };

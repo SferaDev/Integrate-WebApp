@@ -50,7 +50,7 @@ export class Login extends Component {
                                 }
 
                                 {
-                                    !isLoginPending && isLoginSuccess && <Redirect to='/goods'/>
+                                    !isLoginPending && isLoginSuccess && <Redirect to='/main'/>
                                 }
 
                                 <FormGroup>
@@ -67,6 +67,9 @@ export class Login extends Component {
                         </div>
                         <div className="solicitudLinkDiv">
                             <a className="solicitudLink" href="/signup">Sol·licitud d'accés</a>
+                        </div>
+                        <div className="solicitudLinkDiv">
+                            <a className="solicitudLink" href="/reset">Has oblidat la contrasenya?</a>
                         </div>
                     </Col>
                 </Row>

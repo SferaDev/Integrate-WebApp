@@ -10,13 +10,14 @@ import en from 'react-intl/locale-data/en'
 import ca from 'react-intl/locale-data/ca'
 import messages from "../../constants/messages"
 import LanguageSelector from '../../components/LanguageSelector';
-import SignUp from '../../components/Signup';
+import MainView from '../../components/MainView';
+import Incentive from '../../components/Incentive';
 
 addLocaleData(en)
 addLocaleData(es)
 addLocaleData(ca)
 
-class SignupContainer extends Component {
+class MainViewContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -26,16 +27,17 @@ class SignupContainer extends Component {
         let {lang, actions} = this.props;
         return (
             <IntlProvider locale={lang} messages={messages[lang]}>
-                <div className="signupContainer">
+                <div className="mainviewContainer">
                     <LanguageSelector actions={actions.localeActions} lang={lang}/>
-                    <SignUp history={this.props.history}/>
+                    <MainView/>
+                    <Incentive className="Incentive"/>
                 </div>
             </IntlProvider>
         )
     }
 }
 
-SignupContainer.propTypes = {
+MainViewContainer.propTypes = {
     lang: PropTypes.string.isRequired,
     actions: PropTypes.shape({
         localeActions: PropTypes.object.isRequired,
@@ -55,4 +57,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps,
-)(SignupContainer)
+)(MainViewContainer)

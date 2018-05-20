@@ -16,6 +16,7 @@ import en from 'react-intl/locale-data/en'
 import ca from 'react-intl/locale-data/ca'
 import messages from "../../constants/messages"
 import LanguageSelector from '../../components/LanguageSelector';
+import MainView from '../../components/MainView'
 
 addLocaleData(en)
 addLocaleData(es)
@@ -37,6 +38,7 @@ class GoodsContainer extends Component {
             <IntlProvider locale={lang} messages={messages[lang]}>
                 <div className="goodsContainer">
                     <LanguageSelector actions={actions.localeActions} lang={lang}/>
+                    <MainView className="MainView"/>
                     <GoodsList
                         goods={goods} actions={actions}/>
                     <ModalView modal={modal} actions={actions} lang={lang}/>

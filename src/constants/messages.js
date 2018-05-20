@@ -1,5 +1,10 @@
 export default {
     en: {
+        'main.home' : 'Home',
+        'main.goods' : 'Goods',
+        'main.changepassword' : 'Change password',
+        'main.logout' : 'Logout',
+
         'password.header' : 'Change password:',
         'password.current' : 'Current password:',
         'password.new' : 'New password:',
@@ -76,6 +81,10 @@ export default {
         'languageSelector.entities': 'entities',
     },
     es: {
+        'main.home' : 'Página principal',
+        'main.goods' : 'Cupones',
+        'main.changepassword' : 'Cambiar la contraseña',
+        'main.logout' : 'Salir',
         'password.header' : 'Cambio de constraseña:',
         'password.current' : 'Contraseña actual:',
         'password.new' : 'Nueva contraseña:',
@@ -149,6 +158,11 @@ export default {
         'languageSelector.entities': 'entidades',
     },
     ca: {
+        'main.home' : 'Pàgina principal',
+        'main.goods' : 'Vals',
+        'main.changepassword' : 'Canviar la contrasenya',
+        'main.logout' : 'Sortir',
+
         'password.header' : 'Canvi de contrasenya:',
         'password.current' : 'Contrasenya actual:',
         'password.new' : 'Nova contrasenya:',

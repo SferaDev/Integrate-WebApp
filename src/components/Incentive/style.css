@@ -1,0 +1,45 @@
+.Incentive {
+    border: 1px solid black;
+    width: 70%;
+    background: white;
+    position: fixed;
+    float: right;
+    height: 9%;
+    margin-left: 30%;
+    border: 1px solid black;
+
+
+}
+
+.TextRed{
+    margin-left: 5%;
+    position: absolute;
+}
+
+.TextRedMiddle{
+    margin-left: 30%;
+    position: absolute;
+}
+
+.TextRedRight{
+    margin-left: 70%;
+    position: absolute;
+}
+
+.medalMiddle {
+    width: 4%;
+    margin-left: 25%;
+    position: absolute;
+}
+
+.medalRight {
+    width: 4%;
+    margin-left: 65%;
+    position: absolute;
+}
+
+.medal {
+    width: 4%;
+    position: absolute;
+}
+

@@ -1,0 +1,28 @@
+.MainDiv {
+    border-radius: 10px 10px 10px 10px;
+    height: 65%;
+    width: 50%;
+    border: 1px solid black;
+    background: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    resize:inherit;
+    overflow:auto;
+}
+
+.HeaderForm {
+    font: 140% arial;
+    margin-left: 3%;
+}
+
+.MainLine {
+    color: white;
+    margin-top: 9%;
+}
+
+.PasswordForm {
+    margin-left: 3%;
+}

@@ -145,7 +145,7 @@ class ModalView extends React.Component {
                                 <FormattedMessage id='modal.goodName'
                                                   defaultMessage='Nom del producte'/>
                             </Label>
-                            <Input type="text" name="goodName" id="goodName" onChange={this.handleChangeProductName}
+                            <Input type="text" className="goodName" id="goodName" onChange={this.handleChangeProductName}
                                    value={this.state.productName}
                             />
                         </FormGroup>
@@ -154,7 +154,7 @@ class ModalView extends React.Component {
                                 <FormattedMessage id='modal.originalPrice'
                                                   defaultMessage='Preu original (€)'/>
                              </Label>
-                            <Input type="number" name="initialPrice" id="initialPrice"
+                            <Input type="number" className="initialPrice" id="initialPrice"
                                    min={
                                        this.state.discountType === '%' ? '0' :
                                            this.state.discount
@@ -175,7 +175,7 @@ class ModalView extends React.Component {
                                 </Label>
                             </Col>
                             <Col sm="3">
-                                <Input type="number" name="discount" id="discount"
+                                <Input type="number" className="discount" id="discount"
                                        min='0'
                                        max={
                                            this.state.discountType === '%' ? '100' : this.state.maxEurosDiscount
@@ -185,14 +185,14 @@ class ModalView extends React.Component {
                                        value={this.state.discount}/>
                             </Col>
                             <Col sm="3">
-                                <Input type="select" name="discountType" id="discountType"
+                                <Input type="select" className="discountType" id="discountType"
                                        onChange={this.handleChangeDiscountType} value={this.state.discountType}>
                                     <option>%</option>
                                     <option>€</option>
                                 </Input>
                             </Col>
                             <Col sm="6">
-                                <Input required type="number" name="pendingUnits" id="pendingUnits" min="0"
+                                <Input required type="number" className="pendingUnits" id="pendingUnits" min="0"
                                        onChange={this.handleChangePendingUnits} value={this.state.pendingUnits}/>
                             </Col>
                             <Col sm="12" className="currentPrice">
@@ -213,7 +213,7 @@ class ModalView extends React.Component {
                                     <FormattedMessage id='modal.periodicity'
                                                       defaultMessage='Periodicitat (dies)'/>
                                  </Label>
-                                <Input required type="number" name="reusePeriod" id="reusePeriod" min="0"
+                                <Input required type="number" className="reusePeriod" id="reusePeriod" min="0"
                                        onChange={this.handleChangeReusePeriod} value={this.state.reusePeriod}/>
                             </Col>
                             <Col sm="6">
@@ -221,7 +221,7 @@ class ModalView extends React.Component {
                                     <FormattedMessage id='good.category'
                                                       defaultMessage='Categoria'/>
                                 </Label>
-                                <Input required type="select" name="category" id="category"
+                                <Input required type="select" className="category" id="category"
                                        onChange={this.handleChangeCategory} value={this.state.category}>
                                     <FormattedMessage id='good.category.nutrition' defaultMessage='Nutrició' key={1}>
                                         {(message) => <option value="1">{message}</option>}
@@ -259,7 +259,7 @@ class ModalView extends React.Component {
                                     <FormattedMessage id='modal.image'
                                                       defaultMessage='Imatge'/>
                                 </Label>
-                                <Input type="file" name="file" id="pictureFile" onChange={this.handleChangePicture}/>
+                                <Input type="file" className="file" id="pictureFile" onChange={this.handleChangePicture}/>
                             </Col>
                             <Col sm="4">
                                 <img id="imgPreview" alt="preview" src={this.state.picture}/>

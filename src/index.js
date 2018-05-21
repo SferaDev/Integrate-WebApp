@@ -11,30 +11,26 @@ import faTrashAlt from '@fortawesome/fontawesome-free-solid/faTrashAlt'
 
 import store from './store';
 import Login from './containers/Login';
-import SignUp from './components/Signup';
-import ChangePassword from './components/ChangePassword';
 import PasswordRecovery from './components/PasswordRecovery';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
-import GoodsContainer from './containers/GoodsContainer';
-import SignupContainer from './containers/SignupContainer';
+import GoodsContainer from './containers/Goods';
+import SignupContainer from './containers/Signup';
 
 
 fontawesome.library.add(faCoffee, faPlusCircle, faEdit, faTrashAlt);
 
 render(
     <Provider store={store}>
-          <Router>
-              <Switch>
-                  <Route exact path="/" render={() => <h1>Main Page</h1>}/>
-                  <Route path="/signup" component={SignUp}/>
-                  <Route path="/login" component={Login}/>
-                  <Route path='/goods' component={GoodsContainer}/>
-                  <Route path='/changepassword' component={ChangePassword}/>
-                  <Route path='/reset' component={PasswordRecovery}/>
-              </Switch>
-          </Router>
+        <Router>
+            <Switch>
+                <Route exact path="/" component={Login}/>
+                <Route path="/signup" component={SignupContainer}/>
+                <Route path='/goods' component={GoodsContainer}/>
+                <Route path='/reset' component={PasswordRecovery}/>
+            </Switch>
+        </Router>
     </Provider>,
     document.getElementById('root')
 );

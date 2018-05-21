@@ -1,11 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types';
-import bindActionCreators from 'redux/es/bindActionCreators';
-import * as GoodsActions from '../../actions/goods'
-
-import * as ModalActions from '../../actions/modal'
-import * as LocaleActions from '../../actions/locale'
 import ModalView from '../../components/ModalView';
 import GoodsList from '../../components/GoodsList';
 import './style.css';
@@ -16,12 +11,20 @@ import en from 'react-intl/locale-data/en'
 import ca from 'react-intl/locale-data/ca'
 import messages from "../../constants/messages"
 import LanguageSelector from '../../components/LanguageSelector';
+import {dispatchReceiveGoods} from '../../actions/goods';
+import {dispatchAddGood} from '../../actions/goods';
+import {setLocale} from '../../actions/locale';
+import {dispatchDeleteGood} from '../../actions/goods';
+import {dispatchEditGood} from '../../actions/goods';
+import {dispatchToggleModal} from '../../actions/modal';
+import {dispatchToggleModalEdit} from '../../actions/modal';
+import {dispatchCleanModalState} from '../../actions/modal';
 
 addLocaleData(en)
 addLocaleData(es)
 addLocaleData(ca)
 
-class GoodsContainer extends Component {
+export class GoodsContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -36,7 +39,7 @@ class GoodsContainer extends Component {
         return (
             <IntlProvider locale={lang} messages={messages[lang]}>
                 <div className="goodsContainer">
-                    <LanguageSelector actions={actions.localeActions} lang={lang}/>
+                    <LanguageSelector className="languageSelector" actions={actions.localeActions} lang={lang}/>
                     <GoodsList
                         goods={goods} actions={actions}/>
                     <ModalView modal={modal} actions={actions} lang={lang}/>
@@ -78,14 +81,26 @@ const mapStateToProps = state => ({
     lang: state.locale.lang,
 });
 
-const mapDispatchToProps = dispatch => ({
-    actions: {
-        goodsActions: bindActionCreators(GoodsActions, dispatch),
-
-        modalActions: bindActionCreators(ModalActions, dispatch),
-        localeActions: bindActionCreators(LocaleActions, dispatch),
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actions: {
+            goodsActions: {
+                dispatchReceiveGoods: () => dispatch(dispatchReceiveGoods()),
+                dispatchAddGood: (good) => dispatch(dispatchAddGood(good)),
+                dispatchDeleteGood: (good) => dispatch(dispatchDeleteGood(good)),
+                dispatchEditGood: (good) => dispatch(dispatchEditGood(good)),
+            },
+            modalActions: {
+                dispatchToggleModal: () => dispatch(dispatchToggleModal()),
+                dispatchToggleModalEdit: (good) => dispatch(dispatchToggleModalEdit(good)),
+                dispatchCleanModalState: () => dispatch(dispatchCleanModalState()),
+            },
+            localeActions: {
+                setLocale: (lang) => dispatch(setLocale(lang)),
+            },
+        }
     }
-});
+}
 
 export default connect(
     mapStateToProps,

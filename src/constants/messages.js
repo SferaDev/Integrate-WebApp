@@ -5,6 +5,10 @@ export default {
         'main.changepassword' : 'Change password',
         'main.logout' : 'Logout',
 
+        'incentive.goods': 'Goods',
+        'incentive.beneficiaris' : 'Beneficiaries',
+        'incentive.discount' : 'Discounts',
+
         'password.header' : 'Change password:',
         'password.current' : 'Current password:',
         'password.new' : 'New password:',
@@ -81,6 +85,10 @@ export default {
         'languageSelector.entities': 'entities',
     },
     es: {
+        'incentive.goods': 'Cupones',
+        'incentive.beneficiaris' : 'Beneficiarios',
+        'incentive.discount' : 'Descuentos',
+
         'main.home' : 'Página principal',
         'main.goods' : 'Cupones',
         'main.changepassword' : 'Cambiar la contraseña',
@@ -158,6 +166,10 @@ export default {
         'languageSelector.entities': 'entidades',
     },
     ca: {
+        'incentive.goods': 'Vals',
+        'incentive.beneficiaris' : 'Beneficiaris',
+        'incentive.discount' : 'Descomptes',
+
         'main.home' : 'Pàgina principal',
         'main.goods' : 'Vals',
         'main.changepassword' : 'Canviar la contrasenya',

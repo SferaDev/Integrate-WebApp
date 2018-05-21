@@ -11,8 +11,6 @@ import faTrashAlt from '@fortawesome/fontawesome-free-solid/faTrashAlt'
 
 import store from './store';
 import Login from './containers/Login';
-import SignUp from './components/Signup';
-import ChangePassword from './components/ChangePassword';
 import PasswordRecovery from './components/PasswordRecovery';
 
 import 'bootstrap/dist/css/bootstrap.min.css';

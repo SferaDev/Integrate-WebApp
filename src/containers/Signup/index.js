@@ -11,6 +11,7 @@ import LanguageSelector from '../../components/LanguageSelector';
 import SignUp from '../../components/Signup';
 import {setLocale} from '../../actions/locale';
 
+
 addLocaleData(en)
 addLocaleData(es)
 addLocaleData(ca)

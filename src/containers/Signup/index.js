@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types';
-import bindActionCreators from 'redux/es/bindActionCreators';
-import * as LocaleActions from '../../actions/locale'
 
 import {addLocaleData, IntlProvider} from 'react-intl';
 import es from 'react-intl/locale-data/es'
@@ -11,6 +9,8 @@ import ca from 'react-intl/locale-data/ca'
 import messages from "../../constants/messages"
 import LanguageSelector from '../../components/LanguageSelector';
 import SignUp from '../../components/Signup';
+import {setLocale} from '../../actions/locale';
+
 
 addLocaleData(en)
 addLocaleData(es)
@@ -48,7 +48,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     actions: {
-        localeActions: bindActionCreators(LocaleActions, dispatch),
+        localeActions: {
+            setLocale: (lang) => dispatch(setLocale(lang)),
+        },
     }
 });
 

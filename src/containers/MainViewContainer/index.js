@@ -12,6 +12,7 @@ import messages from "../../constants/messages"
 import LanguageSelector from '../../components/LanguageSelector';
 import MainView from '../../components/MainView';
 import Incentive from '../../components/Incentive';
+import UserInfo from '../../components/UserInfo';
 
 addLocaleData(en)
 addLocaleData(es)
@@ -30,6 +31,7 @@ class MainViewContainer extends Component {
                 <div className="mainviewContainer">
                     <LanguageSelector actions={actions.localeActions} lang={lang}/>
                     <MainView/>
+                    <UserInfo/>
                     <Incentive className="Incentive"/>
                 </div>
             </IntlProvider>

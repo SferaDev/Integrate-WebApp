@@ -3,6 +3,7 @@
 *.iml
 
 .env.development
+.env.test
 
 build/
 

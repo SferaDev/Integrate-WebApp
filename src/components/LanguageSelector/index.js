@@ -6,7 +6,7 @@ import {FormattedMessage} from 'react-intl';
 
 class LanguageSelector extends Component {
     handleChangeLanguage = (event) => {
-        this.props.actions.localeSet(event.target.value)
+        this.props.actions.setLocale(event.target.value)
     };
 
     constructor(props) {
@@ -33,7 +33,7 @@ class LanguageSelector extends Component {
                     </div>
                 </div>
                 <div>
-                    <Input required type="select" name="language" id="language"
+                    <Input className="languageSelectorInput" required type="select" name="language" id="language"
                            onChange={this.handleChangeLanguage} value={this.state.lang}>
                         <option value="ca">Català</option>
                         <option value="es">Español</option>

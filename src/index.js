@@ -9,35 +9,31 @@ import faPlusCircle from '@fortawesome/fontawesome-free-solid/faPlusCircle'
 import faEdit from '@fortawesome/fontawesome-free-solid/faEdit'
 import faTrashAlt from '@fortawesome/fontawesome-free-solid/faTrashAlt'
 
-import store from './store';
-import Login from './containers/Login';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
-import GoodsContainer from './containers/GoodsContainer';
-import SignupContainer from './containers/SignupContainer';
-import MainViewContainer from './containers/MainViewContainer';
-import ChangePasswordContainer from './containers/ChangePasswordContainer';
-import PasswordRecoveryContainer from './containers/PasswordRecoveryContainer';
 
-
-
+import store from './store';
+import LoginContainer from './containers/Login';
+import MainViewContainer from './containers/MainView';
+import ChangePasswordContainer from './containers/ChangePassword';
+import PasswordRecoveryContainer from './containers/PasswordRecovery';
+import GoodsContainer from './containers/Goods';
+import SignupContainer from './containers/Signup';
 
 fontawesome.library.add(faCoffee, faPlusCircle, faEdit, faTrashAlt);
 
 render(
     <Provider store={store}>
-          <Router>
-              <Switch>
-                  <Route exact path="/" render={() => <h1>Main Page</h1>}/>
-                  <Route path="/signup" component={SignupContainer}/>
-                  <Route path="/login" component={Login}/>
-                  <Route path='/goods' component={GoodsContainer}/>
-                  <Route path='/changepassword' component={ChangePasswordContainer}/>
-                  <Route path='/reset' component={PasswordRecoveryContainer}/>
-                  <Route path='/main' component={MainViewContainer}/>
-              </Switch>
-          </Router>
+        <Router>
+            <Switch>
+                <Route exact path="/" component={LoginContainer}/>
+                <Route path="/signup" component={SignupContainer}/>
+                <Route path='/goods' component={GoodsContainer}/>
+                <Route path='/reset' component={PasswordRecoveryContainer}/>
+                <Route path='/changepassword' component={ChangePasswordContainer}/>
+                <Route path='/main' component={MainViewContainer}/>
+            </Switch>
+        </Router>
     </Provider>,
     document.getElementById('root')
 );

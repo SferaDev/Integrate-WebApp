@@ -1,26 +1,27 @@
 .MainDiv {
     border-radius: 10px 10px 10px 10px;
     height: 65%;
-    width: 50%;
+    width: 55%;
     border: 1px solid black;
     background: white;
     position: fixed;
-    top: 50%;
+    top: 55%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    resize:inherit;
+    resize:both;
     overflow:auto;
 }
 
 .HeaderForm {
     font: 140% arial;
     margin-left: 3%;
+
 }
 
 .MainLine {
     color: white;
-    margin-top: 9%;
+    position: relative;
 }
 
 .PasswordForm {

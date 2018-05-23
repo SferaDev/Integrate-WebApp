@@ -2,8 +2,7 @@ import React from 'react';
 import './style.css';
 import {FormGroup, Modal, FormText, Button, ModalHeader, ModalBody, ModalFooter, Input, Col, Label} from 'reactstrap';
 import {FormattedMessage} from 'react-intl';
-import {IntlProvider} from 'react-intl';
-import messages from "../../constants/messages";
+
 
 
 export default class ChangePassword extends React.Component {
@@ -111,24 +110,20 @@ export default class ChangePassword extends React.Component {
         }
         else {
             event.preventDefault();
-            const {history} = this.props;
-            history.push('/login');
+            this.props.history.push("/main");
         }
     }
 
     onCancelButton(event) {
         event.preventDefault();
-        const {history} = this.props;
-        history.push('/login');
 
+        this.props.history.push('/main')
     }
 
 
 
     render() {
-        let lang = "ca";
         return (
-            <IntlProvider locale={lang} messages={messages[lang]}>
                 <div className="MainDiv">
                     <h1 className="HeaderForm">
                         <FormattedMessage id='password.header' defaultMessage='Canvi de contrasenya:'/>
@@ -184,7 +179,10 @@ export default class ChangePassword extends React.Component {
                     </Modal>
 
                 </div>
-            </IntlProvider>
         );
     }
+
+
 }
+
+

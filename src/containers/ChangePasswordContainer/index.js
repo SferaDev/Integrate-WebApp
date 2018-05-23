@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types';
+import bindActionCreators from 'redux/es/bindActionCreators';
+import * as LocaleActions from '../../actions/locale'
 
 import {addLocaleData, IntlProvider} from 'react-intl';
 import es from 'react-intl/locale-data/es'
@@ -8,15 +10,14 @@ import en from 'react-intl/locale-data/en'
 import ca from 'react-intl/locale-data/ca'
 import messages from "../../constants/messages"
 import LanguageSelector from '../../components/LanguageSelector';
-import SignUp from '../../components/Signup';
-import {setLocale} from '../../actions/locale';
-
+import ChangePassword from '../../components/ChangePassword';
+import MainView from '../../components/MainView';
 
 addLocaleData(en)
 addLocaleData(es)
 addLocaleData(ca)
 
-class SignupContainer extends Component {
+class ChangePasswordContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -28,14 +29,15 @@ class SignupContainer extends Component {
             <IntlProvider locale={lang} messages={messages[lang]}>
                 <div className="signupContainer">
                     <LanguageSelector actions={actions.localeActions} lang={lang}/>
-                    <SignUp history={this.props.history}/>
+                    <MainView/>
+                    <ChangePassword history={this.props.history}/>
                 </div>
             </IntlProvider>
         )
     }
 }
 
-SignupContainer.propTypes = {
+ChangePasswordContainer.propTypes = {
     lang: PropTypes.string.isRequired,
     actions: PropTypes.shape({
         localeActions: PropTypes.object.isRequired,
@@ -48,13 +50,11 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     actions: {
-        localeActions: {
-            setLocale: (lang) => dispatch(setLocale(lang)),
-        },
+        localeActions: bindActionCreators(LocaleActions, dispatch),
     }
 });
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps,
-)(SignupContainer)
+)(ChangePasswordContainer)

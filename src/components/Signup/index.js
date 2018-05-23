@@ -5,6 +5,7 @@ import {apiPostSignUp} from "../../api/signup";
 import {Button, FormGroup, FormText, Modal, ModalBody, ModalFooter, ModalHeader, Label, Input, Col} from 'reactstrap';
 import {FormattedMessage} from 'react-intl';
 
+
 export default class SignUp extends Component {
     constructor(props) {
         super(props);
@@ -180,8 +181,8 @@ export default class SignUp extends Component {
 
     onCloseClicked(event) {
         event.preventDefault();
-        const {history} = this.props;
-        history.push('/login');
+        this.props.history.push('/login')
+
     }
 
     onAcceptClicked(event) {
@@ -192,8 +193,7 @@ export default class SignUp extends Component {
         }
         else {
             event.preventDefault();
-            const {history} = this.props;
-            history.push('/login');
+            this.props.history.push('/login')
         }
     }
 
@@ -298,7 +298,7 @@ export default class SignUp extends Component {
                         </Button>{' '}
                     </ModalFooter>
                 </Modal>
-                <div className="Map col-sm-6">
+                <div className="col-sm-6">
                     <Maps onUserSearched={this.onUserSearched}/>
                 </div>
             </div>

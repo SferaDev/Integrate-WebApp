@@ -3,8 +3,7 @@ import './style.css';
 import {FormGroup, Modal, FormText, Button, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 import {apiPostPasswordRecovery} from '../../api/passwordrecovery'
 import {FormattedMessage} from 'react-intl';
-import {IntlProvider} from 'react-intl'
-import messages from "../../constants/messages";
+
 
 
 
@@ -92,8 +91,8 @@ export default class PasswordRecovery extends React.Component {
 
     onCancelButton(event) {
         event.preventDefault()
-        const {history} = this.props
-        history.push('/')
+        this.props.history.push('/login')
+
     }
 
     onAcceptModalButton(event) {
@@ -104,17 +103,15 @@ export default class PasswordRecovery extends React.Component {
         }
         else {
             event.preventDefault()
-            const {history} = this.props
-            history.push('/login')
+            this.props.history.push('/login')
+
         }
 
     }
 
 
     render() {
-        let lang = "ca";
         return (
-            <IntlProvider locale={lang} messages={messages[lang]}>
                 <div className="MainDiv">
                     <h1 className="HeaderForm">
                         <FormattedMessage id='reset.header' defaultMessage='Recuperació de la contrasenya:'/>
@@ -150,7 +147,6 @@ export default class PasswordRecovery extends React.Component {
                         </ModalFooter>
                     </Modal>
                 </div>
-            </IntlProvider>
         );
     }
 }

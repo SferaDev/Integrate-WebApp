@@ -91,7 +91,7 @@ export default class PasswordRecovery extends React.Component {
 
     onCancelButton(event) {
         event.preventDefault()
-        this.props.history.push('/login')
+        this.props.history.push('/')
 
     }
 
@@ -103,7 +103,7 @@ export default class PasswordRecovery extends React.Component {
         }
         else {
             event.preventDefault()
-            this.props.history.push('/login')
+            this.props.history.push('/')
 
         }
 

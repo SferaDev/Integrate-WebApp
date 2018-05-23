@@ -1,7 +1,7 @@
-.MainDiv {
+.Div {
     border-radius: 10px 10px 10px 10px;
     height: 65%;
-    width: 55%;
+    width: 50%;
     border: 1px solid black;
     background: white;
     position: fixed;
@@ -9,17 +9,18 @@
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    resize:both;
-    overflow:auto;
+    resize:none;
+    overflow: auto;
 }
 
-.HeaderForm {
+.Header {
+    margin-top: 3%;
     font: 140% arial;
     margin-left: 3%;
 
 }
 
-.MainLine {
+.Line {
     color: white;
     position: relative;
 }

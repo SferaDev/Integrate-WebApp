@@ -4,13 +4,12 @@ import {FormattedMessage} from 'react-intl';
 import bronze from '../../media/bronzemedal.png';
 import silver from '../../media/silvermedal.jpeg';
 import gold from '../../media/goldmedal.jpeg';
+import {apiGetIncentives} from "../../api/incentive";
+
 
 const goldM = gold;
 const silverM = silver;
 const bronzeM = bronze;
-let nBen = 10;
-let nGoods = 4;
-let nDiscount = 30;
 let lefttext, middletext, righttext, leftmedal, middlemedal, rightmedal;
 let medalleft, medalmiddle, medalright;
 
@@ -20,8 +19,17 @@ export default class Incentive extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            goodsCreated: '',
+            beneficiariesHelped: '',
+            totalSavedMoney: ''
 
         };
+
+        apiGetIncentives().then(incentives => {
+          this.setState({goodsCreated: incentives.goodsCreated});
+          this.setState({beneficiariesHelped: incentives.beneficiariesHelped});
+          this.setState({totalSavedMoney: incentives.totalSavedMoney});
+         })
 
         this.setLeftText = this.setLeftText.bind(this);
         this.setMiddleText = this.setMiddleText.bind(this);
@@ -30,18 +38,18 @@ export default class Incentive extends React.Component {
     }
 
     setLeftText() {
-        if (nGoods < 5) {
+        if (this.state.goodsCreated < 5) {
             lefttext = "NormalText";
             medalleft = "medalHidden";
         }
-        else if (nGoods >=5 && nGoods < 50) {
+        else if (this.state.goodsCreated >=5 && this.state.goodsCreated < 50) {
             lefttext = "BronzeText";
             leftmedal = bronzeM;
             medalleft = "medal";
 
 
         }
-        else if (nGoods >= 50 && nGoods < 500) {
+        else if (this.state.goodsCreated >= 50 && this.state.goodsCreated < 500) {
             lefttext = "SilverText";
             leftmedal = silverM;
             medalleft = "medal";
@@ -58,19 +66,19 @@ export default class Incentive extends React.Component {
     }
 
     setMiddleText() {
-        if (nBen < 5) {
+        if (this.state.beneficiariesHelped < 5) {
             middletext = "NormalTextMiddle";
             medalmiddle = "medalHidden";
 
         }
-        else if (nBen >=5 && nBen < 50) {
+        else if (this.state.beneficiariesHelped >=5 && this.state.beneficiariesHelped < 50) {
             middletext = "BronzeTextMiddle";
             middlemedal = bronzeM;
             medalmiddle = "medalMiddle";
 
 
         }
-        else if (nBen >= 50 && nBen < 500) {
+        else if (this.state.beneficiariesHelped >= 50 && this.state.beneficiariesHelped < 500) {
             middletext = "SilverTextMiddle";
             middlemedal = silverM;
             medalmiddle = "medalMiddle";
@@ -87,17 +95,18 @@ export default class Incentive extends React.Component {
     }
 
     setRightText() {
-        if (nDiscount < 5) {
+
+        if (this.state.totalSavedMoney < 5) {
             righttext = "NormalTextRight";
             medalright = "medalHidden";
         }
-        else if (nDiscount >=5 && nDiscount < 50) {
+        else if (this.state.totalSavedMoney >=5 && this.state.totalSavedMoney < 50) {
             righttext = "BronzeTextRight";
             rightmedal = bronzeM;
             medalright = "medalRight";
 
         }
-        else if (nDiscount >= 50 && nDiscount < 500) {
+        else if (this.state.totalSavedMoney >= 50 && this.state.totalSavedMoney < 500) {
             righttext = "SilverTextRight";
             rightmedal = silverM;
             medalright = "medalRight";
@@ -113,21 +122,23 @@ export default class Incentive extends React.Component {
 
 
     render() {
+
         this.setRightText();
         this.setMiddleText();
         this.setLeftText();
+
         return (
             <div className="Incentive">
                 <img className={medalleft} src={leftmedal} alt="Medal"/>
-                <h3 className={lefttext}>{nGoods}
+                <h3 className={lefttext}>{this.state.goodsCreated}
                     <FormattedMessage id='incentive.goods' defaultMessage='Vals'/>
                 </h3>
                 <img className={medalmiddle} src={middlemedal} alt="Medal"/>
-                <h3 className={middletext}>{nBen}
+                <h3 className={middletext}>{this.state.beneficiariesHelped}
                     <FormattedMessage id='incentive.beneficiaris' defaultMessage='Beneficiaris'/>
                 </h3>
                 <img className={medalright} src={rightmedal} alt="Medal"/>
-                <h3 className={righttext}>{nDiscount}
+                <h3 className={righttext}>{this.state.totalSavedMoney}
                     <FormattedMessage id='incentive.discount' defaultMessage='Descomptes'/>
                 </h3>
             </div>

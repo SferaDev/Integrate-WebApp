@@ -6,12 +6,12 @@
     border: 1px solid black;
     background: white;
     position: fixed;
-    top: 50%;
+    top: 55%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    resize:both;
-    overflow:auto;
+    resize:none;
+    overflow: auto;
 }
 
 .HeaderForm {
@@ -20,7 +20,8 @@
 }
 
 .MainLine {
-    margin-top: 10%;
+    color: white;
+    position: relative;
 }
 
 .Info {

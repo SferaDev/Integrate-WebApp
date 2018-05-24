@@ -165,7 +165,6 @@ export default class SignUp extends Component {
                     this.setState({idContent: 'modal.exist'});
                     exists = 1;
                 }
-                console.log(error)
             });
             if (exists === 0) {
                 this.setState({modalHeader: "Correcte"});
@@ -181,7 +180,7 @@ export default class SignUp extends Component {
 
     onCloseClicked(event) {
         event.preventDefault();
-        this.props.history.push('/login')
+        this.props.history.push('/')
 
     }
 
@@ -193,7 +192,7 @@ export default class SignUp extends Component {
         }
         else {
             event.preventDefault();
-            this.props.history.push('/login')
+            this.props.history.push('/')
         }
     }
 

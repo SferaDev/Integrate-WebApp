@@ -48,7 +48,7 @@ export default class MainView extends React.Component {
                                 </NavLink>
                             </NavItem>
                             <NavItem className="Logout">
-                                <NavLink tag={Link} to="/login">
+                                    <NavLink href="/">
                                     <FormattedMessage id='main.logout' defaultMessage='Sortir'/>
                                 </NavLink>
                             </NavItem>

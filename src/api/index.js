@@ -5,10 +5,8 @@ let localStorage = window && window.localStorage ? window.localStorage : null;
 if (typeof localStorage === 'undefined' || localStorage === null) {
     localStorage = {
         getItem: () => 'fake localStorage',
-        setItem: (key, value) => {
-        },
-        clear: () => {
-        },
+        setItem: (key, value) => {},
+        clear: () => {}
     }
 }
 
@@ -27,11 +25,11 @@ const redirectIfUnauthorized = (response) => {
 };
 
 const getLocalToken = () => {
-    return localStorage.getItem('token')
+    return localStorage.getItem('token');
 };
 
 const headers = {
-    token: getLocalToken(),
+    token: getLocalToken()
 };
 
 export const validateStatus = () => true;
@@ -42,7 +40,9 @@ export const getApi = (endpoint, options) => {
         mode: 'cors',
         headers,
         validateStatus
-    }).then(redirectIfUnauthorized);
+    }).then(redirectIfUnauthorized).catch(function (error) {
+        console.log(error);
+    });
 };
 
 export const postApi = (endpoint, data, options) => axios.post(`${API_HOST}${endpoint}`, data, {
@@ -50,20 +50,26 @@ export const postApi = (endpoint, data, options) => axios.post(`${API_HOST}${end
     mode: 'cors',
     headers,
     validateStatus,
-}).then(redirectIfUnauthorized);
+}).then(redirectIfUnauthorized).catch(function (error) {
+    console.log(error);
+});
 
 export const putApi = (endpoint, data, options) => axios.put(`${API_HOST}${endpoint}`, data, {
     ...options,
     mode: 'cors',
     headers,
     validateStatus,
-}).then(redirectIfUnauthorized);
+}).then(redirectIfUnauthorized).catch(function (error) {
+    console.log(error);
+});
 
 export const deleteApi = (endpoint, options) => axios.delete(`${API_HOST}${endpoint}`, {
     ...options,
     mode: 'cors',
     headers,
     validateStatus,
-}).then(redirectIfUnauthorized);
+}).then(redirectIfUnauthorized).catch(function (error) {
+    console.log(error);
+});
 
 export * from './login';

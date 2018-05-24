@@ -23,6 +23,7 @@
     height: 100%;
     flex-direction: column;
     justify-content: space-around;
+    text-align: center;
 }
 
 .loginRow {

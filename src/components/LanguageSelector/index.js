@@ -11,8 +11,15 @@ class LanguageSelector extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            lang: 'ca'
+        if (this.props.lang){
+            this.state = {
+                lang: this.props.lang
+            }
+        }
+        else {
+            this.state = {
+                lang: 'ca'
+            }
         }
     }
 

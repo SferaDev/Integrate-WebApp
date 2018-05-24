@@ -1,4 +1,5 @@
 import {LOCALE_SET} from '../constants/ActionTypes';
+import {apiSetLanguage} from '../api/locale';
 
 export const localeSet = lang => ({
     type: LOCALE_SET,
@@ -6,5 +7,7 @@ export const localeSet = lang => ({
 })
 
 export const setLocale = lang => (dispatch) => {
-    dispatch(localeSet(lang))
+    apiSetLanguage(lang).then(lang => {
+        dispatch(localeSet(lang.interfaceLanguage))
+    })
 }

@@ -37,6 +37,7 @@ export const validateStatus = () => true;
 export const getApi = (endpoint, options) => {
     return axios.get(`${API_HOST}${endpoint}`, {
         ...options,
+        mode: 'cors',
         headers,
         validateStatus
     }).then(redirectIfUnauthorized);
@@ -44,18 +45,21 @@ export const getApi = (endpoint, options) => {
 
 export const postApi = (endpoint, data, options) => axios.post(`${API_HOST}${endpoint}`, data, {
     ...options,
+    mode: 'cors',
     headers,
     validateStatus,
 }).then(redirectIfUnauthorized);
 
 export const putApi = (endpoint, data, options) => axios.put(`${API_HOST}${endpoint}`, data, {
     ...options,
+    mode: 'cors',
     headers,
     validateStatus,
 }).then(redirectIfUnauthorized);
 
 export const deleteApi = (endpoint, options) => axios.delete(`${API_HOST}${endpoint}`, {
     ...options,
+    mode: 'cors',
     headers,
     validateStatus,
 }).then(redirectIfUnauthorized);

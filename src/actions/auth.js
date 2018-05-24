@@ -1,5 +1,6 @@
 import {apiPostLogin} from '../api';
 import {SET_LOGIN_ERROR, SET_LOGIN_PENDING, SET_LOGIN_SUCCESS} from '../constants/index';
+import {setLocale} from './locale';
 
 
 export function setLoginPending(isLoginPending) {
@@ -29,10 +30,11 @@ export function loginAction(id, password) {
         dispatch(setLoginSuccess(false));
         dispatch(setLoginError(null));
 
-        apiPostLogin({id, password}).then(token => {
-            localStorage.setItem('token', token);
+        apiPostLogin({id, password}).then(auth => {
+            localStorage.setItem('token', auth.token);
             dispatch(setLoginPending(false));
             dispatch(setLoginSuccess(true));
+            dispatch(setLocale(auth.user.interfaceLanguage))
         }).catch(error => {
             dispatch(setLoginPending(false));
             dispatch(setLoginSuccess(false));

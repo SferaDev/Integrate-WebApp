@@ -19,11 +19,6 @@ addLocaleData(es)
 addLocaleData(ca)
 
 class MainViewContainer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-
     render() {
         let {lang, actions, user} = this.props;
         console.log("user: ", user)
@@ -50,7 +45,7 @@ MainViewContainer.propTypes = {
 
 const mapStateToProps = state => ({
     lang: state.locale.lang,
-    user: state.entity,
+    user: state.auth.user,
 });
 
 const mapDispatchToProps = dispatch => ({

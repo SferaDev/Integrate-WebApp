@@ -9,3 +9,5 @@ export const CLEAN_MODAL_STATE = 'CLEAN_MODAL_STATE';
 
 
 export const LOCALE_SET = 'LOCALE_SET';
+
+export const RECEIVE_USER_INFO = 'RECEIVE_USER_INFO';

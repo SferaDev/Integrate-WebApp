@@ -25,13 +25,14 @@ class MainViewContainer extends Component {
     }
 
     render() {
-        let {lang, actions} = this.props;
+        let {lang, actions, user} = this.props;
+        console.log("user: ", user)
         return (
             <IntlProvider locale={lang} messages={messages[lang]}>
                 <div className="mainviewContainer">
                     <LanguageSelector actions={actions.localeActions} lang={lang}/>
                     <MainView/>
-                    <UserInfo/>
+                    <UserInfo user={user}/>
                     <Incentive className="Incentive"/>
                 </div>
             </IntlProvider>
@@ -41,6 +42,7 @@ class MainViewContainer extends Component {
 
 MainViewContainer.propTypes = {
     lang: PropTypes.string.isRequired,
+    user: PropTypes.object.isRequired,
     actions: PropTypes.shape({
         localeActions: PropTypes.object.isRequired,
     }).isRequired,
@@ -48,6 +50,7 @@ MainViewContainer.propTypes = {
 
 const mapStateToProps = state => ({
     lang: state.locale.lang,
+    user: state.entity,
 });
 
 const mapDispatchToProps = dispatch => ({

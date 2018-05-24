@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Redirect} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 
 import logo from '../../media/icon2.png';
 import './style.css';
@@ -66,10 +66,10 @@ export class Login extends Component {
                             </Form>
                         </div>
                         <div className="solicitudLinkDiv">
-                            <a className="solicitudLink" href="/signup">Sol·licitud d'accés</a>
+                            <Link className="solicitudLink" to="/signup">Sol·licitud d'accés</Link>
                         </div>
                         <div className="solicitudLinkDiv">
-                            <a className="solicitudLink" href="/reset">Has oblidat la contrasenya?</a>
+                            <Link className="solicitudLink" to="/reset">Has oblidat la contrasenya?</Link>
                         </div>
                     </Col>
                 </Row>

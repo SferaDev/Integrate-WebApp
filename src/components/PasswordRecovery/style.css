@@ -14,7 +14,9 @@
     overflow: auto;
 }
 
-.HeaderForm {
+.HeaderForm2 {
+    margin-top: 3%;
+
     font: 140% arial;
     margin-left: 3%;
 }

@@ -113,7 +113,7 @@ export default class PasswordRecovery extends React.Component {
     render() {
         return (
                 <div className="MainDiv">
-                    <h1 className="HeaderForm">
+                    <h1 className="HeaderForm2">
                         <FormattedMessage id='reset.header' defaultMessage='Recuperació de la contrasenya:'/>
                     </h1>
                     <hr className="MainLine"/>

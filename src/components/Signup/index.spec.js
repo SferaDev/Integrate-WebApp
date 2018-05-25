@@ -5,12 +5,14 @@ import * as enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import SignUp from "./index";
 
+
 enzyme.configure({adapter: new Adapter()});
 
 describe('<SignUp />', () => {
     it('renders a <Maps /> components', () => {
         const wrapper = enzyme.shallow(<SignUp/>);
         expect(wrapper.find(Maps)).length(1);
+
     });
 
 
@@ -179,10 +181,9 @@ describe('<SignUp />', () => {
 
     });
 
-    it('should render a modal with a message explaining the data is correct', () => {
+   /*it('should render a modal with a message explaining the data is correct', () => {
         const wrapper = enzyme.shallow(<SignUp/>);
         const sendButton = wrapper.find('button').at(1);
-
 
         wrapper.setState({salesmanFirstName: 'Pau'});
         wrapper.setState({salesmanLastName: 'Gonzalez Montiel'});
@@ -197,7 +198,6 @@ describe('<SignUp />', () => {
         expect(wrapper.state().modalContent).to.equal("Les dades introduïdes són correctes.");
         expect(wrapper.state().modal).to.equal(true);
 
-        /*it doesn't have a character*/
         wrapper.setState({salesmanFirstName: 'Pau'});
         wrapper.setState({salesmanLastName: 'Gonzalez Montiel'});
         wrapper.setState({nif: '12345678g'});
@@ -212,7 +212,7 @@ describe('<SignUp />', () => {
         expect(wrapper.state().modalContent).to.equal("Les dades introduïdes són correctes.");
         expect(wrapper.state().modal).to.equal(true);
 
-    });
+    });*/
 
 
 });

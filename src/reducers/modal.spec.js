@@ -2,6 +2,14 @@ import * as types from '../constants/ActionTypes'
 import modal from './modal';
 
 describe('modal reducer', () => {
+    it('should handle initial state', () => {
+        expect(
+            modal(undefined, {})
+        ).toEqual({
+            isOpen: false,
+        })
+    });
+
     it('should handle TOGGLE_MODAL from FALSE to TRUE', () => {
         expect(
             modal(
@@ -17,7 +25,7 @@ describe('modal reducer', () => {
                 isOpen: true,
             }
         )
-    })
+    });
 
     it('should handle TOGGLE_MODAL_EDIT to edit a coupon', () => {
         expect(
@@ -56,7 +64,7 @@ describe('modal reducer', () => {
                 }
             }
         )
-    })
+    });
 
     it('should handle CLEAN_MODAL_STATE to reset the modal state', () => {
         expect(
@@ -76,4 +84,4 @@ describe('modal reducer', () => {
             }
         )
     })
-})
+});

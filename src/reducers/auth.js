@@ -1,15 +1,17 @@
-import {
-    SET_LOGIN_ERROR,
-    SET_LOGIN_PENDING,
-    SET_LOGIN_SUCCESS
-} from '../constants';
+import {SET_LOGIN_ERROR, SET_LOGIN_PENDING, SET_LOGIN_SUCCESS, SET_USER} from '../constants';
 
 function authReducer(state = {
+    user: null,
     isLoginSuccess: false,
     isLoginPending: false,
     loginError: null
 }, action) {
     switch (action.type) {
+        case SET_USER:
+            return {
+                ...state,
+                user: action.user,
+            }
         case SET_LOGIN_PENDING:
             return {
                 ...state,

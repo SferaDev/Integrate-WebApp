@@ -12,9 +12,9 @@ export const apiPostLogin = ({id, password}) => new Promise((resolve, reject) =>
         if (response.status === 401)
             reject('Invalid password');
         else if (response.data) {
-            const {token} = response.data;
+            const {token, user} = response.data;
             if (token) {
-                resolve(token);
+                resolve({token, user});
             } else reject();
         } else reject();
     }).catch(() => reject());

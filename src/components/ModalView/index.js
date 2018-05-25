@@ -3,21 +3,95 @@ import PropTypes from 'prop-types';
 import './style.css';
 import React from 'react';
 import {cloudinaryUploadImg} from '../../api/cloudinary';
+import {FormattedMessage} from 'react-intl';
 
 class ModalView extends React.Component {
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.modal.good) {
-            if (nextProps.modal.good.productName !== this.state.productName) this.setState({productName: nextProps.modal.good.productName})
-            if (nextProps.modal.good.picture !== this.state.picture) this.setState({picture: nextProps.modal.good.picture})
-            if (nextProps.modal.good.discountType !== this.state.discountType) this.setState({discountType: nextProps.modal.good.discountType})
-            if (nextProps.modal.good.discount !== this.state.discount) this.setState({discount: nextProps.modal.good.discount})
-            if (nextProps.modal.good.category !== this.state.category) this.setState({category: nextProps.modal.good.category})
-            if (nextProps.modal.good.reusePeriod !== this.state.reusePeriod) this.setState({reusePeriod: nextProps.modal.good.reusePeriod})
-            if (nextProps.modal.good.initialPrice !== this.state.initialPrice) this.setState({initialPrice: nextProps.modal.good.initialPrice})
-            if (nextProps.modal.good.pendingUnits !== this.state.pendingUnits) this.setState({pendingUnits: nextProps.modal.good.pendingUnits})
+    toggle = () => {
+        this.props.actions.modalActions.dispatchCleanModalState();
+
+        this.setState({
+            productName: '',
+            picture: 'http://www.asiaoceania.org/aogs2018/img/no_uploaded.png',
+            discountType: '%',
+            discount: 0,
+            category: 1,
+            reusePeriod: 1,
+            initialPrice: 0,
+            pendingUnits: 1,
+            maxEurosDiscount: 0,
+        });
+
+        this.props.actions.modalActions.dispatchToggleModal()
+    };
+    handleChangeProductName = (event) => {
+        this.setState({productName: event.target.value})
+    };
+    handleChangeInitialPrice = (event) => {
+        this.setState({initialPrice: event.target.value});
+        this.setState({maxEurosDiscount: event.target.value})
+    };
+    handleChangeDiscount = (event) => {
+        this.setState({discount: event.target.value})
+    };
+    handleChangeDiscountType = (event) => {
+        this.setState({discountType: event.target.value});
+        event.target.value === '%' ?
+            this.setState({discount: Math.min(100, parseFloat(this.state.discount)).toString()}) :
+            this.setState({discount: Math.min(parseFloat(this.state.initialPrice), parseFloat(this.state.discount)).toString()})
+    };
+    handleChangeReusePeriod = (event) => {
+        this.setState({reusePeriod: event.target.value})
+    };
+    handleChangeCategory = (event) => {
+        this.setState({category: event.target.value})
+    };
+    handleChangePicture = () => {
+        const file = document.getElementById('pictureFile').files[0];
+        const imgPreview = document.getElementById('imgPreview');
+
+        cloudinaryUploadImg({file})
+        .then(resultUrl => {
+            imgPreview.src = resultUrl;
+            this.setState({picture: resultUrl})
+        })
+    };
+    handleChangePendingUnits = (event) => {
+        this.setState({pendingUnits: event.target.value})
+    };
+    handleSubmit = () => {
+        let goodToAddOrEdit;
+        if (this.state.productName === undefined || this.state.productName === '') alert('Has d\'assignar un nom al val!');
+        else if (!this.props.modal.good) {
+            goodToAddOrEdit = {
+                productName: this.state.productName,
+                picture: this.state.picture,
+                discountType: this.state.discountType,
+                discount: this.state.discount,
+                category: this.state.category,
+                reusePeriod: this.state.reusePeriod,
+                initialPrice: this.state.initialPrice,
+                pendingUnits: this.state.pendingUnits,
+            };
+            this.props.actions.goodsActions.dispatchAddGood(goodToAddOrEdit);
+            this.toggle()
         }
-    }
+        else {
+            goodToAddOrEdit = {
+                _id: this.props.modal.good._id,
+                productName: this.state.productName,
+                picture: this.state.picture,
+                discountType: this.state.discountType,
+                discount: this.state.discount,
+                category: this.state.category,
+                reusePeriod: this.state.reusePeriod,
+                initialPrice: this.state.initialPrice,
+                pendingUnits: this.state.pendingUnits,
+            };
+            this.props.actions.goodsActions.dispatchEditGood(goodToAddOrEdit);
+            this.toggle()
+        }
+    };
 
     constructor(props) {
         super(props);
@@ -32,7 +106,7 @@ class ModalView extends React.Component {
             initialPrice: 0,
             pendingUnits: 0,
             maxEurosDiscount: 0,
-        }
+        };
 
         this.handleChangeProductName = this.handleChangeProductName.bind(this);
         this.handleChangeInitialPrice = this.handleChangeInitialPrice.bind(this);
@@ -44,117 +118,43 @@ class ModalView extends React.Component {
         this.handleChangePendingUnits = this.handleChangePendingUnits.bind(this);
     }
 
-    toggle = () => {
-        this.props.actions.modalActions.dispatchCleanModalState()
-
-        this.setState({
-            productName: '',
-            picture: 'http://www.asiaoceania.org/aogs2018/img/no_uploaded.png',
-            discountType: '%',
-            discount: 0,
-            category: 1,
-            reusePeriod: 1,
-            initialPrice: 0,
-            pendingUnits: 1,
-            maxEurosDiscount: 0,
-        })
-
-        this.props.actions.modalActions.dispatchToggleModal()
-    }
-
-    handleChangeProductName = (event) => {
-        this.setState({productName: event.target.value})
-    }
-
-
-    handleChangeInitialPrice = (event) => {
-        this.setState({initialPrice: event.target.value})
-        this.setState({maxEurosDiscount: event.target.value})
-    }
-
-    handleChangeDiscount = (event) => {
-        this.setState({discount: event.target.value})
-    }
-
-    handleChangeDiscountType = (event) => {
-        this.setState({discountType: event.target.value})
-        event.target.value === '%' ?
-            this.setState({discount: Math.min(100, parseFloat(this.state.discount)).toString()}) :
-            this.setState({discount: Math.min(parseFloat(this.state.initialPrice), parseFloat(this.state.discount)).toString()})
-    }
-
-    handleChangeReusePeriod = (event) => {
-        this.setState({reusePeriod: event.target.value})
-    }
-
-    handleChangeCategory = (event) => {
-        this.setState({category: event.target.value})
-    }
-
-    handleChangePicture = () => {
-        const file = document.getElementById('pictureFile').files[0]
-        const imgPreview = document.getElementById('imgPreview')
-
-        cloudinaryUploadImg({file})
-        .then(resultUrl => {
-            imgPreview.src = resultUrl
-            this.setState({picture: resultUrl})
-        })
-    }
-
-    handleChangePendingUnits = (event) => {
-        this.setState({pendingUnits: event.target.value})
-    }
-
-    handleSubmit = () => {
-        let goodToAddOrEdit;
-        if (this.state.productName === undefined || this.state.productName === '') alert('Has d\'assignar un nom al val!');
-        else if (!this.props.modal.good) {
-            goodToAddOrEdit = {
-                productName: this.state.productName,
-                picture: this.state.picture,
-                discountType: this.state.discountType,
-                discount: this.state.discount,
-                category: this.state.category,
-                reusePeriod: this.state.reusePeriod,
-                initialPrice: this.state.initialPrice,
-                pendingUnits: this.state.pendingUnits,
-            }
-            this.props.actions.goodsActions.dispatchAddGood(goodToAddOrEdit)
-            this.toggle()
-        }
-        else {
-            goodToAddOrEdit = {
-                _id: this.props.modal.good._id,
-                productName: this.state.productName,
-                picture: this.state.picture,
-                discountType: this.state.discountType,
-                discount: this.state.discount,
-                category: this.state.category,
-                reusePeriod: this.state.reusePeriod,
-                initialPrice: this.state.initialPrice,
-                pendingUnits: this.state.pendingUnits,
-            }
-            this.props.actions.goodsActions.dispatchEditGood(goodToAddOrEdit)
-            this.toggle()
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.modal.good) {
+            if (nextProps.modal.good.productName !== this.state.productName) this.setState({productName: nextProps.modal.good.productName});
+            if (nextProps.modal.good.picture !== this.state.picture) this.setState({picture: nextProps.modal.good.picture});
+            if (nextProps.modal.good.discountType !== this.state.discountType) this.setState({discountType: nextProps.modal.good.discountType});
+            if (nextProps.modal.good.discount !== this.state.discount) this.setState({discount: nextProps.modal.good.discount});
+            if (nextProps.modal.good.category !== this.state.category) this.setState({category: nextProps.modal.good.category});
+            if (nextProps.modal.good.reusePeriod !== this.state.reusePeriod) this.setState({reusePeriod: nextProps.modal.good.reusePeriod});
+            if (nextProps.modal.good.initialPrice !== this.state.initialPrice) this.setState({initialPrice: nextProps.modal.good.initialPrice});
+            if (nextProps.modal.good.pendingUnits !== this.state.pendingUnits) this.setState({pendingUnits: nextProps.modal.good.pendingUnits})
         }
     }
 
     render() {
         return (
             <Modal isOpen={this.props.modal.isOpen} toggle={this.toggle} id="formModal">
-                <ModalHeader toggle={this.toggle}>Gestió de vals de descompte</ModalHeader>
+                <ModalHeader toggle={this.toggle}>
+                    <FormattedMessage id='modal.goodsManagement'
+                                      defaultMessage='Descompte aplicat'/>
+                </ModalHeader>
                 <ModalBody>
                     <Form>
                         <FormGroup>
-                            <Label for="couponName">Nom del val</Label>
-                            <Input type="text" name="goodName" id="goodName" onChange={this.handleChangeProductName}
+                            <Label for="couponName">
+                                <FormattedMessage id='modal.goodName'
+                                                  defaultMessage='Nom del producte'/>
+                            </Label>
+                            <Input type="text" className="goodName" id="goodName" onChange={this.handleChangeProductName}
                                    value={this.state.productName}
                             />
                         </FormGroup>
                         <FormGroup>
-                            <Label for="initialPrice">Preu original (€)</Label>
-                            <Input type="number" name="initialPrice" id="initialPrice"
+                            <Label for="initialPrice">
+                                <FormattedMessage id='modal.originalPrice'
+                                                  defaultMessage='Preu original (€)'/>
+                             </Label>
+                            <Input type="number" className="initialPrice" id="initialPrice"
                                    min={
                                        this.state.discountType === '%' ? '0' :
                                            this.state.discount
@@ -163,13 +163,19 @@ class ModalView extends React.Component {
                         </FormGroup>
                         <FormGroup row>
                             <Col sm="6">
-                                <Label for="discount">Descompte</Label>
+                                <Label for="discount">
+                                    <FormattedMessage id='modal.discount'
+                                                      defaultMessage='Descompte'/>
+                                </Label>
                             </Col>
                             <Col sm="6">
-                                <Label for="discount">Unitats restants</Label>
+                                <Label for="discount">
+                                    <FormattedMessage id='good.pendingUnits'
+                                                      defaultMessage='Unitats restants'/>
+                                </Label>
                             </Col>
                             <Col sm="3">
-                                <Input type="number" name="discount" id="discount"
+                                <Input type="number" className="discount" id="discount"
                                        min='0'
                                        max={
                                            this.state.discountType === '%' ? '100' : this.state.maxEurosDiscount
@@ -179,18 +185,20 @@ class ModalView extends React.Component {
                                        value={this.state.discount}/>
                             </Col>
                             <Col sm="3">
-                                <Input type="select" name="discountType" id="discountType"
+                                <Input type="select" className="discountType" id="discountType"
                                        onChange={this.handleChangeDiscountType} value={this.state.discountType}>
                                     <option>%</option>
                                     <option>€</option>
                                 </Input>
                             </Col>
                             <Col sm="6">
-                                <Input required type="number" name="pendingUnits" id="pendingUnits" min="0"
+                                <Input required type="number" className="pendingUnits" id="pendingUnits" min="0"
                                        onChange={this.handleChangePendingUnits} value={this.state.pendingUnits}/>
                             </Col>
                             <Col sm="12" className="currentPrice">
-                                Preu final:&nbsp;
+                                <FormattedMessage id='good.currentPrice'
+                                                  defaultMessage='Preu final'/>
+                                :&nbsp;
                                 {
                                     this.state.discountType === '%' ?
                                         (parseFloat(this.state.initialPrice) - parseFloat(this.state.initialPrice) * parseFloat(this.state.discount) / 100).toFixed(2).toString() :
@@ -201,30 +209,57 @@ class ModalView extends React.Component {
                         </FormGroup>
                         <FormGroup row>
                             <Col sm="6">
-                                <Label for="reusePeriod">Periodicitat (dies)</Label>
-                                <Input required type="number" name="reusePeriod" id="reusePeriod" min="0"
+                                <Label for="reusePeriod">
+                                    <FormattedMessage id='modal.periodicity'
+                                                      defaultMessage='Periodicitat (dies)'/>
+                                 </Label>
+                                <Input required type="number" className="reusePeriod" id="reusePeriod" min="0"
                                        onChange={this.handleChangeReusePeriod} value={this.state.reusePeriod}/>
                             </Col>
                             <Col sm="6">
-                                <Label for="category">Categoria</Label>
-                                <Input required type="select" name="category" id="category"
+                                <Label for="category">
+                                    <FormattedMessage id='good.category'
+                                                      defaultMessage='Categoria'/>
+                                </Label>
+                                <Input required type="select" className="category" id="category"
                                        onChange={this.handleChangeCategory} value={this.state.category}>
-                                    <option value="1">Alimentació</option>
-                                    <option value="2">Cultura</option>
-                                    <option value="3">Formació</option>
-                                    <option value="4">Mobilitat</option>
-                                    <option value="5">Tecnologia</option>
-                                    <option value="6">Salut</option>
-                                    <option value="7">Esports</option>
-                                    <option value="8">Lleure</option>
-                                    <option value="9">Altres</option>
+                                    <FormattedMessage id='good.category.nutrition' defaultMessage='Nutrició' key={1}>
+                                        {(message) => <option value="1">{message}</option>}
+                                    </FormattedMessage>
+                                    <FormattedMessage id='good.category.culture' defaultMessage='Cultura' key={2}>
+                                        {(message) => <option value="2">{message}</option>}
+                                    </FormattedMessage>
+                                    <FormattedMessage id='good.category.education' defaultMessage='Formació' key={3}>
+                                        {(message) => <option value="3">{message}</option>}
+                                    </FormattedMessage>
+                                    <FormattedMessage id='good.category.mobility' defaultMessage='Mobilitat' key={4}>
+                                        {(message) => <option value="4">{message}</option>}
+                                    </FormattedMessage>
+                                    <FormattedMessage id='good.category.technology' defaultMessage='Tecnologia' key={5}>
+                                        {(message) => <option value="5">{message}</option>}
+                                    </FormattedMessage>
+                                    <FormattedMessage id='good.category.healthcare' defaultMessage='Salut' key={6}>
+                                        {(message) => <option value="6">{message}</option>}
+                                    </FormattedMessage>
+                                    <FormattedMessage id='good.category.sports' defaultMessage='Esports' key={7}>
+                                        {(message) => <option value="7">{message}</option>}
+                                    </FormattedMessage>
+                                    <FormattedMessage id='good.category.leisure' defaultMessage='Lleure' key={8}>
+                                        {(message) => <option value="8">{message}</option>}
+                                    </FormattedMessage>
+                                    <FormattedMessage id='good.category.others' defaultMessage='Altres' key={9}>
+                                        {(message) => <option value="9">{message}</option>}
+                                    </FormattedMessage>
                                 </Input>
                             </Col>
                         </FormGroup>
                         <FormGroup row>
                             <Col sm="8">
-                                <Label for="File">Imatge</Label>
-                                <Input type="file" name="file" id="pictureFile" onChange={this.handleChangePicture}/>
+                                <Label for="File">
+                                    <FormattedMessage id='modal.image'
+                                                      defaultMessage='Imatge'/>
+                                </Label>
+                                <Input type="file" className="file" id="pictureFile" onChange={this.handleChangePicture}/>
                             </Col>
                             <Col sm="4">
                                 <img id="imgPreview" alt="preview" src={this.state.picture}/>
@@ -254,6 +289,6 @@ ModalView.propTypes = {
         modalActions: PropTypes.object.isRequired,
     }).isRequired,
 
-}
+};
 
 export default ModalView

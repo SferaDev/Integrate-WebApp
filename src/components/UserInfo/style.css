@@ -1,0 +1,13 @@
+.UserInfo {
+    border: 1px solid black;
+    width: 30%;
+    background: white;
+    position: fixed;
+    height: 100%;
+    resize:both;
+}
+
+.Picture {
+    width: 60%;
+    margin-left: 20%;
+}

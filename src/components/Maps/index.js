@@ -1,5 +1,5 @@
 import React from 'react';
-import {compose, withProps, lifecycle} from 'recompose';
+import {compose, lifecycle, withProps} from 'recompose';
 import {GoogleMap, Marker, withGoogleMap, withScriptjs} from 'react-google-maps';
 import SearchBox from 'react-google-maps/lib/components/places/SearchBox';
 import _ from 'lodash';
@@ -8,10 +8,10 @@ import _ from 'lodash';
 
 const MyMapComponent = compose(
     withProps({
-        googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places",
+        googleMapURL: "https://maps.googleapis.com/maps/api/js?key=" + process.env.REACT_APP_GOOGLE_MAPS_API_KEY + "&v=3.exp&libraries=geometry,drawing,places",
         loadingElement: <div style={{height: `100%`}}/>,
         containerElement: <div style={{height: `100%`}}/>,
-        mapElement: <div style={{height: `80%`}}/>,
+        mapElement: <div style={{height: `100%`}}/>,
     }),
     lifecycle({
         componentWillMount() {
@@ -47,14 +47,14 @@ const MyMapComponent = compose(
                     window.close()
                 },
                 onPlacesChanged: () => {
-                    const places = refs.searchBox.getPlaces()
-                    {
-                        places.map(({formatted_address, geometry: {location}}) =>
-                            this.props.onUserSearched(formatted_address, location.lat(), location.lng())
-                        )
-                    }
+                    const places = refs.searchBox.getPlaces();
+
+                    places.map(({formatted_address, geometry: {location}}) =>
+                        this.props.onUserSearched(formatted_address, location.lat(), location.lng())
+                    )
+
                     const bounds = new google.maps.LatLngBounds();
-                    console.log()
+                    console.log();
                     places.forEach(place => {
                         if (place.geometry.viewport) {
                             bounds.union(place.geometry.viewport)
@@ -120,19 +120,17 @@ export class Maps extends React.PureComponent {
     state = {
         isMarkerShown: false,
     };
-
-    componentDidMount() {
-        this.delayedShowMarker()
-    };
-
     delayedShowMarker = () => {
         setTimeout(() => {
             this.setState({isMarkerShown: true})
         }, 3000)
     };
-
     handleMarkerClick = () => {
         this.setState({isMarkerShown: false})
+    };
+
+    componentDidMount() {
+        this.delayedShowMarker()
     };
 
     render() {

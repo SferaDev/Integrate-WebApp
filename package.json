@@ -13,9 +13,12 @@
     "chai": "^4.1.2",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "fetch-mock": "^6.4.2",
+    "moxios": "^0.4.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-google-maps": "^9.4.5",
+    "react-intl": "^2.4.0",
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
@@ -23,13 +26,15 @@
     "reactstrap": "^5.0.0-beta.3",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
+    "redux-mock-store": "^1.5.1",
     "redux-thunk": "^2.2.0",
+    "safer-buffer": "^2.1.2",
     "sha1": "^1.1.1"
   },
   "scripts": {
-    "start": "npx react-scripts start",
-    "build": "npx react-scripts build",
-    "test": "npx react-scripts test --env=jsdom --coverage",
-    "eject": "npx react-scripts eject"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom --coverage",
+    "eject": "react-scripts eject"
   }
 }

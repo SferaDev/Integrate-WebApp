@@ -2,6 +2,12 @@ import goods from './goods'
 import * as types from '../constants/ActionTypes'
 
 describe('goods reducer', () => {
+    it('should handle initial state', () => {
+        expect(
+            goods(undefined, {})
+        ).toEqual([])
+    });
+
     it('should handle RECEIVE_GOODS', () => {
         expect(
             goods([], {
@@ -54,7 +60,7 @@ describe('goods reducer', () => {
                 pendingUnits: 3,
             }
         ])
-    })
+    });
 
     it('should handle ADD_GOOD', () => {
         expect(
@@ -85,7 +91,7 @@ describe('goods reducer', () => {
                 pendingUnits: 3,
             }
         ])
-    })
+    });
 
     it('should handle DELETE_GOOD', () => {
         expect(
@@ -131,7 +137,7 @@ describe('goods reducer', () => {
                 pendingUnits: 3,
             }
         ])
-    })
+    });
 
     it('should handle EDIT_GOOD', () => {
         expect(
@@ -197,4 +203,4 @@ describe('goods reducer', () => {
             }
         ])
     })
-})
+});

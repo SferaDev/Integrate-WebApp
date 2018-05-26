@@ -10,7 +10,7 @@ import LanguageSelector from '../../components/LanguageSelector';
 import MainView from '../../components/MainView';
 import Incentive from '../../components/Incentive';
 import UserInfo from '../../components/UserInfo';
-import {logoutAction, setUser} from '../../actions/auth';
+import {logoutAction, setUserAndToken} from '../../actions/auth';
 import {setLocale} from '../../actions/locale';
 
 addLocaleData(en)
@@ -45,7 +45,7 @@ const mapDispatchToProps = dispatch => ({
             setLocale: (lang) => dispatch(setLocale(lang)),
         },
         authActions: {
-            setUser: (user) => dispatch(setUser(user)),
+            setUser: (user, token) => dispatch(setUserAndToken(user, token)),
             logoutAction: () => dispatch(logoutAction()),
         },
     }

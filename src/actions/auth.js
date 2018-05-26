@@ -5,7 +5,7 @@ import {resetLocale} from './locale';
 import {cleanModalState} from './modal';
 import {LOG_OUT} from '../constants/ActionTypes';
 
-export function setUser(user, token) {
+export function setUserAndToken(user, token) {
     return {
         type: SET_USER,
         user,
@@ -51,13 +51,13 @@ export function logoutAction(){
 
 export function loginAction(id, password) {
     return dispatch => {
-        dispatch(setUser(null));
+        dispatch(setUserAndToken(null, null));
         dispatch(setLoginPending(true));
         dispatch(setLoginSuccess(false));
         dispatch(setLoginError(null));
 
         apiPostLogin({id, password}).then(auth => {
-            dispatch(setUser(auth.user, auth.token));
+            dispatch(setUserAndToken(auth.user, auth.token));
             dispatch(setLoginPending(false));
             dispatch(setLoginSuccess(true));
             dispatch(setLoginError(null));

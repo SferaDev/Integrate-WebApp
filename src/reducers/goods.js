@@ -1,4 +1,4 @@
-import {ADD_GOOD, DELETE_GOOD, EDIT_GOOD, RECEIVE_GOODS} from '../constants/ActionTypes';
+import {ADD_GOOD, DELETE_GOOD, EDIT_GOOD, RECEIVE_GOODS, RESET_GOODS} from '../constants/ActionTypes';
 
 export default function goods(state = [], action) {
     switch (action.type) {
@@ -45,6 +45,9 @@ export default function goods(state = [], action) {
                     } :
                     good
             );
+
+        case RESET_GOODS:
+            return {}
 
         default:
             return state

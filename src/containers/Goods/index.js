@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
-import PropTypes from 'prop-types';
 import ModalView from '../../components/ModalView';
 import GoodsList from '../../components/GoodsList';
 import './style.css';
@@ -20,6 +19,7 @@ import {dispatchEditGood} from '../../actions/goods';
 import {dispatchToggleModal} from '../../actions/modal';
 import {dispatchToggleModalEdit} from '../../actions/modal';
 import {dispatchCleanModalState} from '../../actions/modal';
+import {logoutAction} from '../../actions/auth';
 
 addLocaleData(en)
 addLocaleData(es)
@@ -33,15 +33,21 @@ export class GoodsContainer extends Component {
 
     componentDidMount() {
         this.props.actions.goodsActions.dispatchReceiveGoods()
+        this.props.actions.localeActions.setLocale(JSON.parse(localStorage.getItem('user')).interfaceLanguage)
+        console.log(JSON.parse(localStorage.getItem('user')).interfaceLanguage)
     }
 
     render() {
         let {goods, actions, modal, lang} = this.props;
+        if (!goods || !actions || !modal || !lang){
+            return <div>Loading...</div>
+        }
+
         return (
             <IntlProvider locale={lang} messages={messages[lang]}>
                 <div className="goodsContainer">
                     <LanguageSelector className="languageSelector" actions={actions.localeActions} lang={lang}/>
-                    <MainView className="MainView"/>
+                    <MainView className="MainView" actions={actions.authActions}/>
                     <GoodsList
                         goods={goods} actions={actions}/>
                     <ModalView modal={modal} actions={actions} lang={lang}/>
@@ -50,32 +56,6 @@ export class GoodsContainer extends Component {
         )
     }
 }
-
-GoodsContainer.propTypes = {
-    goods: PropTypes.arrayOf(PropTypes.shape({
-        _id: PropTypes.string.isRequired,
-        productName: PropTypes.string.isRequired,
-        picture: PropTypes.string.isRequired,
-        discountType: PropTypes.string.isRequired,
-        discount: PropTypes.number.isRequired,
-        category: PropTypes.number.isRequired,
-        reusePeriod: PropTypes.number.isRequired,
-        initialPrice: PropTypes.number.isRequired,
-        pendingUnits: PropTypes.number.isRequired,
-        currentPrice: PropTypes.number,
-    })),
-    modal: PropTypes.shape(
-        {
-            isOpen: PropTypes.bool.isRequired,
-            good: PropTypes.object,
-        }
-    ).isRequired,
-    lang: PropTypes.string.isRequired,
-    actions: PropTypes.shape({
-        modalActions: PropTypes.object.isRequired,
-        goodsActions: PropTypes.object.isRequired,
-    }).isRequired,
-};
 
 const mapStateToProps = state => ({
     goods: state.goods,
@@ -99,6 +79,9 @@ const mapDispatchToProps = (dispatch) => {
             },
             localeActions: {
                 setLocale: (lang) => dispatch(setLocale(lang)),
+            },
+            authActions: {
+                logoutAction: () => dispatch(logoutAction()),
             },
         }
     }

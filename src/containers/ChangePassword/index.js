@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
-import PropTypes from 'prop-types';
-import bindActionCreators from 'redux/es/bindActionCreators';
-import * as LocaleActions from '../../actions/locale'
 
 import {addLocaleData, IntlProvider} from 'react-intl';
 import es from 'react-intl/locale-data/es'
@@ -12,6 +9,8 @@ import messages from "../../constants/messages"
 import LanguageSelector from '../../components/LanguageSelector';
 import ChangePassword from '../../components/ChangePassword';
 import MainView from '../../components/MainView';
+import {setLocale} from '../../actions/locale';
+import {logoutAction} from '../../actions/auth';
 
 addLocaleData(en)
 addLocaleData(es)
@@ -23,13 +22,17 @@ class ChangePasswordContainer extends Component {
         this.state = {};
     }
 
+    componentDidMount(){
+        this.props.actions.localeActions.setLocale(JSON.parse(localStorage.getItem('user')).interfaceLanguage)
+    }
+
     render() {
         let {lang, actions} = this.props;
         return (
             <IntlProvider locale={lang} messages={messages[lang]}>
                 <div className="signupContainer">
                     <LanguageSelector actions={actions.localeActions} lang={lang}/>
-                    <MainView/>
+                    <MainView actions={actions.authActions}/>
                     <ChangePassword history={this.props.history}/>
                 </div>
             </IntlProvider>
@@ -37,22 +40,22 @@ class ChangePasswordContainer extends Component {
     }
 }
 
-ChangePasswordContainer.propTypes = {
-    lang: PropTypes.string.isRequired,
-    actions: PropTypes.shape({
-        localeActions: PropTypes.object.isRequired,
-    }).isRequired,
-};
-
 const mapStateToProps = state => ({
     lang: state.locale.lang,
 });
 
-const mapDispatchToProps = dispatch => ({
-    actions: {
-        localeActions: bindActionCreators(LocaleActions, dispatch),
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actions: {
+            localeActions: {
+                setLocale: (lang) => dispatch(setLocale(lang)),
+            },
+            authActions: {
+                logoutAction: () => dispatch(logoutAction()),
+            },
+        }
     }
-});
+}
 
 export default connect(
     mapStateToProps,

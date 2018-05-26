@@ -24,4 +24,8 @@ UserInfo.propTypes = {
         description: PropTypes.string.isRequired,
         picture: PropTypes.string.isRequired,
     }).isRequired,
+
+    actions: PropTypes.shape({
+        setUser: PropTypes.object.isRequired,
+    })
 };

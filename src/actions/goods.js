@@ -41,3 +41,7 @@ export const dispatchEditGood = (good) => dispatch => {
         dispatch(editGood(good))
     })
 };
+
+export const resetGoods = () => ({
+    type: types.RESET_GOODS,
+})

@@ -12,20 +12,25 @@ import {
     NavLink
      } from 'reactstrap';
 import {Link} from "react-router-dom";
+import PropTypes from 'prop-types';
 
 export default class MainView extends React.Component {
     constructor(props) {
         super(props);
-
-        this.toggle = this.toggle.bind(this);
         this.state = {
             isOpen: false
         };
+        this.toggle = this.toggle.bind(this)
+        this.logout = this.logout.bind(this)
     }
     toggle() {
         this.setState({
             isOpen: !this.state.isOpen
         });
+    }
+
+    logout() {
+        this.props.actions.logoutAction()
     }
     render() {
         return (
@@ -48,7 +53,7 @@ export default class MainView extends React.Component {
                                 </NavLink>
                             </NavItem>
                             <NavItem className="Logout">
-                                    <NavLink href="/">
+                                    <NavLink href="/" onClick={this.logout}>
                                     <FormattedMessage id='main.logout' defaultMessage='Sortir'/>
                                 </NavLink>
                             </NavItem>
@@ -59,3 +64,7 @@ export default class MainView extends React.Component {
         );
     }
 }
+
+MainView.propTypes = {
+    actions: PropTypes.object.isRequired,
+};

@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
-import PropTypes from 'prop-types';
-import bindActionCreators from 'redux/es/bindActionCreators';
-import * as LocaleActions from '../../actions/locale'
 
 import {addLocaleData, IntlProvider} from 'react-intl';
 import es from 'react-intl/locale-data/es'
@@ -13,20 +10,35 @@ import LanguageSelector from '../../components/LanguageSelector';
 import MainView from '../../components/MainView';
 import Incentive from '../../components/Incentive';
 import UserInfo from '../../components/UserInfo';
+import {logoutAction, setUser} from '../../actions/auth';
+import {setLocale} from '../../actions/locale';
 
 addLocaleData(en)
 addLocaleData(es)
 addLocaleData(ca)
 
 class MainViewContainer extends Component {
+    componentDidMount(){
+            console.log('CDM user', JSON.parse(localStorage.getItem('user')))
+            console.log('CDM token', localStorage.getItem('token'))
+            this.props.actions.authActions.setUser(JSON.parse(localStorage.getItem('user')))
+            this.props.actions.localeActions.setLocale(JSON.parse(localStorage.getItem('user')).interfaceLanguage)
+
+    }
+
     render() {
         let {lang, actions, user} = this.props;
-        console.log("user: ", user)
+        if (!actions || !lang || !user) {
+            console.log('User in loading', user)
+            return <div>Loading...</div>
+        }
+
+        console.log('Well loaded lang', lang)
         return (
             <IntlProvider locale={lang} messages={messages[lang]}>
                 <div className="mainviewContainer">
                     <LanguageSelector actions={actions.localeActions} lang={lang}/>
-                    <MainView/>
+                    <MainView actions={actions.authActions}/>
                     <UserInfo user={user}/>
                     <Incentive className="Incentive"/>
                 </div>
@@ -35,14 +47,6 @@ class MainViewContainer extends Component {
     }
 }
 
-MainViewContainer.propTypes = {
-    lang: PropTypes.string.isRequired,
-    user: PropTypes.object.isRequired,
-    actions: PropTypes.shape({
-        localeActions: PropTypes.object.isRequired,
-    }).isRequired,
-};
-
 const mapStateToProps = state => ({
     lang: state.locale.lang,
     user: state.auth.user,
@@ -50,7 +54,13 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     actions: {
-        localeActions: bindActionCreators(LocaleActions, dispatch),
+        localeActions: {
+            setLocale: (lang) => dispatch(setLocale(lang)),
+        },
+        authActions: {
+            setUser: (user) => dispatch(setUser(user)),
+            logoutAction: () => dispatch(logoutAction()),
+        },
     }
 });
 

@@ -50,7 +50,7 @@ export class Login extends Component {
                                 }
 
                                 {
-                                    !isLoginPending && isLoginSuccess && <Redirect to='/main'/>
+                                    !isLoginPending && isLoginSuccess && <Redirect to='/main' />
                                 }
 
                                 <FormGroup>

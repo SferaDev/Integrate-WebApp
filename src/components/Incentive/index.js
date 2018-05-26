@@ -25,15 +25,18 @@ export default class Incentive extends React.Component {
 
         };
 
-        apiGetIncentives().then(incentives => {
-          this.setState({goodsCreated: incentives.goodsCreated});
-          this.setState({beneficiariesHelped: incentives.beneficiariesHelped});
-          this.setState({totalSavedMoney: incentives.totalSavedMoney});
-         })
-
         this.setLeftText = this.setLeftText.bind(this);
         this.setMiddleText = this.setMiddleText.bind(this);
         this.setRightText = this.setRightText.bind(this);
+    }
+
+    componentDidMount() {
+
+        apiGetIncentives().then(incentives => {
+            this.setState({goodsCreated: incentives.goodsCreated});
+            this.setState({beneficiariesHelped: incentives.beneficiariesHelped});
+            this.setState({totalSavedMoney: incentives.totalSavedMoney});
+        })
 
     }
 

@@ -1,5 +1,6 @@
 import {SET_LOGIN_ERROR, SET_LOGIN_PENDING, SET_LOGIN_SUCCESS, SET_USER} from '../constants';
 import {LOG_OUT} from '../constants/ActionTypes';
+import {localStorage} from "../utils/localstorage";
 
 const getDefaultUserState = () => ({
     user: getUserFromLocalStorage(),

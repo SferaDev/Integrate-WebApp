@@ -1,4 +1,5 @@
 import {LOCALE_SET, RESET_LOCALE} from '../constants/ActionTypes';
+import {localStorage} from "../utils/localstorage";
 
 
 const getDefaultLocale = () => {

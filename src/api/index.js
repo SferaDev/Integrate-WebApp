@@ -1,17 +1,5 @@
 import axios from 'axios';
-
-let localStorage = window && window.localStorage ? window.localStorage : null;
-
-if (typeof localStorage === 'undefined' || localStorage === null) {
-    localStorage = {
-        getItem: () => 'fake localStorage',
-        setItem: (key, value) => {
-        },
-        clear: () => {
-        }
-    }
-}
-
+import {localStorage} from "../utils/localstorage";
 
 export const API_HOST = process.env.REACT_APP_API_HOST || 'https://integrate-backend-staging.herokuapp.com'
 

@@ -35,8 +35,6 @@ export function setLoginError(loginError) {
 
 export function loginAction(id, password) {
     return dispatch => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
         dispatch(setUser(null));
         dispatch(setLoginPending(true));
         dispatch(setLoginSuccess(false));
@@ -69,6 +67,7 @@ export function logoutAction(){
         dispatch(resetGoods());
         dispatch(resetLocale());
         dispatch(cleanModalState());
+        localStorage.clear()
         dispatch(logout())
     }
 }

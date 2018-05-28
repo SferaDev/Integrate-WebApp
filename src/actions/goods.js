@@ -8,6 +8,7 @@ export const receiveGoods = (goods) => ({
 
 export const dispatchReceiveGoods = () => dispatch => {
     apiGetListAllGoods().then(goodsList => {
+        console.log(goodsList)
         dispatch(receiveGoods(goodsList))
     })
 };

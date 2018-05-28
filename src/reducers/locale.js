@@ -6,7 +6,8 @@ export default function locale(state = { lang: "ca" }, action = {}) {
             return { lang: action.lang }
 
         case RESET_LOCALE:
-            return {}
+            return { lang: 'ca' }
+
         default: return state;
     }
 }

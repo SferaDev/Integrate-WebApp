@@ -37,8 +37,8 @@ class ModalView extends React.Component {
     handleChangeDiscountType = (event) => {
         this.setState({discountType: event.target.value});
         event.target.value === '%' ?
-            this.setState({discount: Math.min(100, parseFloat(this.state.discount)).toString()}) :
-            this.setState({discount: Math.min(parseFloat(this.state.initialPrice), parseFloat(this.state.discount)).toString()})
+            this.setState({discount: Math.min(100, parseFloat(this.state.discount))}) :
+            this.setState({discount: Math.min(parseFloat(this.state.initialPrice), parseFloat(this.state.discount))})
     };
     handleChangeReusePeriod = (event) => {
         this.setState({reusePeriod: event.target.value})
@@ -61,12 +61,25 @@ class ModalView extends React.Component {
     };
     handleSubmit = () => {
         let goodToAddOrEdit;
-        if (this.state.productName === undefined || this.state.productName === '') alert('Has d\'assignar un nom al val!');
-        else if (this.state.initialPrice < 0) alert('El preu original no pot ser negatiu')
-        else if (this.state.discountType === '%' && (this.state.discount < 0 || this.state.discount >= 100)) alert('El descompte ha de tenir un valor entre 0 i 99')
-        else if (this.state.pendingUnits <= 0) alert('El valor d\'unitats pendents ha de ser positiu')
-        else if (this.state.reusePeriod < 0) alert('El període de reutilització ha de ser positiu')
-        else if (this.state.discountType === '€' && (this.state.discount < 0 || this.state.discount >= this.state.initialPrice)) alert('El descompte ha de ser superior a 0 i inferior al preu original')
+        if (this.state.productName === undefined || this.state.productName === '')
+            alert('Has d\'assignar un nom al val!');
+        else if (parseFloat(this.state.initialPrice) < 0)
+            alert('El preu original no pot ser negatiu')
+        else if (parseFloat(this.state.discount) < 0)
+            alert('El descompte ha de tenir un valor positiu')
+        else if (this.state.discountType === '%' && parseInt(this.state.discount, 10) >= 100)
+            alert('El descompte ha de tenir un valor menor que 99')
+        else if (parseInt(this.state.pendingUnits, 10) <= 0)
+            alert('El valor d\'unitats pendents ha de ser positiu')
+        else if (parseInt(this.state.reusePeriod < 0, 10))
+            alert('El període de reutilització ha de ser positiu')
+        else if (this.state.discountType === '€' && parseFloat(this.state.discount) >= parseFloat(this.state.initialPrice))
+            alert('El descompte ha de ser inferior al preu original')
+        else if (!Number.isInteger(parseFloat(this.state.pendingUnits)))
+            alert('El valor d\'unitats pendents no pot ser decimal')
+        else if (!Number.isInteger(parseFloat(this.state.reusePeriod)))
+            alert('El valor d\'unitats pendents no pot ser decimal')
+
         else if (!this.props.modal.good) {
             goodToAddOrEdit = {
                 productName: this.state.productName,
@@ -206,8 +219,8 @@ class ModalView extends React.Component {
                                 :&nbsp;
                                 {
                                     this.state.discountType === '%' ?
-                                        (parseFloat(this.state.initialPrice) - parseFloat(this.state.initialPrice) * parseFloat(this.state.discount) / 100).toFixed(2).toString() :
-                                        (parseFloat(this.state.initialPrice) - parseFloat(this.state.discount)).toFixed(2).toString()
+                                        (parseFloat(this.state.initialPrice) - parseFloat(this.state.initialPrice) * parseFloat(this.state.discount) / 100).toFixed(2) :
+                                        (parseFloat(this.state.initialPrice) - parseFloat(this.state.discount)).toFixed(2)
                                 }
                                 &nbsp;€
                             </Col>

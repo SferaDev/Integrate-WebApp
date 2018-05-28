@@ -61,6 +61,7 @@ class ModalView extends React.Component {
     };
     handleSubmit = () => {
         let goodToAddOrEdit;
+
         if (this.state.productName === undefined || this.state.productName === '')
             alert('Has d\'assignar un nom al val!');
         else if (parseFloat(this.state.initialPrice) < 0)

@@ -20,9 +20,6 @@ addLocaleData(ca)
 class MainViewContainer extends Component {
     componentDidMount(){
         while(!JSON.parse(localStorage.getItem('user')) && !JSON.getItem('token')) {}
-
-        console.log('CDM user', JSON.parse(localStorage.getItem('user')))
-        console.log('CDM token', localStorage.getItem('token'))
         this.props.actions.authActions.setUser(JSON.parse(localStorage.getItem('user')))
         this.props.actions.localeActions.setLocale(JSON.parse(localStorage.getItem('user')).interfaceLanguage)
     }

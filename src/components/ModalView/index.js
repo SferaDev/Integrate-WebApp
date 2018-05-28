@@ -51,10 +51,10 @@ class ModalView extends React.Component {
         const imgPreview = document.getElementById('imgPreview');
 
         cloudinaryUploadImg({file})
-        .then(resultUrl => {
-            imgPreview.src = resultUrl;
-            this.setState({picture: resultUrl})
-        })
+            .then(resultUrl => {
+                imgPreview.src = resultUrl;
+                this.setState({picture: resultUrl})
+            })
     };
     handleChangePendingUnits = (event) => {
         this.setState({pendingUnits: event.target.value})
@@ -62,6 +62,11 @@ class ModalView extends React.Component {
     handleSubmit = () => {
         let goodToAddOrEdit;
         if (this.state.productName === undefined || this.state.productName === '') alert('Has d\'assignar un nom al val!');
+        else if (this.state.initialPrice < 0) alert('El preu original no pot ser negatiu')
+        else if (this.state.discountType === '%' && (this.state.discount < 0 || this.state.discount >= 100)) alert('El descompte ha de tenir un valor entre 0 i 99')
+        else if (this.state.pendingUnits <= 0) alert('El valor d\'unitats pendents ha de ser positiu')
+        else if (this.state.reusePeriod < 0) alert('El període de reutilització ha de ser positiu')
+        else if (this.state.discountType === '€' && (this.state.discount < 0 || this.state.discount >= this.state.initialPrice)) alert('El descompte ha de ser superior a 0 i inferior al preu original')
         else if (!this.props.modal.good) {
             goodToAddOrEdit = {
                 productName: this.state.productName,
@@ -153,7 +158,7 @@ class ModalView extends React.Component {
                             <Label for="initialPrice">
                                 <FormattedMessage id='modal.originalPrice'
                                                   defaultMessage='Preu original (€)'/>
-                             </Label>
+                            </Label>
                             <Input type="number" className="initialPrice" id="initialPrice"
                                    min={
                                        this.state.discountType === '%' ? '0' :
@@ -212,7 +217,7 @@ class ModalView extends React.Component {
                                 <Label for="reusePeriod">
                                     <FormattedMessage id='modal.periodicity'
                                                       defaultMessage='Periodicitat (dies)'/>
-                                 </Label>
+                                </Label>
                                 <Input required type="number" className="reusePeriod" id="reusePeriod" min="0"
                                        onChange={this.handleChangeReusePeriod} value={this.state.reusePeriod}/>
                             </Col>

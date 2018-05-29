@@ -1,5 +1,5 @@
 import auth from './auth';
-import {setLoginError, setLoginPending, setLoginSuccess, setUser} from '../actions/auth';
+import {setLoginError, setLoginPending, setLoginSuccess, setUserAndToken} from '../actions/auth';
 
 describe('auth reducer', () => {
     it('should handle initial state', () => {
@@ -13,14 +13,14 @@ describe('auth reducer', () => {
         })
     });
 
-    it('should handle setUser', () => {
+    it('should handle setUserAndToken', () => {
         expect(
             auth({
                 user: null,
                 isLoginSuccess: false,
                 isLoginPending: false,
                 loginError: null
-            }, setUser({
+            }, setUserAndToken({
                 name: 'username'
             }))
         ).toEqual({

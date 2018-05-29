@@ -10,7 +10,7 @@ import LanguageSelector from '../../components/LanguageSelector';
 import MainView from '../../components/MainView';
 import Incentive from '../../components/Incentive';
 import UserInfo from '../../components/UserInfo';
-import {logoutAction, setUser} from '../../actions/auth';
+import {logoutAction, setUserAndToken} from '../../actions/auth';
 import {setLocale} from '../../actions/locale';
 
 addLocaleData(en)
@@ -18,20 +18,8 @@ addLocaleData(es)
 addLocaleData(ca)
 
 class MainViewContainer extends Component {
-    componentDidMount(){
-        while(!JSON.parse(localStorage.getItem('user')) && !JSON.getItem('token')) {}
-        this.props.actions.authActions.setUser(JSON.parse(localStorage.getItem('user')))
-        this.props.actions.localeActions.setLocale(JSON.parse(localStorage.getItem('user')).interfaceLanguage)
-    }
-
     render() {
         let {lang, actions, user} = this.props;
-        if (!actions || !lang || !user) {
-            console.log('User in loading', user)
-            return <div>Loading...</div>
-        }
-
-        console.log('Well loaded lang', lang)
         return (
             <IntlProvider locale={lang} messages={messages[lang]}>
                 <div className="mainviewContainer">
@@ -56,7 +44,7 @@ const mapDispatchToProps = dispatch => ({
             setLocale: (lang) => dispatch(setLocale(lang)),
         },
         authActions: {
-            setUser: (user) => dispatch(setUser(user)),
+            setUser: (user, token) => dispatch(setUserAndToken(user, token)),
             logoutAction: () => dispatch(logoutAction()),
         },
     }

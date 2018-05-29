@@ -2,12 +2,12 @@ import React from 'react'
 import {expect} from 'chai';
 import * as enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import MainView from "./index";
+import MainView from "./";
 
 
 enzyme.configure({adapter: new Adapter()});
 
-describe('<MainView />', () => {
+describe('MainView', () => {
     it('renders a nav bar components', () => {
         const wrapper = enzyme.shallow(<MainView/>);
         expect(wrapper.find('NavbarBrand')).length(1);

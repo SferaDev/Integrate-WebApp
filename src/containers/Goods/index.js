@@ -33,16 +33,10 @@ export class GoodsContainer extends Component {
 
     componentDidMount() {
         this.props.actions.goodsActions.dispatchReceiveGoods()
-        this.props.actions.localeActions.setLocale(JSON.parse(localStorage.getItem('user')).interfaceLanguage)
-        console.log(JSON.parse(localStorage.getItem('user')).interfaceLanguage)
     }
 
     render() {
         let {goods, actions, modal, lang} = this.props;
-        if (!goods || !actions || !modal || !lang){
-            return <div>Loading...</div>
-        }
-
         return (
             <IntlProvider locale={lang} messages={messages[lang]}>
                 <div className="goodsContainer">

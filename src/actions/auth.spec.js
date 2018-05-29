@@ -6,9 +6,11 @@ describe('Auth actions', () => {
         const user = {
             name: 'username',
         };
-        expect(actions.setUser(user)).toEqual({
+        const token = 'token'
+        expect(actions.setUserAndToken(user, token)).toEqual({
             type: SET_USER,
-            user
+            user,
+            token,
         })
     })
 

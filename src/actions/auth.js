@@ -1,14 +1,15 @@
 import {apiPostLogin} from '../api';
 import {SET_LOGIN_ERROR, SET_LOGIN_PENDING, SET_LOGIN_SUCCESS, SET_USER} from '../constants';
 import {resetGoods} from './goods';
-import {resetLocale} from './locale';
+import {resetLocale, setLocale} from './locale';
 import {cleanModalState} from './modal';
 import {LOG_OUT} from '../constants/ActionTypes';
 
-export function setUser(user) {
+export function setUserAndToken(user, token) {
     return {
         type: SET_USER,
-        user
+        user,
+        token,
     }
 }
 
@@ -33,29 +34,6 @@ export function setLoginError(loginError) {
     };
 }
 
-export function loginAction(id, password) {
-    return dispatch => {
-        dispatch(setUser(null));
-        dispatch(setLoginPending(true));
-        dispatch(setLoginSuccess(false));
-        dispatch(setLoginError(null));
-
-        apiPostLogin({id, password}).then(auth => {
-            localStorage.setItem('token', auth.token);
-            localStorage.setItem('user', JSON.stringify(auth.user))
-            dispatch(setLoginPending(false));
-            dispatch(setLoginSuccess(true));
-            dispatch(setLoginError(null));
-        }).catch(error => {
-            localStorage.removeItem('token');
-            localStorage.removeItem('user');
-            dispatch(setLoginPending(false));
-            dispatch(setLoginSuccess(false));
-            dispatch(setLoginError(error));
-        })
-    }
-}
-
 export function logout(){
     return {
         type: LOG_OUT,
@@ -67,7 +45,29 @@ export function logoutAction(){
         dispatch(resetGoods());
         dispatch(resetLocale());
         dispatch(cleanModalState());
-        localStorage.clear()
+        localStorage.clear();
         dispatch(logout())
+    }
+}
+
+export function loginAction(id, password) {
+    return dispatch => {
+        dispatch(setUserAndToken(null, null));
+        dispatch(setLoginPending(true));
+        dispatch(setLoginSuccess(false));
+        dispatch(setLoginError(null));
+
+        apiPostLogin({id, password}).then(auth => {
+            dispatch(setUserAndToken(auth.user, auth.token));
+            dispatch(setLocale(auth.user.interfaceLanguage));
+            dispatch(setLoginPending(false));
+            dispatch(setLoginSuccess(true));
+            dispatch(setLoginError(null));
+        }).catch(error => {
+            dispatch(logout());
+            dispatch(setLoginPending(false));
+            dispatch(setLoginSuccess(false));
+            dispatch(setLoginError(error));
+        })
     }
 }

@@ -15,16 +15,16 @@ const App = ({auth}) => (
             <Switch>
                 <Route exact path="/" component={LoginContainer}/>
 
-                {
-                    !auth.isLoginPending && !auth.isLoginSuccess && <Redirect to='/'/>
-                }
-
                 <Route path="/signup" component={SignupContainer}/>
                 <Route path='/reset' component={PasswordRecoveryContainer}/>
 
                 <Route path='/goods' component={GoodsContainer}/>
                 <Route path='/changepassword' component={ChangePasswordContainer}/>
                 <Route path='/main' component={MainViewContainer}/>
+
+                {
+                    !auth.isLoginPending && !auth.isLoginSuccess && <Redirect to='/'/>
+                }
             </Switch>
         </div>
     </Router>

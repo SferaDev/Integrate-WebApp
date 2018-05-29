@@ -45,6 +45,7 @@ export function logoutAction(){
         dispatch(resetGoods());
         dispatch(resetLocale());
         dispatch(cleanModalState());
+        localStorage.clear();
         dispatch(logout())
     }
 }

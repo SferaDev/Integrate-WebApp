@@ -18,7 +18,6 @@ addLocaleData(es)
 addLocaleData(ca)
 
 class MainViewContainer extends Component {
-
     render() {
         let {lang, actions, user} = this.props;
         return (

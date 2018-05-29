@@ -1,7 +1,7 @@
 import {apiPostLogin} from '../api';
 import {SET_LOGIN_ERROR, SET_LOGIN_PENDING, SET_LOGIN_SUCCESS, SET_USER} from '../constants';
 import {resetGoods} from './goods';
-import {resetLocale} from './locale';
+import {resetLocale, setLocale} from './locale';
 import {cleanModalState} from './modal';
 import {LOG_OUT} from '../constants/ActionTypes';
 
@@ -59,6 +59,7 @@ export function loginAction(id, password) {
 
         apiPostLogin({id, password}).then(auth => {
             dispatch(setUserAndToken(auth.user, auth.token));
+            dispatch(setLocale(auth.user.interfaceLanguage));
             dispatch(setLoginPending(false));
             dispatch(setLoginSuccess(true));
             dispatch(setLoginError(null));

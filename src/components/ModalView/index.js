@@ -79,7 +79,7 @@ class ModalView extends React.Component {
         else if (!Number.isInteger(parseFloat(this.state.pendingUnits)))
             alert('El valor d\'unitats pendents no pot ser decimal')
         else if (!Number.isInteger(parseFloat(this.state.reusePeriod)))
-            alert('El valor d\'unitats pendents no pot ser decimal')
+            alert('El valor del temps de reutilització no pot ser decimal')
 
         else if (!this.props.modal.good) {
             goodToAddOrEdit = {

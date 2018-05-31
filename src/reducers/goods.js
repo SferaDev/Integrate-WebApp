@@ -5,6 +5,7 @@ export default function goods(state = [], action) {
         case RECEIVE_GOODS:
             return action.goods.reduce((goodsList, good) => {
                 good.productName = good.productName_original
+                delete good.productName_original
                 goodsList.push(good);
                 return goodsList
             }, []);

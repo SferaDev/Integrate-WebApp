@@ -5,7 +5,6 @@ import {CLEAN_MODAL_STATE, LOCALE_SET, LOG_OUT, RESET_GOODS, RESET_LOCALE} from 
 import thunk from 'redux-thunk';
 import {logoutAction} from './auth';
 import localStorage from 'mock-local-storage'
-import fetchMock from 'fetch-mock'
 
 jest.mock('../api/login')
 jest.mock('../actions/locale')
@@ -14,11 +13,6 @@ const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
 
 describe('Auth actions', () => {
-    afterEach(() => {
-        fetchMock.reset()
-        fetchMock.restore()
-    })
-
     it('setLoginPending should create SET_LOGIN_PENDING action', () => {
         const user = {
             name: 'username',

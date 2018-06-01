@@ -1,7 +1,7 @@
 // The assertion for a promise must be returned.
-import {apiPostLogin} from '../../__mocks__/login';
+import {apiPostLogin} from './__mocks__/login';
 
 it('works with promises', () => {
     expect.assertions(1);
-    return apiPostLogin(1, 'test').then(data => expect(data).toEqual('token'));
+    return apiPostLogin({id: 1, password: 'test'}).then(data => expect(data.token).toEqual('token'));
 });

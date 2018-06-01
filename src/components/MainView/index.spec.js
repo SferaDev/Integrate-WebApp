@@ -8,8 +8,10 @@ import MainView from "./";
 enzyme.configure({adapter: new Adapter()});
 
 describe('MainView', () => {
+    const mockActions = {}
+
     it('renders a nav bar components', () => {
-        const wrapper = enzyme.shallow(<MainView/>);
+        const wrapper = enzyme.shallow(<MainView actions={mockActions}/>);
         expect(wrapper.find('NavbarBrand')).length(1);
         expect(wrapper.find('Navbar')).length(1);
         expect(wrapper.find('NavItem')).length(3);

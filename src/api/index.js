@@ -52,4 +52,15 @@ export const deleteApi = (endpoint, options) => axios.delete(`${API_HOST}${endpo
     console.log(error);
 });
 
+export const postCloudinary = (formData) => axios({
+    url: process.env.REACT_APP_CLOUDINARY_UPLOAD_URL,
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/x-ww-form-urlencoded'
+    },
+    data: formData,
+}).catch(error => {
+    console.log(error)
+})
+
 export * from './login';

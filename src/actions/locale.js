@@ -8,7 +8,7 @@ export const localeSet = lang => ({
 })
 
 export const setLocale = lang => (dispatch) => {
-    apiSetLanguage(lang).then(res => {
+    return apiSetLanguage(lang).then(res => {
         let user = JSON.parse(localStorage.getItem('user'))
         user.interfaceLanguage = res.interfaceLanguage
         localStorage.setItem('user', JSON.stringify(user))

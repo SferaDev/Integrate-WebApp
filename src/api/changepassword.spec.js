@@ -7,7 +7,7 @@ describe('Change password API functions', () => {
         const mockOldPassword = 'oldPassword'
         const mockNewPassword = 'newPassword'
         apiPutChangePassword(mockOldPassword, mockNewPassword).then( (result) => {
-            expect(result).toEqual(mockNewPassword)
+            expect(result).toEqual('mockedData')
         })
     })
 

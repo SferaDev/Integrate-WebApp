@@ -6,7 +6,9 @@ export const apiSetLanguage = (lang) => new Promise((resolve, reject) => {
             const lang = response.data;
             if (lang) {
                 resolve(lang);
-            } else reject();
-        } else reject();
-    }).catch(() => reject());
+            }
+    }}).catch(e => {
+        reject(e)
+    }
+)
 });

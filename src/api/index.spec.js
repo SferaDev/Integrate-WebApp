@@ -1,16 +1,11 @@
 // ./test/UppercaseProxy.spec.js
 import mockAxios from 'jest-mock-axios';
-import {API_HOST, deleteApi, getApi, postApi, postCloudinary, putApi} from './index';
+import {deleteApi, getApi, postApi, postCloudinary, putApi} from './index';
 
 afterEach(() => {
     // cleaning up the mess left behind the previous test
     mockAxios.reset();
 });
-
-it('API_HOST should be correct', () => {
-    expect(API_HOST).toEqual('https://integrate-backend-staging.herokuapp.com')
-    expect(API_HOST).toEqual(process.env.REACT_APP_API_HOST)
-})
 
 it('getApi should get data from the server', () => {
     let catchFn = jest.fn()

@@ -15,8 +15,10 @@ const getUserFromLocalStorage = () =>
 function authReducer(state = getDefaultUserState(), action) {
     switch (action.type) {
         case SET_USER:
-            localStorage.setItem('user', JSON.stringify(action.user))
-            localStorage.setItem('token', action.token)
+            if (action.user && action.token) {
+                localStorage.setItem('user', JSON.stringify(action.user))
+                localStorage.setItem('token', action.token)
+            }
 
             return {
                 ...state,

@@ -5,9 +5,12 @@
     position: fixed;
     height: 100%;
     resize:both;
+    overflow: auto;
 }
 
 .Picture {
-    width: 60%;
-    margin-left: 20%;
+    height: 200px;
+    width: 200px;
+    margin-left: 25%;
+    margin-top: 5%;
 }

@@ -4,10 +4,14 @@ import picture from '../../media/marketicon.png';
 import PropTypes from 'prop-types';
 
 export default class UserInfo extends React.Component {
+
     render() {
+        if (this.props.user.picture === 'picture') {
+            this.props.user.picture = picture;
+        }
         return (
             <div className="UserInfo">
-                <img className="Picture" src={picture} alt="Medal"/>
+                <img className="Picture" src={this.props.user.picture} alt="Medal"/>
                 <h3>{this.props.user.name}</h3>
                 <h4>{this.props.user.addressName}</h4>
                 <hr/>

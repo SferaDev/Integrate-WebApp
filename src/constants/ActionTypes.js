@@ -12,3 +12,6 @@ export const LOCALE_SET = 'LOCALE_SET';
 export const LOG_OUT = 'LOG_OUT';
 export const RESET_GOODS = 'RESET_GOODS';
 export const RESET_LOCALE = 'RESET_LOCALE';
+
+export const SET_INCENTIVES = 'SET_INCENTIVES';
+export const RESET_INCENTIVES = 'RESET_INCENTIVES';

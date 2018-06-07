@@ -299,7 +299,7 @@ export default class SignUp extends Component {
                             <Input type="file" className="file" id="pictureFile" onChange={this.changePicture}/>
                         </Col>
                         <Col sm={5}>
-                            <img id="picturePreview" src={this.state.picture}/>
+                            <img id="picturePreview" src={this.state.picture} alt={this.state.name}/>
 
                         </Col>
                     </FormGroup>

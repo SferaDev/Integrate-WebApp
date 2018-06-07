@@ -1,4 +1,4 @@
-import {LOCALE_SET} from '../constants/ActionTypes';
+import {LOCALE_SET, RESET_LOCALE} from '../constants/ActionTypes';
 import locale from './locale';
 
 describe('locale reducer', () => {
@@ -18,6 +18,16 @@ describe('locale reducer', () => {
             })
         ).toEqual({
             lang: 'es',
+        })
+    });
+
+    it('should handle RESET_LOCALE', () => {
+        expect(
+            locale('en', {
+                type: RESET_LOCALE,
+            })
+        ).toEqual({
+            lang: 'ca',
         })
     });
 })

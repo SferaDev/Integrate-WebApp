@@ -172,7 +172,6 @@ export default class SignUp extends Component {
                 coordinates: [this.state.addressLongitude, this.state.addressLatitude]
             };
             let exists = 0;
-            console.log(entity)
             apiPostSignUp(entity).catch(error => {
                 if (error === 'Nif already exist.') {
                     this.setState({modalHeader: "Error"});

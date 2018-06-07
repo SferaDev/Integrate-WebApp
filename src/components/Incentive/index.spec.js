@@ -17,7 +17,7 @@ const setup = props => {
 };
 
 describe('Incentive component', () => {
-    it('should render all Incentive details', () => {
+    it('should render Incentive details when entity has no medals', () => {
         const {component} = setup({
             incentives: {
                 goodsCreated: 1,
@@ -29,5 +29,55 @@ describe('Incentive component', () => {
         expect(component.find('.medalMiddleHidden').props().src).toEqual(undefined);
         expect(component.find('.medalRightHidden').props().src).toEqual(undefined);
         expect(component.find('.leftTextValue').text()).toEqual('1');
+        expect(component.find('.middleTextValue').text()).toEqual('1');
+        expect(component.find('.rightTextValue').text()).toEqual('1');
+    })
+
+    it('should render Incentive details when entity has bronze medals', () => {
+        const {component} = setup({
+            incentives: {
+                goodsCreated: 5,
+                beneficiariesHelped: 5,
+                totalSavedMoney: 5.55,
+            }
+        });
+        expect(component.find('.medalLeft').props().src).toEqual('bronzemedal.png');
+        expect(component.find('.medalMiddle').props().src).toEqual('bronzemedal.png');
+        expect(component.find('.medalRight').props().src).toEqual('bronzemedal.png');
+        expect(component.find('.leftTextValue').text()).toEqual('5');
+        expect(component.find('.middleTextValue').text()).toEqual('5');
+        expect(component.find('.rightTextValue').text()).toEqual('5.55');
+    })
+
+    it('should render Incentive details when entity has silver medals', () => {
+        const {component} = setup({
+            incentives: {
+                goodsCreated: 50,
+                beneficiariesHelped: 50,
+                totalSavedMoney: 50,
+            }
+        });
+        expect(component.find('.medalLeft').props().src).toEqual('silvermedal.jpeg');
+        expect(component.find('.medalMiddle').props().src).toEqual('silvermedal.jpeg');
+        expect(component.find('.medalRight').props().src).toEqual('silvermedal.jpeg');
+        expect(component.find('.leftTextValue').text()).toEqual('50');
+        expect(component.find('.middleTextValue').text()).toEqual('50');
+        expect(component.find('.rightTextValue').text()).toEqual('50');
+    })
+
+    it('should render Incentive details when entity has golden medals', () => {
+        const {component} = setup({
+            incentives: {
+                goodsCreated: 1000,
+                beneficiariesHelped: 1000,
+                totalSavedMoney: 1000,
+            }
+        });
+        expect(component.find('.medalLeft').props().src).toEqual('goldmedal.jpeg');
+        expect(component.find('.medalMiddle').props().src).toEqual('goldmedal.jpeg');
+        expect(component.find('.medalRight').props().src).toEqual('goldmedal.jpeg');
+        expect(component.find('.leftTextValue').text()).toEqual('1000');
+        expect(component.find('.middleTextValue').text()).toEqual('1000');
+        expect(component.find('.rightTextValue').text()).toEqual('1000');
     })
 })

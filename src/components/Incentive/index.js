@@ -10,9 +10,7 @@ import {apiGetIncentives} from "../../api/incentive";
 const goldM = gold;
 const silverM = silver;
 const bronzeM = bronze;
-let lefttext, middletext, righttext, leftmedal, middlemedal, rightmedal;
-let medalleft, medalmiddle, medalright;
-
+export let lefttext, middletext, righttext, leftmedal, middlemedal, rightmedal, medalleft, medalmiddle, medalright;
 
 export default class Incentive extends React.Component {
 
@@ -22,7 +20,6 @@ export default class Incentive extends React.Component {
             goodsCreated: '',
             beneficiariesHelped: '',
             totalSavedMoney: ''
-
         };
 
         this.setLeftText = this.setLeftText.bind(this);
@@ -47,12 +44,13 @@ export default class Incentive extends React.Component {
         }
         else if (this.state.goodsCreated >=5 && this.state.goodsCreated < 50) {
             lefttext = "BronzeText";
+             medalleft = "medal";
             leftmedal = bronzeM;
-            medalleft = "medal";
 
 
         }
         else if (this.state.goodsCreated >= 50 && this.state.goodsCreated < 500) {
+
             lefttext = "SilverText";
             leftmedal = silverM;
             medalleft = "medal";

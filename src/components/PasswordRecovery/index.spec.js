@@ -4,7 +4,6 @@ import Adapter from 'enzyme-adapter-react-16';
 enzyme.configure({ adapter: new Adapter() });
 import {expect} from 'chai';
 import PasswordRecovery from './index';
-import {apiPostPasswordRecovery} from "../../api/passwordrecovery";
 
 
 describe('<PasswordRecovery />', () => {

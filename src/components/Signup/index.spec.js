@@ -148,7 +148,7 @@ describe('<SignUp />', () => {
     it('should render a modal with an error message explaining that the nif is incorrect', () => {
         const wrapper = enzyme.shallow(<SignUp/>);
         const sendButton = wrapper.find('button').at(1);
-
+        const acceptButton = wrapper.find('Button').at(0);
         /*it has only 6 numbers*/
 
         wrapper.setState({salesmanFirstName: 'Pau'});
@@ -163,6 +163,9 @@ describe('<SignUp />', () => {
         expect(wrapper.state().modalHeader).to.equal('Error');
         expect(wrapper.state().modalContent).to.equal("El nif introduït no és correcte.");
         expect(wrapper.state().modal).to.equal(true);
+        acceptButton.simulate('click');
+        expect(wrapper.state().modal).to.equal(false);
+
 
         /*it doesn't have a character*/
         wrapper.setState({salesmanFirstName: 'Pau'});
@@ -185,7 +188,8 @@ describe('<SignUp />', () => {
         const wrapper = enzyme.shallow(<SignUp/>);
         const sendButton = wrapper.find('button').at(1);
 
-        wrapper.setState({salesmanFirstName: 'Pau'});
+
+       wrapper.setState({salesmanFirstName: 'Pau'});
         wrapper.setState({salesmanLastName: 'Gonzalez Montiel'});
         wrapper.setState({nif: '12345678g'});
         wrapper.setState({email: 'paugonzalez@gmail.com'});
@@ -198,7 +202,8 @@ describe('<SignUp />', () => {
         expect(wrapper.state().modalContent).to.equal("Les dades introduïdes són correctes.");
         expect(wrapper.state().modal).to.equal(true);
 
-        wrapper.setState({salesmanFirstName: 'Pau'});
+
+       wrapper.setState({salesmanFirstName: 'Pau'});
         wrapper.setState({salesmanLastName: 'Gonzalez Montiel'});
         wrapper.setState({nif: '12345678g'});
         wrapper.setState({email: 'paugonzalez@gmail.com'});
@@ -211,6 +216,15 @@ describe('<SignUp />', () => {
         expect(wrapper.state().modalHeader).to.equal('Correcte');
         expect(wrapper.state().modalContent).to.equal("Les dades introduïdes són correctes.");
         expect(wrapper.state().modal).to.equal(true);
+
+    });
+
+    it('have good coordenates', () => {
+        const wrapper = enzyme.shallow(<SignUp/>);
+        wrapper.instance().onUserSearched('Avinguda Diagonal, 633, 08028 Barcelona','41.32121','12,12312')
+        expect(wrapper.state().addressName).to.equal('Avinguda Diagonal, 633, 08028 Barcelona');
+        expect(wrapper.state().addressLatitude).to.equal('41.32121');
+        expect(wrapper.state().addressLongitude).to.equal('12,12312');
 
     });
 

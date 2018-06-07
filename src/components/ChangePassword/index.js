@@ -107,21 +107,18 @@ export default class ChangePassword extends React.Component {
 
     }
 
-    onModalAcceptClicked(event) {
+    onModalAcceptClicked() {
         if (this.state.modalHeader === "Error") {
             this.setState({
                 modal: !this.state.modal
             });
         }
         else {
-            event.preventDefault();
             this.props.history.push("/main");
         }
     }
 
-    onCancelButton(event) {
-        event.preventDefault();
-
+    onCancelButton() {
         this.props.history.push('/main')
     }
 

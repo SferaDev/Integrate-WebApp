@@ -6,12 +6,13 @@ import {FormattedMessage} from 'react-intl';
 
 class LanguageSelector extends Component {
     handleChangeLanguage = (event) => {
+        console.log(event.target.value)
         this.props.actions.setLocale(event.target.value)
     };
 
     constructor(props) {
         super(props);
-        if (this.props.lang){
+        if (this.props.lang && (this.props.lang === 'ca' || this.props.lang === 'es' || this.props.lang === 'en')){
             this.state = {
                 lang: this.props.lang
             }

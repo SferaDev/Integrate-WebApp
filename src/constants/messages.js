@@ -182,6 +182,7 @@ export default {
         'password.new' : 'Nova contrasenya:',
         'password.new2' : 'Reescriu la nova contrasenya:',
         'password.info' : 'Mínim 8 caràcters i almenys un número.',
+
         'modalpass.accept' : 'Acceptar',
         'modalpass.cancel' : 'Cancel·lar',
         'modalpass.header' : 'Error',
@@ -191,6 +192,7 @@ export default {
         'modalpass.equal' : 'Les contrasenyes noves no són iguals.',
         'modalpass.success' : "S'ha canviat correctament la constrasenya.",
         'modalpass.button' : 'Acceptar',
+
         'entity.header' : 'Formulari de sol·licitud',
         'entity.firstname' : 'Nom:',
         'entity.surname' : 'Cognoms:',
@@ -203,6 +205,7 @@ export default {
         'entity.addressinfo' : "Escriu l'adreça en el buscador del mapa:",
         'entity.send' : 'Enviar',
         'entity.picture' : "Foto de l'entitat:",
+
         'modal.error' : 'Error',
         'modal.email' : "L'email introduït no és correcte.",
         'modal.nif' : "El nif introduït no és correcte.",
@@ -212,6 +215,7 @@ export default {
         'modal.header' : 'Correcte',
         'modal.button' : 'Acceptar',
         'modal.exist' : 'El Nif ja existeix.',
+
         'reset.header' : 'Recuperació de la contrasenya:',
         'reset.accept' : 'Acceptar',
         'reset.cancel' : 'Cancel·lar',
@@ -222,6 +226,7 @@ export default {
         'reset.info' : 'Introdueix el nif on rebràs una nova contrasenya al correu que vas utilitzar per registrar-te:',
         'reset.button': 'Acceptar',
         'reset.notfound' : "L'usuari no existeix.",
+
         'good.originalPrice': 'Preu original',
         'good.pendingUnits': 'Unitats restants',
         'good.appliedDiscount': 'Descompte aplicat',

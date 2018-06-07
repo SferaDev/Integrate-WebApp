@@ -69,10 +69,10 @@ class ModalView extends React.Component {
         else if (parseFloat(this.state.discount) < 0)
             alert('El descompte ha de tenir un valor positiu')
         else if (this.state.discountType === '%' && parseInt(this.state.discount, 10) >= 100)
-            alert('El descompte ha de tenir un valor menor que 99')
+            alert('El descompte ha de tenir un valor menor o igual que 99')
         else if (parseInt(this.state.pendingUnits, 10) <= 0)
             alert('El valor d\'unitats pendents ha de ser positiu')
-        else if (parseInt(this.state.reusePeriod < 0, 10))
+        else if (parseInt(this.state.reusePeriod, 10) <= 0)
             alert('El període de reutilització ha de ser positiu')
         else if (this.state.discountType === '€' && parseFloat(this.state.discount) >= parseFloat(this.state.initialPrice))
             alert('El descompte ha de ser inferior al preu original')
@@ -123,7 +123,7 @@ class ModalView extends React.Component {
             category: 1,
             reusePeriod: 1,
             initialPrice: 0,
-            pendingUnits: 0,
+            pendingUnits: 1,
             maxEurosDiscount: 0,
         };
 
@@ -242,32 +242,32 @@ class ModalView extends React.Component {
                                 </Label>
                                 <Input required type="select" className="category" id="category"
                                        onChange={this.handleChangeCategory} value={this.state.category}>
-                                    <FormattedMessage id='good.category.nutrition' defaultMessage='Nutrició' key={1}>
-                                        {(message) => <option value="1">{message}</option>}
+                                    <FormattedMessage className='goodCategoryNutrition' id='good.category.nutrition' defaultMessage='Nutrició' key={1}>
+                                        {(message) => <option className="optionValue1" value="1">{message}</option>}
                                     </FormattedMessage>
-                                    <FormattedMessage id='good.category.culture' defaultMessage='Cultura' key={2}>
-                                        {(message) => <option value="2">{message}</option>}
+                                    <FormattedMessage className='goodCategoryCulture' id='good.category.culture' defaultMessage='Cultura' key={2}>
+                                        {(message) => <option className="optionValue2" value="2">{message}</option>}
                                     </FormattedMessage>
-                                    <FormattedMessage id='good.category.education' defaultMessage='Formació' key={3}>
-                                        {(message) => <option value="3">{message}</option>}
+                                    <FormattedMessage className='goodCategoryEducation' id='good.category.education' defaultMessage='Formació' key={3}>
+                                        {(message) => <option className="optionValue3" value="3">{message}</option>}
                                     </FormattedMessage>
-                                    <FormattedMessage id='good.category.mobility' defaultMessage='Mobilitat' key={4}>
-                                        {(message) => <option value="4">{message}</option>}
+                                    <FormattedMessage className='goodCategoryMobility' id='good.category.mobility' defaultMessage='Mobilitat' key={4}>
+                                        {(message) => <option className="optionValue4" value="4">{message}</option>}
                                     </FormattedMessage>
-                                    <FormattedMessage id='good.category.technology' defaultMessage='Tecnologia' key={5}>
-                                        {(message) => <option value="5">{message}</option>}
+                                    <FormattedMessage className='goodCategoryTechnology' id='good.category.technology' defaultMessage='Tecnologia' key={5}>
+                                        {(message) => <option className="optionValue5" value="5">{message}</option>}
                                     </FormattedMessage>
-                                    <FormattedMessage id='good.category.healthcare' defaultMessage='Salut' key={6}>
-                                        {(message) => <option value="6">{message}</option>}
+                                    <FormattedMessage className='goodCategoryHealthcare' id='good.category.healthcare' defaultMessage='Salut' key={6}>
+                                        {(message) => <option className="optionValue6" value="6">{message}</option>}
                                     </FormattedMessage>
-                                    <FormattedMessage id='good.category.sports' defaultMessage='Esports' key={7}>
-                                        {(message) => <option value="7">{message}</option>}
+                                    <FormattedMessage className='goodCategorySports' id='good.category.sports' defaultMessage='Esports' key={7}>
+                                        {(message) => <option className="optionValue7" value="7">{message}</option>}
                                     </FormattedMessage>
-                                    <FormattedMessage id='good.category.leisure' defaultMessage='Lleure' key={8}>
-                                        {(message) => <option value="8">{message}</option>}
+                                    <FormattedMessage className='goodCategoryLeisure' id='good.category.leisure' defaultMessage='Lleure' key={8}>
+                                        {(message) => <option className="optionValue8" value="8">{message}</option>}
                                     </FormattedMessage>
-                                    <FormattedMessage id='good.category.others' defaultMessage='Altres' key={9}>
-                                        {(message) => <option value="9">{message}</option>}
+                                    <FormattedMessage className='goodCategoryOthers' id='good.category.others' defaultMessage='Altres' key={9}>
+                                        {(message) => <option className="optionValue9" value="9">{message}</option>}
                                     </FormattedMessage>
                                 </Input>
                             </Col>

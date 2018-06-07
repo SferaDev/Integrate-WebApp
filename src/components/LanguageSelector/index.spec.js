@@ -50,12 +50,5 @@ describe('Incentive component', () => {
         component.setProps({lang: anotherLang})
 
         expect(component.find('.languageSelectorInput').props().value).toEqual('en')
-
-        /*
-
-        component.find('.languageSelectorInput').simulate('change', {target: {value: 'es'}})
-
-        expect(component.find('.languageSelectorInput').props().value).toEqual('es')
-        */
     })
 })

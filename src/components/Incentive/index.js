@@ -22,19 +22,19 @@ export default class Incentive extends React.Component {
         else if (this.props.incentives.goodsCreated >=5 && this.props.incentives.goodsCreated < 50) {
             lefttext = "BronzeText BronzeTextLeft";
             leftmedal = bronzeM;
-            medalleft = "medal";
+            medalleft = "medal medalLeft";
         }
 
         else if (this.props.incentives.goodsCreated >= 50 && this.props.incentives.goodsCreated < 500) {
             lefttext = "SilverText SilverTextLeft";
             leftmedal = silverM;
-            medalleft = "medal";
+            medalleft = "medal medalLeft";
         }
 
         else {
             lefttext = "GoldenText GoldenTextLeft";
             leftmedal = goldM;
-            medalleft = "medal";
+            medalleft = "medal medalLeft";
         }
     }
 
@@ -47,19 +47,19 @@ export default class Incentive extends React.Component {
         else if (this.props.incentives.beneficiariesHelped >=5 && this.props.incentives.beneficiariesHelped < 50) {
             middletext = "BronzeTextMiddle";
             middlemedal = bronzeM;
-            medalmiddle = "medalMiddle";
+            medalmiddle = "medal medalMiddle";
         }
 
         else if (this.props.incentives.beneficiariesHelped >= 50 && this.props.incentives.beneficiariesHelped < 500) {
             middletext = "SilverTextMiddle";
             middlemedal = silverM;
-            medalmiddle = "medalMiddle";
+            medalmiddle = "medal medalMiddle";
         }
 
         else {
             middletext = "GoldenTextMiddle";
             middlemedal = goldM;
-            medalmiddle = "medalMiddle";
+            medalmiddle = "medal medalMiddle";
         }
     }
 
@@ -72,19 +72,19 @@ export default class Incentive extends React.Component {
         else if (this.props.incentives.totalSavedMoney >=5 && this.props.incentives.totalSavedMoney < 50) {
             righttext = "BronzeTextRight";
             rightmedal = bronzeM;
-            medalright = "medalRight";
+            medalright = "medal medalRight";
         }
 
         else if (this.props.incentives.totalSavedMoney >= 50 && this.props.incentives.totalSavedMoney < 500) {
             righttext = "SilverTextRight";
             rightmedal = silverM;
-            medalright = "medalRight";
+            medalright = "medal medalRight";
         }
 
         else {
             righttext = "GoldenTextRight";
             rightmedal = goldM;
-            medalright = "medalRight";
+            medalright = "medal medalRight";
         }
     }
 
@@ -100,11 +100,11 @@ export default class Incentive extends React.Component {
                     <FormattedMessage id='incentive.goods' defaultMessage='Vals'/>
                 </h3>
                 <img className={medalmiddle} src={middlemedal} alt="Medal"/>
-                <h3 className={middletext}>{this.props.incentives.beneficiariesHelped}
+                <h3 className={middletext}><span className='middleTextValue'>{this.props.incentives.beneficiariesHelped}</span>
                     <FormattedMessage id='incentive.beneficiaris' defaultMessage='Beneficiaris'/>
                 </h3>
                 <img className={medalright} src={rightmedal} alt="Medal"/>
-                <h3 className={righttext}>{this.props.incentives.totalSavedMoney}
+                <h3 className={righttext}><span className='rightTextValue'>{this.props.incentives.totalSavedMoney}</span>
                     <FormattedMessage id='incentive.discount' defaultMessage='Descomptes'/>
                 </h3>
             </div>

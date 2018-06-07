@@ -22,4 +22,14 @@ describe('MainView', () => {
 
 
     })
+
+    it('toggle component', () => {
+        const wrapper = enzyme.shallow(<MainView actions={mockActions}/>);
+        wrapper.instance().toggle();
+        expect(wrapper.state().isOpen).to.equal(true);
+
+
+
+
+    })
 })

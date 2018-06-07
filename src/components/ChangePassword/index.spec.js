@@ -67,6 +67,8 @@ describe('<ChangePassword />', () => {
     it('should render a modal with an error message explaining the new passwords are not equal', () => {
         const wrapper = enzyme.shallow(<ChangePassword/>);
         const accept = wrapper.find('Button').at(0);
+        const acceptModalButton = wrapper.find('Button').at(2);
+
         wrapper.setState({currentPassword: 'jkdakdjf'});
         wrapper.setState({newPassword: 'qwertyuio1'});
         wrapper.setState({newPassword2: 'qwertyuio'});
@@ -74,6 +76,9 @@ describe('<ChangePassword />', () => {
         expect(wrapper.state().modalHeader).to.equal('Error');
         expect(wrapper.state().modalContent).to.equal("Les contrasenyes noves no són iguals.");
         expect(wrapper.state().modal).to.equal(true);
+        acceptModalButton.simulate('click');
+        expect(wrapper.state().modal).to.equal(false);
+
 
 
         wrapper.setState({modal: false});

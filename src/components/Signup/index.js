@@ -193,20 +193,18 @@ export default class SignUp extends Component {
 
     }
 
-    onCloseClicked(event) {
-        event.preventDefault();
+    onCloseClicked() {
         this.props.history.push('/')
 
     }
 
-    onAcceptClicked(event) {
+    onAcceptClicked() {
         if (this.state.modalHeader === "Error") {
             this.setState({
                 modal: !this.state.modal
             });
         }
         else {
-            event.preventDefault();
             this.props.history.push('/')
         }
     }

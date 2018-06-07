@@ -15,6 +15,72 @@ describe('<SignUp />', () => {
 
     });
 
+    it('handle correctly the inputs', () => {
+
+        const salesmanFirstName = {
+            target : {
+                value : 'Pau'
+            }
+        };
+        const salesmanLastName = {
+            target : {
+                value : 'Gonzalez'
+            }
+        };
+        const nif = {
+            target : {
+                value : '60150786g'
+            }
+        };
+
+        const email = {
+            target : {
+                value : 'pau@gmail.com'
+            }
+        };
+
+        const phone = {
+            target : {
+                value : '123456789'
+            }
+        };
+
+        const description = {
+            target : {
+                value : 'Venda aliments'
+            }
+        };
+
+        const name = {
+            target : {
+                value : 'Mercadona'
+            }
+        };
+
+
+        const wrapper = enzyme.shallow(<SignUp/>);
+
+        wrapper.instance().changeFirstName(salesmanFirstName);
+        wrapper.instance().changeLastName(salesmanLastName);
+        wrapper.instance().changeNif(nif);
+        wrapper.instance().changeEmail(email);
+        wrapper.instance().changeNameEntity(name);
+        wrapper.instance().changePhone(phone);
+        wrapper.instance().changeDescription(description);
+
+        expect(wrapper.state().salesmanFirstName).to.equal('Pau');
+        expect(wrapper.state().salesmanLastName).to.equal('Gonzalez');
+        expect(wrapper.state().nif).to.equal('60150786g');
+        expect(wrapper.state().email).to.equal('pau@gmail.com');
+        expect(wrapper.state().phone).to.equal('123456789');
+        expect(wrapper.state().description).to.equal('Venda aliments');
+        expect(wrapper.state().name).to.equal('Mercadona');
+
+
+    });
+
+
+
 
     it('should render a modal with an error message explaining that there are empty fields', () => {
         const wrapper = enzyme.shallow(<SignUp/>);

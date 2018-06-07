@@ -7,6 +7,20 @@ import PasswordRecovery from './index';
 
 
 describe('<PasswordRecovery />', () => {
+
+    it('handle correctly the inputs', () => {
+        const wrapper = enzyme.shallow(<PasswordRecovery/>);
+        const nif = {
+            target : {
+                value : '60150786g'
+            }
+        };
+        wrapper.instance().changeNif(nif);
+        expect(wrapper.state().nif).to.equal('60150786g');
+
+
+    });
+
     it('should render a modal with an error message explaining that the nif is incorrect', () => {
         const wrapper = enzyme.shallow(<PasswordRecovery/>);
         const acceptButton = wrapper.find('Button').at(0);
@@ -38,7 +52,7 @@ describe('<PasswordRecovery />', () => {
         expect(wrapper.state().modal).to.equal(false);
     });
 
-   /* it('should render a modal with a message explaining the nif is correct', () => {
+   it('should render a modal with a message explaining the nif is correct', () => {
         const wrapper = enzyme.shallow(<PasswordRecovery/>);
         const acceptButton = wrapper.find('Button').at(0);
         wrapper.setState({nif: '60150786g'});
@@ -55,6 +69,6 @@ describe('<PasswordRecovery />', () => {
         expect(wrapper.state().modalHeader).to.equal('Correcte');
         expect(wrapper.state().modalContent).to.equal("S'ha enviat una nova contrasenya correctament.");
         expect(wrapper.state().modal).to.equal(true);
-    })*/
+    })
 
 })

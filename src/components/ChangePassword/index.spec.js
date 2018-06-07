@@ -29,7 +29,31 @@ describe('<ChangePassword />', () => {
         expect(instance.onAcceptButton()).to.equal(undefined);
     });
 
+    it('change correctly the passwords', () => {
+        const actualPassword = {
+            target : {
+                value : 'aaa'
+            }
+        };
+        const newPassword = {
+            target : {
+                value : 'bbb'
+            }
+        };
+        const newPassword2 = {
+            target : {
+                value : 'bbb'
+            }
+        };
 
+        instance.changeActualPassword(actualPassword);
+        instance.changeNewPassword(newPassword);
+        instance.changeNewPassword2(newPassword2);
+        expect(wrapper.state().actualPassword).to.equal('aaa');
+        expect(wrapper.state().newPassword).to.equal('bbb');
+        expect(wrapper.state().newPassword2).to.equal('bbb');
+
+    });
 
     it('onAcceptButton() is callable and returns nothing', () => {
         const accept = wrapper.find('Button').at(0);

@@ -203,4 +203,35 @@ describe('goods reducer', () => {
             }
         ])
     })
+
+    it('should handle RESET_GOODS', () => {
+        expect(
+            goods([
+                {
+                    _id: '0',
+                    productName: 'Product name 1',
+                    picture: 'Picture 1',
+                    initialPrice: 1,
+                    discountType: '%',
+                    discount: 20,
+                    category: 1,
+                    reusePeriod: 3,
+                    pendingUnits: 3,
+                },
+                {
+                    _id: '1',
+                    productName: 'Product name 2',
+                    picture: 'Picture 2',
+                    initialPrice: 2,
+                    discountType: '%',
+                    discount: 20,
+                    category: 2,
+                    reusePeriod: 3,
+                    pendingUnits: 3,
+                }
+            ], {
+                type: types.RESET_GOODS,
+            })
+        ).toEqual({})
+    });
 });

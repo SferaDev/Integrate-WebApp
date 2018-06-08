@@ -30,4 +30,19 @@ describe('locale reducer', () => {
             lang: 'ca',
         })
     });
+
+    it('should keep the user locale when a RESET_LOCALE is thrown with a user in localStorage', () => {
+        const user = {
+            interfaceLanguage: 'es'
+        }
+        localStorage.setItem('user', JSON.stringify(user))
+
+        expect(
+            locale('en', {
+                type: RESET_LOCALE,
+            })
+        ).toEqual({
+            lang: 'es',
+        })
+    });
 })

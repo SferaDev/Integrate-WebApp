@@ -1,5 +1,7 @@
 import auth from './auth';
 import {setLoginError, setLoginPending, setLoginSuccess, setUserAndToken} from '../actions/auth';
+import {SET_USER} from '../constants';
+import {LOG_OUT} from '../constants/ActionTypes';
 
 describe('auth reducer', () => {
     it('should handle initial state', () => {
@@ -31,7 +33,26 @@ describe('auth reducer', () => {
             isLoginPending: false,
             loginError: null
         });
+    });
 
+    it('should set items to localStorage on SET_USER action', () => {
+        auth([], {
+            type: SET_USER,
+            user: 'user',
+            token: 'token'
+        })
+
+        expect(JSON.parse(localStorage.getItem('user'))).toEqual('user')
+        expect(localStorage.getItem('token')).toEqual('token')
+    });
+
+    it('should clear localStorage and call getDefaultUserState on LOG_OUT action', () => {
+        auth([], {
+            type: LOG_OUT,
+        })
+
+        expect(JSON.parse(localStorage.getItem('user'))).toBe(null)
+        expect(localStorage.getItem('token')).toBe(null)
     });
 
     it('should handle setLoginPending', () => {

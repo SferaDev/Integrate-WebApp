@@ -91,32 +91,42 @@
     justify-content: space-between;
 }
 
-.btnEdit {
+.btnEdit{
     width: 100%;
-    letter-spacing: 2px;
-    background-color: #006699;
-    color: white;
-    height: 40px;
+    height:40px;
+    border: solid 1px #006699;
+    background-color: white;
+    color: #006699;
     border-radius: 5px;
-    transition-duration: .2s;
+    transition-duration: .3s;
+    font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    margin-top: 10px;
 }
 
 .btnEdit:hover {
-    background-color: #003366;
+    background-color: #006699;
+    color: white;
 }
 
-.btnDelete {
+.btnDelete{
     width: 100%;
-    letter-spacing: 2px;
-    background-color: #cc0000;;
-    color: white;
-    height: 40px;
+    height:40px;
+    border: solid 1px  #cc0000;
+    background-color: white;
+    color:  #cc0000;
     border-radius: 5px;
-    transition-duration: .2s;
+    transition-duration: .3s;
+    font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    margin-top: 10px;
 }
 
 .btnDelete:hover {
-    background-color: #800000;
+    background-color:  #cc0000;
+    color: white;
 }
 
 .faIcon {

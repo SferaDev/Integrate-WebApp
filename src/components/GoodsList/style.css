@@ -19,6 +19,11 @@
     margin-bottom: 70px;
 }
 
+.stickyAddGoodRow{
+    justify-content:center;
+    background-color:blue;
+}
+
 .stickyAddGood {
     position: fixed;
     z-index: 100;
@@ -40,6 +45,7 @@
     background-color: rgba(0, 0, 0, .0);
     transition-duration: .5s;
     color: white;
+    border: 0;
 }
 
 .stickyAddGood:hover, .stickyAddGoodButton:hover {

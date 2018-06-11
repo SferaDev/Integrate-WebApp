@@ -31,7 +31,7 @@ const GoodsList = ({goods, modal, actions}) => {
                 <div className="goodsList">
                             {Goods}
                 </div>
-                <Row>
+                <Row className='stickyAddGoodRow'>
                     <Col sm="12" className="stickyAddGood">
                         <button className="stickyAddGoodButton" onClick={toggle}>
                             <FontAwesomeIcon icon="plus-circle" className="plus-circle"/>

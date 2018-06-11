@@ -1,5 +1,12 @@
 export default {
     en: {
+        'login.iddoc': 'ID Document',
+        'login.password': 'Password',
+        'login.invalidpassword': 'L\'usuari o la contrassenya no son correctes.',
+        'login.login': 'Log In',
+        'login.signup': 'Apply for access',
+        'login.forgotpassword': 'Did you forget your password?',
+
         'main.home' : 'Home',
         'main.goods' : 'Goods',
         'main.changepassword' : 'Change password',
@@ -86,6 +93,13 @@ export default {
         'languageSelector.entities': 'entities',
     },
     es: {
+        'login.iddoc': 'Documento de identidad',
+        'login.password': 'Contraseña',
+        'login.invalidpassword': 'El usuario o la contraseña no son correctos',
+        'login.login': 'Entrar',
+        'login.signup': 'Solicitud de acceso',
+        'login.forgotpassword': '¿Has olvidado tu contraseña?',
+
         'incentive.goods': 'Cupones',
         'incentive.beneficiaris' : 'Beneficiarios',
         'incentive.discount' : 'Descuentos',
@@ -168,6 +182,13 @@ export default {
         'languageSelector.entities': 'entidades',
     },
     ca: {
+        'login.iddoc': 'Document d\'identitat',
+        'login.password': 'Contrassenya',
+        'login.invalidpassword': 'L\'usuari o la contrassenya no son correctes.',
+        'login.login': 'Entra',
+        'login.signup': 'Sol·licitud d\'accés',
+        'login.forgotpassword': 'Did you forget your password?',
+
         'incentive.goods': 'Vals',
         'incentive.beneficiaris' : 'Beneficiaris',
         'incentive.discount' : 'Descomptes',

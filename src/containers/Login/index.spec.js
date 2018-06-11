@@ -4,7 +4,8 @@ import {Provider} from 'react-redux';
 import {applyMiddleware, combineReducers, createStore} from 'redux';
 import thunk from 'redux-thunk';
 
-import reducer from '../../reducers/auth';
+import auth from '../../reducers/auth';
+import locale from '../../reducers/locale';
 import ConnectedLogin, {Login} from './';
 import {setLoginError, setLoginPending, setLoginSuccess} from "../../actions/auth";
 import {MemoryRouter} from 'react-router-dom';
@@ -16,7 +17,7 @@ describe('login feature', () => {
     let store, wrapper;
     beforeEach(() => {
         store = createStore(
-            combineReducers({auth: reducer}),
+            combineReducers({auth, locale}),
             applyMiddleware(thunk)
         );
 

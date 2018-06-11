@@ -8,12 +8,20 @@ export const localeSet = lang => ({
 })
 
 export const setLocale = lang => (dispatch) => {
-    return apiSetLanguage(lang).then(res => {
-        let user = JSON.parse(localStorage.getItem('user'))
-        user.interfaceLanguage = res.interfaceLanguage
-        localStorage.setItem('user', JSON.stringify(user))
-        dispatch(localeSet(user.interfaceLanguage))
-    })
+    const userJSON = localStorage.getItem('user');
+    if (userJSON !== null) {
+        return apiSetLanguage(lang).then(res => {
+            let user = JSON.parse(userJSON)
+            user.interfaceLanguage = res.interfaceLanguage
+            localStorage.setItem('user', JSON.stringify(user))
+            dispatch(localeSet(user.interfaceLanguage))
+        })
+    } else {
+        return new Promise((resolve, reject) => {
+            resolve(dispatch(localeSet(lang)))
+            resolve(lang)
+        })
+    }
 }
 
 export const resetLocale = () => ({

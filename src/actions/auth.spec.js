@@ -1,7 +1,7 @@
 import configureMockStore from 'redux-mock-store'
 import {SET_LOGIN_ERROR, SET_LOGIN_PENDING, SET_LOGIN_SUCCESS, SET_USER} from '../constants/index';
 import * as actions from './auth';
-import {CLEAN_MODAL_STATE, LOG_OUT, RESET_GOODS, RESET_LOCALE} from '../constants/ActionTypes';
+import {CLEAN_MODAL_STATE, LOCALE_SET, LOG_OUT, RESET_GOODS, RESET_LOCALE} from '../constants/ActionTypes';
 import thunk from 'redux-thunk';
 import {logoutAction} from './auth';
 
@@ -93,6 +93,7 @@ describe('Auth actions', () => {
 
             //AFTER apiPostLogin
             { type: SET_USER, user: mockResult.auth.user, token: mockResult.auth.token },
+            { type: LOCALE_SET, lang: 'en'},
             { type: SET_LOGIN_PENDING, isLoginPending: false },
             { type: SET_LOGIN_SUCCESS, isLoginSuccess: true },
             { type: SET_LOGIN_ERROR, loginError: null },

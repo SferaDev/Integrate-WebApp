@@ -25,9 +25,6 @@ describe('Incentive component', () => {
                 totalSavedMoney: 1.00,
             }
         });
-        expect(component.find('.medalLeftHidden').props().src).toEqual(undefined);
-        expect(component.find('.medalMiddleHidden').props().src).toEqual(undefined);
-        expect(component.find('.medalRightHidden').props().src).toEqual(undefined);
         expect(component.find('.leftTextValue').text()).toEqual('1');
         expect(component.find('.middleTextValue').text()).toEqual('1');
         expect(component.find('.rightTextValue').text()).toEqual('1');

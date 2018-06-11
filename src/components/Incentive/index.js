@@ -5,6 +5,7 @@ import bronze from '../../media/bronzemedal.png';
 import silver from '../../media/silvermedal.jpeg';
 import gold from '../../media/goldmedal.jpeg';
 import PropTypes from 'prop-types';
+import {Col, Row} from 'reactstrap';
 
 const goldM = gold;
 const silverM = silver;
@@ -94,20 +95,39 @@ export default class Incentive extends React.Component {
         this.setLeftText();
 
         return (
-            <div className="Incentive">
-                <img className={medalleft} src={leftmedal} alt="Medal"/>
-                <h3 className={lefttext}><span className='leftTextValue'>{this.props.incentives.goodsCreated}</span>
-                    <FormattedMessage id='incentive.goods' defaultMessage='Vals'/>
-                </h3>
-                <img className={medalmiddle} src={middlemedal} alt="Medal"/>
-                <h3 className={middletext}><span className='middleTextValue'>{this.props.incentives.beneficiariesHelped}</span>
-                    <FormattedMessage id='incentive.beneficiaris' defaultMessage='Beneficiaris'/>
-                </h3>
-                <img className={medalright} src={rightmedal} alt="Medal"/>
-                <h3 className={righttext}><span className='rightTextValue'>{this.props.incentives.totalSavedMoney}</span>
-                    <FormattedMessage id='incentive.discount' defaultMessage='Descomptes'/>
-                </h3>
-            </div>
+            <Row className="incentive">
+                <Col sm='12' md='4' className='incentiveLeft'>
+                    {
+                        medalleft !== 'medalHidden medalLeftHidden' ? <img className={medalleft} id='medalLeft' src={leftmedal} alt="Medal"/> :
+                            null
+                    }
+                        <div className={lefttext}><span className='leftTextValue'>{this.props.incentives.goodsCreated}</span>
+                            &nbsp;
+                            <FormattedMessage id='incentive.goods' defaultMessage='vals creats'/>
+                        </div>
+                </Col>
+
+                <Col sm='12' md='4' className='incentiveMiddle'>
+                    {
+                        medalmiddle !== 'medalHidden medalMiddleHidden' ? <img className={medalmiddle} id='medalLeft' src={middlemedal} alt="Medal"/> :
+                            null
+                    }
+                        <div className={middletext}><span className='middleTextValue'>{this.props.incentives.beneficiariesHelped}</span>
+                            &nbsp;
+                            <FormattedMessage id='incentive.beneficiaris' defaultMessage='beneficiaris ajudats'/>
+                        </div>
+                </Col>
+
+                <Col sm='12' md='4' className='incentiveRight'>
+                    {
+                        medalright !== 'medalHidden medalRightHidden' ? <img className={medalright} id='medalRight' src={rightmedal} alt="Medal"/> :
+                            null
+                    }
+                        <div className={righttext}><span className='rightTextValue'>{this.props.incentives.totalSavedMoney}</span>
+                            <FormattedMessage id='incentive.discount' defaultMessage='Descomptes'/>
+                        </div>
+                </Col>
+            </Row>
         );
     }
 }

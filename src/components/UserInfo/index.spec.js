@@ -32,8 +32,8 @@ describe('<UserInfo />', () => {
         };
 
         const wrapper = enzyme.shallow(<UserInfo user={props}/>);
-        expect(wrapper.find('div')).length(1);
-        expect(wrapper.find('img')).length(1);
+        expect(wrapper.find('div')).length(7);
+        expect(wrapper.find('img')).length(0);
         expect(wrapper.instance().props.user).to.equal(props);
 
 

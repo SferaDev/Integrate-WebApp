@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Col, Container, Row,} from 'reactstrap';
+import {Col, Row} from 'reactstrap';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import './style.css';
 import {FormattedMessage} from 'react-intl'
@@ -15,7 +15,6 @@ const Good = ({good, actions}) => {
     };
 
     return (
-        <Container>
             <Row className="productRow">
                 <Col md="12" lg="12" className="productCol">
                     <div className="product">
@@ -151,7 +150,6 @@ const Good = ({good, actions}) => {
                     </div>
                 </Col>
             </Row>
-        </Container>
     )
 };
 

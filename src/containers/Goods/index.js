@@ -20,6 +20,7 @@ import {dispatchToggleModal} from '../../actions/modal';
 import {dispatchToggleModalEdit} from '../../actions/modal';
 import {dispatchCleanModalState} from '../../actions/modal';
 import {logoutAction} from '../../actions/auth';
+import {Container} from 'reactstrap';
 
 addLocaleData(en)
 addLocaleData(es)
@@ -39,13 +40,15 @@ export class GoodsContainer extends Component {
         let {goods, actions, modal, lang} = this.props;
         return (
             <IntlProvider locale={lang} messages={messages[lang]}>
-                <div className="goodsContainer">
-                    <LanguageSelector className="languageSelector" actions={actions.localeActions} lang={lang}/>
-                    <MainView className="MainView" actions={actions.authActions}/>
-                    <GoodsList
-                        goods={goods} actions={actions}/>
-                    <ModalView modal={modal} actions={actions} lang={lang}/>
-                </div>
+                <Container fluid={true}>
+                        <LanguageSelector className="languageSelector" actions={actions.localeActions} lang={lang}/>
+                        <MainView className="MainView" actions={actions.authActions}/>
+                        <Container fluid={true} className='goodsContainer'>
+                                    <GoodsList
+                                        goods={goods} actions={actions}/>
+                                    <ModalView modal={modal} actions={actions} lang={lang}/>
+                        </Container>
+                </Container>
             </IntlProvider>
         )
     }

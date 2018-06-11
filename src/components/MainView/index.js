@@ -34,8 +34,8 @@ export default class MainView extends React.Component {
     }
     render() {
         return (
-            <div>
-                <Navbar color="dark" dark expand="md">
+            <div className='navbarDiv'>
+                <Navbar color="dark" dark expand="md" className='navbar'>
                     <NavbarBrand tag={Link} to="/main">
                         <FormattedMessage id='main.home' defaultMessage='Pàgina principal'/>
                     </NavbarBrand>

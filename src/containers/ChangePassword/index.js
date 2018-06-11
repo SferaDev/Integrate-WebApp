@@ -11,6 +11,8 @@ import ChangePassword from '../../components/ChangePassword';
 import MainView from '../../components/MainView';
 import {setLocale} from '../../actions/locale';
 import {logoutAction} from '../../actions/auth';
+import {Container} from 'reactstrap';
+import './style.css'
 
 addLocaleData(en)
 addLocaleData(es)
@@ -30,11 +32,13 @@ class ChangePasswordContainer extends Component {
         let {lang, actions} = this.props;
         return (
             <IntlProvider locale={lang} messages={messages[lang]}>
-                <div className="signupContainer">
-                    <LanguageSelector actions={actions.localeActions} lang={lang}/>
-                    <MainView actions={actions.authActions}/>
-                    <ChangePassword history={this.props.history}/>
-                </div>
+                <Container fluid={true}>
+                    <div className="signupContainer">
+                        <LanguageSelector actions={actions.localeActions} lang={lang}/>
+                        <MainView actions={actions.authActions}/>
+                            <ChangePassword history={this.props.history}/>
+                    </div>
+                </Container>
             </IntlProvider>
         )
     }

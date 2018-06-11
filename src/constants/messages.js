@@ -12,9 +12,9 @@ export default {
         'main.changepassword' : 'Change password',
         'main.logout' : 'Logout',
 
-        'incentive.goods': 'Goods',
-        'incentive.beneficiaris' : 'Beneficiaries',
-        'incentive.discount' : 'Discounts',
+        'incentive.goods': 'goods created',
+        'incentive.beneficiaris' : 'beneficiaries helped',
+        'incentive.discount' : '€ discounted',
 
         'password.header' : 'Change password:',
         'password.current' : 'Current password:',
@@ -30,6 +30,7 @@ export default {
         'modalpass.equal' : 'The new passwords are not equal.',
         'modalpass.success' : "The password has been changed successfully.",
         'modalpass.button' : 'Accept',
+
         'entity.header' : 'Sign up:',
         'entity.firstname' : 'Name:',
         'entity.surname' : 'Surnames:',
@@ -42,6 +43,8 @@ export default {
         'entity.addressinfo' : "Enter the address in the map search box:",
         'entity.send' : 'Send',
         'entity.picture' : "Entity picture:",
+        'entity.deleteButton' : 'Delete entity',
+
         'modal.error' : 'Error',
         'modal.email' : "The email is incorrect.",
         'modal.nif' : "The nif is incorrect.",
@@ -100,9 +103,9 @@ export default {
         'login.signup': 'Solicitud de acceso',
         'login.forgotpassword': '¿Has olvidado tu contraseña?',
 
-        'incentive.goods': 'Cupones',
-        'incentive.beneficiaris' : 'Beneficiarios',
-        'incentive.discount' : 'Descuentos',
+        'incentive.goods': 'productos ofrecidos',
+        'incentive.beneficiaris' : 'personas beneficiadas',
+        'incentive.discount' : '€ descontados',
 
         'main.home' : 'Página principal',
         'main.goods' : 'Cupones',
@@ -134,6 +137,8 @@ export default {
         'entity.addressinfo' : "Escribe la dirección en el buscador del mapa:",
         'entity.send' : 'Enviar',
         'entity.picture' : "Foto de la entidad:",
+        'entity.deleteButton' : 'Borrar entidad',
+
         'modal.error' : 'Error',
         'modal.email' : "El email introducido no es correcto.",
         'modal.nif' : "El nif introducido no es correcto.",
@@ -189,9 +194,9 @@ export default {
         'login.signup': 'Sol·licitud d\'accés',
         'login.forgotpassword': 'Did you forget your password?',
 
-        'incentive.goods': 'Vals',
-        'incentive.beneficiaris' : 'Beneficiaris',
-        'incentive.discount' : 'Descomptes',
+        'incentive.goods': 'productes oferts',
+        'incentive.beneficiaris' : 'persones beneficiades',
+        'incentive.discount' : '€ descomptats',
 
         'main.home' : 'Pàgina principal',
         'main.goods' : 'Vals',
@@ -226,6 +231,7 @@ export default {
         'entity.addressinfo' : "Escriu l'adreça en el buscador del mapa:",
         'entity.send' : 'Enviar',
         'entity.picture' : "Foto de l'entitat:",
+        'entity.deleteButton' : 'Esborrar entitat',
 
         'modal.error' : 'Error',
         'modal.email' : "L'email introduït no és correcte.",

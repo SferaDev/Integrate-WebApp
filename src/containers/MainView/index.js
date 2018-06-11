@@ -13,6 +13,8 @@ import UserInfo from '../../components/UserInfo';
 import {logoutAction, setUserAndToken} from '../../actions/auth';
 import {setLocale} from '../../actions/locale';
 import {dispatchSetIncentives} from '../../actions/incentives';
+import {Col, Container, Row} from 'reactstrap';
+import './style.css'
 
 addLocaleData(en)
 addLocaleData(es)
@@ -35,12 +37,22 @@ export class MainViewContainer extends Component {
         else
         return (
             <IntlProvider locale={lang} messages={messages[lang]}>
-                <div className="mainviewContainer">
-                    <LanguageSelector actions={actions.localeActions} lang={lang}/>
-                    <MainView actions={actions.authActions}/>
-                    <UserInfo user={user}/>
-                    <Incentive className="Incentive" incentives={incentives}/>
-                </div>
+                <Container fluid={true} className='mainViewContainer'>
+                    <div>
+                        <LanguageSelector actions={actions.localeActions} lang={lang}/>
+                        <MainView actions={actions.authActions}/>
+                        <Container fluid={true}>
+                            <Row>
+                                <Col sm='12' md='4' className='userInfoCol'>
+                                    <UserInfo user={user}/>
+                                </Col>
+                                <Col sm='12' md='8' className="incentivesCol">
+                                    <Incentive className="Incentive" incentives={incentives}/>
+                                </Col>
+                            </Row>
+                        </Container>
+                    </div>
+                </Container>
             </IntlProvider>
         )
     }

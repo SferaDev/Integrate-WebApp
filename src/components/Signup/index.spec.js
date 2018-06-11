@@ -114,6 +114,7 @@ describe('<SignUp />', () => {
         wrapper.setState({nif: '12345678g'});
         wrapper.setState({email: 'paugonzalez@gmail.com'});
         wrapper.setState({phone: '634384789'});
+        wrapper.setState({picture: 'pafornet.png'});
         wrapper.setState({name: 'Pa el fornet'});
         wrapper.setState({description: ''});
         wrapper.setState({addressName: 'Avinguda Diagonal, 633, 08028 Barcelona'});
@@ -131,6 +132,7 @@ describe('<SignUp />', () => {
         wrapper.setState({nif: '12345678g'});
         wrapper.setState({email: 'paugonzalez@gmail.com'});
         wrapper.setState({phone: '634384789'});
+        wrapper.setState({picture: 'pafornet.png'});
         wrapper.setState({name: 'Pa el fornet'});
         wrapper.setState({description: 'Venda de pa'});
         wrapper.setState({addressName: 'Avinguda Diagonal, 633, 08028 Barcelona'});
@@ -152,6 +154,7 @@ describe('<SignUp />', () => {
         wrapper.setState({nif: '12345678g'});
         wrapper.setState({email: 'paugonzalez@gmail.com'});
         wrapper.setState({phone: '62864208p'});
+        wrapper.setState({picture: 'pafornet.png'});
         wrapper.setState({name: 'Pa el fornet'});
         wrapper.setState({description: 'Venda de pa'});
         wrapper.setState({addressName: 'Avinguda Diagonal, 633, 08028 Barcelona'});
@@ -166,6 +169,7 @@ describe('<SignUp />', () => {
         wrapper.setState({nif: '12345678g'});
         wrapper.setState({email: 'paugonzalez@gmail.com'});
         wrapper.setState({phone: '62864208'});
+        wrapper.setState({picture: 'pafornet.png'});
         wrapper.setState({name: 'Pa el fornet'});
         wrapper.setState({description: 'Venda de pa'});
         wrapper.setState({addressName: 'Avinguda Diagonal, 633, 08028 Barcelona'});
@@ -186,6 +190,7 @@ describe('<SignUp />', () => {
         wrapper.setState({nif: '12345678g'});
         wrapper.setState({email: 'paugonzalez@gmailom'});
         wrapper.setState({phone: '628642082'});
+        wrapper.setState({picture: 'pafornet.png'});
         wrapper.setState({name: 'Pa el fornet'});
         wrapper.setState({description: 'Venda de pa'});
         wrapper.setState({addressName: 'Avinguda Diagonal, 633, 08028 Barcelona'});
@@ -201,6 +206,7 @@ describe('<SignUp />', () => {
         wrapper.setState({email: 'paugonzalezgmail.com'});
         wrapper.setState({phone: '628642082'});
         wrapper.setState({name: 'Pa el fornet'});
+        wrapper.setState({picture: 'pafornet.png'});
         wrapper.setState({description: 'Venda de pa'});
         wrapper.setState({addressName: 'Avinguda Diagonal, 633, 08028 Barcelona'});
         wrapper.setState({modal: false});
@@ -223,6 +229,8 @@ describe('<SignUp />', () => {
         wrapper.setState({email: 'paugonzalez@gmail.com'});
         wrapper.setState({phone: '628642082'});
         wrapper.setState({name: 'Pa el fornet'});
+        wrapper.setState({picture: 'pafornet.png'});
+
         wrapper.setState({description: 'Venda de pa'});
         wrapper.setState({addressName: 'Avinguda Diagonal, 633, 08028 Barcelona'});
         sendButton.simulate('click');
@@ -240,6 +248,8 @@ describe('<SignUp />', () => {
         wrapper.setState({email: 'paugonzalez@gmail.com'});
         wrapper.setState({phone: '628642082'});
         wrapper.setState({name: 'Pa el fornet'});
+        wrapper.setState({picture: 'pafornet.png'});
+
         wrapper.setState({description: 'Venda de pa'});
         wrapper.setState({addressName: 'Avinguda Diagonal, 633, 08028 Barcelona'});
         wrapper.setState({modal: false});
@@ -261,27 +271,14 @@ describe('<SignUp />', () => {
         wrapper.setState({email: 'paugonzalez@gmail.com'});
         wrapper.setState({phone: '628642082'});
         wrapper.setState({name: 'Pa el fornet'});
-        wrapper.setState({description: 'Venda de pa'});
+       wrapper.setState({picture: 'pafornet.png'});
+       wrapper.setState({description: 'Venda de pa'});
         wrapper.setState({addressName: 'Avinguda Diagonal, 633, 08028 Barcelona'});
         sendButton.simulate('click');
         expect(wrapper.state().modalHeader).to.equal('Correcte');
         expect(wrapper.state().modalContent).to.equal("Les dades introduïdes són correctes.");
         expect(wrapper.state().modal).to.equal(true);
 
-
-       wrapper.setState({salesmanFirstName: 'Pau'});
-        wrapper.setState({salesmanLastName: 'Gonzalez Montiel'});
-        wrapper.setState({nif: '12345678g'});
-        wrapper.setState({email: 'paugonzalez@gmail.com'});
-        wrapper.setState({phone: '628642082'});
-        wrapper.setState({name: 'Pa el fornet'});
-        wrapper.setState({description: 'Venda de pa'});
-        wrapper.setState({addressName: 'Avinguda Diagonal, 633, 08028 Barcelona'});
-        wrapper.setState({modal: false});
-        sendButton.simulate('click');
-        expect(wrapper.state().modalHeader).to.equal('Correcte');
-        expect(wrapper.state().modalContent).to.equal("Les dades introduïdes són correctes.");
-        expect(wrapper.state().modal).to.equal(true);
 
     });
 

@@ -5,7 +5,7 @@ export const apiPostSignUp = (entity) => new Promise((resolve, reject) => {
         console.log(response)
     }).catch(error => {
         if (error.response.status === 409) {
-            reject('Nif already exist.');
+            reject('Nif or email already exists.');
         }
     });
 });

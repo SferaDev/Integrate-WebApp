@@ -11,11 +11,11 @@ export default class UserInfo extends React.Component {
         }
         return (
             <div className="UserInfo">
-                <img className="Picture" src={this.props.user.picture} alt="Medal"/>
-                <h3>{this.props.user.name}</h3>
-                <h4>{this.props.user.addressName}</h4>
+                <img className="PictureUser" src={this.props.user.picture} alt="Medal"/>
+                <h3 className="Name">{this.props.user.name}</h3>
+                <h5 className="addressName">{this.props.user.addressName}</h5>
                 <hr/>
-                <h5>{this.props.user.description}</h5>
+                <h5 className="Description">{this.props.user.description}</h5>
             </div>
         );
     }

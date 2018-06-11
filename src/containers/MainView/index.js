@@ -18,7 +18,7 @@ addLocaleData(en)
 addLocaleData(es)
 addLocaleData(ca)
 
-class MainViewContainer extends Component {
+export class MainViewContainer extends Component {
     constructor(props) {
         super(props);
         this.props.actions.incentivesActions.dispatchSetIncentives()

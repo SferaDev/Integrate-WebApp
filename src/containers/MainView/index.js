@@ -15,6 +15,8 @@ import {setLocale} from '../../actions/locale';
 import {dispatchSetIncentives} from '../../actions/incentives';
 import {Col, Container, Row} from 'reactstrap';
 import './style.css'
+import Statisitics from "../../components/Statisitics";
+import {apiGetStatistics} from "../../api/statistics";
 
 addLocaleData(en)
 addLocaleData(es)
@@ -23,6 +25,17 @@ addLocaleData(ca)
 export class MainViewContainer extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            statistics: [],
+        };
+    }
+
+    componentDidMount() {
+        apiGetStatistics().then(statistics => this.setState({
+            statistics,
+        }))
+
         this.props.actions.incentivesActions.dispatchSetIncentives()
     }
 
@@ -48,6 +61,7 @@ export class MainViewContainer extends Component {
                                 </Col>
                                 <Col sm='12' md='8' className="incentivesCol">
                                     <Incentive className="Incentive" incentives={incentives}/>
+                                    <Statisitics data={this.state.statistics}/>
                                 </Col>
                             </Row>
                         </Container>

@@ -1,10 +1,15 @@
+.loginContainer {
+    font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+    font-size:15px;
+}
+
 .logo {
     width: 100%;
-    max-width: 400px;
+    max-width: 300px;
 }
 
 .logoContainer {
-    margin: 10px;
+    margin: 5px;
 }
 
 .btn {
@@ -21,31 +26,26 @@
 
 .colForm {
     display: flex;
-    height: 100%;
     flex-direction: column;
     justify-content: space-around;
     text-align: center;
 }
 
 .loginRow {
-    height: 100%;
-}
-
-.loginContainer {
-    height: 100%;
+    justify-content:center;
 }
 
 .solicitudLinkDiv {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .link {
     color: white;
     letter-spacing: 1px;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .link:hover {
@@ -54,6 +54,7 @@
 }
 
 .textHeading {
-    font-size: 24px;
+    font-size: 18px;
+    font-weight:500;
     color: #212529;
 }

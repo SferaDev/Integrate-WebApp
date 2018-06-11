@@ -32,7 +32,7 @@ export class Login extends Component {
                 <Container className="loginContainer">
                     <LanguageSelector actions={localeActions} lang={lang}/>
                     <Row className="loginRow">
-                        <Col className="colForm" xs='12' md={{ size: 8, offset: 2 }}>
+                        <Col className="colForm" xs='12' md='6'>
                             <div className="logoContainer">
                                 <img className="logo" src={logo} alt="Integrate"/>
                             </div>

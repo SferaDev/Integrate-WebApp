@@ -123,7 +123,7 @@ export default class SignUp extends Component {
     }
 
     checkEmptyInputs() {
-        return (this.state.salesmanFirstName.length === 0 || this.state.salesmanLastName.length === 0 || this.state.email.length === 0 || this.state.nif.length === 0 || this.state.name.length === 0 || this.state.addressName.length === 0 || this.state.description.length === 0 || this.state.phone.length === 0);
+        return (this.state.salesmanFirstName.length === 0 || this.state.salesmanLastName.length === 0 || this.state.email.length === 0 || this.state.nif.length === 0 || this.state.name.length === 0 || this.state.addressName.length === 0 || this.state.description.length === 0 || this.state.phone.length === 0 || this.state.picture.length === 0);
     }
 
     onSentClicked() {
@@ -173,9 +173,9 @@ export default class SignUp extends Component {
             };
             let exists = 0;
             apiPostSignUp(entity).catch(error => {
-                if (error === 'Nif already exist.') {
+                if (error === 'Nif or email already exists.') {
                     this.setState({modalHeader: "Error"});
-                    this.setState({modalContent: "El nif ja existeix."});
+                    this.setState({modalContent: "El nif o l'email ja existeixen."});
                     this.setState({idHeader: 'modal.error'});
                     this.setState({idContent: 'modal.exist'});
                     exists = 1;
@@ -299,7 +299,7 @@ export default class SignUp extends Component {
                             <Input type="file" className="file" id="pictureFile" onChange={this.changePicture}/>
                         </Col>
                         <Col sm={5}>
-                            <img id="picturePreview" src={this.state.picture} alt={this.state.name}/>
+                            <img id="picturePreview" src={this.state.picture} alt=""/>
 
                         </Col>
                     </FormGroup>

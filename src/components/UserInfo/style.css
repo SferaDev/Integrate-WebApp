@@ -2,15 +2,27 @@
     border: 1px solid black;
     width: 30%;
     background: white;
-    position: fixed;
-    height: 100%;
-    resize:both;
+    position: absolute;
+    resize: initial;
     overflow: auto;
+    height: 82%;
 }
 
-.Picture {
-    height: 200px;
-    width: 200px;
-    margin-left: 25%;
-    margin-top: 5%;
+.PictureUser {
+    width: 100%;
+}
+
+.Name {
+    margin-top: 3%;
+    text-align:center;
+}
+
+.addressName {
+    text-align:center;
+    color: grey;
+    justify-content: center;
+}
+
+.Description {
+    text-align:center;
 }

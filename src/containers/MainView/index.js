@@ -15,7 +15,7 @@ import {setLocale} from '../../actions/locale';
 import {dispatchSetIncentives} from '../../actions/incentives';
 import {Col, Container, Row} from 'reactstrap';
 import './style.css'
-import Statisitics from "../../components/Statisitics";
+import Statistics from "../../components/Statisitics";
 import {apiGetStatistics} from "../../api/statistics";
 
 addLocaleData(en)
@@ -26,12 +26,13 @@ export class MainViewContainer extends Component {
     constructor(props) {
         super(props);
 
-        this.handleIntervalChange = this.handleIntervalChange.bind(this)
-
         this.state = {
             statistics: [],
             selectedInterval: 'Month',
         };
+
+        this.handleIntervalChange = this.handleIntervalChange.bind(this)
+
     }
 
     fetchStatistics(interval) {
@@ -75,7 +76,7 @@ export class MainViewContainer extends Component {
                             <Container fluid={true}>
                                 <Row>
                                     <Col sm='12' md='4' className='userInfoCol'>
-                                        <UserInfo user={user}/>
+                                        <UserInfo user={user} actions={actions}/>
                                     </Col>
                                     <Col sm='12' md='8' className="contentCol">
                                         <Incentive className="Incentive" incentives={incentives}/>
@@ -104,7 +105,7 @@ export class MainViewContainer extends Component {
                                             </select>
                                         </div>
 
-                                        { this.state.statistics.length > 0 && <Statisitics data={this.state.statistics}/> }
+                                        { this.state.statistics.length > 0 && <Statistics data={this.state.statistics}/> }
 
                                     </Col>
                                 </Row>

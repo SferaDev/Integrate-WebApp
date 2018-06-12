@@ -232,6 +232,6 @@ describe('goods reducer', () => {
             ], {
                 type: types.RESET_GOODS,
             })
-        ).toEqual({})
+        ).toEqual([])
     });
 });

@@ -18,7 +18,7 @@ export const apiPostLogin = ({id, password}) => new Promise((resolve, reject) =>
                 resolve({token, user});
             } else reject();
         } else reject();
-    }).catch(() => reject());
+    }).catch(e => reject(e));
 });
 
 export const apiDeleteEntity = () => new Promise((resolve, reject) => {

@@ -82,7 +82,7 @@ export default class UserInfo extends React.Component {
                     </ModalBody>
                     <ModalFooter className='modalFooter'>
                         <div className="deleteEntityButtonModal">
-                            <button name="edit" id="edit" className="btnDeleteEntityModal" onClick={this.props.actions.deleteEntity}>
+                            <button name="edit" id="edit" className="btnDeleteEntityModal" onClick={() => this.props.actions.deleteEntity()}>
                                 <div className='deleteEntityButtonText'>
                                     <FormattedMessage id='entity.deleteButton'
                                                       defaultMessage='Esborrar entitat'/>

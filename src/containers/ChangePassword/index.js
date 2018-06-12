@@ -13,23 +13,32 @@ import {setLocale} from '../../actions/locale';
 import {logoutAction} from '../../actions/auth';
 import {Container} from 'reactstrap';
 import './style.css'
+import {Redirect} from 'react-router';
 
 addLocaleData(en)
 addLocaleData(es)
 addLocaleData(ca)
 
-class ChangePasswordContainer extends Component {
+export class ChangePasswordContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {};
     }
 
     componentDidMount(){
-        this.props.actions.localeActions.setLocale(JSON.parse(localStorage.getItem('user')).interfaceLanguage)
+        if (localStorage.getItem('user'))
+            this.props.actions.localeActions.setLocale(JSON.parse(localStorage.getItem('user')).interfaceLanguage)
     }
 
     render() {
         let {lang, actions} = this.props;
+
+        if (!this.props.auth.isLoginPending && !this.props.auth.isLoginSuccess) {
+            return (
+                <Redirect to='/'/>
+            )
+        }
+
         return (
             <IntlProvider locale={lang} messages={messages[lang]}>
                 <Container fluid={true}>
@@ -46,6 +55,7 @@ class ChangePasswordContainer extends Component {
 
 const mapStateToProps = state => ({
     lang: state.locale.lang,
+    auth: state.auth,
 });
 
 const mapDispatchToProps = (dispatch) => {

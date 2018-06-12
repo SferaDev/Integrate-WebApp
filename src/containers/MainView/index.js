@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 
-import {addLocaleData, IntlProvider} from 'react-intl';
+import {addLocaleData, FormattedMessage, IntlProvider} from 'react-intl';
 import es from 'react-intl/locale-data/es'
 import en from 'react-intl/locale-data/en'
 import ca from 'react-intl/locale-data/ca'
@@ -26,49 +26,93 @@ export class MainViewContainer extends Component {
     constructor(props) {
         super(props);
 
+        this.handleIntervalChange = this.handleIntervalChange.bind(this)
+
         this.state = {
             statistics: [],
+            selectedInterval: 'Month',
         };
     }
 
+    fetchStatistics(interval) {
+        apiGetStatistics(interval)
+            .then(statistics => this.setState({
+                statistics,
+            }))
+    }
+
     componentDidMount() {
-        apiGetStatistics().then(statistics => this.setState({
-            statistics,
-        }))
+        this.fetchStatistics(this.state.selectedInterval);
 
         this.props.actions.incentivesActions.dispatchSetIncentives()
     }
 
+    handleIntervalChange(event) {
+        this.setState({
+            statistics: [],
+            selectedInterval: event.target.value,
+        })
+
+        this.fetchStatistics(event.target.value);
+    }
+
     render() {
         let {lang, actions, user, incentives} = this.props;
-        if (!lang || !actions || !user || !incentives){
-            return(
+        if (!lang || !actions || !user || !incentives) {
+            return (
                 <div>Loading...</div>
             )
         }
 
         else
-        return (
-            <IntlProvider locale={lang} messages={messages[lang]}>
-                <Container fluid={true} className='mainViewContainer'>
-                    <div>
-                        <LanguageSelector actions={actions.localeActions} lang={lang}/>
-                        <MainView actions={actions.authActions}/>
-                        <Container fluid={true}>
-                            <Row>
-                                <Col sm='12' md='4' className='userInfoCol'>
-                                    <UserInfo user={user} actions={actions.authActions}/>
-                                </Col>
-                                <Col sm='12' md='8' className="incentivesCol">
-                                    <Incentive className="Incentive" incentives={incentives}/>
-                                    <Statisitics data={this.state.statistics}/>
-                                </Col>
-                            </Row>
-                        </Container>
-                    </div>
-                </Container>
-            </IntlProvider>
-        )
+
+            return (
+                <IntlProvider locale={lang} messages={messages[lang]}>
+                    <Container fluid={true} className='mainViewContainer'>
+                        <div>
+                            <LanguageSelector actions={actions.localeActions} lang={lang}/>
+                            <MainView actions={actions.authActions}/>
+                            <Container fluid={true}>
+                                <Row>
+                                    <Col sm='12' md='4' className='userInfoCol'>
+                                        <UserInfo user={user}/>
+                                    </Col>
+                                    <Col sm='12' md='8' className="contentCol">
+                                        <Incentive className="Incentive" incentives={incentives}/>
+
+                                        <div style={{textAlign: 'center'}}>
+                                            <label style={{marginRight: '8px', marginTop: '10px'}}>
+                                                <FormattedMessage id='statistics.statistics'/>
+                                            </label>
+                                            <select
+                                                style={{marginTop: '20px'}}
+                                                value={this.state.selectedInterval}
+                                                onChange={this.handleIntervalChange}>
+
+                                                <FormattedMessage id='statistics.day' tagName='option'>
+                                                    {(message) => <option value='Day'>{message}</option>}
+                                                </FormattedMessage>
+                                                <FormattedMessage id='statistics.week' tagName='option'>
+                                                    {(message) => <option value='Week'>{message}</option>}
+                                                </FormattedMessage>
+                                                <FormattedMessage id='statistics.month' tagName='option'>
+                                                    {(message) => <option value='Month'>{message}</option>}
+                                                </FormattedMessage>
+                                                <FormattedMessage id='statistics.year' tagName='option'>
+                                                    {(message) => <option value='Year'>{message}</option>}
+                                                </FormattedMessage>
+                                            </select>
+                                        </div>
+
+                                        { this.state.statistics.length > 0 && <Statisitics data={this.state.statistics}/> }
+
+                                    </Col>
+                                </Row>
+                            </Container>
+                        </div>
+                    </Container>
+                </IntlProvider>
+            )
     }
 }
 

@@ -1,6 +1,6 @@
 import {getApi} from "./";
 
-export const apiGetStatistics = (interval = 'Month') => getApi(`/me/salesChart`, {
+export const apiGetStatistics = (interval) => getApi(`/me/salesChart`, {
     params: {
         interval
     }

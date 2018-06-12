@@ -7,6 +7,12 @@ export default {
         'login.signup': 'Apply for access',
         'login.forgotpassword': 'Did you forget your password?',
 
+        'statistics.statistics': 'Statistics for',
+        'statistics.day': 'Day',
+        'statistics.week': 'Week',
+        'statistics.month': 'Month',
+        'statistics.year': 'Year',
+
         'main.home' : 'Home',
         'main.goods' : 'Goods',
         'main.changepassword' : 'Change password',
@@ -104,6 +110,12 @@ export default {
         'login.signup': 'Solicitud de acceso',
         'login.forgotpassword': '¿Has olvidado tu contraseña?',
 
+        'statistics.statistics': 'Estadísticas por',
+        'statistics.day': 'Día',
+        'statistics.week': 'Semana',
+        'statistics.month': 'Mes',
+        'statistics.year': 'Año',
+
         'incentive.goods': 'productos ofrecidos',
         'incentive.beneficiaris' : 'personas beneficiadas',
         'incentive.discount' : '€ descontados',
@@ -196,6 +208,12 @@ export default {
         'login.login': 'Entra',
         'login.signup': 'Sol·licitud d\'accés',
         'login.forgotpassword': 'Did you forget your password?',
+
+        'statistics.statistics': 'Estadístiques per',
+        'statistics.day': 'Dia',
+        'statistics.week': 'Setmana',
+        'statistics.month': 'Mes',
+        'statistics.year': 'Any',
 
         'incentive.goods': 'productes oferts',
         'incentive.beneficiaris' : 'persones beneficiades',

@@ -2,7 +2,7 @@ import React from 'react';
 import {Chart, Bars, Labels, Ticks} from 'rumble-charts';
 import './style.css';
 
-const getFormattedDate = date => {
+export const getFormattedDate = date => {
     const day = date.slice(8,10);
     const month = date.slice(5,7);
     const year = date.slice(2,4);

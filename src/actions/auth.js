@@ -3,7 +3,7 @@ import {resetGoods} from './goods';
 import {resetLocale, setLocale} from './locale';
 import {cleanModalState} from './modal';
 import {LOG_OUT} from '../constants/ActionTypes';
-import {apiPostLogin} from '../api';
+import {apiDeleteEntity, apiPostLogin} from '../api';
 
 export function setUserAndToken(user, token) {
     return {
@@ -33,6 +33,12 @@ export function setLoginError(loginError) {
         loginError
     };
 }
+
+export const deleteEntity = () => dispatch => {
+    return apiDeleteEntity().then(() => {
+        dispatch(logout())
+    })
+};
 
 export function logout(){
     return {

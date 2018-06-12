@@ -11,7 +11,9 @@ const getHeaders = () => ({
     token: getLocalToken()
 })
 
-export const validateStatus = () => true
+export const validateStatus = (status) => {
+    return status >= 200 && status<300
+}
 
 export const getApi = (endpoint, options) => axios.get(`${API_HOST}${endpoint}`, {
     ...options,

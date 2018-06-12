@@ -49,7 +49,7 @@ export default function goods(state = [], action) {
             );
 
         case RESET_GOODS:
-            return {}
+            return []
 
         default:
             return state

@@ -17,6 +17,7 @@ import {Col, Container, Row} from 'reactstrap';
 import './style.css'
 import Statistics from "../../components/Statisitics";
 import {apiGetStatistics} from "../../api/statistics";
+import {Redirect} from 'react-router';
 
 addLocaleData(en)
 addLocaleData(es)
@@ -59,7 +60,14 @@ export class MainViewContainer extends Component {
 
     render() {
         let {lang, actions, user, incentives} = this.props;
-        if (!lang || !actions || !user || !incentives) {
+
+        if (!this.props.auth.isLoginPending && !this.props.auth.isLoginSuccess) {
+            return (
+                <Redirect to='/'/>
+            )
+        }
+
+        if (!lang || !actions || !user || !incentives || !this.state.statistics) {
             return (
                 <div>Loading...</div>
             )
@@ -76,7 +84,7 @@ export class MainViewContainer extends Component {
                             <Container fluid={true}>
                                 <Row>
                                     <Col sm='12' md='4' className='userInfoCol'>
-                                        <UserInfo user={user} actions={actions}/>
+                                        <UserInfo user={user} actions={actions.authActions}/>
                                     </Col>
                                     <Col sm='12' md='8' className="contentCol">
                                         <Incentive className="Incentive" incentives={incentives}/>
@@ -119,6 +127,7 @@ export class MainViewContainer extends Component {
 
 const mapStateToProps = state => ({
     lang: state.locale.lang,
+    auth: state.auth,
     user: state.auth.user,
     incentives: state.incentives.incentives,
 });

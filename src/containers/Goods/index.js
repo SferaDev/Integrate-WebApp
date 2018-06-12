@@ -21,6 +21,7 @@ import {dispatchToggleModalEdit} from '../../actions/modal';
 import {dispatchCleanModalState} from '../../actions/modal';
 import {logoutAction} from '../../actions/auth';
 import {Container} from 'reactstrap';
+import {Redirect} from 'react-router';
 
 addLocaleData(en)
 addLocaleData(es)
@@ -38,6 +39,16 @@ export class GoodsContainer extends Component {
 
     render() {
         let {goods, actions, modal, lang} = this.props;
+
+        if (!this.props.auth.isLoginPending && !this.props.auth.isLoginSuccess) {
+            console.log('Jopetas')
+            return (
+                <Redirect to='/'/>
+            )
+        }
+
+        else console.log('Rlly?')
+
         return (
             <IntlProvider locale={lang} messages={messages[lang]}>
                 <Container fluid={true}>
@@ -58,6 +69,7 @@ const mapStateToProps = state => ({
     goods: state.goods,
     modal: state.modal,
     lang: state.locale.lang,
+    auth: state.auth,
 });
 
 const mapDispatchToProps = (dispatch) => {

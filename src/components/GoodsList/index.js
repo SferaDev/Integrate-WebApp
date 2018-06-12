@@ -9,7 +9,7 @@ import {FormattedMessage} from 'react-intl'
 const GoodsList = ({goods, modal, actions}) => {
     const Goods = (
         goods.map(good =>
-            <Row className='goodRow'>
+            <Row className='goodRow' key={good._id}>
                 <Col sm='12' className='goodCol'>
                     <Good
                         key={good._id}

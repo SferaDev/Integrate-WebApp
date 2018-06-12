@@ -8,5 +8,5 @@ export const apiGetIncentives = () => new Promise((resolve, reject) => {
             if (incentives) {
                 resolve(incentives);
             }
-    }}).catch(() => reject());
+    }}).catch(e => reject(e));
 });

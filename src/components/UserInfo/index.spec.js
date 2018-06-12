@@ -10,56 +10,56 @@ import UserInfo from "./index"
 enzyme.configure({adapter: new Adapter()});
 
 describe('<UserInfo />', () => {
-    const User = [
+    const user =
         {
             name: "Mercadona",
             addressName: "Carrer de Joan Batllori, 21, 08980 Sant Feliu de Llobregat, Barcelona, Spain",
             description: "Venda d'aliments",
-            picture: "goldenmedal.png"
+            picture: "goldenmedal.png",
+            validationCode: '666',
         }
-    ];
 
 
 
     it('it has a div with an image and good user props', () => {
 
         const props =  {
-                name: User[0].name,
-                addressName: User[0].addressName,
-                description: User[0].description,
-                picture: User[0].picture
+                user: user,
+                actions: {
+                    deleteEntity: jest.fn(),
+                }
 
         };
 
-        const wrapper = enzyme.shallow(<UserInfo user={props}/>);
-        expect(wrapper.find('div')).length(7);
+        const wrapper = enzyme.shallow(<UserInfo user={props.user} actions={props.actions}/>);
+        expect(wrapper.find('div')).length(10);
         expect(wrapper.find('img')).length(0);
-        expect(wrapper.instance().props.user).to.equal(props);
+        expect(wrapper.instance().props.user).to.equal(props.user);
 
 
 
     });
 
-    const User2 = [
+    const user2 =
         {
             name: "Mercadona",
             addressName: "Carrer de Joan Batllori, 21, 08980 Sant Feliu de Llobregat, Barcelona, Spain",
             description: "Venda d'aliments",
-            picture: "picture"
+            picture: "picture",
+            validationCode: '666',
         }
-    ];
 
     it('user props', () => {
 
         const props =  {
-            name: User2[0].name,
-            addressName: User2[0].addressName,
-            description: User2[0].description,
-            picture: User2[0].picture
+            user: user2,
+            actions: {
+                deleteEntity: jest.fn(),
+            }
 
         };
 
-        const wrapper = enzyme.shallow(<UserInfo user={props}/>);
+        const wrapper = enzyme.shallow(<UserInfo user={props.user} actions={props.actions}/>);
         expect(wrapper.instance().props.user.picture).to.equal('marketicon.png');
 
     });

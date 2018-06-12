@@ -37,7 +37,7 @@ export default class MainView extends React.Component {
             <div className='navbarDiv'>
                 <Navbar color="dark" dark expand="md" className='navbar'>
                     <NavbarBrand tag={Link} to="/main">
-                        <FormattedMessage id='main.home' defaultMessage='Pàgina principal'/>
+                        {this.props.userName}
                     </NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
@@ -67,4 +67,5 @@ export default class MainView extends React.Component {
 
 MainView.propTypes = {
     actions: PropTypes.object.isRequired,
+    userName: PropTypes.string.isRequired,
 };

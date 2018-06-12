@@ -53,7 +53,7 @@ export class GoodsContainer extends Component {
             <IntlProvider locale={lang} messages={messages[lang]}>
                 <Container fluid={true}>
                         <LanguageSelector className="languageSelector" actions={actions.localeActions} lang={lang}/>
-                        <MainView className="MainView" actions={actions.authActions}/>
+                        <MainView className="MainView" actions={actions.authActions} userName={this.props.userName}/>
                         <Container fluid={true} className='goodsContainer'>
                                     <GoodsList
                                         goods={goods} actions={actions}/>
@@ -70,6 +70,7 @@ const mapStateToProps = state => ({
     modal: state.modal,
     lang: state.locale.lang,
     auth: state.auth,
+    userName: state.auth.user.name
 });
 
 const mapDispatchToProps = (dispatch) => {

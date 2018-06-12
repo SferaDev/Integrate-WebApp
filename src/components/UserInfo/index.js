@@ -3,7 +3,7 @@ import './style.css';
 import picture from '../../media/marketicon.png';
 import PropTypes from 'prop-types';
 import {FormattedMessage} from 'react-intl';
-import {Col, Container, Modal, ModalBody, ModalFooter, ModalHeader, Row} from 'reactstrap';
+import {Col, Modal, ModalBody, ModalFooter, ModalHeader, Row} from 'reactstrap';
 
 export default class UserInfo extends React.Component {
     constructor(props) {
@@ -33,7 +33,7 @@ export default class UserInfo extends React.Component {
         }
 
         return (
-            <Container fluid={true} className='userInfo'>
+            <div className='userInfoDiv'>
                 <Row>
                     <Col sm='12'>
                         <div className="userInfoPicture" style={userInfoPictureStyle}>
@@ -92,7 +92,7 @@ export default class UserInfo extends React.Component {
                         </div>
                     </ModalFooter>
                 </Modal>
-            </Container>
+            </div>
         );
     }
 }

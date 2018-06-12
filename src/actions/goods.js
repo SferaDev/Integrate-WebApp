@@ -1,5 +1,6 @@
 import * as types from '../constants/ActionTypes'
 import {apiAddNewGood, apiDeleteExistingGood, apiGetListAllGoods, apiUpdateExistingGood} from '../api/goods';
+import {logoutAction} from './auth';
 
 export const receiveGoods = (goods) => ({
     type: types.RECEIVE_GOODS,
@@ -10,6 +11,9 @@ export const dispatchReceiveGoods = () => dispatch => {
     return apiGetListAllGoods().then(goodsList => {
         dispatch(receiveGoods(goodsList))
     })
+        .catch(() => {
+            dispatch(logoutAction())
+        })
 };
 
 export const addGood = (good) => ({

@@ -1,6 +1,7 @@
 import {LOCALE_SET, RESET_LOCALE} from '../constants/ActionTypes';
 import {localStorage} from "../utils/localstorage";
 import {apiSetLanguage} from '../api/locale';
+import {logoutAction} from './auth';
 
 export const localeSet = lang => ({
     type: LOCALE_SET,
@@ -16,6 +17,9 @@ export const setLocale = lang => (dispatch) => {
             localStorage.setItem('user', JSON.stringify(user))
             dispatch(localeSet(user.interfaceLanguage))
         })
+            .catch(() => {
+                dispatch(logoutAction())
+            })
     } else {
         return new Promise((resolve, reject) => {
             resolve(dispatch(localeSet(lang)))

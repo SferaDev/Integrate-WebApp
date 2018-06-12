@@ -10,22 +10,25 @@ export const getFormattedDate = date => {
     return (day[0] === '0' ? day[1] : day) + '/' + (month[0] === '0' ? month[1] : month) + '/' + year;
 }
 
+export const getFormattedData = data => [{data: data.map(e => e[1])}]
+
+export const getLabel = ({point}) => point.y
+
 const Statistics = ({data}) => (
     <div className='statistics'>
-        <Chart width={600} height={400} series={[{data: data.map(e => e[1])}]} minY={0}>
+        <Chart width={600} height={400} series={getFormattedData(data)} minY={0}>
             <Bars seriesIndex={0} colors={['#343a40']} innerPadding={10} />
 
             <Labels
                 style={{color: 'red'}}
-                label={({point}) => point.y}
+                label={getLabel.bind(this)}
                 dotStyle={{
                     alignmentBaseline:'after-edge',
                     textAnchor: 'middle',
                     fontFamily:'sans-serif',
                     fill: 'white'
                 }}
-                labelAttributes={{y: 26}}
-            />
+                labelAttributes={{y: 26}} />
 
             <Ticks
                 axis='x'
@@ -35,8 +38,7 @@ const Statistics = ({data}) => (
                 }))}
                 lineVisible={false}
                 labelStyle={{textAnchor:'middle',dominantBaseline:'text-after-edge', fill:'grey', fontFamily: 'sans-serif'}}
-                labelAttributes={{y: 25}}
-            />
+                labelAttributes={{y: 25}} />
         </Chart>
     </div>
 );

@@ -101,6 +101,10 @@ export default {
         'modal.image': 'Image',
 
         'languageSelector.entities': 'entities',
+
+        'modalDeleteEntity.p1':'Are you sure about this?',
+        'modalDeleteEntity.p2':"If you delete the entity, beneficiaries won't be able to keep using the goods you are offering.",
+        'modalDeleteEntity.p3':"Anyway, if you want to come back you just have to Log in and the entity will be reactivated! :)",
     },
     es: {
         'login.iddoc': 'Documento de identidad',
@@ -200,6 +204,10 @@ export default {
         'modal.periodicity': 'Tiempo reutilización (días)',
         'modal.image': 'Imagen',
         'languageSelector.entities': 'entidades',
+
+        'modalDeleteEntity.p1':'¿Estás seguro de que quieres eliminar la entidad del sistema?',
+        'modalDeleteEntity.p2':"Si lo haces, los beneficiarios no podrán seguir disfrutando de los descuentos que ofreces.",
+        'modalDeleteEntity.p3':"Si quieres volver en algún momento, sólo tienes que acceder al sistema de nuevo y lo encontrarás todo tal y como lo tenías! :)",
     },
     ca: {
         'login.iddoc': 'Document d\'identitat',
@@ -302,6 +310,11 @@ export default {
         'modal.discount': 'Descompte',
         'modal.periodicity': 'Temps reutilització (dies)',
         'modal.image': 'Imatge',
+
         'languageSelector.entities': 'entitats',
+
+        'modalDeleteEntity.p1':'Estàs segur de que vols esborrar l\'entitat del sistema?',
+        'modalDeleteEntity.p2':"Si ho fas, els beneficiaris no podran seguir utilitzant els vals de descompte que has ofert.",
+        'modalDeleteEntity.p3':"Si en algun moment vols tornar, només has de tornar a fer Log In i ho tornaràs a tenir tot tal i com ho has deixat! :)",
     }
 }

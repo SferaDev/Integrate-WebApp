@@ -100,7 +100,7 @@ export default class Incentive extends React.Component {
                 <Col sm='12' md='2' className='likeComponent'>
                     <img className="like" id='like' src={like} alt="Medal"/>
                     <div className="NormalText">
-                        <span className='likeText'>1</span>
+                        <span className='likeText'>{this.props.incentives.numberLikes}</span>
                     </div>
                 </Col>
 
@@ -142,6 +142,7 @@ export default class Incentive extends React.Component {
 
 Incentive.propTypes = {
     incentives: PropTypes.shape({
+        numberLikes: PropTypes.number.isRequired,
         goodsCreated: PropTypes.number.isRequired,
         beneficiariesHelped: PropTypes.number.isRequired,
         totalSavedMoney: PropTypes.number.isRequired,

@@ -3,6 +3,7 @@ import {RESET_INCENTIVES, SET_INCENTIVES} from '../constants/ActionTypes';
 export default function incentives(
     state = {
         incentives: {
+            numberLikes: 0,
             goodsCreated: 0,
             beneficiariesHelped: 0,
             totalSavedMoney: 0.00,
@@ -13,6 +14,7 @@ export default function incentives(
         case SET_INCENTIVES:
             return {
                 incentives: {
+                    numberLikes: action.incentives.numberLikes,
                     goodsCreated: action.incentives.goodsCreated,
                     beneficiariesHelped: action.incentives.beneficiariesHelped,
                     totalSavedMoney: action.incentives.totalSavedMoney,
@@ -22,6 +24,7 @@ export default function incentives(
         case RESET_INCENTIVES:
             return {
                 incentives: {
+                    numberLikes: 0,
                     goodsCreated: 0,
                     beneficiariesHelped: 0,
                     totalSavedMoney: 0.00,

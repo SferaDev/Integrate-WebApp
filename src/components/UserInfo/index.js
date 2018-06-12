@@ -73,9 +73,12 @@ export default class UserInfo extends React.Component {
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className='modalDeleteEntity'>
                     <ModalHeader toggle={this.toggle}>Esborrar l'entitat</ModalHeader>
                     <ModalBody>
-                        <p>Estàs segur de que vols esborrar l'entitat del sistema?</p>
-                        <p>Si ho fas, perdràs tots els vals de descompte que tens actius, i els beneficiaris ja no els podran utilitzar.</p>
-                        <p>A més, si vols tornar hauràs perdut tota la reputació i popularitat que hagis acumulat en el sistema.</p>
+                        <p><FormattedMessage id='modalDeleteEntity.p1'
+                                             defaultMessage="Estàs segur de que vols esborrar l'entitat del sistema?"/></p>
+                        <p><FormattedMessage id='modalDeleteEntity.p2'
+                                             defaultMessage="Si ho fas, els beneficiaris no podran seguir utilitzant els vals de descompte que has ofert."/></p>
+                        <p><FormattedMessage id='modalDeleteEntity.p3'
+                                             defaultMessage="Si en algun moment vols tornar, només has de tornar a fer Log In i ho tornaràs a tenir tot tal i com ho has deixat! :)"/></p>
                     </ModalBody>
                     <ModalFooter className='modalFooter'>
                         <div className="deleteEntityButtonModal">

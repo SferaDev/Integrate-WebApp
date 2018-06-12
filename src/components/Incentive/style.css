@@ -7,6 +7,13 @@
     font-size: 18px;
 }
 
+.likeComponent{
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+}
+
 .incentiveLeft{
     display:flex;
     flex-direction:row;
@@ -86,7 +93,7 @@
     height:50px;
 }
 
-#medalMiddle{
+#medalRight{
     height:50px;
 }
 
@@ -100,3 +107,7 @@
 .medal {
 }
 
+.like {
+    height:40px;
+    padding-right: 3%;
+}

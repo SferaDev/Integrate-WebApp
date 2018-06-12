@@ -4,6 +4,7 @@ import {FormattedMessage} from 'react-intl';
 import bronze from '../../media/bronzemedal.png';
 import silver from '../../media/silvermedal.jpeg';
 import gold from '../../media/goldmedal.jpeg';
+import like from '../../media/like.png'
 import PropTypes from 'prop-types';
 import {Col, Row} from 'reactstrap';
 
@@ -96,7 +97,14 @@ export default class Incentive extends React.Component {
 
         return (
             <Row className="incentive">
-                <Col sm='12' md='4' className='incentiveLeft'>
+                <Col sm='12' md='2' className='likeComponent'>
+                    <img className="like" id='like' src={like} alt="Medal"/>
+                    <div className="NormalText">
+                        <span className='likeText'>1</span>
+                    </div>
+                </Col>
+
+                <Col sm='12' md='3' className='incentiveLeft'>
                     {
                         medalleft !== 'medalHidden medalLeftHidden' ? <img className={medalleft} id='medalLeft' src={leftmedal} alt="Medal"/> :
                             null
@@ -107,7 +115,7 @@ export default class Incentive extends React.Component {
                         </div>
                 </Col>
 
-                <Col sm='12' md='4' className='incentiveMiddle'>
+                <Col sm='12' md='3' className='incentiveMiddle'>
                     {
                         medalmiddle !== 'medalHidden medalMiddleHidden' ? <img className={medalmiddle} id='medalLeft' src={middlemedal} alt="Medal"/> :
                             null
@@ -118,7 +126,7 @@ export default class Incentive extends React.Component {
                         </div>
                 </Col>
 
-                <Col sm='12' md='4' className='incentiveRight'>
+                <Col sm='12' md='3' className='incentiveRight'>
                     {
                         medalright !== 'medalHidden medalRightHidden' ? <img className={medalright} id='medalRight' src={rightmedal} alt="Medal"/> :
                             null

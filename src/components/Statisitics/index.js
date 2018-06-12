@@ -10,7 +10,7 @@ const getFormattedDate = date => {
     return (day[0] === '0' ? day[1] : day) + '/' + (month[0] === '0' ? month[1] : month) + '/' + year;
 }
 
-const Statisitics = ({data}) => (
+const Statistics = ({data}) => (
     <div className='statistics'>
         <Chart width={600} height={400} series={[{data: data.map(e => e[1])}]} minY={0}>
             <Bars seriesIndex={0} colors={['#343a40']} innerPadding={10} />
@@ -41,4 +41,4 @@ const Statisitics = ({data}) => (
     </div>
 );
 
-export default Statisitics
+export default Statistics

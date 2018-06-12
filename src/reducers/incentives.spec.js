@@ -7,6 +7,7 @@ describe('incentives reducer', () => {
             incentives(undefined, {})
         ).toEqual({
             incentives: {
+                numberLikes: 0,
                 goodsCreated: 0,
                 beneficiariesHelped: 0,
                 totalSavedMoney: 0.00,
@@ -19,6 +20,7 @@ describe('incentives reducer', () => {
             incentives({}, {
                 type: SET_INCENTIVES,
                 incentives: {
+                    numberLikes: 1,
                     goodsCreated: 1,
                     beneficiariesHelped: 1,
                     totalSavedMoney: 1.00,
@@ -26,6 +28,7 @@ describe('incentives reducer', () => {
             })
         ).toEqual({
             incentives: {
+                numberLikes: 1,
                 goodsCreated: 1,
                 beneficiariesHelped: 1,
                 totalSavedMoney: 1.00,
@@ -40,6 +43,7 @@ describe('incentives reducer', () => {
             })
         ).toEqual({
             incentives: {
+                numberLikes: 0,
                 goodsCreated: 0,
                 beneficiariesHelped: 0,
                 totalSavedMoney: 0.00,

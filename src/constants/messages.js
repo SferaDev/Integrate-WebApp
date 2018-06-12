@@ -44,6 +44,7 @@ export default {
         'entity.send' : 'Send',
         'entity.picture' : "Entity picture:",
         'entity.deleteButton' : 'Delete entity',
+        'entity.validationCode': 'Validation code',
 
         'modal.error' : 'Error',
         'modal.email' : "The email is incorrect.",
@@ -125,6 +126,7 @@ export default {
         'modalpass.button' : 'Aceptar',
         'modalpass.accept' : 'Aceptar',
         'modalpass.cancel' : 'Cancelar',
+
         'entity.header' : 'Formulario de solicitud',
         'entity.firstname' : 'Nombre:',
         'entity.surname' : 'Apellidos:',
@@ -138,6 +140,7 @@ export default {
         'entity.send' : 'Enviar',
         'entity.picture' : "Foto de la entidad:",
         'entity.deleteButton' : 'Borrar entidad',
+        'entity.validationCode': 'Código de validación',
 
         'modal.error' : 'Error',
         'modal.email' : "El email introducido no es correcto.",
@@ -232,6 +235,7 @@ export default {
         'entity.send' : 'Enviar',
         'entity.picture' : "Foto de l'entitat:",
         'entity.deleteButton' : 'Esborrar entitat',
+        'entity.validationCode': 'Codi de validació',
 
         'modal.error' : 'Error',
         'modal.email' : "L'email introduït no és correcte.",

@@ -10,7 +10,7 @@ import LanguageSelector from '../../components/LanguageSelector';
 import MainView from '../../components/MainView';
 import Incentive from '../../components/Incentive';
 import UserInfo from '../../components/UserInfo';
-import {logoutAction, setUserAndToken} from '../../actions/auth';
+import {deleteEntity, logoutAction, setUserAndToken} from '../../actions/auth';
 import {setLocale} from '../../actions/locale';
 import {dispatchSetIncentives} from '../../actions/incentives';
 import {Col, Container, Row} from 'reactstrap';
@@ -57,7 +57,7 @@ export class MainViewContainer extends Component {
                         <Container fluid={true}>
                             <Row>
                                 <Col sm='12' md='4' className='userInfoCol'>
-                                    <UserInfo user={user}/>
+                                    <UserInfo user={user} actions={actions.authActions}/>
                                 </Col>
                                 <Col sm='12' md='8' className="incentivesCol">
                                     <Incentive className="Incentive" incentives={incentives}/>
@@ -86,6 +86,7 @@ const mapDispatchToProps = dispatch => ({
         authActions: {
             setUser: (user, token) => dispatch(setUserAndToken(user, token)),
             logoutAction: () => dispatch(logoutAction()),
+            deleteEntity: () => dispatch(deleteEntity()),
         },
         incentivesActions: {
             dispatchSetIncentives: () => dispatch(dispatchSetIncentives()),

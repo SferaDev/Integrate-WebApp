@@ -18,7 +18,7 @@ addLocaleData(en)
 addLocaleData(es)
 addLocaleData(ca)
 
-class ChangePasswordContainer extends Component {
+export class ChangePasswordContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {};

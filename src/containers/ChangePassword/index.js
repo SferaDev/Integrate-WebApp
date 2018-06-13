@@ -44,7 +44,7 @@ export class ChangePasswordContainer extends Component {
                 <Container fluid={true}>
                     <div className="signupContainer">
                         <LanguageSelector actions={actions.localeActions} lang={lang}/>
-                        <MainView actions={actions.authActions} userName={this.props.auth.user.name}/>
+                        <MainView actions={actions.authActions} userName={this.props.auth.user.name} active="changePassword"/>
                             <ChangePassword history={this.props.history}/>
                     </div>
                 </Container>

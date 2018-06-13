@@ -23,6 +23,10 @@ export class Login extends Component {
     constructor(props) {
         super(props);
         this.onSubmitButtonClicked = this.onSubmitButtonClicked.bind(this);
+        this.state = {
+            id: '',
+            password: '',
+        }
     }
 
     render() {
@@ -76,7 +80,7 @@ export class Login extends Component {
                                             name="submit"
                                             className="btn"
                                             onClick={this.onSubmitButtonClicked}
-                                            disabled={isLoginPending}>
+                                            disabled={isLoginPending || !this.state.id || !this.state.password}>
                                             <FormattedMessage id="login.login" />
                                         </button>
                                     </FormGroup>

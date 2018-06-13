@@ -85,6 +85,7 @@ exports[`renders correctly 1`] = `
                 className="nav-link"
                 href="/goods"
                 onClick={[Function]}
+                style={null}
               >
                 <span>
                   Goods
@@ -98,6 +99,7 @@ exports[`renders correctly 1`] = `
                 className="nav-link"
                 href="/changepassword"
                 onClick={[Function]}
+                style={null}
               >
                 <span>
                   Change password

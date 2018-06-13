@@ -366,6 +366,7 @@ exports[`renders correctly 1`] = `
             </label>
             <select
               onChange={[Function]}
+              value=""
             >
               <option
                 value=""

@@ -450,7 +450,7 @@ describe('ModalView component', () => {
 
         spyOn(window, 'alert')
         component.find('.validateButton').simulate('click')
-        expect(window.alert).toHaveBeenCalledWith('El període de reutilització ha de ser positiu')
+        expect(window.alert).toHaveBeenCalledWith('El període de reutilització ha de ser positiu o igual a zero')
     })
 
     it('Should trigger an alert when there are not initial props and the form is filled and submitted with a euros discount type and the value is greater or equal than the initial price', () => {

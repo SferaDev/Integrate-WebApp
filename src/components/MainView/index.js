@@ -1,4 +1,4 @@
-    import React from 'react';
+import React from 'react';
 import './style.css';
 import {FormattedMessage} from 'react-intl';
 
@@ -11,7 +11,6 @@ import {
     NavItem,
     NavLink
      } from 'reactstrap';
-import {Link} from "react-router-dom";
 import PropTypes from 'prop-types';
 
 export default class MainView extends React.Component {
@@ -36,19 +35,19 @@ export default class MainView extends React.Component {
         return (
             <div className='navbarDiv'>
                 <Navbar color="dark" dark expand="md" className='navbar'>
-                    <NavbarBrand tag={Link} to="/main">
+                    <NavbarBrand href="/main">
                         {this.props.userName}
                     </NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav  navbar>
                             <NavItem>
-                                <NavLink tag={Link} to="/goods">
+                                <NavLink href="/goods">
                                     <FormattedMessage id='main.goods' defaultMessage='Vals'/>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink tag={Link} to="/changepassword">
+                                <NavLink href="/changepassword">
                                     <FormattedMessage id='main.changepassword' defaultMessage='Canviar la contrasenya'/>
                                 </NavLink>
                             </NavItem>

@@ -47,8 +47,6 @@ export class GoodsContainer extends Component {
             )
         }
 
-        else console.log('Rlly?')
-
         return (
             <IntlProvider locale={lang} messages={messages[lang]}>
                 <Container fluid={true}>

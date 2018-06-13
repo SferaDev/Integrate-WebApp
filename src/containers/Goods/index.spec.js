@@ -1,11 +1,12 @@
 import React from 'react';
 import LanguageSelector from '../../components/LanguageSelector';
-import {shallow} from 'enzyme';
+import {mount, shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16'
 import GoodsList from '../../components/GoodsList';
 import ModalView from '../../components/ModalView';
 import * as Enzyme from 'enzyme';
-
+import EnzymeToJson from 'enzyme-to-json';
+import {GoodsContainer} from './index';
 
 Enzyme.configure({adapter: new Adapter()});
 
@@ -162,4 +163,81 @@ describe('Goods', () => {
             expect(mockActionsfn.mock.calls.length).toEqual(5)
         })
     })
+})
+
+describe('Snapshots', () => {
+    it('renders correctly', () => {
+        const goods = [
+            {
+                "key": 1,
+                "_id": "1",
+                "productName": "Barra de pa A",
+                "picture": "http://www.fruteriasanpelayo.com/media/catalog/product/cache/1/image/680x560/75d5da3c2391ff3c948ada8220a45b7b/p/a/pan_barra_1.jpg",
+                "initialPrice": 0.60,
+                "discountType": "%",
+                "discount": 20,
+                "category": 1,
+                "reusePeriod": 1,
+                "pendingUnits": 60
+            },
+        ]
+
+        const modal = {
+            isOpen: true,
+            good: {
+                "key": 1,
+                "_id": "1",
+                "productName": "Barra de pa A",
+                "picture": "http://www.fruteriasanpelayo.com/media/catalog/product/cache/1/image/680x560/75d5da3c2391ff3c948ada8220a45b7b/p/a/pan_barra_1.jpg",
+                "initialPrice": 0.60,
+                "discountType": "%",
+                "discount": 20,
+                "category": 1,
+                "reusePeriod": 1,
+                "pendingUnits": 60
+            }
+        }
+
+        const userName = 'Telepizza'
+
+        const auth = {
+            isLoginPending: false,
+            isLoginSuccess: true,
+            loginError: null,
+            user: {
+                name: 'Telepizza',
+                address: 'Address',
+                description: 'description',
+                validationCode: '423423',
+            },
+            token: 'token',
+        }
+
+        const lang = 'en'
+
+        const actions = {
+            goodsActions: {
+                dispatchReceiveGoods: jest.fn(),
+                dispatchAddGood: jest.fn(),
+                dispatchDeleteGood: jest.fn(),
+                dispatchEditGood: jest.fn(),
+            },
+            localeActions: {
+                setLocale: jest.fn(),
+            },
+            authActions: {
+                setUser: jest.fn(),
+                logoutAction: jest.fn(),
+                deleteEntity: jest.fn(),
+            },
+            modalActions: {
+                dispatchToggleModal: jest.fn(),
+                dispatchToggleModalEdit: jest.fn(),
+                dispatchCleanModalState: jest.fn(),
+            },
+        }
+
+        const goodsContainer = mount(<GoodsContainer goods={goods} modal={modal} auth={auth} actions={actions} lang={lang} userName={userName}/>)
+        expect(EnzymeToJson(goodsContainer)).toMatchSnapshot();
+    });
 })

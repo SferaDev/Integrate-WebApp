@@ -40,8 +40,7 @@ export class GoodsContainer extends Component {
     render() {
         let {goods, actions, modal, lang} = this.props;
 
-        if (!this.props.auth.isLoginPending && !this.props.auth.isLoginSuccess) {
-            console.log('Jopetas')
+        if ((!this.props.auth.isLoginPending && !this.props.auth.isLoginSuccess) || !this.props.auth) {
             return (
                 <Redirect to='/'/>
             )
@@ -51,7 +50,7 @@ export class GoodsContainer extends Component {
             <IntlProvider locale={lang} messages={messages[lang]}>
                 <Container fluid={true}>
                         <LanguageSelector className="languageSelector" actions={actions.localeActions} lang={lang}/>
-                        <MainView className="MainView" actions={actions.authActions} userName={this.props.userName}/>
+                        <MainView className="MainView" actions={actions.authActions} userName={this.props.auth.user.name}/>
                         <Container fluid={true} className='goodsContainer'>
                                     <GoodsList
                                         goods={goods} actions={actions}/>
@@ -68,7 +67,6 @@ const mapStateToProps = state => ({
     modal: state.modal,
     lang: state.locale.lang,
     auth: state.auth,
-    userName: state.auth.user.name
 });
 
 const mapDispatchToProps = (dispatch) => {

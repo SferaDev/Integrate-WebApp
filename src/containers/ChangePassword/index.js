@@ -56,7 +56,6 @@ export class ChangePasswordContainer extends Component {
 const mapStateToProps = state => ({
     lang: state.locale.lang,
     auth: state.auth,
-    userName: state.auth.user.name,
 });
 
 const mapDispatchToProps = (dispatch) => {

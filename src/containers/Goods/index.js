@@ -67,7 +67,6 @@ const mapStateToProps = state => ({
     modal: state.modal,
     lang: state.locale.lang,
     auth: state.auth,
-    userName: state.auth.user.name
 });
 
 const mapDispatchToProps = (dispatch) => {

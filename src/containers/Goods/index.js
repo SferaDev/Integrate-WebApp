@@ -50,7 +50,7 @@ export class GoodsContainer extends Component {
             <IntlProvider locale={lang} messages={messages[lang]}>
                 <Container fluid={true}>
                         <LanguageSelector className="languageSelector" actions={actions.localeActions} lang={lang}/>
-                        <MainView className="MainView" actions={actions.authActions} userName={this.props.auth.user.name}/>
+                        <MainView className="MainView" actions={actions.authActions} userName={this.props.auth.user.name} active="goods"/>
                         <Container fluid={true} className='goodsContainer'>
                                     <GoodsList
                                         goods={goods} actions={actions}/>

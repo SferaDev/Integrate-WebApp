@@ -266,6 +266,7 @@ exports[`Snapshots renders correctly 1`] = `
               "setUser": [Function],
             }
           }
+          active="goods"
           className="MainView"
           userName="Telepizza"
         >
@@ -361,12 +362,24 @@ exports[`Snapshots renders correctly 1`] = `
                             >
                               <NavLink
                                 href="/goods"
+                                style={
+                                  Object {
+                                    "color": "white",
+                                    "fontWeight": 500,
+                                  }
+                                }
                                 tag="a"
                               >
                                 <a
                                   className="nav-link"
                                   href="/goods"
                                   onClick={[Function]}
+                                  style={
+                                    Object {
+                                      "color": "white",
+                                      "fontWeight": 500,
+                                    }
+                                  }
                                 >
                                   <FormattedMessage
                                     defaultMessage="Vals"
@@ -389,12 +402,14 @@ exports[`Snapshots renders correctly 1`] = `
                             >
                               <NavLink
                                 href="/changepassword"
+                                style={null}
                                 tag="a"
                               >
                                 <a
                                   className="nav-link"
                                   href="/changepassword"
                                   onClick={[Function]}
+                                  style={null}
                                 >
                                   <FormattedMessage
                                     defaultMessage="Canviar la contrasenya"

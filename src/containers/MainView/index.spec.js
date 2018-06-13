@@ -40,10 +40,24 @@ it('renders correctly', () => {
         incentivesActions: {
             dispatchSetIncentives: jest.fn(),
         },
+        goodsActions: {
+            dispatchReceiveGoods: jest.fn(),
+        }
     }
 
+    const goods = [
+        {
+            _id: 'id1',
+            productName: 'name1',
+        },
+        {
+            _id: 'id2',
+            productName: 'name2',
+        }
+    ]
+
     const tree = renderer
-        .create(<MainViewContainer auth={auth} actions={actions} lang={lang} user={user} incentives={incentives}/>)
+        .create(<MainViewContainer auth={auth} actions={actions} lang={lang} user={user} incentives={incentives} goods={goods}/>)
         .toJSON();
     expect(tree).toMatchSnapshot();
 });

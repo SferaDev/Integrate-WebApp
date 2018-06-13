@@ -12,6 +12,9 @@ export default {
         'statistics.week': 'Week',
         'statistics.month': 'Month',
         'statistics.year': 'Year',
+        'statistics.statisticsbygood': 'By good',
+        'statistics.nostatistics': 'No statistics for these filters',
+        'statistics.allgoods': '(any)',
 
         'main.home' : 'Home',
         'main.goods' : 'Goods',
@@ -119,6 +122,9 @@ export default {
         'statistics.week': 'Semana',
         'statistics.month': 'Mes',
         'statistics.year': 'Año',
+        'statistics.statisticsbygood': 'Por producto',
+        'statistics.nostatistics': 'No hay estadísticas para estos filtros',
+        'statistics.allgoods': '(cualquier)',
 
         'incentive.goods': 'productos ofrecidos',
         'incentive.beneficiaris' : 'personas beneficiadas',
@@ -222,6 +228,9 @@ export default {
         'statistics.week': 'Setmana',
         'statistics.month': 'Mes',
         'statistics.year': 'Any',
+        'statistics.statisticsbygood': 'Per producte',
+        'statistics.nostatistics': 'No hi ha estadístiques per aquests filtres',
+        'statistics.allgoods': '(qualsevol)',
 
         'incentive.goods': 'productes oferts',
         'incentive.beneficiaris' : 'persones beneficiades',

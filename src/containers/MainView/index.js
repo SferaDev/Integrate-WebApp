@@ -32,6 +32,7 @@ export class MainViewContainer extends Component {
             statistics: [],
             selectedInterval: 'Month',
             fetchingStatistics: false,
+            selectedGood: '',
         };
 
         this.handleIntervalChange = this.handleIntervalChange.bind(this)
@@ -61,6 +62,7 @@ export class MainViewContainer extends Component {
     handleIntervalChange(event) {
         this.setState({
             statistics: [],
+            selectedGood: '',
             selectedInterval: event.target.value,
         })
 
@@ -68,7 +70,13 @@ export class MainViewContainer extends Component {
     }
 
     handleGoodChange(event) {
-        this.fetchStatistics(this.state.selectedInterval, event.target.value);
+        const selectedGood = event.target.value;
+        this.setState(state => ({
+            ...state,
+            selectedGood
+        }))
+
+        this.fetchStatistics(this.state.selectedInterval, selectedGood);
     }
 
     render() {
@@ -130,7 +138,7 @@ export class MainViewContainer extends Component {
                                             <label style={{marginRight: '8px', marginTop: '10px', marginBottom: '20px'}}>
                                                 <FormattedMessage id='statistics.statisticsbygood'/>
                                             </label>
-                                            <select onChange={this.handleGoodChange}>
+                                            <select onChange={this.handleGoodChange} value={this.state.selectedGood}>
                                                 <FormattedMessage id='statistics.allgoods' tagName='option'>
                                                     {(message) => <option value=''>{message}</option>}
                                                 </FormattedMessage>

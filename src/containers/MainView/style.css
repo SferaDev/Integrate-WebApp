@@ -2,10 +2,11 @@
     background-color: yellow;
 }
 
-.contentCol {
-    background-color: white;
+.userInfoCol{
+    /*background-color: rgb(246,246,246);*/
+    background-color:white;
 }
 
-.userInfoCol {
+.contentCol {
     background-color: white;
 }

@@ -80,7 +80,7 @@ export class MainViewContainer extends Component {
                     <Container fluid={true} className='mainViewContainer'>
                         <div>
                             <LanguageSelector actions={actions.localeActions} lang={lang}/>
-                            <MainView actions={actions.authActions}/>
+                            <MainView actions={actions.authActions} userName={this.props.user.name}/>
                             <Container fluid={true}>
                                 <Row>
                                     <Col sm='12' md='4' className='userInfoCol'>

@@ -44,7 +44,7 @@ export class ChangePasswordContainer extends Component {
                 <Container fluid={true}>
                     <div className="signupContainer">
                         <LanguageSelector actions={actions.localeActions} lang={lang}/>
-                        <MainView actions={actions.authActions}/>
+                        <MainView actions={actions.authActions} userName={this.props.userName}/>
                             <ChangePassword history={this.props.history}/>
                     </div>
                 </Container>
@@ -56,6 +56,7 @@ export class ChangePasswordContainer extends Component {
 const mapStateToProps = state => ({
     lang: state.locale.lang,
     auth: state.auth,
+    userName: state.auth.user.name,
 });
 
 const mapDispatchToProps = (dispatch) => {

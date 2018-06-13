@@ -2,7 +2,7 @@ export default {
     en: {
         'login.iddoc': 'ID Document',
         'login.password': 'Password',
-        'login.invalidpassword': 'L\'usuari o la contrassenya no son correctes.',
+        'login.invalidpassword': 'L\'usuari o la contrasenya no son correctes.',
         'login.login': 'Log In',
         'login.signup': 'Apply for access',
         'login.forgotpassword': 'Did you forget your password?',
@@ -211,11 +211,11 @@ export default {
     },
     ca: {
         'login.iddoc': 'Document d\'identitat',
-        'login.password': 'Contrassenya',
-        'login.invalidpassword': 'L\'usuari o la contrassenya no son correctes.',
+        'login.password': 'Contrasenya',
+        'login.invalidpassword': 'L\'usuari o la contrasenya no son correctes.',
         'login.login': 'Entra',
         'login.signup': 'Sol·licitud d\'accés',
-        'login.forgotpassword': 'Did you forget your password?',
+        'login.forgotpassword': 'Has oblidat la contrasenya?',
 
         'statistics.statistics': 'Estadístiques per',
         'statistics.day': 'Dia',
@@ -245,7 +245,7 @@ export default {
         'modalpass.currentpassword' : 'La contrasenya actual no és correcte.',
         'modalpass.newpassword' : 'La nova contrasenya no és correcte.',
         'modalpass.equal' : 'Les contrasenyes noves no són iguals.',
-        'modalpass.success' : "S'ha canviat correctament la constrasenya.",
+        'modalpass.success' : "S'ha canviat correctament la contrasenya.",
         'modalpass.button' : 'Acceptar',
 
         'entity.header' : 'Formulari de sol·licitud',

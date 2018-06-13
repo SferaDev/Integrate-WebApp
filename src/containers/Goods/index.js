@@ -40,20 +40,17 @@ export class GoodsContainer extends Component {
     render() {
         let {goods, actions, modal, lang} = this.props;
 
-        if (!this.props.auth.isLoginPending && !this.props.auth.isLoginSuccess) {
-            console.log('Jopetas')
+        if ((!this.props.auth.isLoginPending && !this.props.auth.isLoginSuccess) || !this.props.auth) {
             return (
                 <Redirect to='/'/>
             )
         }
 
-        else console.log('Rlly?')
-
         return (
             <IntlProvider locale={lang} messages={messages[lang]}>
                 <Container fluid={true}>
                         <LanguageSelector className="languageSelector" actions={actions.localeActions} lang={lang}/>
-                        <MainView className="MainView" actions={actions.authActions} userName={this.props.userName}/>
+                        <MainView className="MainView" actions={actions.authActions} userName={this.props.auth.user.name}/>
                         <Container fluid={true} className='goodsContainer'>
                                     <GoodsList
                                         goods={goods} actions={actions}/>

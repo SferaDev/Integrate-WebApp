@@ -9,7 +9,7 @@ import SignupContainer from "../Signup";
 import {Redirect, Route, Switch} from "react-router";
 import {connect} from "react-redux";
 
-const App = ({auth}) => (
+export const App = ({auth}) => (
     <Router>
         <div>
             <Switch>

@@ -1,0 +1,244 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshots renders correctly 1`] = `
+<div
+  className="container-fluid"
+>
+  <div
+    className="signupContainer"
+  >
+    <div
+      className="languageSelector"
+    >
+      <div
+        className="integrateEntities"
+      >
+        <div
+          className="integrateLogo"
+        >
+          Integrate 
+        </div>
+        <div>
+          <span>
+            entities
+          </span>
+        </div>
+      </div>
+      <div>
+        <select
+          className="languageSelectorInput form-control"
+          id="language"
+          name="language"
+          onChange={[Function]}
+          required={true}
+          type="select"
+          value="en"
+        >
+          <option
+            value="ca"
+          >
+            Català
+          </option>
+          <option
+            value="es"
+          >
+            Español
+          </option>
+          <option
+            value="en"
+          >
+            English
+          </option>
+        </select>
+      </div>
+    </div>
+    <div
+      className="navbarDiv"
+    >
+      <nav
+        className="navbar navbar navbar-expand-md navbar-dark bg-dark"
+      >
+        <a
+          className="navbar-brand"
+          href="/main"
+        >
+          Telepizza
+        </a>
+        <button
+          className="navbar-toggler"
+          onClick={[Function]}
+          type="button"
+        >
+          <span
+            className="navbar-toggler-icon"
+          />
+        </button>
+        <div
+          className="collapse navbar-collapse"
+          style={Object {}}
+        >
+          <ul
+            className="navbar-nav"
+          >
+            <li
+              className="nav-item"
+            >
+              <a
+                className="nav-link"
+                href="/goods"
+                onClick={[Function]}
+              >
+                <span>
+                  Goods
+                </span>
+              </a>
+            </li>
+            <li
+              className="nav-item"
+            >
+              <a
+                className="nav-link"
+                href="/changepassword"
+                onClick={[Function]}
+              >
+                <span>
+                  Change password
+                </span>
+              </a>
+            </li>
+            <li
+              className="Logout nav-item"
+            >
+              <a
+                className="nav-link"
+                href="/"
+                onClick={[Function]}
+              >
+                <span>
+                  Logout
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div
+      className="Div"
+    >
+      <h1
+        className="Header"
+      >
+        <span>
+          Change password:
+        </span>
+      </h1>
+      <hr
+        className="Line"
+      />
+      <div
+        className="row form-group"
+      >
+        <label
+          className="PasswordForm col-sm-2 col-form-label"
+          htmlFor="ActualPassword"
+        >
+          <span>
+            Current password:
+          </span>
+        </label>
+        <div
+          className="col-sm-8"
+        >
+          <input
+            className="form-control"
+            id="ActualPassword"
+            name="ActualPassword"
+            onChange={[Function]}
+            type="password"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        className="row form-group"
+      >
+        <label
+          className="PasswordForm col-sm-2 col-form-label"
+          htmlFor="NewPassword"
+        >
+          <span>
+            New password:
+          </span>
+        </label>
+        <div
+          className="col-sm-8"
+        >
+          <input
+            className="form-control"
+            id="NewPassword"
+            name="NewPassword"
+            onChange={[Function]}
+            type="password"
+            value=""
+          />
+          <small
+            className="form-text text-muted"
+          >
+            <span>
+              8 characters minimum and at least one number.
+            </span>
+          </small>
+        </div>
+      </div>
+      <div
+        className="row form-group"
+      >
+        <label
+          className="PasswordForm col-sm-2 col-form-label"
+          htmlFor="NewPassword2"
+        >
+          <span>
+            Rewrite the new password:
+          </span>
+        </label>
+        <div
+          className="col-sm-8"
+        >
+          <input
+            className="form-control"
+            id="NewPassword2"
+            name="NewPassword2"
+            onChange={[Function]}
+            type="password"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        className="ButtonsForm modal-footer"
+      >
+        <button
+          className="btn btn-primary"
+          onClick={[Function]}
+          type="button"
+        >
+          <span>
+            Accept
+          </span>
+        </button>
+         
+        <button
+          className="btn btn-secondary"
+          onClick={[Function]}
+          type="button"
+        >
+          <span>
+            Cancel
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

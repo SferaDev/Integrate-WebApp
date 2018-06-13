@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="signupContainer"
+>
+  <div
+    className="languageSelector"
+  >
+    <div
+      className="integrateEntities"
+    >
+      <div
+        className="integrateLogo"
+      >
+        Integrate 
+      </div>
+      <div>
+        <span>
+          entities
+        </span>
+      </div>
+    </div>
+    <div>
+      <select
+        className="languageSelectorInput form-control"
+        id="language"
+        name="language"
+        onChange={[Function]}
+        required={true}
+        type="select"
+        value="en"
+      >
+        <option
+          value="ca"
+        >
+          Català
+        </option>
+        <option
+          value="es"
+        >
+          Español
+        </option>
+        <option
+          value="en"
+        >
+          English
+        </option>
+      </select>
+    </div>
+  </div>
+  <div
+    className="MainDiv"
+  >
+    <h1
+      className="HeaderForm2"
+    >
+      <span>
+        Password recovery
+      </span>
+    </h1>
+    <hr
+      className="MainLine"
+    />
+    <p
+      className="Info"
+    >
+      <span>
+        Enter the nif that you will receive a new password to the email you used to register
+      </span>
+    </p>
+    <div
+      className="EmailForm form-group"
+    >
+      <input
+        className="EmailNameText"
+        onChange={[Function]}
+        placeholder="Nif *"
+        type="email"
+        value=""
+      />
+      <small
+        className="form-text text-muted"
+      >
+        Ex.: 60250886G
+      </small>
+    </div>
+    <div
+      className="modal-footer"
+    >
+      <button
+        className="btn btn-primary"
+        onClick={[Function]}
+        type="button"
+      >
+        <span>
+          Accept
+        </span>
+      </button>
+       
+      <button
+        className="btn btn-secondary"
+        onClick={[Function]}
+        type="button"
+      >
+        <span>
+          Cancel
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;

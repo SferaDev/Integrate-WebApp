@@ -169,9 +169,12 @@ exports[`Snapshots renders correctly 1`] = `
         "reset.info": "Enter the nif that you will receive a new password to the email you used to register",
         "reset.notfound": "User doesn't exist.",
         "reset.scontent": "It has been sent a new password correctly.",
+        "statistics.allgoods": "(any)",
         "statistics.day": "Day",
         "statistics.month": "Month",
+        "statistics.nostatistics": "No statistics for these filters",
         "statistics.statistics": "Statistics for",
+        "statistics.statisticsbygood": "By good",
         "statistics.week": "Week",
         "statistics.year": "Year",
       }

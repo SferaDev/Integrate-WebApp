@@ -342,6 +342,46 @@ exports[`renders correctly 1`] = `
               </option>
             </select>
           </div>
+          <div
+            style={
+              Object {
+                "textAlign": "center",
+              }
+            }
+          >
+            <label
+              style={
+                Object {
+                  "marginBottom": "20px",
+                  "marginRight": "8px",
+                  "marginTop": "10px",
+                }
+              }
+            >
+              <span>
+                By good
+              </span>
+            </label>
+            <select
+              onChange={[Function]}
+            >
+              <option
+                value=""
+              >
+                (any)
+              </option>
+              <option
+                value="id1"
+              >
+                name1
+              </option>
+              <option
+                value="id2"
+              >
+                name2
+              </option>
+            </select>
+          </div>
         </div>
       </div>
     </div>

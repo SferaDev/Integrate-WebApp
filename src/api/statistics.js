@@ -1,8 +1,9 @@
 import {getApi} from "./";
 
-export const apiGetStatistics = (interval) => getApi(`/me/salesChart`, {
+export const apiGetStatistics = (interval, good = null) => getApi(`/me/salesChart`, {
     params: {
-        interval
+        interval,
+        good: good !== '' ? good : undefined,
     }
 }).then(response => response.data.stats)
     .catch(e => {

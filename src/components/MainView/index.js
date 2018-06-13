@@ -42,12 +42,22 @@ export default class MainView extends React.Component {
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav  navbar>
                             <NavItem>
-                                <NavLink href="/goods">
+                                <NavLink href="/goods" style={
+                                    this.props.active === 'goods' ? {
+                                        fontWeight: 500,
+                                        color: 'white',
+                                    } : null
+                                }>
                                     <FormattedMessage id='main.goods' defaultMessage='Vals'/>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="/changepassword">
+                                <NavLink href="/changepassword" style={
+                                    this.props.active === 'changePassword' ? {
+                                        fontWeight: 500,
+                                        color:'white',
+                                    } : null
+                                }>
                                     <FormattedMessage id='main.changepassword' defaultMessage='Canviar la contrasenya'/>
                                 </NavLink>
                             </NavItem>

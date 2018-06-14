@@ -1,9 +1,15 @@
+.loginContainer {
+    font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+    font-size:15px;
+}
+
 .logo {
     width: 100%;
+    max-width: 300px;
 }
 
 .logoContainer {
-    margin: 10px;
+    margin: 5px;
 }
 
 .btn {
@@ -20,34 +26,35 @@
 
 .colForm {
     display: flex;
-    height: 100%;
     flex-direction: column;
     justify-content: space-around;
     text-align: center;
 }
 
 .loginRow {
-    height: 100%;
-}
-
-.loginContainer {
-    height: 100%;
-}
-
-.solicitudLinkDiv{
-    display:flex;
-    flex-direction:row;
     justify-content:center;
 }
 
-.solicitudLink{
-    color: white;
-    text-decoration:underline;
-    letter-spacing:1px;
-    font-size:20px;
+.solicitudLinkDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 10px;
 }
 
-.solicitudLink:hover{
-    text-decoration:underline;
-    color:white;
+.link {
+    color: white;
+    letter-spacing: 1px;
+    font-size: 18px;
+}
+
+.link:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+.textHeading {
+    font-size: 18px;
+    font-weight:500;
+    color: #212529;
 }

@@ -6,9 +6,10 @@ export const apiGetListAllGoods = () => new Promise((resolve, reject) => {
             const goodsList = response.data;
             if (goodsList) {
                 resolve(goodsList);
-            } else reject();
-        } else reject();
-    }).catch(() => reject());
+            }
+    }}).catch(e => {
+        reject(e)
+    })
 });
 
 export const apiAddNewGood = (good) => new Promise((resolve, reject) => {
@@ -17,9 +18,10 @@ export const apiAddNewGood = (good) => new Promise((resolve, reject) => {
             const good = response.data;
             if (good) {
                 resolve(good);
-            } else reject();
-        } else reject();
-    }).catch(() => reject());
+            }
+    }}).catch(e => {
+        reject(e)
+    })
 });
 
 export const apiUpdateExistingGood = (good) => new Promise((resolve, reject) => {
@@ -28,9 +30,10 @@ export const apiUpdateExistingGood = (good) => new Promise((resolve, reject) => 
             const good = response.data;
             if (good) {
                 resolve(good);
-            } else reject();
-        } else reject();
-    }).catch(() => reject());
+            }
+    }}).catch(e => {
+        reject(e)
+    })
 });
 
 export const apiDeleteExistingGood = (good) => new Promise((resolve, reject) => {
@@ -39,7 +42,8 @@ export const apiDeleteExistingGood = (good) => new Promise((resolve, reject) => 
             const good = response.data;
             if (good) {
                 resolve(good);
-            } else reject();
-        } else reject();
-    }).catch(() => reject());
+            }
+    }}).catch(e => {
+        reject(e)
+    })
 });

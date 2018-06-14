@@ -1,5 +1,6 @@
 import * as types from '../constants/ActionTypes'
 import {apiAddNewGood, apiDeleteExistingGood, apiGetListAllGoods, apiUpdateExistingGood} from '../api/goods';
+import {logoutAction} from './auth';
 
 export const receiveGoods = (goods) => ({
     type: types.RECEIVE_GOODS,
@@ -7,9 +8,12 @@ export const receiveGoods = (goods) => ({
 });
 
 export const dispatchReceiveGoods = () => dispatch => {
-    apiGetListAllGoods().then(goodsList => {
+    return apiGetListAllGoods().then(goodsList => {
         dispatch(receiveGoods(goodsList))
     })
+        .catch(() => {
+            dispatch(logoutAction())
+        })
 };
 
 export const addGood = (good) => ({
@@ -18,7 +22,7 @@ export const addGood = (good) => ({
 });
 
 export const dispatchAddGood = (good) => dispatch => {
-    apiAddNewGood(good).then(good => {
+    return apiAddNewGood(good).then(good => {
         dispatch(addGood(good))
     })
 };
@@ -26,7 +30,7 @@ export const dispatchAddGood = (good) => dispatch => {
 export const deleteGood = (good) => ({type: types.DELETE_GOOD, good});
 
 export const dispatchDeleteGood = (good) => dispatch => {
-    apiDeleteExistingGood(good).then(() => {
+    return apiDeleteExistingGood(good).then(() => {
         dispatch(deleteGood(good))
     })
 };
@@ -37,7 +41,11 @@ export const editGood = (good) => ({
 });
 
 export const dispatchEditGood = (good) => dispatch => {
-    apiUpdateExistingGood(good).then(good => {
+    return apiUpdateExistingGood(good).then(good => {
         dispatch(editGood(good))
     })
 };
+
+export const resetGoods = () => ({
+    type: types.RESET_GOODS,
+})

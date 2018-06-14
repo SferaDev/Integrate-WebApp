@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
-import PropTypes from 'prop-types';
 import ModalView from '../../components/ModalView';
 import GoodsList from '../../components/GoodsList';
 import './style.css';
@@ -20,6 +19,9 @@ import {dispatchEditGood} from '../../actions/goods';
 import {dispatchToggleModal} from '../../actions/modal';
 import {dispatchToggleModalEdit} from '../../actions/modal';
 import {dispatchCleanModalState} from '../../actions/modal';
+import {logoutAction} from '../../actions/auth';
+import {Container} from 'reactstrap';
+import {Redirect} from 'react-router';
 
 addLocaleData(en)
 addLocaleData(es)
@@ -37,50 +39,34 @@ export class GoodsContainer extends Component {
 
     render() {
         let {goods, actions, modal, lang} = this.props;
+
+        if ((!this.props.auth.isLoginPending && !this.props.auth.isLoginSuccess) || !this.props.auth) {
+            return (
+                <Redirect to='/'/>
+            )
+        }
+
         return (
             <IntlProvider locale={lang} messages={messages[lang]}>
-                <div className="goodsContainer">
-                    <LanguageSelector className="languageSelector" actions={actions.localeActions} lang={lang}/>
-                    <MainView className="MainView"/>
-                    <GoodsList
-                        goods={goods} actions={actions}/>
-                    <ModalView modal={modal} actions={actions} lang={lang}/>
-                </div>
+                <Container fluid={true}>
+                        <LanguageSelector className="languageSelector" actions={actions.localeActions} lang={lang}/>
+                        <MainView className="MainView" actions={actions.authActions} userName={this.props.auth.user.name} active="goods"/>
+                        <Container fluid={true} className='goodsContainer'>
+                                    <GoodsList
+                                        goods={goods} actions={actions}/>
+                                    <ModalView modal={modal} actions={actions} lang={lang}/>
+                        </Container>
+                </Container>
             </IntlProvider>
         )
     }
 }
 
-GoodsContainer.propTypes = {
-    goods: PropTypes.arrayOf(PropTypes.shape({
-        _id: PropTypes.string.isRequired,
-        productName: PropTypes.string.isRequired,
-        picture: PropTypes.string.isRequired,
-        discountType: PropTypes.string.isRequired,
-        discount: PropTypes.number.isRequired,
-        category: PropTypes.number.isRequired,
-        reusePeriod: PropTypes.number.isRequired,
-        initialPrice: PropTypes.number.isRequired,
-        pendingUnits: PropTypes.number.isRequired,
-        currentPrice: PropTypes.number,
-    })),
-    modal: PropTypes.shape(
-        {
-            isOpen: PropTypes.bool.isRequired,
-            good: PropTypes.object,
-        }
-    ).isRequired,
-    lang: PropTypes.string.isRequired,
-    actions: PropTypes.shape({
-        modalActions: PropTypes.object.isRequired,
-        goodsActions: PropTypes.object.isRequired,
-    }).isRequired,
-};
-
 const mapStateToProps = state => ({
     goods: state.goods,
     modal: state.modal,
     lang: state.locale.lang,
+    auth: state.auth,
 });
 
 const mapDispatchToProps = (dispatch) => {
@@ -99,6 +85,9 @@ const mapDispatchToProps = (dispatch) => {
             },
             localeActions: {
                 setLocale: (lang) => dispatch(setLocale(lang)),
+            },
+            authActions: {
+                logoutAction: () => dispatch(logoutAction()),
             },
         }
     }

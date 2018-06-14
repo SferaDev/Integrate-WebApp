@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
-import PropTypes from 'prop-types';
-import bindActionCreators from 'redux/es/bindActionCreators';
-import * as LocaleActions from '../../actions/locale'
 
 import {addLocaleData, IntlProvider} from 'react-intl';
 import es from 'react-intl/locale-data/es'
@@ -12,47 +9,67 @@ import messages from "../../constants/messages"
 import LanguageSelector from '../../components/LanguageSelector';
 import ChangePassword from '../../components/ChangePassword';
 import MainView from '../../components/MainView';
+import {setLocale} from '../../actions/locale';
+import {logoutAction} from '../../actions/auth';
+import {Container} from 'reactstrap';
+import './style.css'
+import {Redirect} from 'react-router';
 
 addLocaleData(en)
 addLocaleData(es)
 addLocaleData(ca)
 
-class ChangePasswordContainer extends Component {
+export class ChangePasswordContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {};
     }
 
+    componentDidMount(){
+        if (localStorage.getItem('user'))
+            this.props.actions.localeActions.setLocale(JSON.parse(localStorage.getItem('user')).interfaceLanguage)
+    }
+
     render() {
         let {lang, actions} = this.props;
+
+        if (!this.props.auth.isLoginPending && !this.props.auth.isLoginSuccess) {
+            return (
+                <Redirect to='/'/>
+            )
+        }
+
         return (
             <IntlProvider locale={lang} messages={messages[lang]}>
-                <div className="signupContainer">
-                    <LanguageSelector actions={actions.localeActions} lang={lang}/>
-                    <MainView/>
-                    <ChangePassword history={this.props.history}/>
-                </div>
+                <Container fluid={true}>
+                    <div className="signupContainer">
+                        <LanguageSelector actions={actions.localeActions} lang={lang}/>
+                        <MainView actions={actions.authActions} userName={this.props.auth.user.name} active="changePassword"/>
+                            <ChangePassword history={this.props.history}/>
+                    </div>
+                </Container>
             </IntlProvider>
         )
     }
 }
 
-ChangePasswordContainer.propTypes = {
-    lang: PropTypes.string.isRequired,
-    actions: PropTypes.shape({
-        localeActions: PropTypes.object.isRequired,
-    }).isRequired,
-};
-
 const mapStateToProps = state => ({
     lang: state.locale.lang,
+    auth: state.auth,
 });
 
-const mapDispatchToProps = dispatch => ({
-    actions: {
-        localeActions: bindActionCreators(LocaleActions, dispatch),
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actions: {
+            localeActions: {
+                setLocale: (lang) => dispatch(setLocale(lang)),
+            },
+            authActions: {
+                logoutAction: () => dispatch(logoutAction()),
+            },
+        }
     }
-});
+}
 
 export default connect(
     mapStateToProps,

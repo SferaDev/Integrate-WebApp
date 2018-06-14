@@ -4,6 +4,7 @@ import {Maps} from "../Maps";
 import {apiPostSignUp} from "../../api/signup";
 import {Button, FormGroup, FormText, Modal, ModalBody, ModalFooter, ModalHeader, Label, Input, Col} from 'reactstrap';
 import {FormattedMessage} from 'react-intl';
+import {cloudinaryUploadImg} from "../../api/cloudinary";
 
 
 export default class SignUp extends Component {
@@ -18,6 +19,7 @@ export default class SignUp extends Component {
             description: '',
             name: '',
             addressName: '',
+            picture: '',
             addressLatitude: '',
             addressLongitude: '',
             modal: false,
@@ -33,6 +35,7 @@ export default class SignUp extends Component {
         this.changeNameEntity = this.changeNameEntity.bind(this);
         this.changePhone = this.changePhone.bind(this);
         this.changeDescription = this.changeDescription.bind(this);
+        this.changePicture = this.changePicture.bind(this);
         this.onSentClicked = this.onSentClicked.bind(this);
         this.onCloseClicked = this.onCloseClicked.bind(this);
         this.onUserSearched = this.onUserSearched.bind(this);
@@ -107,11 +110,23 @@ export default class SignUp extends Component {
         return true;
     }
 
-    checkEmptyInputs() {
-        return (this.state.salesmanFirstName.length === 0 || this.state.salesmanLastName.length === 0 || this.state.email.length === 0 || this.state.nif.length === 0 || this.state.name.length === 0 || this.state.addressName.length === 0 || this.state.description.length === 0 || this.state.phone.length === 0);
+    changePicture() {
+        const file = document.getElementById('pictureFile').files[0];
+        const imgPreview = document.getElementById('picturePreview');
+
+        cloudinaryUploadImg({file})
+            .then(resultUrl => {
+                imgPreview.src = resultUrl;
+                this.setState({picture: resultUrl})
+            })
+
     }
 
-    onSentClicked(event) {
+    checkEmptyInputs() {
+        return (this.state.salesmanFirstName.length === 0 || this.state.salesmanLastName.length === 0 || this.state.email.length === 0 || this.state.nif.length === 0 || this.state.name.length === 0 || this.state.addressName.length === 0 || this.state.description.length === 0 || this.state.phone.length === 0 || this.state.picture.length === 0);
+    }
+
+    onSentClicked() {
         this.setState({
             modal: !this.state.modal
         });
@@ -153,14 +168,14 @@ export default class SignUp extends Component {
                 description: this.state.description,
                 name: this.state.name,
                 addressName: this.state.addressName,
-                picture: "picture",
+                picture: this.state.picture,
                 coordinates: [this.state.addressLongitude, this.state.addressLatitude]
             };
             let exists = 0;
             apiPostSignUp(entity).catch(error => {
-                if (error === 'Nif already exist.') {
+                if (error === 'Nif or email already exists.') {
                     this.setState({modalHeader: "Error"});
-                    this.setState({modalContent: "El nif ja existeix."});
+                    this.setState({modalContent: "El nif o l'email ja existeixen."});
                     this.setState({idHeader: 'modal.error'});
                     this.setState({idContent: 'modal.exist'});
                     exists = 1;
@@ -178,20 +193,18 @@ export default class SignUp extends Component {
 
     }
 
-    onCloseClicked(event) {
-        event.preventDefault();
+    onCloseClicked() {
         this.props.history.push('/')
 
     }
 
-    onAcceptClicked(event) {
+    onAcceptClicked() {
         if (this.state.modalHeader === "Error") {
             this.setState({
                 modal: !this.state.modal
             });
         }
         else {
-            event.preventDefault();
             this.props.history.push('/')
         }
     }
@@ -276,6 +289,18 @@ export default class SignUp extends Component {
                             <FormText>
                                 <FormattedMessage id='entity.addressinfo' defaultMessage="Escriu l'adreça en el buscador del mapa:"/>
                             </FormText>
+                        </Col>
+                    </FormGroup>
+                    <FormGroup row>
+                            <Label for="pictureId" sm={2}>
+                                <FormattedMessage id='entity.picture' defaultMessage="Foto de l'entitat:"/>
+                            </Label>
+                        <Col sm="5">
+                            <Input type="file" className="file" id="pictureFile" onChange={this.changePicture}/>
+                        </Col>
+                        <Col sm={5}>
+                            <img id="picturePreview" src={this.state.picture} alt=""/>
+
                         </Col>
                     </FormGroup>
                     <FormGroup align="center">

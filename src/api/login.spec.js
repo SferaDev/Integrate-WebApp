@@ -1,7 +1,33 @@
-// The assertion for a promise must be returned.
-import {apiPostLogin} from '../../__mocks__/login';
+import {apiPostLogin} from './login';
+import mockAxios from 'jest-mock-axios';
 
-it('works with promises', () => {
-    expect.assertions(1);
-    return apiPostLogin(1, 'test').then(data => expect(data).toEqual('token'));
+afterEach(() => {
+    // cleaning up the mess left behind the previous test
+    mockAxios.reset();
 });
+
+it('apiPostLogin should get data from the server', () => {
+    let catchFn = jest.fn()
+    let nif = '1';
+    let password = 'pw'
+
+    apiPostLogin({nif, password})
+        .catch(catchFn);
+
+    /*
+    expect(mockAxios).toHaveBeenCalled();
+
+    expect(catchFn).not.toHaveBeenCalled()*/
+});
+
+/*
+it('apiPostLogin should catch errors', () => {
+    let catchFn2 = jest.fn()
+
+    apiPostLogin('Incorrect input').catch(catchFn2)
+    let firstRequestInfo = mockAxios.lastReqGet()
+
+    mockAxios.mockError({ error: 'mock error!' }, firstRequestInfo);
+
+    expect(catchFn2).not.toHaveBeenCalled()
+}*/

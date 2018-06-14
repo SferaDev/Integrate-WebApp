@@ -1,0 +1,393 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="mainViewContainer container-fluid"
+>
+  <div>
+    <div
+      className="languageSelector"
+    >
+      <div
+        className="integrateEntities"
+      >
+        <div
+          className="integrateLogo"
+        >
+          Integrate 
+        </div>
+        <div>
+          <span>
+            entities
+          </span>
+        </div>
+      </div>
+      <div>
+        <select
+          className="languageSelectorInput form-control"
+          id="language"
+          name="language"
+          onChange={[Function]}
+          required={true}
+          type="select"
+          value="en"
+        >
+          <option
+            value="ca"
+          >
+            Català
+          </option>
+          <option
+            value="es"
+          >
+            Español
+          </option>
+          <option
+            value="en"
+          >
+            English
+          </option>
+        </select>
+      </div>
+    </div>
+    <div
+      className="navbarDiv"
+    >
+      <nav
+        className="navbar navbar navbar-expand-md navbar-dark bg-dark"
+      >
+        <a
+          className="navbar-brand"
+          href="/main"
+        >
+          Telepizza
+        </a>
+        <button
+          className="navbar-toggler"
+          onClick={[Function]}
+          type="button"
+        >
+          <span
+            className="navbar-toggler-icon"
+          />
+        </button>
+        <div
+          className="collapse navbar-collapse"
+          style={Object {}}
+        >
+          <ul
+            className="navbar-nav"
+          >
+            <li
+              className="nav-item"
+            >
+              <a
+                className="nav-link"
+                href="/goods"
+                onClick={[Function]}
+                style={null}
+              >
+                <span>
+                  Goods
+                </span>
+              </a>
+            </li>
+            <li
+              className="nav-item"
+            >
+              <a
+                className="nav-link"
+                href="/changepassword"
+                onClick={[Function]}
+                style={null}
+              >
+                <span>
+                  Change password
+                </span>
+              </a>
+            </li>
+            <li
+              className="Logout nav-item"
+            >
+              <a
+                className="nav-link"
+                href="/"
+                onClick={[Function]}
+              >
+                <span>
+                  Logout
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div
+      className="container-fluid"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="userInfoCol col-sm-12 col-md-4"
+        >
+          <div
+            className="userInfoDiv"
+          >
+            <div
+              className="row"
+            >
+              <div
+                className="col-sm-12"
+              >
+                <div
+                  className="userInfoPicture"
+                  style={
+                    Object {
+                      "background": "url(url)",
+                      "backgroundPosition": "center",
+                      "backgroundSize": "cover",
+                    }
+                  }
+                />
+              </div>
+            </div>
+            <div
+              className="row"
+            >
+              <div
+                className="col-sm-12"
+              >
+                <div
+                  className="userTextInfo"
+                >
+                  <div
+                    className="name"
+                  >
+                    Telepizza
+                  </div>
+                  <div
+                    className="addressName"
+                  >
+                    address
+                  </div>
+                  <div
+                    className="validationCode"
+                  >
+                    <span
+                      className="validationCodeTitle"
+                    >
+                      <span>
+                        Validation code
+                      </span>
+                    </span>
+                    <span
+                      className="userValidationCode"
+                    >
+                      kfjdls
+                    </span>
+                  </div>
+                  <hr />
+                  <div
+                    className="description"
+                  >
+                    description
+                  </div>
+                  <div
+                    className="deleteEntityButton"
+                  >
+                    <button
+                      className="btnDeleteEntity"
+                      id="edit"
+                      name="edit"
+                      onClick={[Function]}
+                    >
+                      <div
+                        className="deleteEntityButtonText"
+                      >
+                        <span>
+                          Delete entity
+                        </span>
+                         
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="contentCol col-sm-12 col-md-8"
+        >
+          <div
+            className="incentive row"
+          >
+            <div
+              className="likeComponent col-sm-12 col-md-2"
+            >
+              <img
+                alt="Medal"
+                className="like"
+                id="like"
+                src="like.png"
+              />
+              <div
+                className="NormalText"
+              >
+                <span
+                  className="likeText"
+                >
+                  1
+                </span>
+              </div>
+            </div>
+            <div
+              className="incentiveLeft col-sm-12 col-md-3"
+            >
+              <div
+                className="NormalText NormalTextLeft"
+              >
+                <span
+                  className="leftTextValue"
+                >
+                  1
+                </span>
+                 
+                <span>
+                  goods created
+                </span>
+              </div>
+            </div>
+            <div
+              className="incentiveMiddle col-sm-12 col-md-3"
+            >
+              <div
+                className="NormalTextMiddle"
+              >
+                <span
+                  className="middleTextValue"
+                >
+                  1
+                </span>
+                 
+                <span>
+                  beneficiaries helped
+                </span>
+              </div>
+            </div>
+            <div
+              className="incentiveRight col-sm-12 col-md-3"
+            >
+              <div
+                className="NormalTextRight"
+              >
+                <span
+                  className="rightTextValue"
+                >
+                  1
+                </span>
+                <span>
+                  € discounted
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "textAlign": "center",
+              }
+            }
+          >
+            <label
+              style={
+                Object {
+                  "marginRight": "8px",
+                  "marginTop": "10px",
+                }
+              }
+            >
+              <span>
+                Statistics for
+              </span>
+            </label>
+            <select
+              onChange={[Function]}
+              style={
+                Object {
+                  "marginTop": "20px",
+                }
+              }
+              value="Month"
+            >
+              <option
+                value="Day"
+              >
+                Day
+              </option>
+              <option
+                value="Week"
+              >
+                Week
+              </option>
+              <option
+                value="Month"
+              >
+                Month
+              </option>
+              <option
+                value="Year"
+              >
+                Year
+              </option>
+            </select>
+          </div>
+          <div
+            style={
+              Object {
+                "textAlign": "center",
+              }
+            }
+          >
+            <label
+              style={
+                Object {
+                  "marginBottom": "20px",
+                  "marginRight": "8px",
+                  "marginTop": "10px",
+                }
+              }
+            >
+              <span>
+                By good
+              </span>
+            </label>
+            <select
+              onChange={[Function]}
+              value=""
+            >
+              <option
+                value=""
+              >
+                (any)
+              </option>
+              <option
+                value="id1"
+              >
+                name1
+              </option>
+              <option
+                value="id2"
+              >
+                name2
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

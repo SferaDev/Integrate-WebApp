@@ -1,0 +1,2342 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshots renders correctly 1`] = `
+<GoodsContainer
+  actions={
+    Object {
+      "authActions": Object {
+        "deleteEntity": [Function],
+        "logoutAction": [Function],
+        "setUser": [Function],
+      },
+      "goodsActions": Object {
+        "dispatchAddGood": [Function],
+        "dispatchDeleteGood": [Function],
+        "dispatchEditGood": [Function],
+        "dispatchReceiveGoods": [Function],
+      },
+      "localeActions": Object {
+        "setLocale": [Function],
+      },
+      "modalActions": Object {
+        "dispatchCleanModalState": [Function],
+        "dispatchToggleModal": [Function],
+        "dispatchToggleModalEdit": [Function],
+      },
+    }
+  }
+  auth={
+    Object {
+      "isLoginPending": false,
+      "isLoginSuccess": true,
+      "loginError": null,
+      "token": "token",
+      "user": Object {
+        "address": "Address",
+        "description": "description",
+        "name": "Telepizza",
+        "validationCode": "423423",
+      },
+    }
+  }
+  goods={
+    Array [
+      Object {
+        "_id": "1",
+        "category": 1,
+        "discount": 20,
+        "discountType": "%",
+        "initialPrice": 0.6,
+        "key": 1,
+        "pendingUnits": 60,
+        "picture": "http://www.fruteriasanpelayo.com/media/catalog/product/cache/1/image/680x560/75d5da3c2391ff3c948ada8220a45b7b/p/a/pan_barra_1.jpg",
+        "productName": "Barra de pa A",
+        "reusePeriod": 1,
+      },
+    ]
+  }
+  lang="en"
+  modal={
+    Object {
+      "good": Object {
+        "_id": "1",
+        "category": 1,
+        "discount": 20,
+        "discountType": "%",
+        "initialPrice": 0.6,
+        "key": 1,
+        "pendingUnits": 60,
+        "picture": "http://www.fruteriasanpelayo.com/media/catalog/product/cache/1/image/680x560/75d5da3c2391ff3c948ada8220a45b7b/p/a/pan_barra_1.jpg",
+        "productName": "Barra de pa A",
+        "reusePeriod": 1,
+      },
+      "isOpen": true,
+    }
+  }
+  userName="Telepizza"
+>
+  <IntlProvider
+    locale="en"
+    messages={
+      Object {
+        "entity.address": "Entity address:",
+        "entity.addressinfo": "Enter the address in the map search box:",
+        "entity.deleteButton": "Delete entity",
+        "entity.description": "Description of the entity:",
+        "entity.email": "E-mail:",
+        "entity.firstname": "Name:",
+        "entity.header": "Sign up:",
+        "entity.name": "Entity name:",
+        "entity.nif": "Nif:",
+        "entity.phone": "Phone number:",
+        "entity.picture": "Entity picture:",
+        "entity.send": "Send",
+        "entity.surname": "Surnames:",
+        "entity.validationCode": "Validation code",
+        "good.appliedDiscount": "Applied discount",
+        "good.button.edit": "Edit",
+        "good.button.remove": "Remove",
+        "good.category": "Category",
+        "good.category.culture": "Culture",
+        "good.category.education": "Education",
+        "good.category.error": "Error",
+        "good.category.healthcare": "Health care",
+        "good.category.leisure": "Leisure",
+        "good.category.mobility": "Mobility",
+        "good.category.nutrition": "Nutrition",
+        "good.category.others": "Others",
+        "good.category.sports": "Sports",
+        "good.category.technology": "Technology",
+        "good.currentPrice": "Current price",
+        "good.days": "days",
+        "good.originalPrice": "Original price",
+        "good.pendingUnits": "Pending units",
+        "good.reusePeriod": "Reuse period",
+        "goodsList.addGood": "Add a good",
+        "incentive.beneficiaris": "beneficiaries helped",
+        "incentive.discount": "€ discounted",
+        "incentive.goods": "goods created",
+        "languageSelector.entities": "entities",
+        "login.forgotpassword": "Did you forget your password?",
+        "login.iddoc": "ID Document",
+        "login.invalidpassword": "L'usuari o la contrasenya no son correctes.",
+        "login.login": "Log In",
+        "login.password": "Password",
+        "login.signup": "Apply for access",
+        "main.changepassword": "Change password",
+        "main.goods": "Goods",
+        "main.home": "Home",
+        "main.logout": "Logout",
+        "modal.button": "Accept",
+        "modal.correct": "The data is correct.",
+        "modal.discount": "Discount",
+        "modal.email": "The email is incorrect.",
+        "modal.empty": "You must fill all the blanks.",
+        "modal.error": "Error",
+        "modal.exist": "Nif or email already exists.",
+        "modal.goodName": "Good's name",
+        "modal.goodsManagement": "Goods management",
+        "modal.header": "Correct",
+        "modal.image": "Image",
+        "modal.nif": "The nif is incorrect.",
+        "modal.originalPrice": "Original price (€)",
+        "modal.periodicity": "Reuse period (days)",
+        "modal.phone": "The phone number is incorrect.",
+        "modalDeleteEntity.p1": "Are you sure about this?",
+        "modalDeleteEntity.p2": "If you delete the entity, beneficiaries won't be able to keep using the goods you are offering.",
+        "modalDeleteEntity.p3": "Anyway, if you want to come back you just have to Log in and the entity will be reactivated! :)",
+        "modalpass.accept": "Accept",
+        "modalpass.button": "Accept",
+        "modalpass.cancel": "Cancel",
+        "modalpass.correct": "Correct",
+        "modalpass.currentpassword": "The current password is incorrect.",
+        "modalpass.equal": "The new passwords are not equal.",
+        "modalpass.header": "Error",
+        "modalpass.newpassword": "The new password is incorrect.",
+        "modalpass.success": "The password has been changed successfully.",
+        "password.current": "Current password:",
+        "password.header": "Change password:",
+        "password.info": "8 characters minimum and at least one number.",
+        "password.new": "New password:",
+        "password.new2": "Rewrite the new password:",
+        "reset.accept": "Accept",
+        "reset.button": "Accept",
+        "reset.cancel": "Cancel",
+        "reset.correct": "Correct",
+        "reset.econtent": "The nif is incorrect.",
+        "reset.error": "Error",
+        "reset.header": "Password recovery",
+        "reset.info": "Enter the nif that you will receive a new password to the email you used to register",
+        "reset.notfound": "User doesn't exist.",
+        "reset.scontent": "It has been sent a new password correctly.",
+        "statistics.allgoods": "(any)",
+        "statistics.day": "Day",
+        "statistics.month": "Month",
+        "statistics.nostatistics": "No statistics for these filters",
+        "statistics.statistics": "Statistics for",
+        "statistics.statisticsbygood": "By good",
+        "statistics.week": "Week",
+        "statistics.year": "Year",
+      }
+    }
+  >
+    <Container
+      fluid={true}
+      tag="div"
+    >
+      <div
+        className="container-fluid"
+      >
+        <LanguageSelector
+          actions={
+            Object {
+              "setLocale": [Function],
+            }
+          }
+          className="languageSelector"
+          lang="en"
+        >
+          <div
+            className="languageSelector"
+          >
+            <div
+              className="integrateEntities"
+            >
+              <div
+                className="integrateLogo"
+              >
+                Integrate 
+              </div>
+              <div>
+                <FormattedMessage
+                  defaultMessage="Entitats"
+                  id="languageSelector.entities"
+                  values={Object {}}
+                >
+                  <span>
+                    entities
+                  </span>
+                </FormattedMessage>
+              </div>
+            </div>
+            <div>
+              <Input
+                className="languageSelectorInput"
+                id="language"
+                name="language"
+                onChange={[Function]}
+                required={true}
+                type="select"
+                value="en"
+              >
+                <select
+                  className="languageSelectorInput form-control"
+                  id="language"
+                  name="language"
+                  onChange={[Function]}
+                  required={true}
+                  type="select"
+                  value="en"
+                >
+                  <option
+                    value="ca"
+                  >
+                    Català
+                  </option>
+                  <option
+                    value="es"
+                  >
+                    Español
+                  </option>
+                  <option
+                    value="en"
+                  >
+                    English
+                  </option>
+                </select>
+              </Input>
+            </div>
+          </div>
+        </LanguageSelector>
+        <MainView
+          actions={
+            Object {
+              "deleteEntity": [Function],
+              "logoutAction": [Function],
+              "setUser": [Function],
+            }
+          }
+          active="goods"
+          className="MainView"
+          userName="Telepizza"
+        >
+          <div
+            className="navbarDiv"
+          >
+            <Navbar
+              className="navbar"
+              color="dark"
+              dark={true}
+              expand="md"
+              tag="nav"
+            >
+              <nav
+                className="navbar navbar navbar-expand-md navbar-dark bg-dark"
+              >
+                <NavbarBrand
+                  href="/main"
+                  tag="a"
+                >
+                  <a
+                    className="navbar-brand"
+                    href="/main"
+                  >
+                    Telepizza
+                  </a>
+                </NavbarBrand>
+                <NavbarToggler
+                  onClick={[Function]}
+                  tag="button"
+                  type="button"
+                >
+                  <button
+                    className="navbar-toggler"
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    <span
+                      className="navbar-toggler-icon"
+                    />
+                  </button>
+                </NavbarToggler>
+                <Collapse
+                  appear={false}
+                  enter={true}
+                  exit={true}
+                  in={false}
+                  isOpen={false}
+                  mountOnEnter={false}
+                  navbar={true}
+                  onEnter={[Function]}
+                  onEntered={[Function]}
+                  onEntering={[Function]}
+                  onExit={[Function]}
+                  onExited={[Function]}
+                  onExiting={[Function]}
+                  tag="div"
+                  timeout={350}
+                  unmountOnExit={false}
+                >
+                  <Transition
+                    appear={false}
+                    enter={true}
+                    exit={true}
+                    in={false}
+                    mountOnEnter={false}
+                    onEnter={[Function]}
+                    onEntered={[Function]}
+                    onEntering={[Function]}
+                    onExit={[Function]}
+                    onExited={[Function]}
+                    onExiting={[Function]}
+                    timeout={350}
+                    unmountOnExit={false}
+                  >
+                    <div
+                      className="collapse navbar-collapse"
+                      style={Object {}}
+                    >
+                      <Nav
+                        navbar={true}
+                        tag="ul"
+                        vertical={false}
+                      >
+                        <ul
+                          className="navbar-nav"
+                        >
+                          <NavItem
+                            tag="li"
+                          >
+                            <li
+                              className="nav-item"
+                            >
+                              <NavLink
+                                href="/goods"
+                                style={
+                                  Object {
+                                    "color": "white",
+                                    "fontWeight": 500,
+                                  }
+                                }
+                                tag="a"
+                              >
+                                <a
+                                  className="nav-link"
+                                  href="/goods"
+                                  onClick={[Function]}
+                                  style={
+                                    Object {
+                                      "color": "white",
+                                      "fontWeight": 500,
+                                    }
+                                  }
+                                >
+                                  <FormattedMessage
+                                    defaultMessage="Vals"
+                                    id="main.goods"
+                                    values={Object {}}
+                                  >
+                                    <span>
+                                      Goods
+                                    </span>
+                                  </FormattedMessage>
+                                </a>
+                              </NavLink>
+                            </li>
+                          </NavItem>
+                          <NavItem
+                            tag="li"
+                          >
+                            <li
+                              className="nav-item"
+                            >
+                              <NavLink
+                                href="/changepassword"
+                                style={null}
+                                tag="a"
+                              >
+                                <a
+                                  className="nav-link"
+                                  href="/changepassword"
+                                  onClick={[Function]}
+                                  style={null}
+                                >
+                                  <FormattedMessage
+                                    defaultMessage="Canviar la contrasenya"
+                                    id="main.changepassword"
+                                    values={Object {}}
+                                  >
+                                    <span>
+                                      Change password
+                                    </span>
+                                  </FormattedMessage>
+                                </a>
+                              </NavLink>
+                            </li>
+                          </NavItem>
+                          <NavItem
+                            className="Logout"
+                            tag="li"
+                          >
+                            <li
+                              className="Logout nav-item"
+                            >
+                              <NavLink
+                                href="/"
+                                onClick={[Function]}
+                                tag="a"
+                              >
+                                <a
+                                  className="nav-link"
+                                  href="/"
+                                  onClick={[Function]}
+                                >
+                                  <FormattedMessage
+                                    defaultMessage="Sortir"
+                                    id="main.logout"
+                                    values={Object {}}
+                                  >
+                                    <span>
+                                      Logout
+                                    </span>
+                                  </FormattedMessage>
+                                </a>
+                              </NavLink>
+                            </li>
+                          </NavItem>
+                        </ul>
+                      </Nav>
+                    </div>
+                  </Transition>
+                </Collapse>
+              </nav>
+            </Navbar>
+          </div>
+        </MainView>
+        <Container
+          className="goodsContainer"
+          fluid={true}
+          tag="div"
+        >
+          <div
+            className="goodsContainer container-fluid"
+          >
+            <GoodsList
+              actions={
+                Object {
+                  "authActions": Object {
+                    "deleteEntity": [Function],
+                    "logoutAction": [Function],
+                    "setUser": [Function],
+                  },
+                  "goodsActions": Object {
+                    "dispatchAddGood": [Function],
+                    "dispatchDeleteGood": [Function],
+                    "dispatchEditGood": [Function],
+                    "dispatchReceiveGoods": [Function],
+                  },
+                  "localeActions": Object {
+                    "setLocale": [Function],
+                  },
+                  "modalActions": Object {
+                    "dispatchCleanModalState": [Function],
+                    "dispatchToggleModal": [Function],
+                    "dispatchToggleModalEdit": [Function],
+                  },
+                }
+              }
+              goods={
+                Array [
+                  Object {
+                    "_id": "1",
+                    "category": 1,
+                    "discount": 20,
+                    "discountType": "%",
+                    "initialPrice": 0.6,
+                    "key": 1,
+                    "pendingUnits": 60,
+                    "picture": "http://www.fruteriasanpelayo.com/media/catalog/product/cache/1/image/680x560/75d5da3c2391ff3c948ada8220a45b7b/p/a/pan_barra_1.jpg",
+                    "productName": "Barra de pa A",
+                    "reusePeriod": 1,
+                  },
+                ]
+              }
+            >
+              <div
+                className="goodsListDiv"
+              >
+                <div
+                  className="goodsList"
+                >
+                  <Row
+                    className="goodRow"
+                    key="1"
+                    tag="div"
+                  >
+                    <div
+                      className="goodRow row"
+                    >
+                      <Col
+                        className="goodCol"
+                        sm="12"
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                      >
+                        <div
+                          className="goodCol col-sm-12"
+                        >
+                          <Good
+                            actions={
+                              Object {
+                                "authActions": Object {
+                                  "deleteEntity": [Function],
+                                  "logoutAction": [Function],
+                                  "setUser": [Function],
+                                },
+                                "goodsActions": Object {
+                                  "dispatchAddGood": [Function],
+                                  "dispatchDeleteGood": [Function],
+                                  "dispatchEditGood": [Function],
+                                  "dispatchReceiveGoods": [Function],
+                                },
+                                "localeActions": Object {
+                                  "setLocale": [Function],
+                                },
+                                "modalActions": Object {
+                                  "dispatchCleanModalState": [Function],
+                                  "dispatchToggleModal": [Function],
+                                  "dispatchToggleModalEdit": [Function],
+                                },
+                              }
+                            }
+                            good={
+                              Object {
+                                "_id": "1",
+                                "category": 1,
+                                "discount": 20,
+                                "discountType": "%",
+                                "initialPrice": 0.6,
+                                "key": 1,
+                                "pendingUnits": 60,
+                                "picture": "http://www.fruteriasanpelayo.com/media/catalog/product/cache/1/image/680x560/75d5da3c2391ff3c948ada8220a45b7b/p/a/pan_barra_1.jpg",
+                                "productName": "Barra de pa A",
+                                "reusePeriod": 1,
+                              }
+                            }
+                            key="1"
+                          >
+                            <Row
+                              className="productRow"
+                              tag="div"
+                            >
+                              <div
+                                className="productRow row"
+                              >
+                                <Col
+                                  className="productCol"
+                                  lg="12"
+                                  md="12"
+                                  tag="div"
+                                  widths={
+                                    Array [
+                                      "xs",
+                                      "sm",
+                                      "md",
+                                      "lg",
+                                      "xl",
+                                    ]
+                                  }
+                                >
+                                  <div
+                                    className="productCol col-md-12 col-lg-12"
+                                  >
+                                    <div
+                                      className="product"
+                                    >
+                                      <img
+                                        alt="Barra de pa A"
+                                        className="goodImg"
+                                        src="http://www.fruteriasanpelayo.com/media/catalog/product/cache/1/image/680x560/75d5da3c2391ff3c948ada8220a45b7b/p/a/pan_barra_1.jpg"
+                                      />
+                                      <div
+                                        className="productFeatures"
+                                      >
+                                        <Row
+                                          className="productTitle"
+                                          tag="div"
+                                        >
+                                          <div
+                                            className="productTitle row"
+                                          >
+                                            <Col
+                                              lg="12"
+                                              md="12"
+                                              tag="div"
+                                              widths={
+                                                Array [
+                                                  "xs",
+                                                  "sm",
+                                                  "md",
+                                                  "lg",
+                                                  "xl",
+                                                ]
+                                              }
+                                            >
+                                              <div
+                                                className="col-md-12 col-lg-12"
+                                              >
+                                                <b
+                                                  className="name"
+                                                >
+                                                  Barra de pa A
+                                                </b>
+                                              </div>
+                                            </Col>
+                                          </div>
+                                        </Row>
+                                        <div
+                                          className="productDetails"
+                                        >
+                                          <Row
+                                            className="productDetailsRow"
+                                            tag="div"
+                                          >
+                                            <div
+                                              className="productDetailsRow row"
+                                            >
+                                              <Col
+                                                className="productDetailsCol1"
+                                                lg="4"
+                                                md="12"
+                                                tag="div"
+                                                widths={
+                                                  Array [
+                                                    "xs",
+                                                    "sm",
+                                                    "md",
+                                                    "lg",
+                                                    "xl",
+                                                  ]
+                                                }
+                                              >
+                                                <div
+                                                  className="productDetailsCol1 col-md-12 col-lg-4"
+                                                >
+                                                  <div
+                                                    className="innerColDiv"
+                                                  >
+                                                    <div
+                                                      className="preuOriginal"
+                                                    >
+                                                      <span>
+                                                        <b>
+                                                          <FormattedMessage
+                                                            defaultMessage="Preu original"
+                                                            id="good.originalPrice"
+                                                            values={Object {}}
+                                                          >
+                                                            <span>
+                                                              Original price
+                                                            </span>
+                                                          </FormattedMessage>
+                                                          : 
+                                                        </b>
+                                                      </span>
+                                                      <span
+                                                        className="originalPrice"
+                                                      >
+                                                        0.6
+                                                        €
+                                                      </span>
+                                                    </div>
+                                                    <div
+                                                      className="unitatsRestants"
+                                                    >
+                                                      <span>
+                                                        <b>
+                                                          <FormattedMessage
+                                                            defaultMessage="Unitats restants"
+                                                            id="good.pendingUnits"
+                                                            values={Object {}}
+                                                          >
+                                                            <span>
+                                                              Pending units
+                                                            </span>
+                                                          </FormattedMessage>
+                                                          : 
+                                                        </b>
+                                                      </span>
+                                                      <span
+                                                        className="pendingUnits"
+                                                      >
+                                                        60
+                                                      </span>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </Col>
+                                              <Col
+                                                className="productDetailsCol2"
+                                                lg="4"
+                                                md="12"
+                                                tag="div"
+                                                widths={
+                                                  Array [
+                                                    "xs",
+                                                    "sm",
+                                                    "md",
+                                                    "lg",
+                                                    "xl",
+                                                  ]
+                                                }
+                                              >
+                                                <div
+                                                  className="productDetailsCol2 col-md-12 col-lg-4"
+                                                >
+                                                  <div
+                                                    className="innerColDiv"
+                                                  >
+                                                    <div
+                                                      className="descompteAplicat"
+                                                    >
+                                                      <span>
+                                                        <b>
+                                                          <FormattedMessage
+                                                            defaultMessage="Descompte aplicat"
+                                                            id="good.appliedDiscount"
+                                                            values={Object {}}
+                                                          >
+                                                            <span>
+                                                              Applied discount
+                                                            </span>
+                                                          </FormattedMessage>
+                                                          : 
+                                                        </b>
+                                                      </span>
+                                                      <span
+                                                        className="appliedDiscount"
+                                                      >
+                                                        20
+                                                        %
+                                                      </span>
+                                                    </div>
+                                                    <div
+                                                      className="tempsReutilitzacio"
+                                                    >
+                                                      <span>
+                                                        <b>
+                                                          <FormattedMessage
+                                                            defaultMessage="Temps de reutilització"
+                                                            id="good.reusePeriod"
+                                                            values={Object {}}
+                                                          >
+                                                            <span>
+                                                              Reuse period
+                                                            </span>
+                                                          </FormattedMessage>
+                                                          : 
+                                                        </b>
+                                                      </span>
+                                                      <span
+                                                        className="reusePeriod"
+                                                      >
+                                                        1
+                                                      </span>
+                                                       
+                                                      <FormattedMessage
+                                                        defaultMessage="dies"
+                                                        id="good.days"
+                                                        values={Object {}}
+                                                      >
+                                                        <span>
+                                                          days
+                                                        </span>
+                                                      </FormattedMessage>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </Col>
+                                              <Col
+                                                className="productDetailsCol3"
+                                                lg="4"
+                                                md="12"
+                                                tag="div"
+                                                widths={
+                                                  Array [
+                                                    "xs",
+                                                    "sm",
+                                                    "md",
+                                                    "lg",
+                                                    "xl",
+                                                  ]
+                                                }
+                                              >
+                                                <div
+                                                  className="productDetailsCol3 col-md-12 col-lg-4"
+                                                >
+                                                  <div
+                                                    className="innerColDiv"
+                                                  >
+                                                    <div
+                                                      className="preuFinal"
+                                                    >
+                                                      <span>
+                                                        <b>
+                                                          <FormattedMessage
+                                                            defaultMessage="Preu final"
+                                                            id="good.currentPrice"
+                                                            values={Object {}}
+                                                          >
+                                                            <span>
+                                                              Current price
+                                                            </span>
+                                                          </FormattedMessage>
+                                                          : 
+                                                        </b>
+                                                      </span>
+                                                      <span
+                                                        className="currentPrice"
+                                                      >
+                                                        0.48
+                                                        €
+                                                      </span>
+                                                    </div>
+                                                    <div
+                                                      className="categoria"
+                                                    >
+                                                      <span>
+                                                        <b>
+                                                          <FormattedMessage
+                                                            defaultMessage="Categoria"
+                                                            id="good.category"
+                                                            values={Object {}}
+                                                          >
+                                                            <span>
+                                                              Category
+                                                            </span>
+                                                          </FormattedMessage>
+                                                          : 
+                                                        </b>
+                                                      </span>
+                                                      <span
+                                                        catvalue={1}
+                                                        className="category"
+                                                      >
+                                                        <FormattedMessage
+                                                          defaultMessage="Alimentació"
+                                                          id="good.category.nutrition"
+                                                          values={Object {}}
+                                                        >
+                                                          <span>
+                                                            Nutrition
+                                                          </span>
+                                                        </FormattedMessage>
+                                                      </span>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </Col>
+                                            </div>
+                                          </Row>
+                                        </div>
+                                      </div>
+                                      <div
+                                        className="productButtons"
+                                      >
+                                        <button
+                                          className="btnEdit"
+                                          id="edit"
+                                          name="edit"
+                                          onClick={[Function]}
+                                        >
+                                          <FormattedMessage
+                                            defaultMessage="Editar"
+                                            id="good.button.edit"
+                                            values={Object {}}
+                                          >
+                                            <span>
+                                              Edit
+                                            </span>
+                                          </FormattedMessage>
+                                           
+                                          <FontAwesomeIcon$1
+                                            border={false}
+                                            className="faIcon"
+                                            fixedWidth={false}
+                                            flip={null}
+                                            icon="edit"
+                                            listItem={false}
+                                            mask={null}
+                                            name=""
+                                            pull={null}
+                                            pulse={false}
+                                            rotation={null}
+                                            size={null}
+                                            spin={false}
+                                            symbol={false}
+                                            transform={null}
+                                          />
+                                        </button>
+                                        <button
+                                          className="btnDelete"
+                                          id="Delete"
+                                          name="delete"
+                                          onClick={[Function]}
+                                        >
+                                          <FormattedMessage
+                                            defaultMessage="Esborrar"
+                                            id="good.button.remove"
+                                            values={Object {}}
+                                          >
+                                            <span>
+                                              Remove
+                                            </span>
+                                          </FormattedMessage>
+                                           
+                                          <FontAwesomeIcon$1
+                                            border={false}
+                                            className="faIcon"
+                                            fixedWidth={false}
+                                            flip={null}
+                                            icon="trash-alt"
+                                            listItem={false}
+                                            mask={null}
+                                            name=""
+                                            pull={null}
+                                            pulse={false}
+                                            rotation={null}
+                                            size={null}
+                                            spin={false}
+                                            symbol={false}
+                                            transform={null}
+                                          />
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </Col>
+                              </div>
+                            </Row>
+                          </Good>
+                        </div>
+                      </Col>
+                    </div>
+                  </Row>
+                </div>
+                <Row
+                  className="stickyAddGoodRow"
+                  tag="div"
+                >
+                  <div
+                    className="stickyAddGoodRow row"
+                  >
+                    <Col
+                      className="stickyAddGood"
+                      sm="12"
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                    >
+                      <div
+                        className="stickyAddGood col-sm-12"
+                      >
+                        <button
+                          className="stickyAddGoodButton"
+                          onClick={[Function]}
+                        >
+                          <FontAwesomeIcon$1
+                            border={false}
+                            className="plus-circle"
+                            fixedWidth={false}
+                            flip={null}
+                            icon="plus-circle"
+                            listItem={false}
+                            mask={null}
+                            name=""
+                            pull={null}
+                            pulse={false}
+                            rotation={null}
+                            size={null}
+                            spin={false}
+                            symbol={false}
+                            transform={null}
+                          />
+                          <span
+                            className="addGoodText"
+                          >
+                            <FormattedMessage
+                              defaultMessage="Afegir un val de descompte"
+                              id="goodsList.addGood"
+                              values={Object {}}
+                            >
+                              <span>
+                                Add a good
+                              </span>
+                            </FormattedMessage>
+                          </span>
+                        </button>
+                      </div>
+                    </Col>
+                  </div>
+                </Row>
+              </div>
+            </GoodsList>
+            <ModalView
+              actions={
+                Object {
+                  "authActions": Object {
+                    "deleteEntity": [Function],
+                    "logoutAction": [Function],
+                    "setUser": [Function],
+                  },
+                  "goodsActions": Object {
+                    "dispatchAddGood": [Function],
+                    "dispatchDeleteGood": [Function],
+                    "dispatchEditGood": [Function],
+                    "dispatchReceiveGoods": [Function],
+                  },
+                  "localeActions": Object {
+                    "setLocale": [Function],
+                  },
+                  "modalActions": Object {
+                    "dispatchCleanModalState": [Function],
+                    "dispatchToggleModal": [Function],
+                    "dispatchToggleModalEdit": [Function],
+                  },
+                }
+              }
+              lang="en"
+              modal={
+                Object {
+                  "good": Object {
+                    "_id": "1",
+                    "category": 1,
+                    "discount": 20,
+                    "discountType": "%",
+                    "initialPrice": 0.6,
+                    "key": 1,
+                    "pendingUnits": 60,
+                    "picture": "http://www.fruteriasanpelayo.com/media/catalog/product/cache/1/image/680x560/75d5da3c2391ff3c948ada8220a45b7b/p/a/pan_barra_1.jpg",
+                    "productName": "Barra de pa A",
+                    "reusePeriod": 1,
+                  },
+                  "isOpen": true,
+                }
+              }
+            >
+              <Modal
+                autoFocus={true}
+                backdrop={true}
+                backdropTransition={
+                  Object {
+                    "mountOnEnter": true,
+                    "timeout": 150,
+                  }
+                }
+                centered={false}
+                fade={true}
+                id="formModal"
+                isOpen={true}
+                keyboard={true}
+                modalTransition={
+                  Object {
+                    "timeout": 300,
+                  }
+                }
+                onClosed={[Function]}
+                onOpened={[Function]}
+                role="dialog"
+                toggle={[Function]}
+                zIndex={1050}
+              >
+                <Portal
+                  node={
+                    <div
+                      tabindex="-1"
+                      style="position: relative; z-index: 1050;"
+                    >
+                      <div
+                        class=""
+                      >
+                        <div
+                          class="modal fade"
+                          style="display: block;"
+                          role="dialog"
+                          tabindex="-1"
+                        >
+                          <div
+                            id="formModal"
+                            class="modal-dialog"
+                            role="document"
+                          >
+                            <div
+                              class="modal-content"
+                            >
+                              <div
+                                class="modal-header"
+                              >
+                                <h5
+                                  class="modal-title"
+                                >
+                                  <span>
+                                    Goods management
+                                  </span>
+                                </h5>
+                                <button
+                                  type="button"
+                                  class="close"
+                                  aria-label="Close"
+                                >
+                                  <span
+                                    aria-hidden="true"
+                                  >
+                                    ×
+                                  </span>
+                                </button>
+                              </div>
+                              <div
+                                class="modal-body"
+                              >
+                                <form
+                                  class=""
+                                >
+                                  <div
+                                    class="form-group"
+                                  >
+                                    <label
+                                      for="couponName"
+                                      class=""
+                                    >
+                                      <span>
+                                        Good's name
+                                      </span>
+                                    </label>
+                                    <input
+                                      id="goodName"
+                                      type="text"
+                                      class="goodName form-control"
+                                      value=""
+                                    />
+                                  </div>
+                                  <div
+                                    class="form-group"
+                                  >
+                                    <label
+                                      for="initialPrice"
+                                      class=""
+                                    >
+                                      <span>
+                                        Original price (€)
+                                      </span>
+                                    </label>
+                                    <input
+                                      id="initialPrice"
+                                      min="0"
+                                      step=".01"
+                                      type="number"
+                                      class="initialPrice form-control"
+                                      value="0"
+                                    />
+                                  </div>
+                                  <div
+                                    class="row form-group"
+                                  >
+                                    <div
+                                      class="col-sm-6"
+                                    >
+                                      <label
+                                        for="discount"
+                                        class=""
+                                      >
+                                        <span>
+                                          Discount
+                                        </span>
+                                      </label>
+                                    </div>
+                                    <div
+                                      class="col-sm-6"
+                                    >
+                                      <label
+                                        for="discount"
+                                        class=""
+                                      >
+                                        <span>
+                                          Pending units
+                                        </span>
+                                      </label>
+                                    </div>
+                                    <div
+                                      class="col-sm-3"
+                                    >
+                                      <input
+                                        id="discount"
+                                        min="0"
+                                        max="100"
+                                        step="1"
+                                        type="number"
+                                        class="discount form-control"
+                                        value="0"
+                                      />
+                                    </div>
+                                    <div
+                                      class="col-sm-3"
+                                    >
+                                      <select
+                                        id="discountType"
+                                        type="select"
+                                        class="discountType form-control"
+                                      >
+                                        <option>
+                                          %
+                                        </option>
+                                        <option>
+                                          €
+                                        </option>
+                                      </select>
+                                    </div>
+                                    <div
+                                      class="col-sm-6"
+                                    >
+                                      <input
+                                        required=""
+                                        id="pendingUnits"
+                                        min="0"
+                                        type="number"
+                                        class="pendingUnits form-control"
+                                        value="1"
+                                      />
+                                    </div>
+                                    <div
+                                      class="currentPrice col-sm-12"
+                                    >
+                                      <span>
+                                        Current price
+                                      </span>
+                                      : 
+                                      0.00
+                                      €
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="row form-group"
+                                  >
+                                    <div
+                                      class="col-sm-6"
+                                    >
+                                      <label
+                                        for="reusePeriod"
+                                        class=""
+                                      >
+                                        <span>
+                                          Reuse period (days)
+                                        </span>
+                                      </label>
+                                      <input
+                                        required=""
+                                        id="reusePeriod"
+                                        min="0"
+                                        type="number"
+                                        class="reusePeriod form-control"
+                                        value="1"
+                                      />
+                                    </div>
+                                    <div
+                                      class="col-sm-6"
+                                    >
+                                      <label
+                                        for="category"
+                                        class=""
+                                      >
+                                        <span>
+                                          Category
+                                        </span>
+                                      </label>
+                                      <select
+                                        required=""
+                                        id="category"
+                                        type="select"
+                                        class="category form-control"
+                                      >
+                                        <option
+                                          class="optionValue1"
+                                          value="1"
+                                        >
+                                          Nutrition
+                                        </option>
+                                        <option
+                                          class="optionValue2"
+                                          value="2"
+                                        >
+                                          Culture
+                                        </option>
+                                        <option
+                                          class="optionValue3"
+                                          value="3"
+                                        >
+                                          Education
+                                        </option>
+                                        <option
+                                          class="optionValue4"
+                                          value="4"
+                                        >
+                                          Mobility
+                                        </option>
+                                        <option
+                                          class="optionValue5"
+                                          value="5"
+                                        >
+                                          Technology
+                                        </option>
+                                        <option
+                                          class="optionValue6"
+                                          value="6"
+                                        >
+                                          Health care
+                                        </option>
+                                        <option
+                                          class="optionValue7"
+                                          value="7"
+                                        >
+                                          Sports
+                                        </option>
+                                        <option
+                                          class="optionValue8"
+                                          value="8"
+                                        >
+                                          Leisure
+                                        </option>
+                                        <option
+                                          class="optionValue9"
+                                          value="9"
+                                        >
+                                          Others
+                                        </option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="row form-group"
+                                  >
+                                    <div
+                                      class="col-sm-8"
+                                    >
+                                      <label
+                                        for="File"
+                                        class=""
+                                      >
+                                        <span>
+                                          Image
+                                        </span>
+                                      </label>
+                                      <input
+                                        id="pictureFile"
+                                        type="file"
+                                        class="file form-control-file"
+                                      />
+                                    </div>
+                                    <div
+                                      class="col-sm-4"
+                                    >
+                                      <img
+                                        id="imgPreview"
+                                        alt="preview"
+                                        src="http://www.asiaoceania.org/aogs2018/img/no_uploaded.png"
+                                      />
+                                    </div>
+                                  </div>
+                                </form>
+                              </div>
+                              <div
+                                class="modal-footer"
+                              >
+                                <button
+                                  class="cancelButton"
+                                >
+                                  Cancel·lar
+                                </button>
+                                <button
+                                  type="submit"
+                                  class="validateButton"
+                                >
+                                  Enviar
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="modal-backdrop fade"
+                        />
+                      </div>
+                    </div>
+                  }
+                >
+                  <div
+                    className=""
+                  >
+                    <Fade
+                      appear={true}
+                      baseClass="fade"
+                      baseClassActive="show"
+                      className="modal"
+                      enter={true}
+                      exit={true}
+                      in={true}
+                      mountOnEnter={false}
+                      onClick={[Function]}
+                      onEnter={[Function]}
+                      onEntered={[Function]}
+                      onEntering={[Function]}
+                      onExit={[Function]}
+                      onExited={[Function]}
+                      onExiting={[Function]}
+                      onKeyUp={[Function]}
+                      role="dialog"
+                      style={
+                        Object {
+                          "display": "block",
+                        }
+                      }
+                      tabIndex="-1"
+                      tag="div"
+                      timeout={300}
+                      unmountOnExit={false}
+                    >
+                      <Transition
+                        appear={true}
+                        enter={true}
+                        exit={true}
+                        in={true}
+                        mountOnEnter={false}
+                        onEnter={[Function]}
+                        onEntered={[Function]}
+                        onEntering={[Function]}
+                        onExit={[Function]}
+                        onExited={[Function]}
+                        onExiting={[Function]}
+                        timeout={300}
+                        unmountOnExit={false}
+                      >
+                        <div
+                          className="modal fade"
+                          onClick={[Function]}
+                          onKeyUp={[Function]}
+                          role="dialog"
+                          style={
+                            Object {
+                              "display": "block",
+                            }
+                          }
+                          tabIndex="-1"
+                        >
+                          <div
+                            className="modal-dialog"
+                            id="formModal"
+                            role="document"
+                          >
+                            <div
+                              className="modal-content"
+                            >
+                              <ModalHeader
+                                closeAriaLabel="Close"
+                                tag="h5"
+                                toggle={[Function]}
+                                wrapTag="div"
+                              >
+                                <div
+                                  className="modal-header"
+                                >
+                                  <h5
+                                    className="modal-title"
+                                  >
+                                    <FormattedMessage
+                                      defaultMessage="Descompte aplicat"
+                                      id="modal.goodsManagement"
+                                      values={Object {}}
+                                    >
+                                      <span>
+                                        Goods management
+                                      </span>
+                                    </FormattedMessage>
+                                  </h5>
+                                  <button
+                                    aria-label="Close"
+                                    className="close"
+                                    onClick={[Function]}
+                                    type="button"
+                                  >
+                                    <span
+                                      aria-hidden="true"
+                                    >
+                                      ×
+                                    </span>
+                                  </button>
+                                </div>
+                              </ModalHeader>
+                              <ModalBody
+                                tag="div"
+                              >
+                                <div
+                                  className="modal-body"
+                                >
+                                  <Form
+                                    tag="form"
+                                  >
+                                    <form
+                                      className=""
+                                    >
+                                      <FormGroup
+                                        tag="div"
+                                      >
+                                        <div
+                                          className="form-group"
+                                        >
+                                          <Label
+                                            for="couponName"
+                                            tag="label"
+                                            widths={
+                                              Array [
+                                                "xs",
+                                                "sm",
+                                                "md",
+                                                "lg",
+                                                "xl",
+                                              ]
+                                            }
+                                          >
+                                            <label
+                                              className=""
+                                              htmlFor="couponName"
+                                            >
+                                              <FormattedMessage
+                                                defaultMessage="Nom del producte"
+                                                id="modal.goodName"
+                                                values={Object {}}
+                                              >
+                                                <span>
+                                                  Good's name
+                                                </span>
+                                              </FormattedMessage>
+                                            </label>
+                                          </Label>
+                                          <Input
+                                            className="goodName"
+                                            id="goodName"
+                                            onChange={[Function]}
+                                            type="text"
+                                            value=""
+                                          >
+                                            <input
+                                              className="goodName form-control"
+                                              id="goodName"
+                                              onChange={[Function]}
+                                              type="text"
+                                              value=""
+                                            />
+                                          </Input>
+                                        </div>
+                                      </FormGroup>
+                                      <FormGroup
+                                        tag="div"
+                                      >
+                                        <div
+                                          className="form-group"
+                                        >
+                                          <Label
+                                            for="initialPrice"
+                                            tag="label"
+                                            widths={
+                                              Array [
+                                                "xs",
+                                                "sm",
+                                                "md",
+                                                "lg",
+                                                "xl",
+                                              ]
+                                            }
+                                          >
+                                            <label
+                                              className=""
+                                              htmlFor="initialPrice"
+                                            >
+                                              <FormattedMessage
+                                                defaultMessage="Preu original (€)"
+                                                id="modal.originalPrice"
+                                                values={Object {}}
+                                              >
+                                                <span>
+                                                  Original price (€)
+                                                </span>
+                                              </FormattedMessage>
+                                            </label>
+                                          </Label>
+                                          <Input
+                                            className="initialPrice"
+                                            id="initialPrice"
+                                            min="0"
+                                            onChange={[Function]}
+                                            step=".01"
+                                            type="number"
+                                            value={0}
+                                          >
+                                            <input
+                                              className="initialPrice form-control"
+                                              id="initialPrice"
+                                              min="0"
+                                              onChange={[Function]}
+                                              step=".01"
+                                              type="number"
+                                              value={0}
+                                            />
+                                          </Input>
+                                        </div>
+                                      </FormGroup>
+                                      <FormGroup
+                                        row={true}
+                                        tag="div"
+                                      >
+                                        <div
+                                          className="row form-group"
+                                        >
+                                          <Col
+                                            sm="6"
+                                            tag="div"
+                                            widths={
+                                              Array [
+                                                "xs",
+                                                "sm",
+                                                "md",
+                                                "lg",
+                                                "xl",
+                                              ]
+                                            }
+                                          >
+                                            <div
+                                              className="col-sm-6"
+                                            >
+                                              <Label
+                                                for="discount"
+                                                tag="label"
+                                                widths={
+                                                  Array [
+                                                    "xs",
+                                                    "sm",
+                                                    "md",
+                                                    "lg",
+                                                    "xl",
+                                                  ]
+                                                }
+                                              >
+                                                <label
+                                                  className=""
+                                                  htmlFor="discount"
+                                                >
+                                                  <FormattedMessage
+                                                    defaultMessage="Descompte"
+                                                    id="modal.discount"
+                                                    values={Object {}}
+                                                  >
+                                                    <span>
+                                                      Discount
+                                                    </span>
+                                                  </FormattedMessage>
+                                                </label>
+                                              </Label>
+                                            </div>
+                                          </Col>
+                                          <Col
+                                            sm="6"
+                                            tag="div"
+                                            widths={
+                                              Array [
+                                                "xs",
+                                                "sm",
+                                                "md",
+                                                "lg",
+                                                "xl",
+                                              ]
+                                            }
+                                          >
+                                            <div
+                                              className="col-sm-6"
+                                            >
+                                              <Label
+                                                for="discount"
+                                                tag="label"
+                                                widths={
+                                                  Array [
+                                                    "xs",
+                                                    "sm",
+                                                    "md",
+                                                    "lg",
+                                                    "xl",
+                                                  ]
+                                                }
+                                              >
+                                                <label
+                                                  className=""
+                                                  htmlFor="discount"
+                                                >
+                                                  <FormattedMessage
+                                                    defaultMessage="Unitats restants"
+                                                    id="good.pendingUnits"
+                                                    values={Object {}}
+                                                  >
+                                                    <span>
+                                                      Pending units
+                                                    </span>
+                                                  </FormattedMessage>
+                                                </label>
+                                              </Label>
+                                            </div>
+                                          </Col>
+                                          <Col
+                                            sm="3"
+                                            tag="div"
+                                            widths={
+                                              Array [
+                                                "xs",
+                                                "sm",
+                                                "md",
+                                                "lg",
+                                                "xl",
+                                              ]
+                                            }
+                                          >
+                                            <div
+                                              className="col-sm-3"
+                                            >
+                                              <Input
+                                                className="discount"
+                                                id="discount"
+                                                max="100"
+                                                min="0"
+                                                onChange={[Function]}
+                                                step="1"
+                                                type="number"
+                                                value={0}
+                                              >
+                                                <input
+                                                  className="discount form-control"
+                                                  id="discount"
+                                                  max="100"
+                                                  min="0"
+                                                  onChange={[Function]}
+                                                  step="1"
+                                                  type="number"
+                                                  value={0}
+                                                />
+                                              </Input>
+                                            </div>
+                                          </Col>
+                                          <Col
+                                            sm="3"
+                                            tag="div"
+                                            widths={
+                                              Array [
+                                                "xs",
+                                                "sm",
+                                                "md",
+                                                "lg",
+                                                "xl",
+                                              ]
+                                            }
+                                          >
+                                            <div
+                                              className="col-sm-3"
+                                            >
+                                              <Input
+                                                className="discountType"
+                                                id="discountType"
+                                                onChange={[Function]}
+                                                type="select"
+                                                value="%"
+                                              >
+                                                <select
+                                                  className="discountType form-control"
+                                                  id="discountType"
+                                                  onChange={[Function]}
+                                                  type="select"
+                                                  value="%"
+                                                >
+                                                  <option>
+                                                    %
+                                                  </option>
+                                                  <option>
+                                                    €
+                                                  </option>
+                                                </select>
+                                              </Input>
+                                            </div>
+                                          </Col>
+                                          <Col
+                                            sm="6"
+                                            tag="div"
+                                            widths={
+                                              Array [
+                                                "xs",
+                                                "sm",
+                                                "md",
+                                                "lg",
+                                                "xl",
+                                              ]
+                                            }
+                                          >
+                                            <div
+                                              className="col-sm-6"
+                                            >
+                                              <Input
+                                                className="pendingUnits"
+                                                id="pendingUnits"
+                                                min="0"
+                                                onChange={[Function]}
+                                                required={true}
+                                                type="number"
+                                                value={1}
+                                              >
+                                                <input
+                                                  className="pendingUnits form-control"
+                                                  id="pendingUnits"
+                                                  min="0"
+                                                  onChange={[Function]}
+                                                  required={true}
+                                                  type="number"
+                                                  value={1}
+                                                />
+                                              </Input>
+                                            </div>
+                                          </Col>
+                                          <Col
+                                            className="currentPrice"
+                                            sm="12"
+                                            tag="div"
+                                            widths={
+                                              Array [
+                                                "xs",
+                                                "sm",
+                                                "md",
+                                                "lg",
+                                                "xl",
+                                              ]
+                                            }
+                                          >
+                                            <div
+                                              className="currentPrice col-sm-12"
+                                            >
+                                              <FormattedMessage
+                                                defaultMessage="Preu final"
+                                                id="good.currentPrice"
+                                                values={Object {}}
+                                              >
+                                                <span>
+                                                  Current price
+                                                </span>
+                                              </FormattedMessage>
+                                              : 
+                                              0.00
+                                               €
+                                            </div>
+                                          </Col>
+                                        </div>
+                                      </FormGroup>
+                                      <FormGroup
+                                        row={true}
+                                        tag="div"
+                                      >
+                                        <div
+                                          className="row form-group"
+                                        >
+                                          <Col
+                                            sm="6"
+                                            tag="div"
+                                            widths={
+                                              Array [
+                                                "xs",
+                                                "sm",
+                                                "md",
+                                                "lg",
+                                                "xl",
+                                              ]
+                                            }
+                                          >
+                                            <div
+                                              className="col-sm-6"
+                                            >
+                                              <Label
+                                                for="reusePeriod"
+                                                tag="label"
+                                                widths={
+                                                  Array [
+                                                    "xs",
+                                                    "sm",
+                                                    "md",
+                                                    "lg",
+                                                    "xl",
+                                                  ]
+                                                }
+                                              >
+                                                <label
+                                                  className=""
+                                                  htmlFor="reusePeriod"
+                                                >
+                                                  <FormattedMessage
+                                                    defaultMessage="Periodicitat (dies)"
+                                                    id="modal.periodicity"
+                                                    values={Object {}}
+                                                  >
+                                                    <span>
+                                                      Reuse period (days)
+                                                    </span>
+                                                  </FormattedMessage>
+                                                </label>
+                                              </Label>
+                                              <Input
+                                                className="reusePeriod"
+                                                id="reusePeriod"
+                                                min="0"
+                                                onChange={[Function]}
+                                                required={true}
+                                                type="number"
+                                                value={1}
+                                              >
+                                                <input
+                                                  className="reusePeriod form-control"
+                                                  id="reusePeriod"
+                                                  min="0"
+                                                  onChange={[Function]}
+                                                  required={true}
+                                                  type="number"
+                                                  value={1}
+                                                />
+                                              </Input>
+                                            </div>
+                                          </Col>
+                                          <Col
+                                            sm="6"
+                                            tag="div"
+                                            widths={
+                                              Array [
+                                                "xs",
+                                                "sm",
+                                                "md",
+                                                "lg",
+                                                "xl",
+                                              ]
+                                            }
+                                          >
+                                            <div
+                                              className="col-sm-6"
+                                            >
+                                              <Label
+                                                for="category"
+                                                tag="label"
+                                                widths={
+                                                  Array [
+                                                    "xs",
+                                                    "sm",
+                                                    "md",
+                                                    "lg",
+                                                    "xl",
+                                                  ]
+                                                }
+                                              >
+                                                <label
+                                                  className=""
+                                                  htmlFor="category"
+                                                >
+                                                  <FormattedMessage
+                                                    defaultMessage="Categoria"
+                                                    id="good.category"
+                                                    values={Object {}}
+                                                  >
+                                                    <span>
+                                                      Category
+                                                    </span>
+                                                  </FormattedMessage>
+                                                </label>
+                                              </Label>
+                                              <Input
+                                                className="category"
+                                                id="category"
+                                                onChange={[Function]}
+                                                required={true}
+                                                type="select"
+                                                value={1}
+                                              >
+                                                <select
+                                                  className="category form-control"
+                                                  id="category"
+                                                  onChange={[Function]}
+                                                  required={true}
+                                                  type="select"
+                                                  value={1}
+                                                >
+                                                  <FormattedMessage
+                                                    className="goodCategoryNutrition"
+                                                    defaultMessage="Nutrició"
+                                                    id="good.category.nutrition"
+                                                    key="1"
+                                                    values={Object {}}
+                                                  >
+                                                    <option
+                                                      className="optionValue1"
+                                                      value="1"
+                                                    >
+                                                      Nutrition
+                                                    </option>
+                                                  </FormattedMessage>
+                                                  <FormattedMessage
+                                                    className="goodCategoryCulture"
+                                                    defaultMessage="Cultura"
+                                                    id="good.category.culture"
+                                                    key="2"
+                                                    values={Object {}}
+                                                  >
+                                                    <option
+                                                      className="optionValue2"
+                                                      value="2"
+                                                    >
+                                                      Culture
+                                                    </option>
+                                                  </FormattedMessage>
+                                                  <FormattedMessage
+                                                    className="goodCategoryEducation"
+                                                    defaultMessage="Formació"
+                                                    id="good.category.education"
+                                                    key="3"
+                                                    values={Object {}}
+                                                  >
+                                                    <option
+                                                      className="optionValue3"
+                                                      value="3"
+                                                    >
+                                                      Education
+                                                    </option>
+                                                  </FormattedMessage>
+                                                  <FormattedMessage
+                                                    className="goodCategoryMobility"
+                                                    defaultMessage="Mobilitat"
+                                                    id="good.category.mobility"
+                                                    key="4"
+                                                    values={Object {}}
+                                                  >
+                                                    <option
+                                                      className="optionValue4"
+                                                      value="4"
+                                                    >
+                                                      Mobility
+                                                    </option>
+                                                  </FormattedMessage>
+                                                  <FormattedMessage
+                                                    className="goodCategoryTechnology"
+                                                    defaultMessage="Tecnologia"
+                                                    id="good.category.technology"
+                                                    key="5"
+                                                    values={Object {}}
+                                                  >
+                                                    <option
+                                                      className="optionValue5"
+                                                      value="5"
+                                                    >
+                                                      Technology
+                                                    </option>
+                                                  </FormattedMessage>
+                                                  <FormattedMessage
+                                                    className="goodCategoryHealthcare"
+                                                    defaultMessage="Salut"
+                                                    id="good.category.healthcare"
+                                                    key="6"
+                                                    values={Object {}}
+                                                  >
+                                                    <option
+                                                      className="optionValue6"
+                                                      value="6"
+                                                    >
+                                                      Health care
+                                                    </option>
+                                                  </FormattedMessage>
+                                                  <FormattedMessage
+                                                    className="goodCategorySports"
+                                                    defaultMessage="Esports"
+                                                    id="good.category.sports"
+                                                    key="7"
+                                                    values={Object {}}
+                                                  >
+                                                    <option
+                                                      className="optionValue7"
+                                                      value="7"
+                                                    >
+                                                      Sports
+                                                    </option>
+                                                  </FormattedMessage>
+                                                  <FormattedMessage
+                                                    className="goodCategoryLeisure"
+                                                    defaultMessage="Lleure"
+                                                    id="good.category.leisure"
+                                                    key="8"
+                                                    values={Object {}}
+                                                  >
+                                                    <option
+                                                      className="optionValue8"
+                                                      value="8"
+                                                    >
+                                                      Leisure
+                                                    </option>
+                                                  </FormattedMessage>
+                                                  <FormattedMessage
+                                                    className="goodCategoryOthers"
+                                                    defaultMessage="Altres"
+                                                    id="good.category.others"
+                                                    key="9"
+                                                    values={Object {}}
+                                                  >
+                                                    <option
+                                                      className="optionValue9"
+                                                      value="9"
+                                                    >
+                                                      Others
+                                                    </option>
+                                                  </FormattedMessage>
+                                                </select>
+                                              </Input>
+                                            </div>
+                                          </Col>
+                                        </div>
+                                      </FormGroup>
+                                      <FormGroup
+                                        row={true}
+                                        tag="div"
+                                      >
+                                        <div
+                                          className="row form-group"
+                                        >
+                                          <Col
+                                            sm="8"
+                                            tag="div"
+                                            widths={
+                                              Array [
+                                                "xs",
+                                                "sm",
+                                                "md",
+                                                "lg",
+                                                "xl",
+                                              ]
+                                            }
+                                          >
+                                            <div
+                                              className="col-sm-8"
+                                            >
+                                              <Label
+                                                for="File"
+                                                tag="label"
+                                                widths={
+                                                  Array [
+                                                    "xs",
+                                                    "sm",
+                                                    "md",
+                                                    "lg",
+                                                    "xl",
+                                                  ]
+                                                }
+                                              >
+                                                <label
+                                                  className=""
+                                                  htmlFor="File"
+                                                >
+                                                  <FormattedMessage
+                                                    defaultMessage="Imatge"
+                                                    id="modal.image"
+                                                    values={Object {}}
+                                                  >
+                                                    <span>
+                                                      Image
+                                                    </span>
+                                                  </FormattedMessage>
+                                                </label>
+                                              </Label>
+                                              <Input
+                                                className="file"
+                                                id="pictureFile"
+                                                onChange={[Function]}
+                                                type="file"
+                                              >
+                                                <input
+                                                  className="file form-control-file"
+                                                  id="pictureFile"
+                                                  onChange={[Function]}
+                                                  type="file"
+                                                />
+                                              </Input>
+                                            </div>
+                                          </Col>
+                                          <Col
+                                            sm="4"
+                                            tag="div"
+                                            widths={
+                                              Array [
+                                                "xs",
+                                                "sm",
+                                                "md",
+                                                "lg",
+                                                "xl",
+                                              ]
+                                            }
+                                          >
+                                            <div
+                                              className="col-sm-4"
+                                            >
+                                              <img
+                                                alt="preview"
+                                                id="imgPreview"
+                                                src="http://www.asiaoceania.org/aogs2018/img/no_uploaded.png"
+                                              />
+                                            </div>
+                                          </Col>
+                                        </div>
+                                      </FormGroup>
+                                    </form>
+                                  </Form>
+                                </div>
+                              </ModalBody>
+                              <ModalFooter
+                                tag="div"
+                              >
+                                <div
+                                  className="modal-footer"
+                                >
+                                  <button
+                                    className="cancelButton"
+                                    onClick={[Function]}
+                                  >
+                                    Cancel·lar
+                                  </button>
+                                   
+                                  <button
+                                    className="validateButton"
+                                    onClick={[Function]}
+                                    type="submit"
+                                  >
+                                    Enviar
+                                  </button>
+                                </div>
+                              </ModalFooter>
+                            </div>
+                          </div>
+                        </div>
+                      </Transition>
+                    </Fade>
+                    <Fade
+                      appear={true}
+                      baseClass="fade"
+                      baseClassActive="show"
+                      className="modal-backdrop"
+                      enter={true}
+                      exit={true}
+                      in={true}
+                      mountOnEnter={true}
+                      onEnter={[Function]}
+                      onEntered={[Function]}
+                      onEntering={[Function]}
+                      onExit={[Function]}
+                      onExited={[Function]}
+                      onExiting={[Function]}
+                      tag="div"
+                      timeout={150}
+                      unmountOnExit={false}
+                    >
+                      <Transition
+                        appear={true}
+                        enter={true}
+                        exit={true}
+                        in={true}
+                        mountOnEnter={true}
+                        onEnter={[Function]}
+                        onEntered={[Function]}
+                        onEntering={[Function]}
+                        onExit={[Function]}
+                        onExited={[Function]}
+                        onExiting={[Function]}
+                        timeout={150}
+                        unmountOnExit={false}
+                      >
+                        <div
+                          className="modal-backdrop fade"
+                        />
+                      </Transition>
+                    </Fade>
+                  </div>
+                </Portal>
+              </Modal>
+            </ModalView>
+          </div>
+        </Container>
+      </div>
+    </Container>
+  </IntlProvider>
+</GoodsContainer>
+`;

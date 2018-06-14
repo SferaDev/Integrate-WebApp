@@ -7,7 +7,6 @@ export const apiGetIncentives = () => new Promise((resolve, reject) => {
             const incentives = response.data;
             if (incentives) {
                 resolve(incentives);
-            } else reject();
-        } else reject();
-    }).catch(() => reject());
+            }
+    }}).catch(e => reject(e));
 });

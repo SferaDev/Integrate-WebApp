@@ -16,7 +16,7 @@ addLocaleData(en)
 addLocaleData(es)
 addLocaleData(ca)
 
-class SignupContainer extends Component {
+export class SignupContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {};

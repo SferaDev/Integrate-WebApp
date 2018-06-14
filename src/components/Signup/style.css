@@ -73,6 +73,11 @@
     background: none;
     color: rgba(61, 61, 72, 0.99);
     font: inherit;
-    /*border is optional*/
     cursor: pointer;
+}
+
+#picturePreview {
+    height: 150px;
+    width: 170px;
+
 }

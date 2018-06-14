@@ -4,8 +4,9 @@ import {FormattedMessage} from 'react-intl';
 import bronze from '../../media/bronzemedal.png';
 import silver from '../../media/silvermedal.jpeg';
 import gold from '../../media/goldmedal.jpeg';
-import {apiGetIncentives} from "../../api/incentive";
-
+import like from '../../media/like.png'
+import PropTypes from 'prop-types';
+import {Col, Row} from 'reactstrap';
 
 const goldM = gold;
 const silverM = silver;
@@ -13,139 +14,139 @@ const bronzeM = bronze;
 let lefttext, middletext, righttext, leftmedal, middlemedal, rightmedal;
 let medalleft, medalmiddle, medalright;
 
-
 export default class Incentive extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            goodsCreated: '',
-            beneficiariesHelped: '',
-            totalSavedMoney: ''
-
-        };
-
-        apiGetIncentives().then(incentives => {
-          this.setState({goodsCreated: incentives.goodsCreated});
-          this.setState({beneficiariesHelped: incentives.beneficiariesHelped});
-          this.setState({totalSavedMoney: incentives.totalSavedMoney});
-         })
-
-        this.setLeftText = this.setLeftText.bind(this);
-        this.setMiddleText = this.setMiddleText.bind(this);
-        this.setRightText = this.setRightText.bind(this);
-
-    }
-
     setLeftText() {
-        if (this.state.goodsCreated < 5) {
-            lefttext = "NormalText";
-            medalleft = "medalHidden";
+        if (this.props.incentives.goodsCreated < 5) {
+            lefttext = "NormalText NormalTextLeft";
+            medalleft = "medalHidden medalLeftHidden";
         }
-        else if (this.state.goodsCreated >=5 && this.state.goodsCreated < 50) {
-            lefttext = "BronzeText";
+
+        else if (this.props.incentives.goodsCreated >=5 && this.props.incentives.goodsCreated < 50) {
+            lefttext = "BronzeText BronzeTextLeft";
             leftmedal = bronzeM;
-            medalleft = "medal";
-
-
+            medalleft = "medal medalLeft";
         }
-        else if (this.state.goodsCreated >= 50 && this.state.goodsCreated < 500) {
-            lefttext = "SilverText";
+
+        else if (this.props.incentives.goodsCreated >= 50 && this.props.incentives.goodsCreated < 500) {
+            lefttext = "SilverText SilverTextLeft";
             leftmedal = silverM;
-            medalleft = "medal";
-
-
+            medalleft = "medal medalLeft";
         }
+
         else {
-            lefttext = "GoldenText";
+            lefttext = "GoldenText GoldenTextLeft";
             leftmedal = goldM;
-            medalleft = "medal";
-
+            medalleft = "medal medalLeft";
         }
-
     }
 
     setMiddleText() {
-        if (this.state.beneficiariesHelped < 5) {
+        if (this.props.incentives.beneficiariesHelped < 5) {
             middletext = "NormalTextMiddle";
-            medalmiddle = "medalHidden";
-
+            medalmiddle = "medalHidden medalMiddleHidden";
         }
-        else if (this.state.beneficiariesHelped >=5 && this.state.beneficiariesHelped < 50) {
+
+        else if (this.props.incentives.beneficiariesHelped >=5 && this.props.incentives.beneficiariesHelped < 50) {
             middletext = "BronzeTextMiddle";
             middlemedal = bronzeM;
-            medalmiddle = "medalMiddle";
-
-
+            medalmiddle = "medal medalMiddle";
         }
-        else if (this.state.beneficiariesHelped >= 50 && this.state.beneficiariesHelped < 500) {
+
+        else if (this.props.incentives.beneficiariesHelped >= 50 && this.props.incentives.beneficiariesHelped < 500) {
             middletext = "SilverTextMiddle";
             middlemedal = silverM;
-            medalmiddle = "medalMiddle";
-
-
+            medalmiddle = "medal medalMiddle";
         }
+
         else {
             middletext = "GoldenTextMiddle";
             middlemedal = goldM;
-            medalmiddle = "medalMiddle";
-
-
+            medalmiddle = "medal medalMiddle";
         }
     }
 
     setRightText() {
-
-        if (this.state.totalSavedMoney < 5) {
+        if (this.props.incentives.totalSavedMoney < 5) {
             righttext = "NormalTextRight";
-            medalright = "medalHidden";
+            medalright = "medalHidden medalRightHidden";
         }
-        else if (this.state.totalSavedMoney >=5 && this.state.totalSavedMoney < 50) {
+
+        else if (this.props.incentives.totalSavedMoney >=5 && this.props.incentives.totalSavedMoney < 50) {
             righttext = "BronzeTextRight";
             rightmedal = bronzeM;
-            medalright = "medalRight";
-
+            medalright = "medal medalRight";
         }
-        else if (this.state.totalSavedMoney >= 50 && this.state.totalSavedMoney < 500) {
+
+        else if (this.props.incentives.totalSavedMoney >= 50 && this.props.incentives.totalSavedMoney < 500) {
             righttext = "SilverTextRight";
             rightmedal = silverM;
-            medalright = "medalRight";
-
+            medalright = "medal medalRight";
         }
+
         else {
             righttext = "GoldenTextRight";
             rightmedal = goldM;
-            medalright = "medalRight";
-
+            medalright = "medal medalRight";
         }
     }
 
-
     render() {
-
         this.setRightText();
         this.setMiddleText();
         this.setLeftText();
 
         return (
-            <div className="Incentive">
-                <img className={medalleft} src={leftmedal} alt="Medal"/>
-                <h3 className={lefttext}>{this.state.goodsCreated}
-                    <FormattedMessage id='incentive.goods' defaultMessage='Vals'/>
-                </h3>
-                <img className={medalmiddle} src={middlemedal} alt="Medal"/>
-                <h3 className={middletext}>{this.state.beneficiariesHelped}
-                    <FormattedMessage id='incentive.beneficiaris' defaultMessage='Beneficiaris'/>
-                </h3>
-                <img className={medalright} src={rightmedal} alt="Medal"/>
-                <h3 className={righttext}>{this.state.totalSavedMoney}
-                    <FormattedMessage id='incentive.discount' defaultMessage='Descomptes'/>
-                </h3>
-            </div>
+            <Row className="incentive">
+                <Col sm='12' md='2' className='likeComponent'>
+                    <img className="like" id='like' src={like} alt="Medal"/>
+                    <div className="NormalText">
+                        <span className='likeText'>{this.props.incentives.numberLikes}</span>
+                    </div>
+                </Col>
+
+                <Col sm='12' md='3' className='incentiveLeft'>
+                    {
+                        medalleft !== 'medalHidden medalLeftHidden' ? <img className={medalleft} id='medalLeft' src={leftmedal} alt="Medal"/> :
+                            null
+                    }
+                        <div className={lefttext}><span className='leftTextValue'>{this.props.incentives.goodsCreated}</span>
+                            &nbsp;
+                            <FormattedMessage id='incentive.goods' defaultMessage='vals creats'/>
+                        </div>
+                </Col>
+
+                <Col sm='12' md='3' className='incentiveMiddle'>
+                    {
+                        medalmiddle !== 'medalHidden medalMiddleHidden' ? <img className={medalmiddle} id='medalLeft' src={middlemedal} alt="Medal"/> :
+                            null
+                    }
+                        <div className={middletext}><span className='middleTextValue'>{this.props.incentives.beneficiariesHelped}</span>
+                            &nbsp;
+                            <FormattedMessage id='incentive.beneficiaris' defaultMessage='beneficiaris ajudats'/>
+                        </div>
+                </Col>
+
+                <Col sm='12' md='3' className='incentiveRight'>
+                    {
+                        medalright !== 'medalHidden medalRightHidden' ? <img className={medalright} id='medalRight' src={rightmedal} alt="Medal"/> :
+                            null
+                    }
+                        <div className={righttext}><span className='rightTextValue'>{this.props.incentives.totalSavedMoney}</span>
+                            <FormattedMessage id='incentive.discount' defaultMessage='Descomptes'/>
+                        </div>
+                </Col>
+            </Row>
         );
     }
-
-
 }
+
+Incentive.propTypes = {
+    incentives: PropTypes.shape({
+        numberLikes: PropTypes.number.isRequired,
+        goodsCreated: PropTypes.number.isRequired,
+        beneficiariesHelped: PropTypes.number.isRequired,
+        totalSavedMoney: PropTypes.number.isRequired,
+    }).isRequired,
+};
 
 

@@ -3,17 +3,21 @@ import './style.css';
 import PropTypes from 'prop-types';
 import Good from '../Good';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import {Col, Container, Row} from 'reactstrap';
+import {Col, Row} from 'reactstrap';
 import {FormattedMessage} from 'react-intl'
 
 const GoodsList = ({goods, modal, actions}) => {
     const Goods = (
         goods.map(good =>
-            <Good
-                key={good._id}
-                good={good}
-                actions={actions}
-            />
+            <Row className='goodRow' key={good._id}>
+                <Col sm='12' className='goodCol'>
+                    <Good
+                        key={good._id}
+                        good={good}
+                        actions={actions}
+                    />
+                </Col>
+            </Row>
         )
     );
 
@@ -24,15 +28,10 @@ const GoodsList = ({goods, modal, actions}) => {
 
     return (
         <div className="goodsListDiv">
-            <Container className="goodsListContainer" fluid={true}>
                 <div className="goodsList">
-                    <Row>
-                        <Col sm="12">
                             {Goods}
-                        </Col>
-                    </Row>
                 </div>
-                <Row>
+                <Row className='stickyAddGoodRow'>
                     <Col sm="12" className="stickyAddGood">
                         <button className="stickyAddGoodButton" onClick={toggle}>
                             <FontAwesomeIcon icon="plus-circle" className="plus-circle"/>
@@ -43,7 +42,6 @@ const GoodsList = ({goods, modal, actions}) => {
                         </button>
                     </Col>
                 </Row>
-            </Container>
         </div>
     )
 };
